@@ -93,28 +93,30 @@ gsap.set(spotEls, {
     force3D:  true,
 });
 
-const tl = gsap.timeline({
-    scrollTrigger: {
-        trigger: '#hero',
-        start: 'top top',
-        end:   'bottom -40%',
-        scrub: 3,
-        invalidateOnRefresh: true,
-    }
-});
+const scrollConfig = {
+    trigger: '#hero',
+    start: 'top top',
+    end:   'bottom -40%',
+    invalidateOnRefresh: true,
+};
 
-tl
-    .to('.bg-blobs', { opacity: 0.06, ease: 'power1.in'  }, 0)
-    .to('.bg-tint',  { opacity: 1,    ease: 'power1.out' }, 0)
-    .to(spotEls, {
-        x:       0,
-        y:       0,
-        scale:   1,
-        opacity: 1,
-        ease:    'power2.inOut',
-        force3D: true,
-        stagger: { each: 0.01, from: 'random' },
-    }, 0);
+// Blobs y tint: scrub bajo para que respondan rápido al volver arriba
+gsap.to('.bg-blobs', { opacity: 0.06, ease: 'power1.in',
+    scrollTrigger: { ...scrollConfig, scrub: 0.8 } });
+gsap.to('.bg-tint',  { opacity: 1,    ease: 'power1.out',
+    scrollTrigger: { ...scrollConfig, scrub: 0.8 } });
+
+// Spots: scrub alto para el morfo dramático al bajar
+gsap.to(spotEls, {
+    x:       0,
+    y:       0,
+    scale:   1,
+    opacity: 1,
+    ease:    'power2.inOut',
+    force3D: true,
+    stagger: { each: 0.01, from: 'random' },
+    scrollTrigger: { ...scrollConfig, scrub: 3 },
+});
 
 // Section content entrance animations
 ['#about', '#video', '#gallery', '#contact'].forEach(sel => {

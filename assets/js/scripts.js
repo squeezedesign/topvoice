@@ -178,17 +178,17 @@ function handleSubmit(e) {
     .then(({ status, text }) => {
         let data;
         try { data = JSON.parse(text); } catch(e) {
-            showFormMsg(form, `HTTP ${status} — respuesta no-JSON: ${text.slice(0, 200)}`, 'error');
+            showFormMsg(form, msgs.error, 'error');
             return;
         }
         if (data.ok) {
             form.reset();
             showFormMsg(form, msgs.ok, 'success');
         } else {
-            showFormMsg(form, `Error ${status}: ${data.error || msgs.error}`, 'error');
+            showFormMsg(form, msgs.error, 'error');
         }
     })
-    .catch(err => showFormMsg(form, `Fetch error: ${err.message}`, 'error'))
+    .catch(() => showFormMsg(form, msgs.error, 'error'))
     .finally(() => {
         btn.disabled    = false;
         btn.innerHTML   = '<span data-lang="es">Enviar</span><span data-lang="ca">Enviar</span>';

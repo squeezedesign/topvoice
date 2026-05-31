@@ -24,22 +24,37 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit;
 }
 
-$nombre  = htmlspecialchars($nombre,  ENT_QUOTES, 'UTF-8');
-$mensaje = htmlspecialchars($mensaje, ENT_QUOTES, 'UTF-8');
+require_once __DIR__ . '/smtp_config.php';
+require_once __DIR__ . '/lib/phpmailer/Exception.php';
+require_once __DIR__ . '/lib/phpmailer/PHPMailer.php';
+require_once __DIR__ . '/lib/phpmailer/SMTP.php';
 
-$to      = 'topvoicetgn@gmail.com';
-$subject = '=?UTF-8?B?' . base64_encode('Contacto web · ' . $nombre) . '?=';
-$body    = "Nombre: $nombre\nEmail: $email\n\nMensaje:\n$mensaje";
-$headers = implode("\r\n", [
-    'From: noreply@topvoicetgn.com',
-    'Reply-To: ' . $email,
-    'MIME-Version: 1.0',
-    'Content-Type: text/plain; charset=UTF-8',
-]);
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
-if (mail($to, $subject, $body, $headers)) {
+$mail = new PHPMailer(true);
+
+try {
+    $mail->isSMTP();
+    $mail->Host       = 'smtp.gmail.com';
+    $mail->SMTPAuth   = true;
+    $mail->Username   = SMTP_USER;
+    $mail->Password   = SMTP_PASSWORD;
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->Port       = 587;
+    $mail->CharSet    = 'UTF-8';
+
+    $mail->setFrom(SMTP_FROM, 'Top Voice Web');
+    $mail->addAddress(MAIL_TO);
+    $mail->addReplyTo($email, htmlspecialchars($nombre, ENT_QUOTES, 'UTF-8'));
+
+    $mail->Subject = 'Contacto web · ' . htmlspecialchars($nombre, ENT_QUOTES, 'UTF-8');
+    $mail->Body    = "Nombre: $nombre\nEmail: $email\n\nMensaje:\n$mensaje";
+
+    $mail->send();
     echo json_encode(['ok' => true]);
-} else {
+} catch (Exception $e) {
     http_response_code(500);
-    echo json_encode(['ok' => false, 'error' => 'No se pudo enviar el correo']);
+    echo json_encode(['ok' => false, 'error' => $mail->ErrorInfo]);
 }

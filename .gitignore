@@ -25,6 +25,7 @@ build/
 .env
 .env.local
 .env.*.local
+smtp_config.php
 
 # Logs
 *.log

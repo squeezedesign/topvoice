@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top Voice · Cor Modern Tarragona</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" crossorigin="" href="/assets/css/style.css">
+  <link rel="icon" type="image/png" href="/assets/images/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/assets/images/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="/assets/images/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="Top Voice" />
+  <link rel="manifest" href="/assets/images/favicon/site.webmanifest" />
+</head>
+<body id="body" class="lang-ca">
+
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+<aside class="offcanvas" id="offcanvas" aria-hidden="true">
+  <div class="offcanvas-head">
+    <button class="offcanvas-close" onclick="closeMenu()" aria-label="Cerrar menú">✕</button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="offcanvas-brand">
+      <div class="name">TOP <span>VOICE</span></div>
+      <div class="sub">Cor Modern · Tarragona</div>
+    </div>
+    <div class="offcanvas-links">
+      <a onclick="goTo('about')"><span data-lang="es">Quiénes somos</span><span data-lang="ca">Qui som</span><span class="arrow">→</span></a>
+      <a onclick="goTo('video')">Vídeo<span class="arrow">→</span></a>
+      <a onclick="goTo('gallery')"><span data-lang="es">Fotos</span><span data-lang="ca">Fotos</span><span class="arrow">→</span></a>
+      <a onclick="goTo('contact')"><span data-lang="es">Contacto</span><span data-lang="ca">Contacte</span><span class="arrow">→</span></a>
+    </div>
+    <div class="offcanvas-footer">
+      <div class="offcanvas-lang">
+        <button class="active"  onclick="setLang('ca')">CA</button>
+        <button onclick="setLang('es')">ES</button>
+      </div>
+      <a href="https://www.instagram.com/topvoicetgn/" class="offcanvas-ig" target="_blank" rel="noopener">
+        &#9679; @topvoicetgn
+      </a>
+    </div>
+  </div>
+</aside>
+
+<header>
+  <nav>
+    <!-- Replace <i> below with: <img src="images/logo.webp" alt="Top Voice"> -->
+    <div class="nav-logo-circle" id="navLogo">
+      <!--<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></svg>-->
+      <img src="assets/images/topvoice_marca_color.webp" height="36" width="36"/></div>
+    <div class="nav-right">
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <!--
+    <div class="hero-circle">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></svg>
+    </div>
+    <h1><span class="top">TOP</span><span class="voice">VOICE</span></h1>
+    <p class="hero-sub">Cor Modern · Tarragona</p>
+    -->
+    <h1 aria-label="TopVoice">
+      <img src="assets/images/top_voice_logo.webp" width="420" height="176" alt="Top Voice · Cor Modern TGN"/></h1>
+    <p class="hero-desc" data-lang="es">Top Voice es un coro/grupo vocal de Tarragona. Cantamos música moderna con puesta en escena.</p>
+    <p class="hero-desc" data-lang="ca">Top Voice és un cor/grup vocal de Tarragona. Cantem música moderna amb posada en escena.</p>
+    <div class="hero-cta">
+      <button class="btn btn-primary" onclick="goTo('contact')"><span data-lang="es">Contrátanos</span><span data-lang="ca">Contracta'ns</span></button>
+      <button class="btn btn-outline" onclick="goTo('video')"><span data-lang="es">Ver vídeo</span><span data-lang="ca">Veure vídeo</span></button>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="inner">
+      <p class="section-tag"><span data-lang="es">Quiénes somos</span><span data-lang="ca">Qui som</span></p>
+      <div class="about-grid">
+        <div class="about-text">
+          <h2 class="section-title" data-lang="es">Una voz,<br>muchas voces</h2>
+          <h2 class="section-title" data-lang="ca">Una veu,<br>moltes veus</h2>
+          <div class="divider"></div>
+          <p data-lang="es">Somos un coro moderno con sede en Tarragona. Actuamos con puesta en escena cuidada, combinando música contemporánea, energía y emoción en cada actuación.<br><br>[Aquí irá el texto completo del grupo]</p>
+          <p data-lang="ca">Som un cor modern amb seu a Tarragona. Actuem amb posada en escena acurada, combinant música contemporània, energia i emoció a cada actuació.<br><br>[Aquí anirà el text complet del grup]</p>
+        </div>
+        <div class="about-img">
+          <!-- Replace with: <img src="images/foto-grupo.jpg" alt="Top Voice"> -->
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span data-lang="es">Foto del grupo</span><span data-lang="ca">Foto del grup</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="video">
+    <div class="inner">
+      <p class="section-tag"><span data-lang="es">Vídeo de presentación</span><span data-lang="ca">Vídeo de presentació</span></p>
+      <h2 class="section-title" data-lang="es">Escúchanos</h2>
+      <h2 class="section-title" data-lang="ca">Escolta'ns</h2>
+      <div class="divider"></div>
+      <div class="video-wrap">
+        <div class="video-placeholder">
+          <!-- Replace with: <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe> -->
+          <div class="play-btn"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <span style="font-size:0.8rem;">
+            <span data-lang="es">Vídeo de presentación (YouTube / Vimeo)</span>
+            <span data-lang="ca">Vídeo de presentació (YouTube / Vimeo)</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <div class="inner">
+      <p class="section-tag"><span data-lang="es">Galería</span><span data-lang="ca">Galeria</span></p>
+      <h2 class="section-title" data-lang="es">Momentos</h2>
+      <h2 class="section-title" data-lang="ca">Moments</h2>
+      <div class="divider"></div>
+      <div class="gallery-grid">
+        <!-- Replace each div.gallery-item with: <div class="gallery-item"><img src="images/foto-1.jpg" alt="..."></div> -->
+        <div class="gallery-item"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+        <div class="gallery-item"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+        <div class="gallery-item"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+        <div class="gallery-item"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+        <div class="gallery-item"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+        <div class="gallery-item"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="inner">
+      <div class="contact-grid">
+        <div>
+          <p class="section-tag"><span data-lang="es">Contacto</span><span data-lang="ca">Contacte</span></p>
+          <h2 class="section-title" data-lang="es">¿Nos contratas?</h2>
+          <h2 class="section-title" data-lang="ca">Ens contractes?</h2>
+          <div class="divider"></div>
+          <form class="contact-form" onsubmit="handleSubmit(event)">
+            <input class="field" type="text" name="nombre" placeholder="Nombre / Nom" required>
+            <input class="field" type="email" name="email" placeholder="Email" required>
+            <textarea class="field" name="mensaje" placeholder="Mensaje / Missatge" required></textarea>
+            <button type="submit" class="btn btn-primary" style="align-self:flex-start;">
+              <span data-lang="es">Enviar</span><span data-lang="ca">Enviar</span>
+            </button>
+          </form>
+        </div>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+            <span>Tarragona</span>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></div>
+            <a href="https://www.instagram.com/topvoicetgn/" class="ig" target="_blank" rel="noopener">@topvoicetgn</a>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2 4 12 13 22 4"/></svg></div>
+            <span>topvoicetgn@gmail.com</span>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6 6l1.94-1.94a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 15z"/></svg></div>
+            <a href="tel:636279326">636 279 326</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2025 Top Voice · Cor Modern Tarragona</p>
+</footer>
+
+<script src="/assets/js/scripts.js" async=""></script>
+</body>
+</html>

@@ -171,16 +171,24 @@ function handleSubmit(e) {
         method:  'POST',
         body:    new FormData(form),
     })
-    .then(r => r.json())
-    .then(data => {
+    .then(r => {
+        const status = r.status;
+        return r.text().then(text => ({ status, text }));
+    })
+    .then(({ status, text }) => {
+        let data;
+        try { data = JSON.parse(text); } catch(e) {
+            showFormMsg(form, `HTTP ${status} — respuesta no-JSON: ${text.slice(0, 200)}`, 'error');
+            return;
+        }
         if (data.ok) {
             form.reset();
             showFormMsg(form, msgs.ok, 'success');
         } else {
-            showFormMsg(form, msgs.error, 'error');
+            showFormMsg(form, `Error ${status}: ${data.error || msgs.error}`, 'error');
         }
     })
-    .catch(() => showFormMsg(form, msgs.error, 'error'))
+    .catch(err => showFormMsg(form, `Fetch error: ${err.message}`, 'error'))
     .finally(() => {
         btn.disabled    = false;
         btn.innerHTML   = '<span data-lang="es">Enviar</span><span data-lang="ca">Enviar</span>';

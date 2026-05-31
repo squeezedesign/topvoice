@@ -65,7 +65,7 @@ function initLeopardTransition() {
         const ix = orig.x + (rng() - 0.5) * spread * 2.4;
         const iy = orig.y + (rng() - 0.5) * spread * 2;
 
-        el.style.cssText = `position:absolute;left:${fx.toFixed(1)}px;top:${fy.toFixed(1)}px;width:${fw.toFixed(1)}px;height:${fh.toFixed(1)}px;border-radius:${shapes[i % shapes.length]};transform-origin:center;will-change:transform,opacity,background-color;`;
+        el.style.cssText = `position:absolute;left:${fx.toFixed(1)}px;top:${fy.toFixed(1)}px;width:${fw.toFixed(1)}px;height:${fh.toFixed(1)}px;border-radius:${shapes[i % shapes.length]};background:#0d0a04;transform-origin:center;will-change:transform,opacity;`;
         container.appendChild(el);
         data.push({ el, xOff: ix - fx, yOff: iy - fy, rot, color: orig.color });
     }
@@ -83,15 +83,14 @@ gsap.registerPlugin(ScrollTrigger);
 const spotData = initLeopardTransition();
 const spotEls  = spotData.map(d => d.el);
 
-// Estado inicial: grandes, en posición del blob, con su color
+// Estado inicial: grandes, desplazados al origen del blob
 gsap.set(spotEls, {
-    x:               (i) => spotData[i].xOff,
-    y:               (i) => spotData[i].yOff,
-    scale:           4.2,
-    rotation:        (i) => spotData[i].rot,
-    opacity:         0,
-    backgroundColor: (i) => spotData[i].color,
-    filter:          'blur(28px)',
+    x:        (i) => spotData[i].xOff,
+    y:        (i) => spotData[i].yOff,
+    scale:    4.2,
+    rotation: (i) => spotData[i].rot,
+    opacity:  0,
+    force3D:  true,
 });
 
 const tl = gsap.timeline({
@@ -107,14 +106,13 @@ tl
     .to('.bg-blobs', { opacity: 0.06, ease: 'power1.in'  }, 0)
     .to('.bg-tint',  { opacity: 1,    ease: 'power1.out' }, 0)
     .to(spotEls, {
-        x:               0,
-        y:               0,
-        scale:           1,
-        opacity:         1,
-        backgroundColor: '#0d0a04',
-        filter:          'blur(0px)',
-        ease:            'power2.inOut',
-        stagger:         { each: 0.01, from: 'random' },
+        x:       0,
+        y:       0,
+        scale:   1,
+        opacity: 1,
+        ease:    'power2.inOut',
+        force3D: true,
+        stagger: { each: 0.01, from: 'random' },
     }, 0);
 
 function handleSubmit(e) {

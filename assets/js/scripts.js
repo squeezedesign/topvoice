@@ -115,6 +115,36 @@ tl
         stagger: { each: 0.01, from: 'random' },
     }, 0);
 
+// Section content entrance animations
+['#about', '#video', '#gallery', '#contact'].forEach(sel => {
+    const section = document.querySelector(sel);
+    if (!section) return;
+
+    const tag     = section.querySelector('.section-tag');
+    const titles  = section.querySelectorAll('.section-title');
+    const divider = section.querySelector('.divider');
+    const body    = section.querySelectorAll([
+        '.about-text p', '.about-img',
+        '.video-wrap',
+        '.gallery-grid',
+        '.contact-grid',
+    ].join(', '));
+
+    const stl = gsap.timeline({
+        scrollTrigger: {
+            trigger: section,
+            start: 'top 80%',
+            toggleActions: 'play none none none',
+        }
+    });
+
+    if (tag)    stl.from(tag,     { y: 18, opacity: 0, duration: 0.5, ease: 'power2.out' });
+    if (titles.length) stl.from(titles, { y: 28, opacity: 0, duration: 0.6, ease: 'power2.out', stagger: 0.08 }, '-=0.3');
+    if (divider) stl.from(divider, { scaleX: 0, transformOrigin: 'left center', duration: 0.5, ease: 'power2.out' }, '-=0.25');
+    if (body.length) stl.from(body, { y: 36, opacity: 0, duration: 0.7, ease: 'power2.out', stagger: 0.12 }, '-=0.3');
+});
+
+
 function handleSubmit(e) {
     e.preventDefault();
     const form = e.target;

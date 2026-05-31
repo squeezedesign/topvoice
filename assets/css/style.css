@@ -670,9 +670,12 @@ section {
     margin-left: 4px;
 }
 
-/* GALLERY */
+/* GALLERY — sticky para que la card de contacto suba encima */
 #gallery {
     background: transparent;
+    position: sticky;
+    top: 0;
+    z-index: 5;
 }
 
 .gallery-grid {
@@ -710,16 +713,51 @@ section {
     font-size: 2rem;
 }
 
-/* CONTACT */
+/* CONTACT — card que sube sobre la galería */
 #contact {
-    background: transparent;
+    background: #080808;
+    border-radius: 28px 28px 0 0;
+    position: relative;
+    z-index: 10;
+    padding: 5rem 2.5rem 0;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0 2.5rem;
 }
 
-.contact-grid {
+.contact-backdrop-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: start;
+    max-width: 960px;
+    margin: 0 auto;
+    width: 100%;
+    flex: 1;
+}
+
+.contact-intro {
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.8;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+    padding-top: 1rem;
+}
+
+.contact-form-card {
+    margin-top: 3rem;
+}
+
+.contact-form-card .inner {
+    max-width: 600px;
 }
 
 .contact-form {
@@ -827,10 +865,11 @@ a.ig:hover {
     border: 1px solid rgba(232, 0, 106, 0.3);
 }
 
-/* FOOTER */
+/* FOOTER — merges seamlessly with contact card */
 footer {
     background: transparent;
     border-top: 1px solid rgba(255, 255, 255, 0.06);
+    margin-top: auto;
     padding: 2rem 2.5rem;
     text-align: center;
     color: var(--muted);

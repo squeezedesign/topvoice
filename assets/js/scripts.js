@@ -20,10 +20,102 @@ function setLang(lang) {
         btn.classList.toggle('active', (i === 0 && lang === 'es') || (i === 1 && lang === 'ca'));
     });
 }
-// Show nav background + logo after scrolling past hero
+function seededRand(seed) {
+    let s = seed;
+    return () => { s = (s * 9301 + 49297) % 233280; return s / 233280; };
+}
+
+function initLeopardTransition() {
+    const container = document.getElementById('bg-leopard');
+    if (!container) return [];
+    const rng = seededRand(42);
+    const W = window.innerWidth, H = window.innerHeight;
+    const count = 44;
+
+    // Los dos blobs CSS están en top-left y bottom-right — usamos esas posiciones como origen
+    const origins = [
+        { x: 0.15 * W, y: 0.20 * H, color: 'rgba(192,64,224,0.82)' },
+        { x: 0.80 * W, y: 0.75 * H, color: 'rgba(0,201,177,0.72)'  },
+    ];
+
+    // Variantes de border-radius para formas orgánicas (no simétricas)
+    const shapes = [
+        '62% 38% 55% 45% / 52% 58% 42% 48%',
+        '44% 56% 38% 62% / 60% 42% 58% 40%',
+        '70% 30% 48% 52% / 45% 60% 40% 55%',
+        '38% 62% 60% 40% / 55% 40% 60% 45%',
+        '55% 45% 70% 30% / 40% 65% 35% 60%',
+    ];
+
+    const data = [];
+    for (let i = 0; i < count; i++) {
+        const el = document.createElement('div');
+        el.className = 'leopard-spot';
+
+        // Posición final dispersa por la pantalla
+        const fx = (4 + rng() * 92) / 100 * W;
+        const fy = (4 + rng() * 92) / 100 * H;
+        const fw = 18 + rng() * 30;
+        const fh = fw * (0.42 + rng() * 0.46);
+        const rot = rng() * 160 - 80;
+
+        // Posición inicial: cerca del blob de origen con algo de spread
+        const orig = origins[i < count * 0.55 ? 0 : 1];
+        const spread = Math.min(W, H) * 0.14;
+        const ix = orig.x + (rng() - 0.5) * spread * 2.4;
+        const iy = orig.y + (rng() - 0.5) * spread * 2;
+
+        el.style.cssText = `position:absolute;left:${fx.toFixed(1)}px;top:${fy.toFixed(1)}px;width:${fw.toFixed(1)}px;height:${fh.toFixed(1)}px;border-radius:${shapes[i % shapes.length]};transform-origin:center;will-change:transform,opacity,background-color;`;
+        container.appendChild(el);
+        data.push({ el, xOff: ix - fx, yOff: iy - fy, rot, color: orig.color });
+    }
+    return data;
+}
+
+// Nav scroll
 window.addEventListener('scroll', () => {
     document.querySelector('header nav').classList.toggle('scrolled', window.scrollY > 80);
+}, { passive: true });
+
+// GSAP
+gsap.registerPlugin(ScrollTrigger);
+
+const spotData = initLeopardTransition();
+const spotEls  = spotData.map(d => d.el);
+
+// Estado inicial: grandes, en posición del blob, con su color
+gsap.set(spotEls, {
+    x:               (i) => spotData[i].xOff,
+    y:               (i) => spotData[i].yOff,
+    scale:           4.2,
+    rotation:        (i) => spotData[i].rot,
+    opacity:         0,
+    backgroundColor: (i) => spotData[i].color,
+    filter:          'blur(28px)',
 });
+
+const tl = gsap.timeline({
+    scrollTrigger: {
+        trigger: '#hero',
+        start: 'top top',
+        end:   'bottom -40%',
+        scrub: 3,
+    }
+});
+
+tl
+    .to('.bg-blobs', { opacity: 0.06, ease: 'power1.in'  }, 0)
+    .to('.bg-tint',  { opacity: 1,    ease: 'power1.out' }, 0)
+    .to(spotEls, {
+        x:               0,
+        y:               0,
+        scale:           1,
+        opacity:         1,
+        backgroundColor: '#0d0a04',
+        filter:          'blur(0px)',
+        ease:            'power2.inOut',
+        stagger:         { each: 0.01, from: 'random' },
+    }, 0);
 
 function handleSubmit(e) {
     e.preventDefault();

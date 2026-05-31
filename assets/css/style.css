@@ -165,8 +165,8 @@ nav.scrolled .nav-logo-circle {
     position: fixed;
     top: 0;
     right: 0;
-    height: 100vh;
-    width: min(300px, 100vw);
+    height: 100dvh;
+    width: min(300px, 100dvw);
     background: #12121e;
     border-left: 1px solid rgba(255, 255, 255, 0.08);
     z-index: 300;
@@ -319,35 +319,35 @@ nav.scrolled .nav-logo-circle {
     color: var(--accent);
 }
 
-/* HERO */
-#hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 8rem 2rem 4rem;
-    position: relative;
+/* SITE BACKGROUND — fixed layer behind everything */
+#site-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
     overflow: hidden;
+    pointer-events: none;
 }
 
-.hero-bg {
+main, footer {
+    position: relative;
+    z-index: 1;
+}
+
+.bg-blobs {
     position: absolute;
     inset: 0;
-    pointer-events: none;
-    overflow: hidden;
+    transition: opacity 0.3s ease;
 }
 
-.hero-bg::before,
-.hero-bg::after {
+.bg-blobs::before,
+.bg-blobs::after {
     content: '';
     position: absolute;
     border-radius: 50%;
     will-change: transform;
 }
 
-.hero-bg::before {
+.bg-blobs::before {
     width: 75vmax;
     height: 75vmax;
     background: radial-gradient(circle at center, rgba(192, 64, 224, 0.5) 0%, transparent 65%);
@@ -357,7 +357,7 @@ nav.scrolled .nav-logo-circle {
     animation: blobDrift1 20s ease-in-out infinite alternate;
 }
 
-.hero-bg::after {
+.bg-blobs::after {
     width: 60vmax;
     height: 60vmax;
     background: radial-gradient(circle at center, rgba(0, 201, 177, 0.38) 0%, transparent 65%);
@@ -380,6 +380,39 @@ nav.scrolled .nav-logo-circle {
     66%  { transform: translate(15vw,  -30vh)  scale(0.85); }
     100% { transform: translate(-25vw, -15vh)  scale(1.18); }
 }
+
+.bg-tint {
+    position: absolute;
+    inset: 0;
+    background: rgba(55, 32, 4, 0.6);
+    opacity: 0;
+    pointer-events: none;
+}
+
+#bg-leopard {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.leopard-spot {
+    position: absolute;
+    will-change: transform, opacity, background-color;
+}
+
+/* HERO */
+#hero {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 8rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+}
+
 
 .hero-circle {
     width: 120px;
@@ -419,12 +452,22 @@ nav.scrolled .nav-logo-circle {
     color: var(--primary);
 }
 
+#hero h1,
+#hero .hero-desc,
+#hero .hero-cta {
+    position: relative;
+    z-index: 1;
+}
+
 #hero h1 {
     font-size: clamp(3rem, 8vw, 5.5rem);
     font-weight: 900;
     letter-spacing: -0.02em;
     line-height: 0.95;
     text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 #hero h1 .top {
@@ -536,7 +579,7 @@ section {
 
 /* ABOUT */
 #about {
-    background: var(--dark);
+    background: transparent;
 }
 
 .about-grid {
@@ -582,7 +625,7 @@ section {
 
 /* VIDEO */
 #video {
-    background: var(--dark2);
+    background: transparent;
 }
 
 .video-wrap {
@@ -629,7 +672,7 @@ section {
 
 /* GALLERY */
 #gallery {
-    background: var(--dark);
+    background: transparent;
 }
 
 .gallery-grid {
@@ -669,7 +712,7 @@ section {
 
 /* CONTACT */
 #contact {
-    background: var(--dark2);
+    background: transparent;
 }
 
 .contact-grid {
@@ -786,7 +829,7 @@ a.ig:hover {
 
 /* FOOTER */
 footer {
-    background: var(--dark);
+    background: transparent;
     border-top: 1px solid rgba(255, 255, 255, 0.06);
     padding: 2rem 2.5rem;
     text-align: center;

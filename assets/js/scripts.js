@@ -99,6 +99,7 @@ const tl = gsap.timeline({
         start: 'top top',
         end:   'bottom -40%',
         scrub: 3,
+        invalidateOnRefresh: true,
     }
 });
 
@@ -127,21 +128,24 @@ tl
         '.about-text p', '.about-img',
         '.video-wrap',
         '.gallery-grid',
-        '.contact-grid',
+        '.contact-backdrop-grid',
+        '.contact-form',
     ].join(', '));
+
+    const opts = { immediateRender: false };
 
     const stl = gsap.timeline({
         scrollTrigger: {
             trigger: section,
-            start: 'top 80%',
-            toggleActions: 'play none none none',
+            start: 'top 82%',
+            once: true,
         }
     });
 
-    if (tag)    stl.from(tag,     { y: 18, opacity: 0, duration: 0.5, ease: 'power2.out' });
-    if (titles.length) stl.from(titles, { y: 28, opacity: 0, duration: 0.6, ease: 'power2.out', stagger: 0.08 }, '-=0.3');
-    if (divider) stl.from(divider, { scaleX: 0, transformOrigin: 'left center', duration: 0.5, ease: 'power2.out' }, '-=0.25');
-    if (body.length) stl.from(body, { y: 36, opacity: 0, duration: 0.7, ease: 'power2.out', stagger: 0.12 }, '-=0.3');
+    if (tag)           stl.from(tag,     { ...opts, y: 18, opacity: 0, duration: 0.5, ease: 'power2.out' });
+    if (titles.length) stl.from(titles,  { ...opts, y: 28, opacity: 0, duration: 0.6, ease: 'power2.out', stagger: 0.08 }, '-=0.3');
+    if (divider)       stl.from(divider, { ...opts, scaleX: 0, transformOrigin: 'left center', duration: 0.5, ease: 'power2.out' }, '-=0.25');
+    if (body.length)   stl.from(body,    { ...opts, y: 36, opacity: 0, duration: 0.7, ease: 'power2.out', stagger: 0.12 }, '-=0.3');
 });
 
 

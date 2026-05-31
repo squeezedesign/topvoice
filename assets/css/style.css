@@ -358,7 +358,6 @@ main, footer {
 .bg-blobs {
     position: absolute;
     inset: 0;
-    transition: opacity 0.3s ease;
 }
 
 .bg-blobs::before,
@@ -514,7 +513,7 @@ main, footer {
 .hero-desc {
     max-width: 500px;
     margin: 2rem auto 0;
-    font-size: 1rem;
+    font-size: 1.5rem;
     color: var(--muted);
     line-height: 1.8;
     font-weight: 300;
@@ -608,10 +607,10 @@ section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
-    align-items: center;
+    align-items: start;
 }
 
-.about-text p {
+.about-text p:not(.section-tag) {
     color: var(--muted);
     font-weight: 300;
     line-height: 1.9;

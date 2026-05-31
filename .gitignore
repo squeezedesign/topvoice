@@ -16,7 +16,6 @@
 
 # Dependencies
 node_modules/
-vendor/
 
 # Build output
 dist/

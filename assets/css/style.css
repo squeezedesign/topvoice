@@ -414,11 +414,9 @@ main, footer {
     position: absolute;
     inset: 0;
     pointer-events: none;
-}
-
-.leopard-spot {
-    position: absolute;
-    will-change: transform, opacity, background-color;
+    overflow: hidden;
+    opacity: 0;
+    will-change: opacity;
 }
 
 /* HERO */

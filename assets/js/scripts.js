@@ -95,7 +95,7 @@ gsap.set(spotEls, {
 
 const scrollConfig = {
     trigger: '#hero',
-    start: 'top top',
+    start: 'top 15%',
     end:   'bottom -40%',
     invalidateOnRefresh: true,
 };

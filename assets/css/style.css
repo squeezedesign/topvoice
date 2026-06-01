@@ -369,8 +369,8 @@ main, footer {
 }
 
 .bg-blobs::before {
-    width: 75vmax;
-    height: 75vmax;
+    width: 95vmax;
+    height: 95vmax;
     background: radial-gradient(circle at center, rgba(192, 64, 224, 0.5) 0%, transparent 65%);
     top: -15%;
     left: -15%;
@@ -379,7 +379,7 @@ main, footer {
 }
 
 .bg-blobs::after {
-    width: 60vmax;
+    width: 75vmax;
     height: 60vmax;
     background: radial-gradient(circle at center, rgba(0, 201, 177, 0.38) 0%, transparent 65%);
     bottom: -20%;

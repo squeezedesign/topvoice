@@ -36,15 +36,31 @@ gsap.to('.bg-blobs', { opacity: 0.06, ease: 'power1.in',
 gsap.to('.bg-tint',  { opacity: 1, ease: 'power1.out',
     scrollTrigger: { trigger: '#hero', start: 'bottom 60%', end: 'bottom -300%', scrub: 2 } });
 
-// Leopardo: SVG inline con <pattern> para poder controlar formas individuales
+// Leopardo: SVG inline con <pattern> — bounce con transform SVG manual
 async function setupLeopard() {
     try {
         const response = await fetch('assets/images/leopard-tile.svg');
         const text     = await response.text();
         const src      = new DOMParser().parseFromString(text, 'image/svg+xml').documentElement;
-        const paths    = src.querySelectorAll('.st1');
 
-        const ns  = 'http://www.w3.org/2000/svg';
+        // Medir centros con getBBox() — requiere que el SVG esté en el DOM
+        src.style.cssText = 'position:fixed;top:0;left:0;width:1920px;height:1920px;opacity:0;pointer-events:none;';
+        document.body.appendChild(src);
+
+        const rnd      = (a, b) => a + Math.random() * (b - a);
+        const ns       = 'http://www.w3.org/2000/svg';
+
+        const pathData = Array.from(src.querySelectorAll('.st1')).map(p => {
+            const bb    = p.getBBox();
+            const clone = p.cloneNode(true);
+            clone.setAttribute('fill', '#0d0a04');
+            clone.removeAttribute('class');
+            return { clone, cx: bb.x + bb.width / 2, cy: bb.y + bb.height / 2, ok: bb.width > 1 };
+        });
+
+        document.body.removeChild(src);
+
+        // Construir SVG + pattern
         const svg = document.createElementNS(ns, 'svg');
         svg.setAttribute('xmlns', ns);
         svg.setAttribute('width', '100%');
@@ -54,17 +70,10 @@ async function setupLeopard() {
         const defs = document.createElementNS(ns, 'defs');
         const pat  = document.createElementNS(ns, 'pattern');
         pat.id = 'leo-pat';
-        pat.setAttribute('x', '0');
-        pat.setAttribute('y', '0');
         pat.setAttribute('patternUnits', 'userSpaceOnUse');
 
         const g = document.createElementNS(ns, 'g');
-        paths.forEach(p => {
-            const clone = p.cloneNode(true);
-            clone.setAttribute('fill', '#0d0a04');
-            g.appendChild(clone);
-        });
-
+        pathData.forEach(({ clone }) => g.appendChild(clone));
         pat.appendChild(g);
         defs.appendChild(pat);
         svg.appendChild(defs);
@@ -74,7 +83,6 @@ async function setupLeopard() {
         rect.setAttribute('height', '100%');
         rect.setAttribute('fill', 'url(#leo-pat)');
         svg.appendChild(rect);
-
         bgLeopard.appendChild(svg);
 
         function applySize(size) {
@@ -86,28 +94,49 @@ async function setupLeopard() {
             pat.setAttribute('height', size);
             g.setAttribute('transform', `scale(${size / 1920})`);
         }
-        applySize(3500); // estado inicial
+        applySize(3500);
 
+        // Scroll: masa negra → patrón (una fase)
         const patState  = { size: 3500 };
         const leopardTl = gsap.timeline();
-
         leopardTl
-            .fromTo(bgLeopard, { opacity: 0 }, { opacity: 0.9, ease: 'power2.out', duration: .5 }, 0)
-            .fromTo(patState, { size: 3500 }, { size: 1500, ease: 'power2.out', duration: 1.2,
-                onUpdate() { applySize(patState.size); } }, 0)
-            .to(patState, { size: 800, ease: 'power1.inOut', duration: 1.2,
-                onUpdate() { applySize(patState.size); } });
+            .fromTo(bgLeopard, { opacity: 0 }, { opacity: 0.9, ease: 'power2.out', duration: 0.4 }, 0)
+            .fromTo(patState,  { size: 3500 }, { size: 800,  ease: 'power2.inOut', duration: 1,
+                onUpdate() { applySize(patState.size); } }, 0);
 
         ScrollTrigger.create({
-            trigger:            '#hero',
-            start:              'bottom top',   // el leopardo sólo aparece tras salir del hero
-            end:                'bottom -150%',
-            scrub:              3,
+            trigger:             '#hero',
+            start:               'bottom center',
+            end:                 'bottom -200%',
+            scrub:               3,
             invalidateOnRefresh: true,
-            animation:          leopardTl,
+            animation:           leopardTl,
         });
 
-    } catch (_) { /* silencioso si falla la carga del SVG */ }
+        // Bounce: escalar cada mancha desde su propio centro
+        // SVG: translate(cx*(1-s), cy*(1-s)) scale(s) ≡ scale(s) alrededor de (cx,cy)
+        const bounceStates = pathData
+            .filter(({ ok }) => ok)
+            .map(({ clone, cx, cy }) => {
+                const st = { s: 1, o: 1 };
+                gsap.to(st, {
+                    s: 1 + rnd(0.01, 0.06), o: rnd(0.50, 0.88),
+                    duration: rnd(2, 4.5), delay: rnd(0, 5),
+                    repeat: -1, yoyo: true, ease: 'sine.inOut',
+                });
+                return { st, clone, cx, cy };
+            });
+
+        // Un único ticker para todos los writes — evita 249 onUpdate individuales
+        gsap.ticker.add(() => {
+            bounceStates.forEach(({ st, clone, cx, cy }) => {
+                clone.setAttribute('transform',
+                    `translate(${cx * (1 - st.s)},${cy * (1 - st.s)}) scale(${st.s})`);
+                clone.setAttribute('opacity', st.o);
+            });
+        });
+
+    } catch (_) { /* silencioso */ }
 }
 setupLeopard();
 

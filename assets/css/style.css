@@ -499,13 +499,18 @@ main, footer {
     color: var(--primary);
 }
 
-.hero-sub {
+p.hero-sub {
     font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.35em;
     text-transform: uppercase;
     color: var(--cyan);
-    margin-top: 0.8rem;
+    margin: 0.8rem 0;
+    line-height: 1.5;
+}
+
+.hero-desc p:not(.hero-sub){
+    line-height: 1.1;
 }
 
 .hero-desc {
@@ -513,7 +518,6 @@ main, footer {
     margin: 2rem auto 0;
     font-size: 1.5rem;
     color: var(--muted);
-    line-height: 1.8;
     font-weight: 300;
 }
 

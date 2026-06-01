@@ -573,6 +573,7 @@ section {
     margin: 0 auto;
 }
 
+
 .section-tag {
     font-size: 0.68rem;
     font-weight: 700;
@@ -697,6 +698,8 @@ section {
     position: sticky;
     top: 0;
     z-index: 5;
+    transform: translateZ(0);
+    min-height: 100vh;
 }
 
 .gallery-grid {

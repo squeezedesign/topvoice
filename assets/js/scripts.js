@@ -134,7 +134,7 @@ gsap.to(spotEls, {
         '.contact-form',
     ].join(', '));
 
-    const opts = { immediateRender: false };
+    const to = { force3D: true };
 
     const stl = gsap.timeline({
         scrollTrigger: {
@@ -144,10 +144,10 @@ gsap.to(spotEls, {
         }
     });
 
-    if (tag)           stl.from(tag,     { ...opts, y: 18, opacity: 0, duration: 0.5, ease: 'power2.out' });
-    if (titles.length) stl.from(titles,  { ...opts, y: 28, opacity: 0, duration: 0.6, ease: 'power2.out', stagger: 0.08 }, '-=0.3');
-    if (divider)       stl.from(divider, { ...opts, scaleX: 0, transformOrigin: 'left center', duration: 0.5, ease: 'power2.out' }, '-=0.25');
-    if (body.length)   stl.from(body,    { ...opts, y: 36, opacity: 0, duration: 0.7, ease: 'power2.out', stagger: 0.12 }, '-=0.3');
+    if (tag)           stl.fromTo(tag,     { y: 18, autoAlpha: 0 }, { ...to, y: 0, autoAlpha: 1, duration: 0.5, ease: 'power2.out' });
+    if (titles.length) stl.fromTo(titles,  { y: 28, autoAlpha: 0 }, { ...to, y: 0, autoAlpha: 1, duration: 0.6, ease: 'power2.out', stagger: 0.08 }, '-=0.3');
+    if (divider)       stl.fromTo(divider, { scaleX: 0 },           { ...to, scaleX: 1, transformOrigin: 'left center', duration: 0.5, ease: 'power2.out' }, '-=0.25');
+    if (body.length)   stl.fromTo(body,    { y: 36, autoAlpha: 0 }, { ...to, y: 0, autoAlpha: 1, duration: 0.7, ease: 'power2.out', stagger: 0.12 }, '-=0.3');
 });
 
 

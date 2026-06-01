@@ -96,43 +96,46 @@ async function setupLeopard() {
         }
         applySize(3500);
 
-        // Scroll: masa negra → patrón (una fase)
-        const patState  = { size: 3500 };
-        const leopardTl = gsap.timeline();
+        // Factor global de entrada (7→1): todos los spots empiezan grandes y encogen con el scroll
+        const spotEntry  = { scale: 7 };
+        const patState   = { size: 3500 };
+        const leopardTl  = gsap.timeline();
         leopardTl
-            .fromTo(bgLeopard, { opacity: 0 }, { opacity: 0.9, ease: 'power2.out', duration: 0.4 }, 0)
-            .fromTo(patState,  { size: 3500 }, { size: 800,  ease: 'power2.inOut', duration: 1,
-                onUpdate() { applySize(patState.size); } }, 0);
+            .fromTo(bgLeopard,  { opacity: 0 }, { opacity: 0.9, ease: 'power2.inOut', duration: .5 }, 0)
+            .fromTo(patState,   { size: 3500 }, { size: 800,    ease: 'power2.inOut', duration: 1,
+                onUpdate() { applySize(patState.size); } }, 0)
+            .fromTo(spotEntry,  { scale: 7 },   { scale: 1,     ease: 'power2.out',   duration: 0.5 }, 0);
+
+        // Spots: bounce continuo (escala pequeña sobre el factor global)
+        const bounceStates = pathData
+            .filter(({ ok }) => ok)
+            .map(({ clone, cx, cy }) => {
+                const st = { s: 1 + rnd(0.01, 0.04), o: rnd(0.55, 0.9) };
+                gsap.to(st, {
+                    s: st.s + rnd(0.01, 0.03), duration: rnd(2, 4.5),
+                    delay: rnd(0, 5), repeat: -1, yoyo: true, ease: 'sine.inOut',
+                });
+                return { st, clone, cx, cy };
+            });
 
         ScrollTrigger.create({
             trigger:             '#hero',
-            start:               'bottom center',
-            end:                 'bottom -200%',
+            start:               'top top',
+            end:                 'bottom -150%',
             scrub:               3,
             invalidateOnRefresh: true,
             animation:           leopardTl,
         });
 
-        // Bounce: escalar cada mancha desde su propio centro
-        // SVG: translate(cx*(1-s), cy*(1-s)) scale(s) ≡ scale(s) alrededor de (cx,cy)
-        const bounceStates = pathData
-            .filter(({ ok }) => ok)
-            .map(({ clone, cx, cy }) => {
-                const st = { s: 1, o: 1 };
-                gsap.to(st, {
-                    s: 1 + rnd(0.01, 0.06), o: rnd(0.50, 0.88),
-                    duration: rnd(2, 4.5), delay: rnd(0, 5),
-                    repeat: -1, yoyo: true, ease: 'sine.inOut',
-                });
-                return { st, clone, cx, cy };
-            });
-
         // Un único ticker para todos los writes — evita 249 onUpdate individuales
         gsap.ticker.add(() => {
+            const entry   = spotEntry.scale;
+            const settled = entry <= 1.05; // spots ya colocados, activar bounce de opacidad
             bounceStates.forEach(({ st, clone, cx, cy }) => {
+                const s = st.s * entry;
                 clone.setAttribute('transform',
-                    `translate(${cx * (1 - st.s)},${cy * (1 - st.s)}) scale(${st.s})`);
-                clone.setAttribute('opacity', st.o);
+                    `translate(${cx * (1 - s)},${cy * (1 - s)}) scale(${s})`);
+                clone.setAttribute('opacity', settled ? st.o : 0.95);
             });
         });
 

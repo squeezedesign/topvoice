@@ -582,11 +582,7 @@ section {
     letter-spacing: 0.32em;
     text-transform: uppercase;
     color: var(--primary);
-    margin-bottom: 0.7rem;
-
-    @media (max-width: 512px) {
-        margin-bottom: 0.15rem;
-    }
+    margin-bottom: 0.15rem;
 }
 
 .section-title {

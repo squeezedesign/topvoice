@@ -12,7 +12,11 @@ function closeMenu() {
 }
 function goTo(id) {
     closeMenu();
-    setTimeout(() => { document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); }, 280);
+    setTimeout(() => {
+        const el  = document.getElementById(id);
+        const top = el.getBoundingClientRect().top + window.scrollY - document.querySelector('nav').offsetHeight;
+        window.scrollTo({ top, behavior: 'smooth' });
+    }, 280);
 }
 function setLang(lang) {
     document.getElementById('body').className = 'lang-' + lang;

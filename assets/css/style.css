@@ -775,7 +775,7 @@ section {
     margin: 0 2.5rem;
 
     @media (max-width: 512px) {
-        margin: 0 1.5rem;
+        margin: 0 1rem;
     }
 }
 
@@ -857,6 +857,15 @@ textarea.field {
     gap: 1rem;
     color: var(--muted);
     font-size: 0.9rem;
+}
+
+.contact-logos {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-left: 0.5rem;
 }
 
 .contact-icon {

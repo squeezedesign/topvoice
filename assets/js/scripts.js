@@ -150,6 +150,18 @@ async function setupLeopard() {
 }
 setupLeopard();
 
+// Directors entrance: photo first, then cards
+const directorsBlock = document.querySelector('.directors');
+const aboutImg       = document.querySelector('.about-img');
+const directorCards  = document.querySelectorAll('.director-card');
+if (directorsBlock && directorCards.length) {
+    const dtl = gsap.timeline({
+        scrollTrigger: { trigger: directorsBlock, start: 'top 82%', once: true }
+    });
+    if (aboutImg) dtl.fromTo(aboutImg,    { y: 36, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.7, ease: 'power2.out', force3D: true });
+    dtl.fromTo(directorCards, { y: 36, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.7, ease: 'power2.out', stagger: 0.15, force3D: true }, '-=0.35');
+}
+
 // Section content entrance animations
 ['#about', '#video', '#gallery', '#contact'].forEach(sel => {
     const section = document.querySelector(sel);
@@ -159,7 +171,7 @@ setupLeopard();
     const titles  = section.querySelectorAll('.section-title');
     const divider = section.querySelector('.divider');
     const body    = section.querySelectorAll([
-        '.about-text p', '.about-img',
+        '.about-text p',
         '.video-wrap',
         '.gallery-grid',
         '.contact-backdrop-grid',

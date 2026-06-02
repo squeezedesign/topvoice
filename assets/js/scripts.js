@@ -120,7 +120,7 @@ async function setupLeopard() {
 
         ScrollTrigger.create({
             trigger:             '#hero',
-            start:               'top top',
+            start:               'top top+=50',  // 50px de margen → estado "antes" limpio en scrollY=0
             end:                 'bottom -150%',
             scrub:               3,
             invalidateOnRefresh: true,
@@ -130,7 +130,7 @@ async function setupLeopard() {
         // Un único ticker para todos los writes — evita 249 onUpdate individuales
         gsap.ticker.add(() => {
             const entry   = spotEntry.scale;
-            const settled = entry <= 1.05; // spots ya colocados, activar bounce de opacidad
+            const settled = entry <= 1.05;
             bounceStates.forEach(({ st, clone, cx, cy }) => {
                 const s = st.s * entry;
                 clone.setAttribute('transform',
@@ -138,6 +138,9 @@ async function setupLeopard() {
                 clone.setAttribute('opacity', settled ? st.o : 0.95);
             });
         });
+
+        // Refresh après setup async perquè tots els triggers recalculin posicions
+        ScrollTrigger.refresh();
 
     } catch (_) { /* silencioso */ }
 }

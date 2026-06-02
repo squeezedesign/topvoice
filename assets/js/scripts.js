@@ -231,3 +231,12 @@ function showFormMsg(form, text, type) {
 function clearFormMsg(form) {
     form.querySelectorAll('.form-msg').forEach(el => el.remove());
 }
+
+function playPromo() {
+    const video = document.getElementById('promo-video');
+    const btn   = document.querySelector('.play-btn');
+    if (!video) return;
+    video.controls = true;
+    video.play();
+    btn.classList.add('hidden');
+}

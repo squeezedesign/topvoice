@@ -33,7 +33,7 @@
     --dark2: #141420;
     --dark3: #1c1c2e;
     --text: #f0f0f8;
-    --muted: #8888aa;
+    --muted: #cac2cf;
     --accent: #E8006A;
 }
 
@@ -583,6 +583,10 @@ section {
     text-transform: uppercase;
     color: var(--primary);
     margin-bottom: 0.7rem;
+
+    @media (max-width: 512px) {
+        margin-bottom: 0.15rem;
+    }
 }
 
 .section-title {
@@ -616,14 +620,15 @@ section {
 .about-text p:not(.section-tag) {
     color: var(--muted);
     font-weight: 300;
-    line-height: 1.9;
+    line-height: 1.5;
+    margin-bottom: .95rem;
     font-size: 0.95rem;
 }
 
 .about-img {
     background: var(--dark3);
     border-radius: 10px;
-    aspect-ratio: 4/3;
+    aspect-ratio: 1/1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -653,7 +658,7 @@ section {
 }
 
 .video-wrap {
-    max-width: 760px;
+    /*max-width: 760px;*/
     margin: 0 auto;
 }
 
@@ -768,6 +773,10 @@ section {
     display: flex;
     flex-direction: column;
     margin: 0 2.5rem;
+
+    @media (max-width: 512px) {
+        margin: 0 1.5rem;
+    }
 }
 
 .contact-backdrop-grid {
@@ -784,7 +793,6 @@ section {
 .contact-intro {
     color: var(--muted);
     font-weight: 300;
-    line-height: 1.8;
     font-size: 1rem;
     margin-top: 0.5rem;
 }

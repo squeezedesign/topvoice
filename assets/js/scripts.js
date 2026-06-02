@@ -150,16 +150,6 @@ async function setupLeopard() {
 }
 setupLeopard();
 
-// Directors cards entrance
-const directorCards = document.querySelectorAll('.director-card');
-if (directorCards.length) {
-    gsap.fromTo(directorCards,
-        { y: 36, autoAlpha: 0 },
-        { y: 0, autoAlpha: 1, duration: 0.7, ease: 'power2.out', stagger: 0.15, force3D: true,
-          scrollTrigger: { trigger: '.directors', start: 'top 82%', once: true } }
-    );
-}
-
 // Section content entrance animations
 ['#about', '#video', '#gallery', '#contact'].forEach(sel => {
     const section = document.querySelector(sel);
@@ -169,21 +159,16 @@ if (directorCards.length) {
     const titles  = section.querySelectorAll('.section-title');
     const divider = section.querySelector('.divider');
     const body    = section.querySelectorAll([
-        '.about-text p', '.about-img',
+        '.about-text p:not(.section-tag)', '.about-img',
         '.video-wrap',
         '.gallery-grid',
         '.contact-backdrop-grid',
         '.contact-form',
     ].join(', '));
 
-    const to = { force3D: true };
-
+    const to  = { force3D: true };
     const stl = gsap.timeline({
-        scrollTrigger: {
-            trigger: section,
-            start: 'top 82%',
-            once: true,
-        }
+        scrollTrigger: { trigger: section, start: 'top 82%', once: true }
     });
 
     if (tag)           stl.fromTo(tag,     { y: 18, autoAlpha: 0 }, { ...to, y: 0, autoAlpha: 1, duration: 0.5, ease: 'power2.out' });
@@ -191,6 +176,17 @@ if (directorCards.length) {
     if (divider)       stl.fromTo(divider, { scaleX: 0 },           { ...to, scaleX: 1, transformOrigin: 'left center', duration: 0.5, ease: 'power2.out' }, '-=0.25');
     if (body.length)   stl.fromTo(body,    { y: 36, autoAlpha: 0 }, { ...to, y: 0, autoAlpha: 1, duration: 0.7, ease: 'power2.out', stagger: 0.12 }, '-=0.3');
 });
+
+// Director cards fire as soon as .directors enters the viewport from below,
+// guaranteed to be after the section content above has already animated.
+const directorCards = document.querySelectorAll('.director-card');
+if (directorCards.length) {
+    gsap.fromTo(directorCards,
+        { y: 36, autoAlpha: 0 },
+        { y: 0, autoAlpha: 1, duration: 0.7, ease: 'power2.out', stagger: 0.15, force3D: true,
+          scrollTrigger: { trigger: '.directors', start: 'top 60%', once: true } }
+    );
+}
 
 
 function handleSubmit(e) {

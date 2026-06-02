@@ -931,6 +931,7 @@ textarea.field {
     color: var(--muted);
     font-size: 0.9rem;
     margin-left: 0.5rem;
+    opacity: .9;
 }
 
 .contact-icon {
@@ -996,7 +997,7 @@ footer {
     background: transparent;
     border-top: 1px solid rgba(255, 255, 255, 0.06);
     margin-top: auto;
-    padding: 2rem 2.5rem;
+    padding: 2rem 1.5rem;
     text-align: center;
     color: var(--muted);
     font-size: 0.75rem;
@@ -1074,4 +1075,36 @@ footer {
         width: 100%;
         text-align: center;
     }
+}
+
+
+/* ─── WhatsApp floating button ──────────────────────────────── */
+.wa-btn {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50% !important;
+    background: transparent; /*#32cd32;*/
+    color: var(--muted);
+    text-decoration: none;
+    transition: transform .3s;
+}
+.wa-btn svg {
+    display: block;
+    /*filter: drop-shadow(0 0 8px #32cd32);*/
+    width: 50px;
+    height: 50px;
+}
+.wa-btn:hover,
+.wa-btn:focus,
+.wa-btn:active {
+    transform: scale(1.1);
+    transform-origin: center;
+    text-decoration: none;
 }

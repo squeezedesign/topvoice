@@ -648,6 +648,74 @@ section {
     color: rgba(255, 255, 255, 0.12);
 }
 
+.directors {
+    margin-top: 3.5rem;
+}
+
+.directors-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.director-card {
+    background: var(--dark3);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+    padding: 2rem;
+}
+
+.director-card-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.director-logo {
+    width: 90px;
+    height: auto;
+    object-fit: contain;
+    opacity: 0.8;
+    flex-shrink: 0;
+}
+.director-logo.rakel{
+    width: 74px;
+}
+
+.director-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+}
+
+.director-role {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.director-card p:not(.director-role) {
+    color: var(--muted);
+    font-weight: 300;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.director-card p {
+    margin-bottom: .45rem;
+}
+
+.director-card p.lead {
+    font-size: 1rem;
+}
+
 /* VIDEO */
 #video {
     background: transparent;
@@ -966,6 +1034,7 @@ footer {
     }
 
     .about-grid,
+    .directors-grid,
     .contact-grid,
     .contact-backdrop-grid {
         grid-template-columns: 1fr;

@@ -205,6 +205,7 @@ nav.scrolled .nav-logo-circle {
     top: 0;
     right: 0;
     padding: 1.2rem 1.5rem;
+    z-index: 1;
 }
 
 .offcanvas-close {

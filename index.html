@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Top Voice · Cor Modern Tarragona</title>
   <link rel="stylesheet" crossorigin="" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/slick.css">
   <link rel="icon" type="image/png" href="/assets/images/favicon/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="/assets/images/favicon/favicon.svg" />
   <link rel="shortcut icon" href="/assets/images/favicon/favicon.ico" />
@@ -108,7 +109,7 @@
             <p>Disfrutamos de cada actuación y nos encanta llevar nuestra energía y entusiasmo a todos los escenarios. Para nosotras, cada escenario es una oportunidad para conectar con el público a través de la fuerza de nuestras voces.</p>
           </div>
           <div data-lang="ca">
-            <p>Top Voice és un cor modern nascut el 2020 a Tarragona, sota la direcció vocal de Rakel Esteve.</p>
+            <p>Top Voice és un cor modern nascut el 2019 a Tarragona, sota la direcció vocal de Rakel Esteve.</p>
             <p>Som un grup de dones unides per la passió per la música, el treball en equip i les ganes de compartir emocions a través de la veu.</p>
             <p>Gaudim de cada actuació i ens encanta portar la nostra energia i entusiasme a tots els escenaris. Per a nosaltres, cada escenari és una oportunitat per connectar amb les persones a través de la força de les nostres veus.</p>
           </div>
@@ -180,15 +181,23 @@
       <h2 class="section-title" data-lang="es">Momentos</h2>
       <h2 class="section-title" data-lang="ca">Moments</h2>
       <div class="divider"></div>
-      <div class="gallery-grid">
-        <!-- Replace each div.gallery-item with: <div class="gallery-item"><img src="images/foto-1.jpg" alt="..."></div> -->
-        <div class="gallery-item"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
-        <div class="gallery-item"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
-        <div class="gallery-item"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
-        <div class="gallery-item"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
-        <div class="gallery-item"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
-        <div class="gallery-item"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
-      </div>
+    </div>
+    <div id="gallerySlider">
+      <div class="gallery-item"><img src="/assets/images/gallery/gallery-0012.webp" alt="Top Voice" loading="lazy"></div>
+      <div class="gallery-item"><img src="/assets/images/gallery/gallery-0008.webp" alt="Top Voice" loading="lazy"></div>
+      <div class="gallery-item"><img src="/assets/images/gallery/gallery-0004.webp" alt="Top Voice" loading="lazy"></div>
+      <div class="gallery-item"><img src="/assets/images/gallery/gallery-0003.webp" alt="Top Voice" loading="lazy"></div>
+      <div class="gallery-item"><img src="/assets/images/gallery/gallery-0006.webp" alt="Top Voice" loading="lazy"></div>
+      <div class="gallery-item"><img src="/assets/images/gallery/gallery-0005.webp" alt="Top Voice" loading="lazy"></div>
+      <div class="gallery-item"><img src="/assets/images/gallery/gallery-0002.webp" alt="Top Voice" loading="lazy"></div>
+      <div class="gallery-item"><img src="/assets/images/gallery/gallery-0001.webp" alt="Top Voice" loading="lazy"></div>
+      <div class="gallery-item"><img src="/assets/images/gallery/gallery-0011.webp" alt="Top Voice" loading="lazy"></div>
+      <div class="gallery-item"><img src="/assets/images/gallery/gallery-0010.webp" alt="Top Voice" loading="lazy"></div>
+      <div class="gallery-item"><img src="/assets/images/gallery/gallery-0009.webp" alt="Top Voice" loading="lazy"></div>
+      <div class="gallery-item"><img src="/assets/images/gallery/gallery-0007.webp" alt="Top Voice" loading="lazy"></div>
+    </div>
+    <div class="inner">
+      <div id="galleryDots"></div>
     </div>
   </section>
 
@@ -250,6 +259,8 @@
   </a>
 </main>
 
+<script src="/assets/js/vendor/jquery-3.7.1.min.js"></script>
+<script src="/assets/js/vendor/slick.min.js"></script>
 <script src="/assets/js/vendor/gsap.min.js"></script>
 <script src="/assets/js/vendor/ScrollTrigger.min.js"></script>
 <script src="/assets/js/scripts.js"></script>

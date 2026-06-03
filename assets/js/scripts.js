@@ -253,3 +253,40 @@ function playPromo() {
     video.play();
     btn.classList.add('hidden');
 }
+// Gallery — Slick Slider
+$(function () {
+    $('#gallerySlider').slick({
+        slidesToShow:   1,
+        slidesToScroll: 1,
+        infinite:       false,
+        dots:           true,
+        appendDots:     $('#galleryDots'),
+        arrows:         false,
+        swipeToSlide:   true,
+        speed:          450,
+        cssEase:        'ease',
+        mobileFirst:    true,
+        responsive: [
+            {
+                breakpoint: 1440,
+                settings: { slidesToShow: 3 }
+            },
+            {
+                breakpoint: 992,
+                settings: { slidesToShow: 2 }
+            }
+        ]
+    });
+});
+
+// Blur gallery as contact slides over it
+gsap.to('#gallery', {
+    filter: 'blur(8px)',
+    ease: 'none',
+    scrollTrigger: {
+        trigger: '#contact',
+        start: 'top 90%',
+        end:   'top 15%',
+        scrub: 1,
+    }
+});

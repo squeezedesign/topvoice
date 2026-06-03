@@ -1163,3 +1163,124 @@ footer {
     transform-origin: center;
     text-decoration: none;
 }
+
+/* ─── LIGHTBOX ─────────────────────────────────────────────────────────── */
+#lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+#lightbox.is-open {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.lb-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+    cursor: zoom-out;
+}
+
+.lb-figure {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: min(90vw, 1200px);
+}
+
+.lb-img {
+    max-width: min(90vw, 1200px);
+    max-height: 80vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 6px;
+    display: block;
+    transition: opacity 0.2s ease;
+}
+
+.lb-img.is-loading { opacity: 0; }
+
+.lb-caption {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    margin-top: 1rem;
+    text-align: center;
+    font-family: 'Outfit', sans-serif;
+}
+
+.lb-counter {
+    position: absolute;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    font-family: 'Outfit', sans-serif;
+    z-index: 2;
+}
+
+.lb-close {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.5rem;
+    z-index: 2;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.4rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s;
+    padding: 0.4rem 0.6rem;
+    font-family: sans-serif;
+}
+
+.lb-close:hover { color: #fff; }
+
+.lb-prev,
+.lb-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    line-height: 1;
+}
+
+.lb-prev { left: 1.5rem; }
+.lb-next { right: 1.5rem; }
+
+.lb-prev:hover,
+.lb-next:hover { background: rgba(255, 255, 255, 0.18); }
+
+.lb-prev:disabled,
+.lb-next:disabled { opacity: 0.2; cursor: default; }
+
+@media (max-width: 600px) {
+    .lb-prev { left: 0.5rem; }
+    .lb-next { right: 0.5rem; }
+}

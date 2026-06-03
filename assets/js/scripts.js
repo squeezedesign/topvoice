@@ -268,11 +268,11 @@ $(function () {
         mobileFirst:    true,
         responsive: [
             {
-                breakpoint: 1440,
-                settings: { slidesToShow: 3 }
+                breakpoint: 1600,
+                settings: { slidesToShow: 2 }
             },
             {
-                breakpoint: 992,
+                breakpoint: 1024,
                 settings: { slidesToShow: 2 }
             }
         ]
@@ -285,8 +285,100 @@ gsap.to('#gallery', {
     ease: 'none',
     scrollTrigger: {
         trigger: '#contact',
-        start: 'top 90%',
-        end:   'top 15%',
-        scrub: 1,
+        start: 'top 60%',
+        end:   'top 10%',
+        scrub: 1.5,
     }
 });
+
+// Lightbox
+(function () {
+    // Collect original (non-cloned) items only — Slick clones slides for infinite
+    const imgs = Array.from(document.querySelectorAll('#gallerySlider .gallery-item img'));
+    if (!imgs.length) return;
+
+    // Build DOM
+    const lb = document.createElement('div');
+    lb.id = 'lightbox';
+    lb.setAttribute('aria-modal', 'true');
+    lb.setAttribute('aria-hidden', 'true');
+    lb.innerHTML = `
+        <div class="lb-overlay"></div>
+        <span class="lb-counter"></span>
+        <button class="lb-close" aria-label="Cerrar">✕</button>
+        <button class="lb-prev" aria-label="Anterior">‹</button>
+        <button class="lb-next" aria-label="Siguiente">›</button>
+        <figure class="lb-figure">
+            <img class="lb-img" src="" alt="">
+            <figcaption class="lb-caption"></figcaption>
+        </figure>`;
+    document.body.appendChild(lb);
+
+    const lbImg     = lb.querySelector('.lb-img');
+    const lbCaption = lb.querySelector('.lb-caption');
+    const lbCounter = lb.querySelector('.lb-counter');
+    const lbPrev    = lb.querySelector('.lb-prev');
+    const lbNext    = lb.querySelector('.lb-next');
+
+    let current = 0;
+
+    function show(idx) {
+        current = idx;
+        const img   = imgs[idx];
+        const title = img.getAttribute('title') || '';
+        lbImg.classList.add('is-loading');
+        const tmp = new Image();
+        tmp.onload = () => { lbImg.src = tmp.src; lbImg.classList.remove('is-loading'); };
+        tmp.src = img.src;
+        lbImg.alt       = img.alt;
+        lbCaption.textContent = title;
+        lbCaption.hidden      = !title;
+        lbCounter.textContent = `${idx + 1} / ${imgs.length}`;
+        lbPrev.disabled = idx === 0;
+        lbNext.disabled = idx === imgs.length - 1;
+    }
+
+    function open(idx) {
+        show(idx);
+        lb.classList.add('is-open');
+        lb.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function close() {
+        lb.classList.remove('is-open');
+        lb.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    // Distinguish click from drag — ignore if pointer moved > 5px
+    let dragStartX = 0;
+    let dragged    = false;
+    document.getElementById('gallerySlider').addEventListener('pointerdown', e => {
+        dragStartX = e.clientX;
+        dragged    = false;
+    });
+    document.getElementById('gallerySlider').addEventListener('pointermove', e => {
+        if (Math.abs(e.clientX - dragStartX) > 5) dragged = true;
+    });
+
+    // Click on gallery items
+    imgs.forEach((img, i) => {
+        img.closest('.gallery-item').addEventListener('click', () => {
+            if (dragged) return;
+            open(i);
+        });
+    });
+
+    lb.querySelector('.lb-overlay').addEventListener('click', close);
+    lb.querySelector('.lb-close').addEventListener('click', close);
+    lbPrev.addEventListener('click', () => { if (current > 0) show(current - 1); });
+    lbNext.addEventListener('click', () => { if (current < imgs.length - 1) show(current + 1); });
+
+    document.addEventListener('keydown', e => {
+        if (!lb.classList.contains('is-open')) return;
+        if (e.key === 'Escape')      close();
+        if (e.key === 'ArrowLeft')   lbPrev.disabled || show(current - 1);
+        if (e.key === 'ArrowRight')  lbNext.disabled || show(current + 1);
+    });
+})();

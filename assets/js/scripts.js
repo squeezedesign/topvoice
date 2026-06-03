@@ -36,9 +36,9 @@ const bgLeopard = document.getElementById('bg-leopard');
 
 // Blobs: se desvanecen despacio, durante varias secciones
 gsap.to('.bg-blobs', { opacity: 0.06, ease: 'power1.in',
-    scrollTrigger: { trigger: '#hero', start: 'bottom 60%', end: 'bottom -300%', scrub: 2 } });
+    scrollTrigger: { trigger: '#hero', start: 'bottom 60%', end: 'bottom -380%', scrub: 2 } });
 gsap.to('.bg-tint',  { opacity: 1, ease: 'power1.out',
-    scrollTrigger: { trigger: '#hero', start: 'bottom 60%', end: 'bottom -300%', scrub: 2 } });
+    scrollTrigger: { trigger: '#hero', start: 'bottom 60%', end: 'bottom -380%', scrub: 2 } });
 
 // Leopardo: SVG inline con <pattern> — bounce con transform SVG manual
 async function setupLeopard() {
@@ -124,8 +124,8 @@ async function setupLeopard() {
 
         ScrollTrigger.create({
             trigger:             '#hero',
-            start:               'top top+=50',  // 50px de margen → estado "antes" limpio en scrollY=0
-            end:                 'bottom -150%',
+            start:               'top top+=50',
+            end:                 'bottom -280%',
             scrub:               3,
             invalidateOnRefresh: true,
             animation:           leopardTl,
@@ -151,7 +151,7 @@ async function setupLeopard() {
 setupLeopard();
 
 // Section content entrance animations
-['#about', '#video', '#gallery', '#contact'].forEach(sel => {
+['#about', '#video', '#oferim', '#gallery', '#contact'].forEach(sel => {
     const section = document.querySelector(sel);
     if (!section) return;
 
@@ -267,10 +267,6 @@ $(function () {
         cssEase:        'ease',
         mobileFirst:    true,
         responsive: [
-            {
-                breakpoint: 1600,
-                settings: { slidesToShow: 2 }
-            },
             {
                 breakpoint: 1024,
                 settings: { slidesToShow: 2 }

@@ -37,6 +37,7 @@
     <div class="offcanvas-links">
       <a onclick="goTo('about')"><span data-lang="es">Quiénes somos</span><span data-lang="ca">Qui som</span><span class="arrow">→</span></a>
       <a onclick="goTo('video')">Vídeo<span class="arrow">→</span></a>
+      <a onclick="goTo('oferim')"><span data-lang="es">Qué ofrecemos</span><span data-lang="ca">Què oferim</span><span class="arrow">→</span></a>
       <a onclick="goTo('gallery')"><span data-lang="es">Fotos</span><span data-lang="ca">Fotos</span><span class="arrow">→</span></a>
       <a onclick="goTo('contact')"><span data-lang="es">Contacto</span><span data-lang="ca">Contacte</span><span class="arrow">→</span></a>
     </div>
@@ -175,6 +176,67 @@
     </div>
   </section>
 
+  <section id="oferim">
+    <div class="inner">
+      <p class="section-tag"><span data-lang="es">Qué ofrecemos</span><span data-lang="ca">Què oferim</span></p>
+      <h2 class="section-title" data-lang="es">Música para<br>cada momento</h2>
+      <h2 class="section-title" data-lang="ca">Música per<br>a cada moment</h2>
+      <div class="divider"></div>
+
+      <p class="oferim-intro" data-lang="es">Nos apasiona la música moderna y compartirla a través de espectáculos llenos de ritmo, emoción y buena energía. Nuestro repertorio recorre estilos y generaciones, y lo adaptamos a cada contexto con dos formatos pensados para ocasiones muy diferentes. Porque para nosotras, cada escenario es una oportunidad para conectar con las personas a través de la fuerza de nuestras voces.</p>
+      <p class="oferim-intro" data-lang="ca">Ens apassiona la música moderna i compartir-la a través d'espectacles plens de ritme, emoció i bona energia. El nostre repertori recorre estils i generacions, i l'adaptem a cada context amb dos formats pensats per a ocasions molt diferents. Perquè per a nosaltres, cada escenari és una oportunitat per connectar amb les persones a través de la força de les nostres veus.</p>
+
+      <div class="oferim-cta">
+        <button class="btn btn-primary" onclick="goTo('contact')"><span data-lang="es">Contrátanos</span><span data-lang="ca">Contracta'ns</span></button>
+        <a class="oferim-cta-link" onclick="goTo('contact')" style="cursor:pointer"><span data-lang="es">Únete a nosotras</span><span data-lang="ca">Uneix-te a nosaltres</span> →</a>
+      </div>
+
+      <div class="oferim-layout">
+        <div class="oferim-col-formats">
+          <div class="oferim-card">
+            <p class="oferim-card-label"><span data-lang="es">Formato pequeño</span><span data-lang="ca">Format petit</span></p>
+            <p data-lang="es">Ideal para eventos íntimos y cercanos, donde la conexión con el público es la protagonista.</p>
+            <p data-lang="ca">Ideal per a esdeveniments íntims i propers, on la connexió amb el públic és el protagonista.</p>
+          </div>
+          <div class="oferim-card">
+            <p class="oferim-card-label"><span data-lang="es">Formato grande</span><span data-lang="ca">Format gran</span></p>
+            <p data-lang="es">Con la banda en directo para una experiencia musical completa y vibrante.</p>
+            <p data-lang="ca">Amb la banda en directe per una experiència musical completa i vibrant.</p>
+          </div>
+        </div>
+
+        <div class="oferim-col-right">
+          <div class="oferim-block">
+            <h3 class="oferim-block-title"><span data-lang="es">Repertorio</span><span data-lang="ca">Repertori</span></h3>
+            <ul class="tag-list">
+              <li class="tag-item"><span data-lang="es">Pop nacional e internacional</span><span data-lang="ca">Pop nacional i internacional</span></li>
+              <li class="tag-item"><span data-lang="es">Musicales</span><span data-lang="ca">Musicals</span></li>
+              <li class="tag-item">Rock català</li>
+              <li class="tag-item"><span data-lang="es">Universo Disney</span><span data-lang="ca">Univers Disney</span></li>
+              <li class="tag-item"><span data-lang="es">Salsa y ritmos latinos</span><span data-lang="ca">Salsa i ritmes llatins</span></li>
+              <li class="tag-item">Gospel i soul</li>
+              <li class="tag-item">Rumba</li>
+              <li class="tag-item"><span data-lang="es">Clásicos de los 80 y 90</span><span data-lang="ca">Clàssics dels 80 i 90</span></li>
+            </ul>
+          </div>
+
+          <div class="oferim-block">
+            <h3 class="oferim-block-title"><span data-lang="es">Dónde hemos actuado</span><span data-lang="ca">On hem actuat</span></h3>
+            <ul class="venues-list">
+              <li><span data-lang="es">Teatre de Tarragona</span><span data-lang="ca">Teatre de Tarragona</span></li>
+              <li><span data-lang="es">Auditori de la Diputació</span><span data-lang="ca">Auditori de la Diputació</span></li>
+              <li><span data-lang="es">Camp de Mart</span><span data-lang="ca">Camp de Mart</span></li>
+              <li><span data-lang="es">Celebraciones privadas</span><span data-lang="ca">Celebracions privades</span></li>
+              <li><span data-lang="es">Ferias de la comarca</span><span data-lang="ca">Fires de la comarca</span></li>
+              <li><span data-lang="es">Iniciativas culturales de Tarragona</span><span data-lang="ca">Iniciatives culturals de Tarragona</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <section id="gallery">
     <div class="inner">
       <p class="section-tag"><span data-lang="es">Galería</span><span data-lang="ca">Galeria</span></p>
@@ -207,9 +269,11 @@
         <p class="section-tag"><span data-lang="es">Contacto</span><span data-lang="ca">Contacte</span></p>
         <h2 class="section-title" data-lang="es">¿Nos contratas?</h2>
         <h2 class="section-title" data-lang="ca">Ens contractes?</h2>
+        <p class="contact-join" data-lang="es">Si quieres formar parte de Top Voice, también puedes escribirnos ;)</p>
+        <p class="contact-join" data-lang="ca">Si vols formar part de Top Voice, també ens pots escriure ;)</p>
         <div class="divider"></div>
-        <p class="contact-intro" data-lang="es">Escríbenos y cuéntanos tu proyecto. Estaremos encantados de hablar contigo.</p>
-        <p class="contact-intro" data-lang="ca">Escriu-nos i explica'ns el teu projecte. Estarem encantats de parlar amb tu.</p>
+        <p class="contact-intro" data-lang="es">Escríbenos y cuéntanos tu proyecto. Estaremos encantadas de hablar contigo.</p>
+        <p class="contact-intro" data-lang="ca">Escriu-nos i explica'ns el teu projecte. Estarem encantades de parlar amb tu.</p>
         <div style="margin-top:2.5rem;">
           <form class="contact-form" onsubmit="handleSubmit(event)">
             <input class="field" type="text" name="nombre" placeholder="Nombre / Nom" required>

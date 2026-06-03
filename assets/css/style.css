@@ -791,6 +791,160 @@ section {
     pointer-events: none;
 }
 
+/* OFERIM */
+.oferim-intro {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--muted);
+    margin-top: 2rem;
+    max-width: 680px;
+}
+
+.oferim-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    margin-top: 3rem;
+    align-items: start;
+}
+
+@media (max-width: 992px){
+    .oferim-layout {
+        gap: 2rem;
+    }
+}
+
+.oferim-col-formats {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.oferim-col-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.oferim-card {
+    background: var(--dark3);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 12px;
+    padding: 1.75rem;
+}
+
+.oferim-card-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 0.75rem;
+}
+
+.oferim-card p:not(.oferim-card-label) {
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: var(--muted);
+}
+
+.oferim-block {
+    margin-top: 0;
+}
+
+.oferim-block-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 1.25rem;
+}
+
+.tag-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.tag-item {
+    font-size: 0.78rem;
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 100px;
+    padding: 0.35rem 0.9rem;
+    color: var(--muted);
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.tag-item:hover {
+    border-color: var(--primary);
+    color: var(--text);
+}
+
+.venues-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.venues-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--muted);
+}
+
+.venues-list li::before {
+    content: '';
+    display: block;
+    flex-shrink: 0;
+    width: 8px;
+    height: 8px;
+    background: var(--primary);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    opacity: 0.8;
+    margin-top: 0.2em;
+}
+
+.oferim-cta {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+}
+
+.oferim-cta-link {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    transition: color 0.2s;
+}
+
+.oferim-cta-link:hover {
+    color: var(--text);
+}
+
+.oferim-cta-note {
+    width: 100%;
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.3);
+    margin-top: 0.25rem;
+}
+
+@media (max-width: 700px) {
+    .oferim-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* GALLERY — sticky para que la card de contacto suba encima */
 #gallery {
     background: transparent;
@@ -841,7 +995,7 @@ section {
     transition: filter 0.5s ease, transform 0.4s ease;
 }
 
-.slick-current .gallery-item img {
+.slick-current.gallery-item img {
     filter: grayscale(0%);
 }
 
@@ -910,6 +1064,26 @@ section {
     font-weight: 300;
     font-size: 1rem;
     margin-top: 0.5rem;
+}
+
+.contact-intro--note {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.35);
+    margin-top: 1.25rem;
+}
+
+#contact .section-title {
+    margin-bottom: 0;
+}
+
+.contact-join {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.35);
+    margin-top: 1rem;
+    margin-bottom: 2rem;
 }
 
 .contact-details {

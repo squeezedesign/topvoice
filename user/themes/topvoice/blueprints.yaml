@@ -1,0 +1,17 @@
+name: Top Voice
+slug: topvoice
+type: theme
+version: 1.0.0
+description: Tema personalitzat per al cor Top Voice de Tarragona
+icon: music
+author:
+  name: Squeeze Design
+  email: info@squeezedesign.es
+license: MIT
+
+form:
+  validation: loose
+  fields:
+    dropdown.enabled:
+      type: hidden
+      default: 0

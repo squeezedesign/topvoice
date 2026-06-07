@@ -1,0 +1,48 @@
+{% set h = page.header %}
+
+<section id="about">
+  <div class="inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="section-tag">{{ h.section_tag }}</p>
+        <h2 class="section-title">{{ h.section_title|nl2br }}</h2>
+        <div class="divider"></div>
+        {{ page.content|raw }}
+      </div>
+      <div class="about-img">
+        {% if page.media['qui-som.webp'] %}
+          {{ page.media['qui-som.webp'].html('', '', '')|raw }}
+        {% else %}
+          <img src="{{ theme_url }}/images/qui-som.webp" alt="Top Voice">
+        {% endif %}
+      </div>
+    </div>
+
+    {% if h.directors %}
+    <div class="directors">
+      <div class="directors-grid">
+        {% for director in h.directors %}
+        <div class="director-card {{ loop.first ? 'director-card--featured' : '' }}">
+          <div class="director-card-head">
+            <div>
+              <h3 class="director-name">{{ director.name }}</h3>
+              <p class="director-role">{{ director.role }}</p>
+            </div>
+            {% if director.logo and director.url %}
+            <a href="{{ director.url }}" target="_blank" rel="noopener">
+              <img src="{{ theme_url }}/images/{{ director.logo }}" alt="{{ director.name }}" class="director-logo {{ loop.first ? 'rakel' : '' }}">
+            </a>
+            {% endif %}
+          </div>
+          {% if director.bio_lead %}
+          <p class="lead"><b>{{ director.bio_lead }}</b></p>
+          {% endif %}
+          <p>{{ director.bio }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+  </div>
+</section>

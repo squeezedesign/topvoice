@@ -1,0 +1,39 @@
+{% set active_lang = grav.language.getActive() ?: 'ca' %}
+
+<aside class="offcanvas" id="offcanvas" aria-hidden="true">
+  <div class="offcanvas-head">
+    <button class="offcanvas-close" onclick="closeMenu()" aria-label="{{ 'SITE.NAV.CLOSE'|t }}">✕</button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="offcanvas-brand">
+      <img src="{{ theme_url }}/images/topvoice_logo_txt.webp"
+           srcset="{{ theme_url }}/images/topvoice_logo_txt.webp 1x,
+                   {{ theme_url }}/images/topvoice_logo_txt@2x.webp 2x"
+           alt="Top Voice">
+    </div>
+    <div class="offcanvas-links">
+      <a onclick="goTo('about')">{{ 'SITE.NAV.ABOUT'|t }}<span class="arrow">→</span></a>
+      <a onclick="goTo('video')">{{ 'SITE.NAV.VIDEO'|t }}<span class="arrow">→</span></a>
+      <a onclick="goTo('oferim')">{{ 'SITE.NAV.OFERIM'|t }}<span class="arrow">→</span></a>
+      <a onclick="goTo('gallery')">{{ 'SITE.NAV.GALLERY'|t }}<span class="arrow">→</span></a>
+      <a onclick="goTo('contact')">{{ 'SITE.NAV.CONTACT'|t }}<span class="arrow">→</span></a>
+    </div>
+    <div class="offcanvas-footer">
+      {% set raw_route = page.rawRoute() == '/home' ? '/' : page.rawRoute() %}
+      {% set ca_url = base_url_simple ~ raw_route %}
+      {% set es_url = base_url_simple ~ '/es' ~ raw_route %}
+      <div class="offcanvas-lang">
+        <button class="{{ active_lang == 'ca' ? 'active' : '' }}"
+                onclick="window.location='{{ ca_url }}'">CA</button>
+        <button class="{{ active_lang == 'es' ? 'active' : '' }}"
+                onclick="window.location='{{ es_url }}'">ES</button>
+      </div>
+      <a href="https://www.instagram.com/topvoicetgn/" class="offcanvas-ig" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg> @topvoicetgn
+      </a>
+      <a href="https://www.youtube.com/@TopVoiceTGN" class="offcanvas-ig" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"/><polygon points="10 9 15 12 10 15" fill="currentColor" stroke="none"/></svg> YouTube
+      </a>
+    </div>
+  </div>
+</aside>

@@ -1,0 +1,15 @@
+{% set h = page.header %}
+
+<section id="hero">
+  <h1 aria-label="TopVoice">
+    <img src="{{ theme_url }}/images/top_voice_logo.webp" width="420" height="176" alt="Top Voice · Cor Modern TGN">
+  </h1>
+  <div class="hero-desc">
+    <p class="hero-sub">{{ h.subtitle }}</p>
+    <p>{{ h.tagline }}</p>
+  </div>
+  <div class="hero-cta">
+    <button class="btn btn-primary" onclick="goTo('contact')">{{ h.cta_primary }}</button>
+    <button class="btn btn-outline" onclick="goTo('video')">{{ h.cta_secondary }}</button>
+  </div>
+</section>

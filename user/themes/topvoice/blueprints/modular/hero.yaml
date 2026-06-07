@@ -1,0 +1,45 @@
+name: Hero
+description: Secció principal amb logo i crida a l'acció
+extends@: default
+
+form:
+  fields:
+    tabs:
+      fields:
+        content:
+          fields:
+            content:
+              unset@: true
+            header.media_order:
+              unset@: true
+            header.title:
+              label: "Nom (ús intern)"
+              help: "Identificador intern de la pàgina, no es mostra al web."
+            header.subtitle:
+              type: text
+              label: Subtítol (primera línia)
+              placeholder: "Som Top Voice, cor modern de Tarragona"
+              ordering@: header.title
+            header.tagline:
+              type: text
+              label: Tagline (segona línia)
+              placeholder: "Fem espectacle, no només concerts."
+              ordering@: header.subtitle
+            header.cta_primary:
+              type: text
+              label: Botó principal (Contracta'ns)
+              placeholder: "Contracta'ns"
+              ordering@: header.tagline
+            header.cta_secondary:
+              type: text
+              label: Botó secundari (Escolta'ns)
+              placeholder: "Escolta'ns"
+              ordering@: header.cta_primary
+        advanced:
+          fields:
+            columns:
+              fields:
+                column1:
+                  fields:
+                    folder:
+                      disabled: true

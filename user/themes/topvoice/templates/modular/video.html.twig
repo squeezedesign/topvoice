@@ -1,0 +1,31 @@
+{% set h = page.header %}
+{% set video_id = '' %}
+{% if h.video_url %}
+  {% if 'youtu.be/' in h.video_url %}
+    {% set video_id = h.video_url|split('youtu.be/')|last|split('?')|first %}
+  {% elseif 'v=' in h.video_url %}
+    {% set video_id = h.video_url|split('v=')|last|split('&')|first %}
+  {% endif %}
+{% endif %}
+{% set poster_file = page.media.images()|first %}
+{% set poster_url = poster_file ? poster_file.url : (video_id ? 'https://img.youtube.com/vi/' ~ video_id ~ '/maxresdefault.jpg' : '') %}
+
+<section id="video">
+  <div class="inner">
+    <p class="section-tag">{{ h.section_tag }}</p>
+    <h2 class="section-title">{{ h.section_title|nl2br }}</h2>
+    <div class="divider"></div>
+    <div class="video-wrap">
+      <div class="video-placeholder"{% if video_id %} data-video-id="{{ video_id }}"{% endif %}>
+        {% if poster_url %}
+        <img src="{{ poster_url }}" alt="{{ h.section_title }}" loading="lazy">
+        {% endif %}
+        {% if video_id %}
+        <button class="play-btn" onclick="playPromo()" aria-label="{{ 'SITE.VIDEO.PLAY'|t('Reproduir vídeo') }}">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </button>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>

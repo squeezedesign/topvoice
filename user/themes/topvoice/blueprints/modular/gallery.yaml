@@ -1,0 +1,53 @@
+name: Galeria
+description: Galeria de fotos amb slider
+extends@: default
+
+form:
+  fields:
+    tabs:
+      fields:
+        content:
+          fields:
+            content:
+              unset@: true
+            header.title:
+              label: "Nom (ús intern)"
+              help: "Identificador intern de la pàgina, no es mostra al web."
+            header.section_tag:
+              type: text
+              label: Etiqueta de secció
+              placeholder: "Galeria"
+              ordering@: header.title
+            header.section_title:
+              type: textarea
+              rows: 2
+              label: Títol de secció
+              placeholder: "Moments"
+              ordering@: header.section_tag
+            header.media_order:
+              label: "Fotos de la galeria — Puja i arrossega per ordenar"
+            header.gallery_items:
+              type: list
+              label: Metadades de les imatges (alt i peu de foto)
+              help: "Per a cada foto pujada, afegeix el seu alt i peu de foto. El nom del fitxer ha de coincidir exactament."
+              style: vertical
+              btnLabel: Afegir títols
+              fields:
+                .file:
+                  type: text
+                  label: Nom del fitxer
+                  placeholder: "gallery-0001.webp"
+                .alt:
+                  type: text
+                  label: Text alternatiu (accessibilitat)
+                .title:
+                  type: text
+                  label: Títol / peu de foto
+        advanced:
+          fields:
+            columns:
+              fields:
+                column1:
+                  fields:
+                    folder:
+                      disabled: true

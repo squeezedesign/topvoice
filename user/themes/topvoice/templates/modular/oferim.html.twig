@@ -1,0 +1,53 @@
+{% set h = page.header %}
+
+<section id="oferim">
+  <div class="inner">
+    <p class="section-tag">{{ h.section_tag }}</p>
+    <h2 class="section-title">{{ h.section_title|nl2br }}</h2>
+    <div class="divider"></div>
+
+    <div class="oferim-intro">{{ h.intro|markdown|raw }}</div>
+
+    <div class="oferim-cta">
+      <button class="btn btn-primary" onclick="goTo('contact')">{{ h.cta }}</button>
+    </div>
+
+    <div class="oferim-layout">
+      <div class="oferim-col-formats">
+        {% if h.formats %}
+        {% for format in h.formats %}
+        <div class="oferim-card">
+          <p class="oferim-card-label">{{ format.label }}</p>
+          <p>{{ format.desc }}</p>
+        </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+
+      <div class="oferim-col-right">
+        {% if h.repertori %}
+        <div class="oferim-block">
+          <h3 class="oferim-block-title">{{ h.repertori_title }}</h3>
+          <ul class="tag-list">
+            {% for item in h.repertori %}
+            <li class="tag-item">{{ item.label }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+
+        {% if h.venues %}
+        <div class="oferim-block">
+          <h3 class="oferim-block-title">{{ h.venues_title }}</h3>
+          <ul class="venues-list">
+            {% for item in h.venues %}
+            <li>{{ item.label }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+</section>

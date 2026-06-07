@@ -1,0 +1,42 @@
+# ── Grav core (ignorar todo excepto lo nuestro) ──────────────────
+/system/
+/vendor/
+/bin/
+/index.php
+/composer.json
+/composer.lock
+/now.json
+/robots.txt
+/images/
+/webserver-configs/
+CHANGELOG.md
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+LICENSE.txt
+README.md
+SECURITY.md
+.github/
+.phan/
+.htaccess
+
+# ── Runtime generado ──────────────────────────────────────────────
+/cache/
+/logs/
+/tmp/
+/backup/
+/assets/
+
+# ── Contenido gestionado por SFTP ────────────────────────────────
+user/pages/
+user/accounts/
+user/data/
+user/plugins/
+user/images/
+
+# ── Temas de terceros (instalados con Grav, no nuestro código) ────
+user/themes/quark/
+
+# ── OS ────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/

@@ -1,0 +1,78 @@
+name: Contacte
+description: Secció de contacte amb formulari i dades
+extends@: default
+
+form:
+  fields:
+    tabs:
+      fields:
+        content:
+          fields:
+            content:
+              unset@: true
+            header.media_order:
+              unset@: true
+            header.title:
+              label: "Nom (ús intern)"
+              help: "Identificador intern de la pàgina, no es mostra al web."
+            header.section_tag:
+              type: text
+              label: Etiqueta de secció
+              placeholder: "Contacte"
+              ordering@: header.title
+            header.section_title:
+              type: textarea
+              rows: 2
+              label: Títol principal
+              placeholder: "Contracta'ns"
+              ordering@: header.section_tag
+            header.hire_intro:
+              type: markdown
+              label: Text introductori
+              ordering@: header.section_title
+            separator_contact:
+              type: spacer
+              title: Dades de contacte
+              underline: true
+            header.email:
+              type: text
+              label: Email de contacte (visible al web)
+              placeholder: topvoicetgn@gmail.com
+            header.phone1:
+              type: text
+              label: Telèfon 1
+              placeholder: "636 279 326"
+            header.phone2:
+              type: text
+              label: Telèfon 2
+              placeholder: "626 204 836"
+            header.instagram:
+              type: text
+              label: Instagram (sense @)
+              placeholder: topvoicetgn
+            header.youtube:
+              type: text
+              label: URL de YouTube
+              placeholder: "https://www.youtube.com/@TopVoiceTGN"
+            header.address:
+              type: text
+              label: Ubicació
+              placeholder: Tarragona
+            separator_config:
+              type: spacer
+              title: "Configuració tècnica del formulari"
+              text: "Modifica només si cal canviar l'adreça on arriben els missatges del formulari."
+              underline: true
+            header.form_email:
+              type: text
+              label: Email destinació del formulari
+              help: "Adreça on arribaran els missatges enviats pel formulari"
+              placeholder: topvoicetgn@gmail.com
+        advanced:
+          fields:
+            columns:
+              fields:
+                column1:
+                  fields:
+                    folder:
+                      disabled: true

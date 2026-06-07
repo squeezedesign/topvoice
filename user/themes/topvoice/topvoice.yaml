@@ -1,0 +1,14 @@
+name: Top Voice
+version: 1.0.0
+description: Tema personalitzat per al cor Top Voice de Tarragona
+icon: music
+author:
+  name: Squeeze Design
+  email: info@squeezedesign.es
+homepage: https://topvoicetgn.com
+keywords: topvoice, cor, tarragona, one-page
+bugs: https://topvoicetgn.com
+license: MIT
+
+dependencies:
+  - { name: grav, version: '>=1.7.0' }

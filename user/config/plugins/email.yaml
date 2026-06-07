@@ -1,0 +1,11 @@
+enabled: true
+from: topvoicetgn@gmail.com
+from_name: 'Top Voice Web'
+to: topvoicetgn@gmail.com
+to_name: 'Top Voice'
+mailer:
+  engine: sendmail
+  sendmail:
+    bin: '/usr/sbin/sendmail -bs'
+content_type: text/html
+debug: false

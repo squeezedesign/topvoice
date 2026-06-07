@@ -1,0 +1,28 @@
+{% set h = page.header %}
+
+{% set meta_index = {} %}
+{% for item in h.gallery_items %}
+  {% set meta_index = meta_index|merge({(item.file): item}) %}
+{% endfor %}
+
+<section id="gallery">
+  <div class="inner">
+    <p class="section-tag">{{ h.section_tag }}</p>
+    <h2 class="section-title">{{ h.section_title|nl2br }}</h2>
+    <div class="divider"></div>
+  </div>
+  <div id="gallerySlider">
+    {% for image in page.media.images %}
+      {% set meta = meta_index[image.filename] %}
+      <div class="gallery-item">
+        <img src="{{ image.url }}"
+             alt="{{ meta.alt ?: 'Top Voice' }}"
+             {% if meta.title %}title="{{ meta.title }}"{% endif %}
+             loading="lazy">
+      </div>
+    {% endfor %}
+  </div>
+  <div class="inner">
+    <div id="galleryDots"></div>
+  </div>
+</section>

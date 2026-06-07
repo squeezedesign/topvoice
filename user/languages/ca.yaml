@@ -1,0 +1,26 @@
+SITE:
+  NAV:
+    ABOUT: "Qui som"
+    VIDEO: "Escolta'ns"
+    OFERIM: "Què oferim"
+    GALLERY: "Moments"
+    CONTACT: "Contacte"
+    CLOSE: "Tancar menú"
+  VIDEO:
+    PLAY: "Reproduir vídeo"
+  LANG:
+    CA: "CA"
+    ES: "ES"
+  FOOTER:
+    COPYRIGHT: "© 2026 Top Voice · Cor Modern Tarragona"
+  FORM:
+    NOMBRE: "Nom"
+    EMAIL: "Email"
+    MENSAJE: "Missatge"
+    SUBMIT: "Enviar"
+    SUCCESS: "Missatge enviat correctament!"
+    ERROR: "Hi ha hagut un error. Torna-ho a intentar."
+  CONTACT:
+    HIRE_TITLE: "Ens contractes?"
+    HIRE_SUB: "Si vols formar part de Top Voice, també ens pots escriure ;)"
+    HIRE_INTRO: "Escriu-nos i explica'ns el teu projecte. Estarem encantades de parlar amb tu."

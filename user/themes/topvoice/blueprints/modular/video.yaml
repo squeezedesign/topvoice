@@ -1,0 +1,46 @@
+name: Vídeo
+description: Secció de reproducció de vídeo promocional
+extends@: default
+
+form:
+  fields:
+    tabs:
+      fields:
+        content:
+          fields:
+            content:
+              unset@: true
+            header.title:
+              label: "Nom (ús intern)"
+              help: "Identificador intern de la pàgina, no es mostra al web."
+            header.section_tag:
+              type: text
+              label: Etiqueta de secció
+              placeholder: "Vídeo"
+              ordering@: header.title
+            header.section_title:
+              type: textarea
+              rows: 2
+              label: Títol de secció
+              placeholder: "Escolta'ns"
+              ordering@: header.section_tag
+            header.video_url:
+              type: text
+              label: URL del vídeo de YouTube
+              placeholder: "https://youtu.be/XXXXXX"
+              ordering@: header.section_title
+            header.media_order:
+              label: "Miniatura personalitzada (opcional)"
+            notice_video:
+              type: display
+              label: ' '
+              content: "**Miniatura:** si no puges cap imatge, s'usarà la miniatura automàtica de YouTube."
+              markdown: true
+        advanced:
+          fields:
+            columns:
+              fields:
+                column1:
+                  fields:
+                    folder:
+                      disabled: true

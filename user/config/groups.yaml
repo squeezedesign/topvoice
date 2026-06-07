@@ -1,0 +1,27 @@
+autor:
+  access:
+    site:
+      login: true
+    admin:
+      login: true
+      super: false
+      cache: true
+      configuration: false
+      pages:
+        create: false
+        read: true
+        update: true
+        delete: false
+        list: true
+      maintenance: false
+      statistics: true
+      plugins: false
+      themes: false
+      tools: false
+      users:
+        read: true
+        list: true
+      flex-objects: false
+  readableName: autor
+  description: autor
+  enabled: true

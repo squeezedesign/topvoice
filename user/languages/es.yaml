@@ -1,0 +1,26 @@
+SITE:
+  NAV:
+    ABOUT: "Quiénes somos"
+    VIDEO: "Escúchanos"
+    OFERIM: "Qué ofrecemos"
+    GALLERY: "Momentos"
+    CONTACT: "Contacto"
+    CLOSE: "Cerrar menú"
+  VIDEO:
+    PLAY: "Reproducir vídeo"
+  LANG:
+    CA: "CA"
+    ES: "ES"
+  FOOTER:
+    COPYRIGHT: "© 2026 Top Voice · Coro Moderno Tarragona"
+  FORM:
+    NOMBRE: "Nombre"
+    EMAIL: "Email"
+    MENSAJE: "Mensaje"
+    SUBMIT: "Enviar"
+    SUCCESS: "¡Mensaje enviado correctamente!"
+    ERROR: "Ha habido un error. Inténtalo de nuevo."
+  CONTACT:
+    HIRE_TITLE: "¿Nos contratas?"
+    HIRE_SUB: "Si quieres formar parte de Top Voice, también puedes escribirnos ;)"
+    HIRE_INTRO: "Escríbenos y cuéntanos tu proyecto. Estaremos encantadas de hablar contigo."

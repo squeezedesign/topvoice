@@ -1,0 +1,81 @@
+name: Què oferim
+description: Secció de formats, repertori i llocs d'actuació
+extends@: default
+
+form:
+  fields:
+    tabs:
+      fields:
+        content:
+          fields:
+            content:
+              unset@: true
+            header.media_order:
+              unset@: true
+            header.title:
+              label: "Nom (ús intern)"
+              help: "Identificador intern de la pàgina, no es mostra al web."
+            header.section_tag:
+              type: text
+              label: Etiqueta de secció
+              placeholder: "Què oferim"
+              ordering@: header.title
+            header.section_title:
+              type: textarea
+              rows: 2
+              label: Títol de secció
+              placeholder: "Música per a cada moment"
+              ordering@: header.section_tag
+            header.intro:
+              type: markdown
+              label: Text introductori
+              ordering@: header.section_title
+            header.cta:
+              type: text
+              label: Text del botó CTA
+              placeholder: "Contracta'ns"
+            header.formats:
+              type: list
+              label: Formats
+              btnLabel: Afegir format
+              style: vertical
+              fields:
+                .label:
+                  type: text
+                  label: Nom del format
+                .desc:
+                  type: textarea
+                  label: Descripció
+                  rows: 2
+            header.repertori_title:
+              type: text
+              label: Títol del repertori
+              placeholder: "Repertori"
+            header.repertori:
+              type: list
+              label: Gèneres del repertori
+              btnLabel: Afegir gènere
+              fields:
+                .label:
+                  type: text
+                  label: Gènere
+            header.venues_title:
+              type: text
+              label: Actuacions
+              placeholder: "On hem actuat"
+            header.venues:
+              type: list
+              label: Llocs d'actuació
+              btnLabel: Afegir lloc
+              fields:
+                .label:
+                  type: text
+                  label: Lloc
+        advanced:
+          fields:
+            columns:
+              fields:
+                column1:
+                  fields:
+                    folder:
+                      disabled: true

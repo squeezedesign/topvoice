@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} · Top Voice TGN</title>
+  <link rel="icon" type="image/svg+xml" href="{{ theme_url }}/images/favicon/favicon.svg">
+  <link rel="stylesheet" href="{{ theme_url }}/css/style.css">
+  <style>
+    body { display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; text-align: center; }
+    .error-wrap { max-width: 480px; padding: 2rem; }
+    .error-code { font-size: 7rem; font-weight: 800; line-height: 1; margin: 0; opacity: .15; }
+    .error-title { font-size: 1.75rem; font-weight: 700; margin: 0.5rem 0 1rem; }
+    .error-msg { opacity: .7; margin-bottom: 2rem; }
+  </style>
+</head>
+<body>
+<div id="site-bg" aria-hidden="true">
+  <div class="bg-blobs"></div>
+  <div class="bg-tint"></div>
+</div>
+<div class="error-wrap">
+  <p class="error-code">{{ page.header.code ?: '404' }}</p>
+  <h1 class="error-title">{{ page.title }}</h1>
+  <p class="error-msg">{{ page.content|raw }}</p>
+  <a href="{{ base_url_simple ?: '/' }}" class="btn btn-primary">Tornar a l'inici</a>
+</div>
+</body>
+</html>

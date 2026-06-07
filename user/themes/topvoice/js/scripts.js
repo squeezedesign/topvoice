@@ -309,3 +309,59 @@ gsap.to('#gallery', {
         if (e.key === 'ArrowRight')  lbNext.disabled || show(current + 1);
     });
 })();
+
+// Contact form — AJAX submit
+(function () {
+    const form     = document.getElementById('contacte');
+    const feedback = document.getElementById('contact-feedback');
+    if (!form || !feedback) return;
+
+    const lang = document.documentElement.lang || 'ca';
+    const msgs = {
+        ca: { ok: 'Missatge enviat! Et respondrem aviat.',     err: 'Error en l\'enviament. Torna-ho a provar.' },
+        es: { ok: '¡Mensaje enviado! Te responderemos pronto.', err: 'Error al enviar. Inténtalo de nuevo.' }
+    }[lang] || { ok: 'Sent!', err: 'Error.' };
+
+    const loadingLabel = { ca: 'Enviant…', es: 'Enviando…' }[lang] || 'Sending…';
+
+    form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const btn = form.querySelector('[type="submit"]');
+        const originalLabel = btn.value || btn.textContent;
+        const fields = form.querySelectorAll('input, textarea');
+        btn.disabled = true;
+        btn.value = loadingLabel;
+        btn.textContent = loadingLabel;
+        fields.forEach(f => { f.disabled = true; });
+        form.classList.add('form--sending');
+        feedback.className = 'contact-feedback';
+        feedback.textContent = '';
+
+        try {
+            const res = await fetch(form.action || window.location.href, {
+                method: 'POST',
+                body: new FormData(form)
+            });
+            if (res.ok) {
+                form.reset();
+                show('ok', msgs.ok);
+            } else {
+                show('err', msgs.err);
+            }
+        } catch (_) {
+            show('err', msgs.err);
+        } finally {
+            btn.disabled = false;
+            btn.value = originalLabel;
+            btn.textContent = originalLabel;
+            fields.forEach(f => { f.disabled = false; });
+            form.classList.remove('form--sending');
+        }
+    });
+
+    function show(type, text) {
+        feedback.textContent = text;
+        feedback.className = 'contact-feedback contact-feedback--' + type;
+        feedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+})();

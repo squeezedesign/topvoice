@@ -37,6 +37,9 @@ user/images/
 # ── Temas de terceros (instalados con Grav, no nuestro código) ────
 user/themes/quark/
 
+# ── Credenciales (gestionar via admin per entorn) ─────────────────
+user/config/plugins/email.yaml
+
 # ── OS ────────────────────────────────────────────────────────────
 .DS_Store
 Thumbs.db

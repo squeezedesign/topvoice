@@ -1147,6 +1147,33 @@ section {
     font-size: 0.88rem;
 }
 
+.contact-form.form--sending {
+    opacity: 0.5 !important;
+    pointer-events: none !important;
+    transition: opacity 0.2s;
+}
+
+#contact-feedback {
+    display: none;
+    margin-top: 1rem;
+    padding: 0.9rem 1.1rem;
+    border-radius: 6px;
+    font-size: 0.88rem;
+    font-weight: 500;
+}
+#contact-feedback.contact-feedback--ok {
+    display: block;
+    background: rgba(0, 201, 177, 0.15);
+    border: 1px solid var(--cyan);
+    color: var(--cyan);
+}
+#contact-feedback.contact-feedback--err {
+    display: block;
+    background: rgba(255, 60, 100, 0.12);
+    border: 1px solid var(--pink);
+    color: var(--pink);
+}
+
 .field {
     background: var(--dark3);
     border: 1px solid rgba(255, 255, 255, 0.1);

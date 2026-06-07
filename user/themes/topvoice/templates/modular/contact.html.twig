@@ -10,6 +10,7 @@
       <div class="contact-intro">{{ h.hire_intro|markdown|raw }}</div>
       <div style="margin-top:2.5rem;">
         {% include 'forms/form.html.twig' with { form: forms('contacte') } %}
+        <div id="contact-feedback" aria-live="polite"></div>
       </div>
     </div>
     <div class="contact-details">

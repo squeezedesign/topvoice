@@ -996,11 +996,17 @@ section {
     }
 }
 
+#gallerySlider .slick-slide > div {
+    height: 100%;
+}
+
 .gallery-item {
+    width: 100%;
     border-radius: 8px;
-    aspect-ratio: 4/3;
+    aspect-ratio: 5/3;
     overflow: hidden;
     margin-right: 1rem;
+    border: 1px dashed #c040e059;
 }
 
 .gallery-item img {
@@ -1359,6 +1365,10 @@ footer {
     .btn {
         width: 100%;
         text-align: center;
+    }
+
+    .contact-backdrop-grid {
+        padding-bottom: 1.5rem
     }
 }
 

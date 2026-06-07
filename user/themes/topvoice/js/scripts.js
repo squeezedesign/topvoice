@@ -324,11 +324,15 @@ gsap.to('#gallery', {
 
     const loadingLabel = { ca: 'Enviant…', es: 'Enviando…' }[lang] || 'Sending…';
 
+    form.submit = function () {};
+
     form.addEventListener('submit', async function (e) {
         e.preventDefault();
+        e.stopImmediatePropagation();
         const btn = form.querySelector('[type="submit"]');
         const originalLabel = btn.value || btn.textContent;
         const fields = form.querySelectorAll('input, textarea');
+        const data = new FormData(form);
         btn.disabled = true;
         btn.value = loadingLabel;
         btn.textContent = loadingLabel;
@@ -340,13 +344,14 @@ gsap.to('#gallery', {
         try {
             const res = await fetch(form.action || window.location.href, {
                 method: 'POST',
-                body: new FormData(form)
+                body: data
             });
             const html = await res.text();
             const doc  = new DOMParser().parseFromString(html, 'text/html');
             const hasError = doc.querySelector('.notices.alert-danger, .form-errors');
             if (res.ok && !hasError) {
                 form.reset();
+                refreshNonce(doc);
                 show('ok', msgs.ok);
             } else {
                 show('err', msgs.err);
@@ -361,6 +366,19 @@ gsap.to('#gallery', {
             form.classList.remove('form--sending');
         }
     });
+
+    function refreshNonce(doc) {
+        const newNonce = doc.querySelector('input[name="__form-nonce"]');
+        if (newNonce) {
+            const cur = form.querySelector('input[name="__form-nonce"]');
+            if (cur) cur.value = newNonce.value;
+        }
+        const newUid = doc.querySelector('input[name="__unique_form_id__"]');
+        if (newUid) {
+            const cur = form.querySelector('input[name="__unique_form_id__"]');
+            if (cur) cur.value = newUid.value;
+        }
+    }
 
     function show(type, text) {
         feedback.textContent = text;

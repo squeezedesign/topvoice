@@ -262,7 +262,7 @@ gsap.to('#gallery', {
         lbImg.classList.add('is-loading');
         const tmp = new Image();
         tmp.onload = () => { lbImg.src = tmp.src; lbImg.classList.remove('is-loading'); };
-        tmp.src = img.src;
+        tmp.src = img.dataset.full || img.src;
         lbImg.alt             = img.alt;
         lbCaption.textContent = title;
         lbCaption.hidden      = !title;

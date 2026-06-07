@@ -171,6 +171,8 @@ debugger:
 images:
   adapter: gd
   default_image_quality: 85
+  webp: true
+  webp_quality: 85
   cache_all: true
   cache_perms: '0755'
   debug: false

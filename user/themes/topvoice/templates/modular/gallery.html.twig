@@ -15,7 +15,8 @@
     {% for image in page.media.images %}
       {% set meta = meta_index[image.filename] %}
       <div class="gallery-item">
-        <img src="{{ image.url }}"
+        <img src="{{ image.resize(800, 600).url() }}"
+             data-full="{{ image.resize(1920, 1080).url() }}"
              alt="{{ meta.alt ?: 'Top Voice' }}"
              {% if meta.title %}title="{{ meta.title }}"{% endif %}
              loading="lazy">

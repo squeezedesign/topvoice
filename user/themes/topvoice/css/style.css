@@ -540,7 +540,7 @@ p.hero-sub {
     display: flex;
     gap: 1rem;
     justify-content: center;
-    flex-wrap: no-wrap;
+    flex-wrap: nowrap;
 }
 
 .class-event {

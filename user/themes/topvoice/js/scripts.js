@@ -342,7 +342,10 @@ gsap.to('#gallery', {
                 method: 'POST',
                 body: new FormData(form)
             });
-            if (res.ok) {
+            const html = await res.text();
+            const doc  = new DOMParser().parseFromString(html, 'text/html');
+            const hasError = doc.querySelector('.notices.alert-danger, .form-errors');
+            if (res.ok && !hasError) {
                 form.reset();
                 show('ok', msgs.ok);
             } else {

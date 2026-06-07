@@ -440,7 +440,7 @@ main, footer {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 8rem 2rem 4rem;
+    padding: 4rem 2rem;
     position: relative;
     overflow: hidden;
 }
@@ -524,6 +524,7 @@ p.hero-sub {
 
 .hero-desc p:not(.hero-sub){
     line-height: 1.1;
+    font-size: .75em;
 }
 
 .hero-desc {
@@ -531,7 +532,6 @@ p.hero-sub {
     font-size: 1.5rem;
     color: var(--muted);
     font-weight: 300;
-    padding: 0 2rem;
 }
 
 .hero-cta {

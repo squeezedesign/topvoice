@@ -26,6 +26,7 @@ window.addEventListener('scroll', () => {
 
 // GSAP
 gsap.registerPlugin(ScrollTrigger);
+ScrollTrigger.config({ limitCallbacks: true });
 
 const bgLeopard = document.getElementById('bg-leopard');
 
@@ -141,7 +142,7 @@ async function setupLeopard() {
 setupLeopard();
 
 // Section content entrance animations
-['#about', '#video', '#oferim', '#gallery', '#contact'].forEach(sel => {
+['#about', '#video', '#oferim', '#gallery'].forEach(sel => {
     const section = document.querySelector(sel);
     if (!section) return;
 
@@ -152,9 +153,9 @@ setupLeopard();
         '.about-text p:not(.section-tag)', '.about-img',
         '.video-wrap',
         '.gallery-grid',
-        '.contact-backdrop-grid',
-        '.contact-form',
     ].join(', '));
+
+    if (!tag && !titles.length && !divider && !body.length) return;
 
     const to  = { force3D: true };
     const stl = gsap.timeline({
@@ -168,13 +169,16 @@ setupLeopard();
 });
 
 const directorCards = document.querySelectorAll('.director-card');
-if (directorCards.length) {
+const directorsEl   = document.querySelector('.directors');
+if (directorCards.length && directorsEl) {
     gsap.fromTo(directorCards,
         { y: 36, autoAlpha: 0 },
         { y: 0, autoAlpha: 1, duration: 0.7, ease: 'power2.out', stagger: 0.15, force3D: true,
-          scrollTrigger: { trigger: '.directors', start: 'top 60%', once: true } }
+          scrollTrigger: { trigger: directorsEl, start: 'top 60%', once: true } }
     );
 }
+
+window.addEventListener('load', () => { ScrollTrigger.refresh(); });
 
 function playPromo() {
     const wrap = document.querySelector('.video-placeholder');

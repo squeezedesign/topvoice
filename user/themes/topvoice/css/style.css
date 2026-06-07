@@ -513,7 +513,7 @@ main, footer {
 }
 
 p.hero-sub {
-    font-size: 0.72rem;
+    font-size: 0.875rem;
     font-weight: 700;
     letter-spacing: 0.35em;
     text-transform: uppercase;
@@ -527,11 +527,11 @@ p.hero-sub {
 }
 
 .hero-desc {
-    max-width: 500px;
     margin: 2rem auto 0;
     font-size: 1.5rem;
     color: var(--muted);
     font-weight: 300;
+    padding: 0 2rem;
 }
 
 .hero-cta {
@@ -540,6 +540,96 @@ p.hero-sub {
     gap: 1rem;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+.class-event {
+    display: flex;
+    width: 100%;
+    flex-wrap: nowrap;
+    gap: 1.5rem;
+    border: 1px solid #cd9fea;
+    /* padding-right: 1rem; */
+    border-right: none;
+    border-left: none;
+}
+
+.event-desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: .5rem 0;
+    font-size: 0.72rem;
+    color: #cac2cf;
+    /* gap: .5rem; */
+}
+
+.class-event {}
+
+.event-desc {}
+
+.event-datetime {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    /* background: #662483; */
+    padding: .5rem 0;
+    /* color: #cc49ff; */
+    /* gap: .5rem; */
+    font-size: .75rem;
+}
+
+.event-day {
+    /* font-size: 1.2rem; */
+}
+
+.event-hour {
+    /* font-size: 2rem; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.event-format {}
+
+.event-format {
+    font-style: italic;
+    /* font-size: .875rem; */
+    font-weight: 200;
+    padding-top: .25rem;
+    display: none;
+}
+
+.event-desc b {
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    color: #cc49ff;
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+.event-hour svg {
+    width: 14px;
+    height: 14px;
+}
+
+.event-hour svg path {
+    fill: #c7becc;
+}
+
+.hero-events {
+    margin-top: 2rem;
+    min-width: 300px;
+}
+
+.events-title {
+    text-align: left;
+    padding: .25rem 0;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
 }
 
 .btn {

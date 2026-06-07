@@ -115,6 +115,29 @@ async function setupLeopard() {
                 return { st, clone, cx, cy };
             });
 
+        let tickerActive = false;
+        let tickerId     = null;
+
+        function startTicker() {
+            if (tickerActive) return;
+            tickerActive = true;
+            tickerId = gsap.ticker.add(() => {
+                const entry   = spotEntry.scale;
+                const settled = entry <= 1.05;
+                bounceStates.forEach(({ st, clone, cx, cy }) => {
+                    const s = st.s * entry;
+                    clone.setAttribute('transform',
+                        `translate(${cx * (1 - s)},${cy * (1 - s)}) scale(${s})`);
+                    clone.setAttribute('opacity', settled ? st.o : 0.95);
+                });
+            });
+        }
+        function stopTicker() {
+            if (!tickerActive) return;
+            tickerActive = false;
+            gsap.ticker.remove(tickerId);
+        }
+
         ScrollTrigger.create({
             trigger:             '#hero',
             start:               'top top+=50',
@@ -122,18 +145,13 @@ async function setupLeopard() {
             scrub:               3,
             invalidateOnRefresh: true,
             animation:           leopardTl,
+            onToggle: self => self.isActive ? startTicker() : stopTicker(),
         });
 
-        gsap.ticker.add(() => {
-            const entry   = spotEntry.scale;
-            const settled = entry <= 1.05;
-            bounceStates.forEach(({ st, clone, cx, cy }) => {
-                const s = st.s * entry;
-                clone.setAttribute('transform',
-                    `translate(${cx * (1 - s)},${cy * (1 - s)}) scale(${s})`);
-                clone.setAttribute('opacity', settled ? st.o : 0.95);
-            });
-        });
+        // skip per-spot bounce animation on mobile — too CPU-intensive
+        if (window.innerWidth >= 1024) {
+            startTicker();
+        }
 
         ScrollTrigger.refresh();
 

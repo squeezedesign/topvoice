@@ -242,6 +242,7 @@ nav.scrolled .nav-logo-circle {
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     margin-bottom: 0;
     flex-shrink: 0;
+    cursor: pointer;
 }
 
 .offcanvas-brand img {
@@ -966,6 +967,8 @@ section {
     top: 0;
     z-index: 5;
     min-height: 100vh;
+    overflow: hidden;
+    max-width: 100dvw;
     /* uses default section padding: 6rem 2.5rem — same as all other sections */
 }
 

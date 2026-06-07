@@ -5,7 +5,7 @@
     <button class="offcanvas-close" onclick="closeMenu()" aria-label="{{ 'SITE.NAV.CLOSE'|t }}">✕</button>
   </div>
   <div class="offcanvas-body">
-    <div class="offcanvas-brand">
+    <div class="offcanvas-brand" onclick="closeMenu();window.scrollTo({top:0,behavior:'smooth'})" aria-label="Inici">
       <img src="{{ theme_url }}/images/topvoice_logo_txt.webp"
            srcset="{{ theme_url }}/images/topvoice_logo_txt.webp 1x,
                    {{ theme_url }}/images/topvoice_logo_txt@2x.webp 2x"

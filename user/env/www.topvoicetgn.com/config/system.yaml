@@ -1,0 +1,8 @@
+errors:
+  display: 0
+  log: true
+
+cache:
+  enabled: true
+  check:
+    method: file

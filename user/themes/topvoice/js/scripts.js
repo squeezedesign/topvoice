@@ -180,6 +180,26 @@ if (directorCards.length && directorsEl) {
 
 window.addEventListener('load', () => { ScrollTrigger.refresh(); });
 
+// Blur gallery based on contact section live position
+(function () {
+    const galleryEl = document.querySelector('#gallery');
+    const contactEl = document.querySelector('#contact');
+    if (!galleryEl || !contactEl) return;
+
+    function updateBlur() {
+        const top     = contactEl.getBoundingClientRect().top;
+        const vh      = window.innerHeight;
+        const startAt = 0.7; // ↓ retrasa (0.5 = más tarde), ↑ adelanta (0.9 = antes)
+        const endAt   = 0.2; // cuando el blur es máximo
+        const progress = 1 - Math.max(0, Math.min(1, (top - vh * endAt) / (vh * (startAt - endAt))));
+        galleryEl.style.filter = progress > 0 ? `blur(${(progress * 6).toFixed(2)}px)` : '';
+    }
+
+    window.addEventListener('scroll', updateBlur, { passive: true });
+    window.addEventListener('resize', updateBlur, { passive: true });
+    updateBlur();
+})();
+
 function playPromo() {
     const wrap = document.querySelector('.video-placeholder');
     const id   = wrap ? wrap.dataset.videoId : null;
@@ -207,23 +227,11 @@ $(function () {
         mobileFirst:    true,
         responsive: [
             {
-                breakpoint: 1024,
+                breakpoint: 767,
                 settings: { slidesToShow: 2 }
             }
         ]
     });
-});
-
-// Blur gallery as contact slides over it
-gsap.to('#gallery', {
-    filter: 'blur(8px)',
-    ease: 'none',
-    scrollTrigger: {
-        trigger: '#contact',
-        start: 'top 60%',
-        end:   'top 10%',
-        scrub: 1.5,
-    }
 });
 
 // Lightbox

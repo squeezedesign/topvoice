@@ -918,6 +918,8 @@ section {
     align-items: center;
     gap: 0.5rem;
     font-size: 0.72rem;
+    justify-content: center;
+    width: auto !important;
 }
 
 .video-placeholder {

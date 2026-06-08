@@ -1,0 +1,32 @@
+extends@: '@parent'
+
+form:
+  fields:
+    social_contact:
+      type: section
+      title: Xarxes socials i contacte
+      underline: true
+    social.instagram:
+      type: text
+      label: Instagram (handle, sense @)
+      placeholder: topvoicetgn
+    social.youtube:
+      type: text
+      label: Canal de YouTube (URL completa)
+      placeholder: 'https://www.youtube.com/@TopVoiceTGN'
+    contact.email:
+      type: text
+      label: Email de contacte (visible al web)
+      placeholder: topvoicetgn@gmail.com
+    contact.phone1:
+      type: text
+      label: Telèfon 1
+      placeholder: '636 279 326'
+    contact.phone2:
+      type: text
+      label: Telèfon 2
+      placeholder: '626 204 836'
+    contact.address:
+      type: text
+      label: Ubicació
+      placeholder: Tarragona

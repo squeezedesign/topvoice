@@ -30,34 +30,6 @@ form:
               type: markdown
               label: Text introductori
               ordering@: header.section_title
-            separator_contact:
-              type: spacer
-              title: Dades de contacte
-              underline: true
-            header.email:
-              type: text
-              label: Email de contacte (visible al web)
-              placeholder: topvoicetgn@gmail.com
-            header.phone1:
-              type: text
-              label: Telèfon 1
-              placeholder: "636 279 326"
-            header.phone2:
-              type: text
-              label: Telèfon 2
-              placeholder: "626 204 836"
-            header.instagram:
-              type: text
-              label: Instagram (sense @)
-              placeholder: topvoicetgn
-            header.youtube:
-              type: text
-              label: URL de YouTube
-              placeholder: "https://www.youtube.com/@TopVoiceTGN"
-            header.address:
-              type: text
-              label: Ubicació
-              placeholder: Tarragona
             separator_config:
               type: spacer
               title: "Configuració tècnica del formulari"

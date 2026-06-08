@@ -27,5 +27,17 @@
         {% endif %}
       </div>
     </div>
+
+    {% if config.site.social.youtube %}
+    <div class="video-yt-link">
+      <a href="{{ config.site.social.youtube }}" target="_blank" rel="noopener" class="btn btn-outline btn--yt">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"/><polygon points="10 9 15 12 10 15" fill="currentColor" stroke="none"/></svg>
+        {{ 'SITE.VIDEO.YT_CHANNEL'|t }}
+      </a>
+    </div>
+    {% endif %}
+  </div>
+  <div class="inner">
+    {% include 'partials/concerts.html.twig' %}
   </div>
 </section>

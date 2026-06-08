@@ -1,0 +1,118 @@
+title: Concerts
+description: Concerts i actuacions de Top Voice TGN
+type: flex-objects
+
+config:
+  admin:
+    router:
+      path: '/concerts'
+    menu:
+      list:
+        route: '/concerts'
+        title: Concerts
+        icon: fa-music
+        authorize: ['admin.super', 'admin.login']
+        priority: 6
+    template: default
+    permissions:
+      admin.concerts:
+        type: crudpl
+        label: Concerts
+    list:
+      title: venue
+      fields:
+        date:
+          link: edit
+          title: SITE.CONCERTS.FIELD_DATE
+        hour:
+          title: SITE.CONCERTS.FIELD_HOUR
+        venue:
+          title: SITE.CONCERTS.FIELD_VENUE
+        place:
+          title: SITE.CONCERTS.FIELD_PLACE
+        context:
+          title: SITE.CONCERTS.FIELD_CONTEXT
+        format:
+          title: SITE.CONCERTS.FIELD_FORMAT
+        show_format:
+          title: SITE.CONCERTS.FIELD_SHOW_FORMAT
+    edit:
+      title:
+        template: '{{ object.date ? object.date : "Nou" }}{% if object.venue %} — {{ object.venue }}{% endif %}'
+    preview:
+      enabled: false
+    export:
+      enabled: false
+
+  site:
+    templates:
+      collection:
+        paths:
+          - 'flex/{TYPE}/collection/{LAYOUT}{EXT}'
+      object:
+        paths:
+          - 'flex/{TYPE}/object/{LAYOUT}{EXT}'
+      defaults:
+        type: concerts
+        layout: default
+
+  data:
+    object: 'Grav\Common\Flex\Types\Generic\GenericObject'
+    collection: 'Grav\Common\Flex\Types\Generic\GenericCollection'
+    index: 'Grav\Common\Flex\Types\Generic\GenericIndex'
+    storage:
+      class: 'Grav\Framework\Flex\Storage\SimpleStorage'
+      options:
+        formatter:
+          class: 'Grav\Framework\File\Formatter\JsonFormatter'
+        folder: user-data://flex-objects/concerts.json
+
+form:
+  validation: loose
+
+  fields:
+    date:
+      type: date
+      label: SITE.CONCERTS.FIELD_DATE
+      validate:
+        required: true
+    hour:
+      type: text
+      label: SITE.CONCERTS.FIELD_HOUR
+      placeholder: '22:00'
+    venue:
+      type: text
+      label: SITE.CONCERTS.FIELD_VENUE
+      placeholder: 'Calaceit'
+      validate:
+        required: true
+    place:
+      type: text
+      label: SITE.CONCERTS.FIELD_PLACE
+      placeholder: 'Plaza de España'
+    context:
+      type: text
+      label: SITE.CONCERTS.FIELD_CONTEXT
+      placeholder: 'Setmana Cultural, Festa Major...'
+    context_es:
+      type: text
+      label: SITE.CONCERTS.FIELD_CONTEXT_ES
+      placeholder: 'Semana Cultural, Fiesta Mayor...'
+    format:
+      type: select
+      label: SITE.CONCERTS.FIELD_FORMAT
+      default: banda
+      options:
+        essencial: SITE.CONCERTS.FORMAT.ESSENCIAL
+        banda: SITE.CONCERTS.FORMAT.BANDA
+        cor: SITE.CONCERTS.FORMAT.COR
+    show_format:
+      type: toggle
+      label: SITE.CONCERTS.FIELD_SHOW_FORMAT
+      highlight: 0
+      default: 0
+      options:
+        1: PLUGIN_ADMIN.YES
+        0: PLUGIN_ADMIN.NO
+      validate:
+        type: bool

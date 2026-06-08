@@ -35,6 +35,14 @@ form:
               label: Botó secundari (Escolta'ns)
               placeholder: "Escolta'ns"
               ordering@: header.cta_primary
+            header.max_concerts:
+              type: number
+              label: Màx. concerts al hero
+              help: "Nombre màxim de propers concerts a mostrar a la secció hero."
+              default: 3
+              min: 1
+              max: 10
+              ordering@: header.cta_secondary
         advanced:
           fields:
             columns:

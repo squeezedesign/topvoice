@@ -1,9 +1,28 @@
 title: 'Top Voice · Cor Modern Tarragona'
-
+default_lang: en
 author:
   name: 'Rakel Esteve'
-  email: 'topvoicetgn@gmail.com'
-
+  email: topvoicetgn@gmail.com
+taxonomies:
+  - category
+  - tag
 metadata:
   description: 'Top Voice és un cor modern nascut el 2020 a Tarragona. Fem espectacle, no només concerts.'
   generator: ''
+summary:
+  enabled: true
+  format: short
+  size: 300
+  delimiter: '==='
+redirects: null
+routes: null
+blog:
+  route: /blog
+social:
+  instagram: topvoicetgn
+  youtube: 'https://www.youtube.com/@TopVoiceTGN'
+contact:
+  email: topvoicetgn@gmail.com
+  phone1: '636 279 326'
+  phone2: '626 204 836'
+  address: Tarragona

@@ -8,11 +8,12 @@ SITE:
     CLOSE: "Cerrar menú"
   VIDEO:
     PLAY: "Reproducir vídeo"
+    YT_CHANNEL: "Ver más vídeos"
   LANG:
     CA: "CA"
     ES: "ES"
   FOOTER:
-    COPYRIGHT: "© 2026 Top Voice · Coro Moderno Tarragona"
+    COPYRIGHT: "© 2026 Top Voice · Cor Modern Tarragona"
   FORM:
     NOMBRE: "Nombre"
     EMAIL: "Email"
@@ -20,6 +21,21 @@ SITE:
     SUBMIT: "Enviar"
     SUCCESS: "¡Mensaje enviado correctamente!"
     ERROR: "Ha habido un error. Inténtalo de nuevo."
+  CONCERTS:
+    TITLE_SINGULAR: "Próximo concierto"
+    TITLE_PLURAL: "Próximos conciertos"
+    FIELD_DATE: "Fecha del concierto"
+    FIELD_HOUR: "Hora"
+    FIELD_VENUE: "Lugar (municipio o sala)"
+    FIELD_PLACE: "Espacio concreto (opcional)"
+    FIELD_CONTEXT: "Marco / contexto en CA (opcional)"
+    FIELD_CONTEXT_ES: "Marco / contexto en ES (opcional)"
+    FIELD_FORMAT: "Formato"
+    FIELD_SHOW_FORMAT: "Mostrar formato"
+    FORMAT:
+      ESSENCIAL: "Format Essencial"
+      BANDA: "Format Banda"
+      COR: "Format Cor"
   CONTACT:
     HIRE_TITLE: "¿Nos contratas?"
     HIRE_SUB: "Si quieres formar parte de Top Voice, también puedes escribirnos ;)"

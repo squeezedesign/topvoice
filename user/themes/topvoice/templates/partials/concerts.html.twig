@@ -1,0 +1,62 @@
+{# Upcoming concerts block                                          #}
+{# Variables:                                                        #}
+{#   limit (int, optional) — max items to show; omit to show all    #}
+
+{% set flex = grav['flex_objects'] %}
+{% set dir  = flex ? flex.getDirectory('concerts') : null %}
+{% set all  = [] %}
+{% if dir %}
+  {% set today = "now"|date("Y-m-d") %}
+  {% for c in dir.getCollection() %}
+    {% if c.date >= today %}
+      {% set all = all|merge([c]) %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{# sort by date ascending #}
+{% set dated = {} %}
+{% for c in all %}
+  {% set dated = dated|merge({(c.date ~ '_' ~ loop.index): c}) %}
+{% endfor %}
+{% set all = [] %}
+{% for key in dated|keys|sort %}
+  {% set all = all|merge([dated[key]]) %}
+{% endfor %}
+
+{% set items = (limit is defined and limit > 0) ? all|slice(0, limit) : all %}
+
+{% if items|length > 0 %}
+{% set lang = grav.language.getActive() %}
+{% set months_ca = ['GEN','FEB','MAR','ABR','MAI','JUN','JUL','AGO','SET','OCT','NOV','DES'] %}
+{% set months_es = ['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'] %}
+{% set month_names = lang == 'es' ? months_es : months_ca %}
+
+<div class="events">
+  <div class="events-title">
+    {{ (limit is defined and items|length == 1) ? 'SITE.CONCERTS.TITLE_SINGULAR'|t : 'SITE.CONCERTS.TITLE_PLURAL'|t }}
+  </div>
+  {% for c in items %}
+  {% set month_abbr = month_names[c.date|date("n") - 1] %}
+  {% set ctx = (lang == 'es' and c.context_es) ? c.context_es : c.context %}
+  <div class="event-item">
+    <div class="event-datetime">
+      <div class="event-day">{{ c.date|date("d") }} {{ month_abbr }}</div>
+      <div class="event-hour">{{ c.hour }}h</div>
+    </div>
+    <div class="event-content">
+      <div class="event-venue">{{ c.venue }}</div>
+      {% if c.place or ctx %}
+      <div class="event-sub">
+        {% if c.place %}{{ c.place }}{% endif %}
+        {% if ctx %}<span class="event-context">{{ ctx }}</span>{% endif %}
+      </div>
+      {% endif %}
+      {% if c.show_format and c.format %}
+      <div class="event-format">{{ ('SITE.CONCERTS.FORMAT.' ~ c.format|upper)|t }}</div>
+      {% endif %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}

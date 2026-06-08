@@ -8,6 +8,7 @@ SITE:
     CLOSE: "Tancar menú"
   VIDEO:
     PLAY: "Reproduir vídeo"
+    YT_CHANNEL: "Veure més videos"
   LANG:
     CA: "CA"
     ES: "ES"
@@ -20,6 +21,21 @@ SITE:
     SUBMIT: "Enviar"
     SUCCESS: "Missatge enviat correctament!"
     ERROR: "Hi ha hagut un error. Torna-ho a intentar."
+  CONCERTS:
+    TITLE_SINGULAR: "Proper concert"
+    TITLE_PLURAL: "Propers concerts"
+    FIELD_DATE: "Data del concert"
+    FIELD_HOUR: "Hora"
+    FIELD_VENUE: "Lloc (municipi o sala)"
+    FIELD_PLACE: "Espai concret (opcional)"
+    FIELD_CONTEXT: "Marc / context en CA (opcional)"
+    FIELD_CONTEXT_ES: "Marc / context en ES (opcional)"
+    FIELD_FORMAT: "Format"
+    FIELD_SHOW_FORMAT: "Mostrar format"
+    FORMAT:
+      ESSENCIAL: "Format Essencial"
+      BANDA: "Format Banda"
+      COR: "Format Cor"
   CONTACT:
     HIRE_TITLE: "Ens contractes?"
     HIRE_SUB: "Si vols formar part de Top Voice, també ens pots escriure ;)"

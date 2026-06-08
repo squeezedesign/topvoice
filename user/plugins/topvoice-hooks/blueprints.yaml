@@ -1,0 +1,6 @@
+name: Top Voice Hooks
+version: 1.0.0
+description: Clears page cache automatically when Flex Objects are saved or deleted
+author:
+  name: Top Voice
+type: plugin

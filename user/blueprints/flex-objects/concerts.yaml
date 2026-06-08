@@ -83,13 +83,13 @@ form:
     venue:
       type: text
       label: SITE.CONCERTS.FIELD_VENUE
-      placeholder: 'Calaceit'
+      placeholder: 'Tarragona, Reus...'
       validate:
         required: true
     place:
       type: text
       label: SITE.CONCERTS.FIELD_PLACE
-      placeholder: 'Plaza de España'
+      placeholder: 'Plaça Major, Auditori...'
     context:
       type: text
       label: SITE.CONCERTS.FIELD_CONTEXT

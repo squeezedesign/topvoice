@@ -31,7 +31,8 @@ user/pages/*
 !user/pages/error/
 user/accounts/
 user/data/
-user/plugins/
+user/plugins/*
+!user/plugins/topvoice-hooks/
 user/images/
 
 # ── Temas de terceros (instalados con Grav, no nuestro código) ────

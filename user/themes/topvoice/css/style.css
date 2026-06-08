@@ -1419,15 +1419,14 @@ textarea.field {
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    color: var(--cyan);
 }
 
 .contact-icon i {
     font-size: 1.15rem;
-    color: var(--cyan);
 }
-
 a.ig {
-    color: var(--primary);
+    color: var(--muted);
     text-decoration: none;
     font-weight: 700;
 }
@@ -1444,7 +1443,7 @@ a.ig:hover {
 }
 
 .contact-item a[href^="tel:"]:hover {
-    color: var(--cyan);
+    color: var(--accent);
 }
 
 /* FORM FEEDBACK */

@@ -360,6 +360,7 @@ nav.scrolled .nav-logo-circle {
     inset: 0;
     z-index: 0;
     overflow: hidden;
+    overflow: clip; /* iOS Safari: avoids scroll-container stacking-context bug with position:fixed */
     pointer-events: none;
 }
 
@@ -1134,6 +1135,22 @@ section {
 @media (min-width: 768px) {
     .oferim-cta {
         max-width: calc(50% - 1rem);
+    }
+}
+
+/* MOBILE: disable blob CSS animations — too GPU-intensive for mid-range devices
+   and filter+animation inside position:fixed breaks iOS Safari repaint */
+@media (max-width: 1023px) {
+    .bg-blobs::before,
+    .bg-blobs::after {
+        animation: none;
+        will-change: auto;
+    }
+    .bg-blobs::before {
+        filter: blur(40px);
+    }
+    .bg-blobs::after {
+        filter: blur(35px);
     }
 }
 

@@ -28,6 +28,14 @@ window.addEventListener('scroll', () => {
 gsap.registerPlugin(ScrollTrigger);
 ScrollTrigger.config({ limitCallbacks: true });
 
+// Device capability detection — drive degradation of ambient background effects
+const prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isLowEnd =
+    window.innerWidth < 1024 ||
+    (navigator.deviceMemory && navigator.deviceMemory <= 4) ||
+    (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4) ||
+    prefersReduced;
+
 const bgLeopard = document.getElementById('bg-leopard');
 
 // Blobs: se desvanecen despacio, durante varias secciones
@@ -97,6 +105,31 @@ async function setupLeopard() {
 
         const spotEntry  = { scale: 7 };
         const patState   = { size: 3500 };
+
+        const bounceStates = pathData.filter(({ ok }) => ok);
+
+        // Single render pass — writes each spot's transform/opacity once
+        function paintSpots() {
+            const entry   = spotEntry.scale;
+            const settled = entry <= 1.05;
+            bounceStates.forEach(({ st, clone, cx, cy }) => {
+                const s = st.s * entry;
+                clone.setAttribute('transform',
+                    `translate(${cx * (1 - s)},${cy * (1 - s)}) scale(${s})`);
+                clone.setAttribute('opacity', settled ? st.o : 0.95);
+            });
+        }
+
+        // Reduced motion: paint the final settled state once, no timeline, no ticker
+        if (prefersReduced) {
+            applySize(800);
+            spotEntry.scale = 1;
+            bounceStates.forEach(b => { b.st = { s: 1 + rnd(0.01, 0.04), o: rnd(0.55, 0.9) }; });
+            gsap.set(bgLeopard, { opacity: 0.9 });
+            paintSpots();
+            return;
+        }
+
         const leopardTl  = gsap.timeline();
         leopardTl
             .fromTo(bgLeopard,  { opacity: 0 }, { opacity: 0.9, ease: 'power2.inOut', duration: .5 }, 0)
@@ -104,32 +137,32 @@ async function setupLeopard() {
                 onUpdate() { applySize(patState.size); } }, 0)
             .fromTo(spotEntry,  { scale: 7 },   { scale: 1,     ease: 'power2.out',   duration: 0.5 }, 0);
 
-        const bounceStates = pathData
-            .filter(({ ok }) => ok)
-            .map(({ clone, cx, cy }) => {
-                const st = { s: 1 + rnd(0.01, 0.04), o: rnd(0.55, 0.9) };
-                gsap.to(st, {
-                    s: st.s + rnd(0.01, 0.03), duration: rnd(2, 4.5),
-                    delay: rnd(0, 5), repeat: -1, yoyo: true, ease: 'sine.inOut',
-                });
-                return { st, clone, cx, cy };
+        bounceStates.forEach(b => {
+            const st = { s: 1 + rnd(0.01, 0.04), o: rnd(0.55, 0.9) };
+            gsap.to(st, {
+                s: st.s + rnd(0.01, 0.03), duration: rnd(2, 4.5),
+                delay: rnd(0, 5), repeat: -1, yoyo: true, ease: 'sine.inOut',
             });
+            b.st = st;
+        });
 
-        let tickerActive = false;
-        let tickerId     = null;
+        let tickerActive     = false;
+        let tickerId         = null;
+        let heroActive       = false;
+        let leopardSuspended = false;   // set while the video is being watched
+        let lastFrame        = 0;
+        const frameGap       = isLowEnd ? 1 / 30 : 0; // throttle to ~30fps on low-end devices
 
         function startTicker() {
-            if (tickerActive) return;
+            if (tickerActive || leopardSuspended) return;
             tickerActive = true;
             tickerId = gsap.ticker.add(() => {
-                const entry   = spotEntry.scale;
-                const settled = entry <= 1.05;
-                bounceStates.forEach(({ st, clone, cx, cy }) => {
-                    const s = st.s * entry;
-                    clone.setAttribute('transform',
-                        `translate(${cx * (1 - s)},${cy * (1 - s)}) scale(${s})`);
-                    clone.setAttribute('opacity', settled ? st.o : 0.95);
-                });
+                if (frameGap) {
+                    const now = gsap.ticker.time;
+                    if (now - lastFrame < frameGap) return;
+                    lastFrame = now;
+                }
+                paintSpots();
             });
         }
         function stopTicker() {
@@ -138,6 +171,10 @@ async function setupLeopard() {
             gsap.ticker.remove(tickerId);
         }
 
+        // Freeze/restore the leopard while the YouTube video is on screen (see playPromo)
+        window.__leopardPause  = () => { leopardSuspended = true;  stopTicker(); };
+        window.__leopardResume = () => { leopardSuspended = false; if (heroActive) startTicker(); };
+
         ScrollTrigger.create({
             trigger:             '#hero',
             start:               'top top+=50',
@@ -145,13 +182,10 @@ async function setupLeopard() {
             scrub:               3,
             invalidateOnRefresh: true,
             animation:           leopardTl,
-            onToggle: self => self.isActive ? startTicker() : stopTicker(),
+            onToggle: self => { heroActive = self.isActive; self.isActive ? startTicker() : stopTicker(); },
         });
 
-        // skip per-spot bounce animation on mobile — too CPU-intensive
-        if (window.innerWidth >= 1024) {
-            startTicker();
-        }
+        startTicker();
 
         ScrollTrigger.refresh();
 
@@ -202,9 +236,13 @@ window.addEventListener('load', () => { ScrollTrigger.refresh(); });
 (function () {
     const galleryEl = document.querySelector('#gallery');
     const contactEl = document.querySelector('#contact');
-    if (!galleryEl || !contactEl) return;
+    if (!galleryEl || !contactEl || prefersReduced) return;
 
-    function updateBlur() {
+    let ticking = false;
+
+    function applyBlur() {
+        ticking = false;
+        if (!window.__galleryBlurEnabled) { galleryEl.style.filter = ''; return; }
         const top     = contactEl.getBoundingClientRect().top;
         const vh      = window.innerHeight;
         const startAt = 0.7; // ↓ retrasa (0.5 = más tarde), ↑ adelanta (0.9 = antes)
@@ -213,10 +251,39 @@ window.addEventListener('load', () => { ScrollTrigger.refresh(); });
         galleryEl.style.filter = progress > 0 ? `blur(${(progress * 6).toFixed(2)}px)` : '';
     }
 
-    window.addEventListener('scroll', updateBlur, { passive: true });
-    window.addEventListener('resize', updateBlur, { passive: true });
-    updateBlur();
+    // Coalesce scroll/resize into at most one update per frame
+    function requestBlur() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(applyBlur);
+    }
+
+    window.__galleryBlurEnabled = true;
+    window.addEventListener('scroll', requestBlur, { passive: true });
+    window.addEventListener('resize', requestBlur, { passive: true });
+    requestBlur();
 })();
+
+// Freeze ambient background work while the video is on screen, restore when scrolled away
+function enterVideoMode() {
+    const videoEl = document.querySelector('#video');
+    function freeze() {
+        document.body.classList.add('is-video-playing');
+        window.__leopardPause && window.__leopardPause();
+        window.__galleryBlurEnabled = false;
+    }
+    function thaw() {
+        document.body.classList.remove('is-video-playing');
+        window.__leopardResume && window.__leopardResume();
+        window.__galleryBlurEnabled = true;
+    }
+    freeze();
+    if (!videoEl || !('IntersectionObserver' in window)) return;
+    new IntersectionObserver(
+        ([entry]) => entry.isIntersecting ? freeze() : thaw(),
+        { threshold: 0 }
+    ).observe(videoEl);
+}
 
 function playPromo() {
     const wrap = document.querySelector('.video-placeholder');
@@ -228,6 +295,7 @@ function playPromo() {
     iframe.allowFullscreen = true;
     wrap.innerHTML = '';
     wrap.appendChild(iframe);
+    enterVideoMode();
 }
 
 // Gallery — Slick Slider

@@ -1154,6 +1154,26 @@ section {
     }
 }
 
+/* While the YouTube video is on screen, freeze ambient background motion so the
+   video has the full GPU/compositor (JS pauses the leopard ticker in parallel) */
+body.is-video-playing .bg-blobs::before,
+body.is-video-playing .bg-blobs::after,
+body.is-video-playing .hero-circle,
+body.is-video-playing .hero-circle::after {
+    animation-play-state: paused;
+}
+
+/* Respect the OS "reduce motion" setting — kill ambient animations entirely
+   (JS handles the leopard ticker and gallery blur via prefersReduced) */
+@media (prefers-reduced-motion: reduce) {
+    .bg-blobs::before,
+    .bg-blobs::after,
+    .hero-circle,
+    .hero-circle::after {
+        animation: none;
+    }
+}
+
 /* GALLERY — sticky para que la card de contacto suba encima */
 #gallery {
     background: transparent;

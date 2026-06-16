@@ -546,12 +546,13 @@ p.hero-sub {
 
 .hero-events {
     margin-top: 2rem;
-    min-width: 300px;
+    max-width: 360px;
+    min-width: 290px;
+    width: 100%;
 }
 
 .events {
     margin-top: 2rem;
-    min-width: 300px;
 }
 
 .events-title {
@@ -632,7 +633,7 @@ p.hero-sub {
     color: #FFFFFF;
     font-style: italic;
     color: var(--muted);
-    padding-left: .5rem;
+    padding-left: .35rem;
 }
 .event-context:before {
     content: '·';

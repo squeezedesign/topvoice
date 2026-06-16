@@ -320,6 +320,30 @@ $(function () {
     });
 });
 
+// Gallery — keyboard arrow navigation when gallery is in view
+(function () {
+    const section = document.getElementById('gallery');
+    if (!section) return;
+
+    let galleryInView = false;
+
+    const observer = new IntersectionObserver(function (entries) {
+        galleryInView = entries[0].isIntersecting;
+    }, { threshold: 0.3 });
+
+    observer.observe(section);
+
+    document.addEventListener('keydown', function (e) {
+        if (!galleryInView) return;
+        if (e.key === 'ArrowLeft')  $('#gallerySlider').slick('slickPrev');
+        if (e.key === 'ArrowRight') $('#gallerySlider').slick('slickNext');
+        if (e.key === 'Enter') {
+            const idx = $('#gallerySlider').slick('slickCurrentSlide');
+            document.dispatchEvent(new CustomEvent('gallery:open', { detail: { index: idx } }));
+        }
+    });
+})();
+
 // Lightbox
 (function () {
     const imgs = Array.from(document.querySelectorAll('#gallerySlider .gallery-item img'));
@@ -405,6 +429,10 @@ $(function () {
         if (e.key === 'Escape')      close();
         if (e.key === 'ArrowLeft')   lbPrev.disabled || show(current - 1);
         if (e.key === 'ArrowRight')  lbNext.disabled || show(current + 1);
+    });
+
+    document.addEventListener('gallery:open', function (e) {
+        if (e.detail.index < imgs.length) open(e.detail.index);
     });
 })();
 

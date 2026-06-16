@@ -311,12 +311,7 @@ $(function () {
         speed:          450,
         cssEase:        'ease',
         mobileFirst:    true,
-        responsive: [
-            {
-                breakpoint: 767,
-                settings: { slidesToShow: 2 }
-            }
-        ]
+        adaptiveHeight: true
     });
 });
 

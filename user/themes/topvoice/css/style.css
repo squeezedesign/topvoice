@@ -1210,14 +1210,16 @@ body.is-video-playing .hero-circle::after {
     }
 }
 
-#gallerySlider .slick-slide > div {
-    height: 100%;
+#gallerySlider .slick-list,
+#gallerySlider .slick-track {
+    height: auto !important;
 }
 
 .gallery-item {
     width: 100%;
     border-radius: 8px;
     aspect-ratio: 5/3;
+    max-width: clamp(200px, 80vw, 750px);
     overflow: hidden;
     margin-right: 1rem;
     border: 1px dashed #c040e059;
@@ -1241,17 +1243,6 @@ body.is-video-playing .hero-circle::after {
     transform: scale(1.05);
 }
 
-.gallery-item--phantom {
-    border: none;
-    pointer-events: none;
-    background: transparent;
-}
-
-@media (max-width: 767px) {
-    #galleryDots .slick-dots li:last-child {
-        display: none;
-    }
-}
 
 /* Slick dots — styled as pill indicators */
 #galleryDots .slick-dots {

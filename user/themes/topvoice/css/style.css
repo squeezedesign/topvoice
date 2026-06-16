@@ -1221,7 +1221,7 @@ body.is-video-playing .hero-circle::after {
     width: 100%;
     border-radius: 8px;
     aspect-ratio: 5/3;
-    max-width: clamp(200px, 80vw, 750px);
+    max-width: clamp(200px, 550px, 750px);
     overflow: hidden;
     margin-right: 1rem;
     border: 1px dashed #c040e059;

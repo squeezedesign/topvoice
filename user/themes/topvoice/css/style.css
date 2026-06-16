@@ -1241,6 +1241,18 @@ body.is-video-playing .hero-circle::after {
     transform: scale(1.05);
 }
 
+.gallery-item--phantom {
+    border: none;
+    pointer-events: none;
+    background: transparent;
+}
+
+@media (max-width: 767px) {
+    #galleryDots .slick-dots li:last-child {
+        display: none;
+    }
+}
+
 /* Slick dots — styled as pill indicators */
 #galleryDots .slick-dots {
     list-style: none;

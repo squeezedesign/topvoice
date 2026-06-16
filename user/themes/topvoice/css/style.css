@@ -1590,6 +1590,27 @@ footer {
     nav {
         padding: .5rem 1.5rem;
     }
+    #hero h1 img {
+        width: 100%;
+        max-width: 280px;
+        height: auto;
+    }
+
+    .hero-events {
+        margin-top: 0;
+    }
+
+    .hero-desc {
+        margin: 1rem auto 0px;
+    }
+
+    .hero-cta {
+        margin-top: 1.5rem;
+    }
+
+    .hero-cta .btn{
+        font-size: .6rem;
+    }
 }
 @media (max-width: 400px) {
     .hero-cta {

@@ -21,17 +21,32 @@ config:
     list:
       title: venue
       fields:
+        active:
+          title: SITE.CONCERTS.FIELD_ACTIVE
         date:
           link: edit
           title: SITE.CONCERTS.FIELD_DATE
         hour:
           title: SITE.CONCERTS.FIELD_HOUR
+        # The list template renders headers from field.label (not title), so we
+        # override label per column here to keep short headers while the form
+        # labels stay descriptive. These are all text fields → type defaults to text.
         venue:
-          title: SITE.CONCERTS.FIELD_VENUE
+          title: SITE.CONCERTS.COL_NAME
+          field:
+            label: SITE.CONCERTS.COL_NAME
         place:
-          title: SITE.CONCERTS.FIELD_PLACE
+          title: SITE.CONCERTS.COL_PLACE
+          field:
+            label: SITE.CONCERTS.COL_PLACE
         context:
-          title: SITE.CONCERTS.FIELD_CONTEXT
+          title: SITE.CONCERTS.COL_CONTEXT_CA
+          field:
+            label: SITE.CONCERTS.COL_CONTEXT_CA
+        context_es:
+          title: SITE.CONCERTS.COL_CONTEXT_ES
+          field:
+            label: SITE.CONCERTS.COL_CONTEXT_ES
         format:
           title: SITE.CONCERTS.FIELD_FORMAT
         show_format:
@@ -71,6 +86,17 @@ form:
   validation: loose
 
   fields:
+    active:
+      type: toggle
+      label: SITE.CONCERTS.FIELD_ACTIVE
+      help: SITE.CONCERTS.FIELD_ACTIVE_HELP
+      highlight: 1
+      default: 1
+      options:
+        1: PLUGIN_ADMIN.YES
+        0: PLUGIN_ADMIN.NO
+      validate:
+        type: bool
     date:
       type: date
       label: SITE.CONCERTS.FIELD_DATE

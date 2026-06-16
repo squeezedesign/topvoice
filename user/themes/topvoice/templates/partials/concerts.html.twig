@@ -8,7 +8,8 @@
 {% if dir %}
   {% set today = "now"|date("Y-m-d") %}
   {% for c in dir.getCollection() %}
-    {% if c.date >= today %}
+    {# active is null on legacy records saved before the toggle existed → keep them visible #}
+    {% if c.date >= today and (c.active is null or c.active) %}
       {% set all = all|merge([c]) %}
     {% endif %}
   {% endfor %}

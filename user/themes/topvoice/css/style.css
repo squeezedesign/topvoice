@@ -441,7 +441,7 @@ main, footer {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 4rem 2rem;
+    padding: 4rem 2rem 6rem;
     position: relative;
     overflow: hidden;
 }
@@ -567,6 +567,80 @@ p.hero-sub {
 }
 .hero-events .events-title {
     margin-bottom: 0;
+}
+
+/* Scroll-down indicator — self-contained loop */
+.hero-scroll {
+    position: absolute;
+    left: 50%;
+    bottom: 1.4rem;
+    transform: translateX(-50%);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    width: 40px;
+    height: 44px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    opacity: 1;
+    transition: color .3s, opacity .45s ease;
+}
+
+.hero-scroll:hover,
+.hero-scroll:focus-visible {
+    color: var(--primary);
+}
+
+.hero-scroll__line {
+    width: 1px;
+    height: 24px;
+    background: currentColor;
+    transform-origin: top center;
+    transform: translateY(0) scaleY(0);
+    animation: hero-line 3s ease-in-out infinite;
+}
+
+.hero-scroll__chevron {
+    margin-top: -7px;
+    opacity: 0;
+    transform: translateY(-4px);
+    animation: hero-chevron 3s ease-in-out infinite;
+}
+
+/* Line and chevron finish forming together, then bounce as one arrow and fade */
+@keyframes hero-line {
+    0%   { transform: translateY(0) scaleY(0);  opacity: 0; }
+    12%  { opacity: 1; }
+    30%  { transform: translateY(0) scaleY(1);  opacity: 1; }
+    45%  { transform: translateY(5px) scaleY(1); }
+    62%  { transform: translateY(0) scaleY(1); }
+    80%  { transform: translateY(0) scaleY(1);  opacity: 1; }
+    100% { transform: translateY(8px) scaleY(1); opacity: 0; }
+}
+
+@keyframes hero-chevron {
+    0%, 12% { opacity: 0; transform: translateY(-4px); }
+    30%     { opacity: 1; transform: translateY(0); }
+    45%     { transform: translateY(5px); }
+    62%     { transform: translateY(0); }
+    80%     { opacity: 1; transform: translateY(0); }
+    100%    { opacity: 0; transform: translateY(8px); }
+}
+
+/* On scroll: the whole thing fades away (reappears back at the top) */
+.hero-scroll.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-scroll__line { transform: scaleY(1); animation: none; }
+    .hero-scroll__chevron { opacity: 1; transform: none; animation: none; }
 }
 
 .event-item {
@@ -1590,6 +1664,12 @@ footer {
     nav {
         padding: .5rem 1.5rem;
     }
+    #hero {
+        padding-bottom: 5rem;
+    }
+    #hero h1 {
+        padding-top: 1.5rem;
+    }
     #hero h1 img {
         width: 100%;
         max-width: 280px;
@@ -1597,7 +1677,7 @@ footer {
     }
 
     .hero-events {
-        margin-top: 0;
+        margin-top: 1rem;
     }
 
     .hero-desc {

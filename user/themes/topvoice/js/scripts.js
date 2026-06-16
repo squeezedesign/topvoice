@@ -24,6 +24,14 @@ window.addEventListener('scroll', () => {
     document.querySelector('header nav').classList.toggle('scrolled', window.scrollY > 80);
 }, { passive: true });
 
+// Hero scroll indicator: the loop runs on its own; just fade it out on scroll
+const heroScroll = document.querySelector('.hero-scroll');
+if (heroScroll) {
+    window.addEventListener('scroll', () => {
+        heroScroll.classList.toggle('is-hidden', window.scrollY > 60);
+    }, { passive: true });
+}
+
 // GSAP
 gsap.registerPlugin(ScrollTrigger);
 ScrollTrigger.config({ limitCallbacks: true });

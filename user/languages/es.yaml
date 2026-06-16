@@ -6,6 +6,8 @@ SITE:
     GALLERY: "Momentos"
     CONTACT: "Contacto"
     CLOSE: "Cerrar menú"
+  HERO:
+    SCROLL: "Desplázate hacia abajo"
   VIDEO:
     PLAY: "Reproducir vídeo"
     YT_CHANNEL: "Ver más vídeos"

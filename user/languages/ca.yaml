@@ -30,6 +30,8 @@ SITE:
     FIELD_ACTIVE_HELP: "Si està desactivat, el concert no apareix al web."
     FIELD_DATE: "Data del concert"
     FIELD_HOUR: "Hora"
+    FIELD_HOUR_HELP: "Format 24h (HH:MM). La «h» s'afegeix sola al web."
+    FIELD_HOUR_ERROR: "Introdueix una hora vàlida en format HH:MM (p. ex. 22:00)."
     FIELD_VENUE: "Títol (esdeveniment, lloc o sala)"
     FIELD_PLACE: "Espai concret"
     FIELD_CONTEXT: "Marc / context en CA"

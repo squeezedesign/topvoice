@@ -103,9 +103,13 @@ form:
       validate:
         required: true
     hour:
-      type: text
+      type: time
       label: SITE.CONCERTS.FIELD_HOUR
       placeholder: '22:00'
+      help: SITE.CONCERTS.FIELD_HOUR_HELP
+      validate:
+        pattern: '^([01][0-9]|2[0-3]):[0-5][0-9]$'
+        message: SITE.CONCERTS.FIELD_HOUR_ERROR
     venue:
       type: text
       label: SITE.CONCERTS.FIELD_VENUE

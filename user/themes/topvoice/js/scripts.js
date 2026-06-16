@@ -28,6 +28,11 @@ window.addEventListener('scroll', () => {
 gsap.registerPlugin(ScrollTrigger);
 ScrollTrigger.config({ limitCallbacks: true });
 
+// Reload always starts at the top so scroll-driven backgrounds (leopard/blobs)
+// initialise at progress 0. scrollRestoration is set to 'manual' inline in the
+// <head> (base.html.twig) to beat the browser's restore; this just enforces top.
+window.scrollTo(0, 0);
+
 // Device capability detection — drive degradation of ambient background effects
 const prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const isLowEnd =
@@ -187,7 +192,10 @@ async function setupLeopard() {
 
         startTicker();
 
-        ScrollTrigger.refresh();
+        // Refresh after layout settles. The fetch above may resolve after the
+        // window 'load' refresh has already run, so this trigger could miss it —
+        // defer to the next frame to recompute start/end against the real scroll.
+        requestAnimationFrame(() => ScrollTrigger.refresh());
 
     } catch (_) { /* silencioso */ }
 }
@@ -238,17 +246,27 @@ window.addEventListener('load', () => { ScrollTrigger.refresh(); });
     const contactEl = document.querySelector('#contact');
     if (!galleryEl || !contactEl || prefersReduced) return;
 
-    let ticking = false;
+    let ticking  = false;
+    let prevBlur = -1;
+
+    function setBlur(blur) {
+        if (blur === prevBlur) return;
+        // Promote to its own layer just before blurring so the first frame
+        // doesn't flicker while the browser rasterises a new compositing layer.
+        galleryEl.style.willChange = blur > 0 ? 'filter' : '';
+        galleryEl.style.filter     = blur > 0 ? `blur(${blur}px)` : '';
+        prevBlur = blur;
+    }
 
     function applyBlur() {
         ticking = false;
-        if (!window.__galleryBlurEnabled) { galleryEl.style.filter = ''; return; }
-        const top     = contactEl.getBoundingClientRect().top;
-        const vh      = window.innerHeight;
-        const startAt = 0.7; // ↓ retrasa (0.5 = más tarde), ↑ adelanta (0.9 = antes)
-        const endAt   = 0.2; // cuando el blur es máximo
+        if (!window.__galleryBlurEnabled) { setBlur(0); return; }
+        const top      = contactEl.getBoundingClientRect().top;
+        const vh       = window.innerHeight;
+        const startAt  = 0.85; // ↓ retrasa (0.5 = más tarde), ↑ adelanta (0.9 = antes)
+        const endAt    = 0.2;  // cuando el blur es máximo
         const progress = 1 - Math.max(0, Math.min(1, (top - vh * endAt) / (vh * (startAt - endAt))));
-        galleryEl.style.filter = progress > 0 ? `blur(${(progress * 6).toFixed(2)}px)` : '';
+        setBlur(progress > 0 ? +(progress * 6).toFixed(2) : 0);
     }
 
     // Coalesce scroll/resize into at most one update per frame

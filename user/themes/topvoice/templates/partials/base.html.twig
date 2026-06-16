@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  {# Disable native scroll restoration before the browser can restore a mid-page
+     position on reload — keeps scroll-driven backgrounds initialising at the top. #}
+  <script>if ('scrollRestoration' in history) history.scrollRestoration = 'manual';</script>
   <title>{{ page.title }} {% if page.title != site.title %}· {{ site.title }}{% endif %}</title>
 
   {% if page.header.description is defined %}

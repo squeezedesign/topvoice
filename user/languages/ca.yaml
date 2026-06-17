@@ -25,7 +25,7 @@ SITE:
     ERROR: "Hi ha hagut un error. Torna-ho a intentar."
   CONCERTS:
     TITLE_SINGULAR: "Proper concert"
-    TITLE_PLURAL: "Propers concerts"
+    TITLE_PLURAL: "Agenda de concerts"
     FIELD_ACTIVE: "Actiu"
     FIELD_ACTIVE_HELP: "Si està desactivat, el concert no apareix al web."
     FIELD_DATE: "Data del concert"

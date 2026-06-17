@@ -43,9 +43,9 @@ SITE:
     COL_CONTEXT_CA: "Marco CA"
     COL_CONTEXT_ES: "Marco ES"
     FORMAT:
-      ESSENCIAL: "Format Essencial"
-      BANDA: "Format Banda"
-      COR: "Format Cor"
+      ESSENCIAL: "Formato Esencial"
+      BANDA: "Formato Banda"
+      COR: "Formato Coristas"
   CONTACT:
     HIRE_TITLE: "¿Nos contratas?"
     HIRE_SUB: "Si quieres formar parte de Top Voice, también puedes escribirnos ;)"

@@ -1276,7 +1276,7 @@ body.is-video-playing .hero-circle::after {
 
 /* Peek of next slide. padding-right mirrors the left indent for symmetry. */
 #gallerySlider .slick-list {
-    overflow: visible;
+    overflow: visible !important;
     padding-right: 2.5rem;
 }
 
@@ -1292,10 +1292,11 @@ body.is-video-playing .hero-circle::after {
 }
 
 .gallery-item {
-    width: 100%;
+    /* Definite width so Slick's variableWidth can measure each slide. Shrinks
+       on narrow screens, capped at 550px, reserving room for left pad + peek. */
+    width: clamp(240px, calc(100dvw - 5rem), 550px);
     border-radius: 8px;
     aspect-ratio: 5/3;
-    max-width: clamp(200px, 550px, 750px);
     overflow: hidden;
     margin-right: 1rem;
     border: 1px dashed #c040e059;

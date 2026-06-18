@@ -256,25 +256,43 @@ window.addEventListener('load', () => { ScrollTrigger.refresh(); });
 
     let ticking  = false;
     let prevBlur = -1;
+    let layered  = false;
 
-    function setBlur(blur) {
-        if (blur === prevBlur) return;
-        // Promote to its own layer just before blurring so the first frame
-        // doesn't flicker while the browser rasterises a new compositing layer.
-        galleryEl.style.willChange = blur > 0 ? 'filter' : '';
-        galleryEl.style.filter     = blur > 0 ? `blur(${blur}px)` : '';
-        prevBlur = blur;
+    function setBlur(blur, near) {
+        // Keep a single, stable compositing layer while the contact section is
+        // approaching: toggling `filter` on/off pulls the Slick track in and out
+        // of #gallery's clipped offscreen buffer, which clips the slide peek for
+        // a frame and reads as a flicker during a sideways swipe. So while we're
+        // near, hold the layer (filter sits at blur(0px)) instead of removing it,
+        // and only drop it once the contact section is far away again.
+        if (near !== layered) {
+            layered = near;
+            galleryEl.style.willChange = near ? 'filter' : '';
+            if (!near) { galleryEl.style.filter = ''; prevBlur = -1; }
+        }
+        if (near && blur !== prevBlur) {
+            galleryEl.style.filter = `blur(${blur}px)`;
+            prevBlur = blur;
+        }
     }
 
     function applyBlur() {
         ticking = false;
-        if (!window.__galleryBlurEnabled) { setBlur(0); return; }
+        if (!window.__galleryBlurEnabled) { window.__galleryBlurActive = false; setBlur(0, false); return; }
         const top      = contactEl.getBoundingClientRect().top;
         const vh       = window.innerHeight;
         const startAt  = 0.85; // ↓ retrasa (0.5 = más tarde), ↑ adelanta (0.9 = antes)
         const endAt    = 0.2;  // cuando el blur es máximo
         const progress = 1 - Math.max(0, Math.min(1, (top - vh * endAt) / (vh * (startAt - endAt))));
-        setBlur(progress > 0 ? +(progress * 6).toFixed(2) : 0);
+        // Promote a bit before any blur is visible and keep it promoted across
+        // the whole approach so the layer is never created/destroyed mid-swipe.
+        const near     = top < vh * 1.6;
+        const blur     = progress > 0 ? +(progress * 6).toFixed(2) : 0;
+        // Once the blur kicks in the contact section is entering, so hand the
+        // keyboard over to it (e.g. Enter in the contact form must not reach the
+        // gallery lightbox).
+        window.__galleryBlurActive = blur > 0;
+        setBlur(blur, near);
     }
 
     // Coalesce scroll/resize into at most one update per frame
@@ -329,6 +347,7 @@ $(function () {
     $('#gallerySlider').slick({
         slidesToShow:   1,
         slidesToScroll: 1,
+        variableWidth:  true, // cada slot mide lo que la tarjeta (ancho fijo + peek)
         infinite:       false,
         dots:           true,
         appendDots:     $('#galleryDots'),
@@ -356,6 +375,10 @@ $(function () {
 
     document.addEventListener('keydown', function (e) {
         if (!galleryInView) return;
+        // Once the blur is on, the contact section is coming in — hand the
+        // keyboard over to it (e.g. Enter in the contact form must not open the
+        // gallery lightbox).
+        if (window.__galleryBlurActive) return;
         if (e.key === 'ArrowLeft')  $('#gallerySlider').slick('slickPrev');
         if (e.key === 'ArrowRight') $('#gallerySlider').slick('slickNext');
         if (e.key === 'Enter') {

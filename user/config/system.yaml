@@ -208,7 +208,7 @@ session:
   secure_https: true
   httponly: true
   samesite: Lax
-  split: true
+  split: false   # admin y front comparten sesión → logueada en /admin ves el site (bypass del modo mantenimiento). Site sin usuarios de front, sin contrapartida.
   domain: null
   path: null
 gpm:

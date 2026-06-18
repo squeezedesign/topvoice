@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="{{ grav.language.getActive() ?: 'ca' }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} · Top Voice TGN</title>
+  <link rel="icon" type="image/svg+xml" href="{{ theme_url }}/images/favicon/favicon.svg">
+  <link rel="stylesheet" href="{{ theme_url }}/css/style.css">
+  <style>
+    body { display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; text-align: center; }
+    .maint-wrap { max-width: 520px; padding: 2rem; }
+    .maint-title { font-size: 2rem; font-weight: 700; margin: 0.5rem 0 1rem; }
+    .maint-msg { opacity: .75; line-height: 1.6; }
+    .maint-msg p:last-child { margin-bottom: 0; }
+  </style>
+</head>
+<body>
+<div id="site-bg" aria-hidden="true">
+  <div class="bg-blobs"></div>
+  <div class="bg-tint"></div>
+</div>
+<div class="maint-wrap">
+  <h1 class="maint-title">{{ page.title }}</h1>
+  <div class="maint-msg">{{ page.content|raw }}</div>
+</div>
+</body>
+</html>

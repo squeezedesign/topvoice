@@ -38,8 +38,10 @@ user/images/
 # ── Temas de terceros (instalados con Grav, no nuestro código) ────
 user/themes/quark/
 
-# ── Credenciales (gestionar via admin per entorn) ─────────────────
+# ── Credenciales / estat per-servidor (gestionar via admin per entorn) ─
 user/config/plugins/email.yaml
+user/config/plugins/maintenance.yaml
+user/config/plugins/login.yaml
 
 # ── OS ────────────────────────────────────────────────────────────
 .DS_Store

@@ -42,6 +42,7 @@ user/themes/quark/
 user/config/plugins/email.yaml
 user/config/plugins/maintenance.yaml
 user/config/plugins/login.yaml
+user/config/site.yaml
 
 # ── OS ────────────────────────────────────────────────────────────
 .DS_Store

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Top Voice — Herramientas de captura de fondo</title>
+<style>
+  :root { color-scheme: dark; }
+  body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background: #0d0d14; color: #e8e8ef;
+    max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem;
+    line-height: 1.6;
+  }
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.15rem; margin-top: 2.5rem; color: #c040e0; }
+  .bm {
+    display: inline-block; margin: .4rem .5rem .4rem 0;
+    padding: .7rem 1.1rem; border-radius: 10px;
+    background: linear-gradient(135deg,#c040e0,#00c9b1);
+    color: #fff; font-weight: 700; text-decoration: none;
+    box-shadow: 0 4px 14px rgba(0,0,0,.4); cursor: grab;
+  }
+  .bm:active { cursor: grabbing; }
+  .hint { color: #9a9aac; font-size: .9rem; }
+  ol { padding-left: 1.2rem; }
+  code { background: #1c1c2a; padding: .15em .4em; border-radius: 5px; font-size: .9em; }
+  pre {
+    background: #16161f; border: 1px solid #2a2a3a; border-radius: 10px;
+    padding: 1rem; overflow:auto; font-size: .82rem; line-height: 1.45;
+  }
+  details { margin-top: 1rem; }
+  summary { cursor: pointer; color: #00c9b1; font-weight: 600; }
+  .tag { color:#00c9b1; }
+</style>
+</head>
+<body>
+
+<h1>📸 Capturas del fondo — Top Voice TGN</h1>
+<p class="hint">Arrastra cada botón a tu barra de marcadores. Luego abre la web de Top Voice y haz clic en el marcador para ejecutarlo. (Sin pegar nada en la consola.)</p>
+
+<h2>1 · Congelar fondo para imagen</h2>
+<p>Congela animaciones, hace que el fondo cubra toda la página y recrea la transición <em>glow → leopardo</em> como un degradado vertical. Después haz la captura de página completa
+(<code>Cmd+Shift+P</code> → «Capture full size screenshot» en Chrome).</p>
+
+<a class="bm" href="javascript:(function(){var s=document.createElement('style');s.textContent='*,*::before,*::after{animation-play-state:paused!important;transition:none!important}';document.head.appendChild(s);if(window.ScrollTrigger)ScrollTrigger.getAll().forEach(function(t){t.kill()});window.__leopardSettle?window.__leopardSettle():window.__leopardPause&&window.__leopardPause();var bg=document.getElementById('site-bg');if(bg){bg.style.position='absolute';bg.style.height=document.documentElement.scrollHeight+'px';}var leo=document.getElementById('bg-leopard');var mask=function(el,grad){if(!el)return;el.style.webkitMaskImage=grad;el.style.maskImage=grad;};if(leo)leo.style.opacity=0.9;mask(leo,'linear-gradient(to bottom, transparent 0%, transparent 18%, black 42%)');var blobs=document.querySelector('.bg-blobs');mask(blobs,'linear-gradient(to bottom, black 0%, black 14%, transparent 38%)');var tint=document.querySelector('.bg-tint');if(tint)tint.style.opacity='1';mask(tint,'linear-gradient(to bottom, transparent 0%, transparent 22%, black 48%)');})();">📸 Congelar fondo</a>
+
+<p class="hint">Los porcentajes (<code>18% 42%</code>, <code>14% 38%</code>, <code>22% 48%</code>) marcan dónde cae la transición. Recarga la página para deshacerlo.</p>
+
+<h2>2 · Scroll uniforme para vídeo</h2>
+<p>Hace un desplazamiento suave y constante de toda la página (30&nbsp;s) para grabar el fondo en movimiento. <strong>No</strong> uses el botón anterior con este: aquí quieres que el leopardo se anime.</p>
+
+<a class="bm" href="javascript:(function(){var dur=30000;var end=document.documentElement.scrollHeight-window.innerHeight;var t0=performance.now();(function step(t){var p=Math.min((t-t0)/dur,1);window.scrollTo(0,end*p);if(p<1)requestAnimationFrame(step);})(t0);})();">🎬 Scroll uniforme</a>
+
+<p class="hint">Cambia <code>30000</code> (milisegundos) por más para ir más lento. Pon la ventana a pantalla completa antes de grabar (<code>Cmd+Shift+F</code> en Chrome).</p>
+
+<hr style="border-color:#2a2a3a;margin:2.5rem 0">
+
+<details>
+<summary>Ver código legible (para usar como Snippet en DevTools)</summary>
+
+<p class="tag">Sources → Snippets → New snippet → pegar → clic derecho «Run».</p>
+
+<h3>1 · Congelar fondo</h3>
+<pre>(() =&gt; {
+  // Congela animaciones CSS + ScrollTrigger
+  const s = document.createElement('style');
+  s.textContent = `*,*::before,*::after{animation-play-state:paused!important;transition:none!important}`;
+  document.head.appendChild(s);
+  if (window.ScrollTrigger) ScrollTrigger.getAll().forEach(t =&gt; t.kill());
+
+  // Asienta el leopardo a su estado final (manchas formadas, tile 800px,
+  // opacidad arriba) sin depender del scroll. Gancho expuesto por scripts.js.
+  // Fallback: __leopardPause solo congela en el estado en que esté.
+  window.__leopardSettle ? window.__leopardSettle()
+                         : (window.__leopardPause && window.__leopardPause());
+
+  // El fondo fijo pasa a cubrir TODO el documento
+  const bg = document.getElementById('site-bg');
+  if (bg) {
+    bg.style.position = 'absolute';
+    bg.style.height = document.documentElement.scrollHeight + 'px';
+  }
+
+  // Recrea el "scroll" como degradado vertical en la imagen
+  const leo = document.getElementById('bg-leopard');
+  const mask = (el, grad) =&gt; { if (!el) return; el.style.webkitMaskImage = grad; el.style.maskImage = grad; };
+  if (leo) leo.style.opacity = 0.9;
+  mask(leo, 'linear-gradient(to bottom, transparent 0%, transparent 18%, black 42%)');
+  const blobs = document.querySelector('.bg-blobs');
+  mask(blobs, 'linear-gradient(to bottom, black 0%, black 14%, transparent 38%)');
+  const tint = document.querySelector('.bg-tint');
+  if (tint) tint.style.opacity = '1';
+  mask(tint, 'linear-gradient(to bottom, transparent 0%, transparent 22%, black 48%)');
+})();</pre>
+
+<h3>2 · Scroll uniforme</h3>
+<pre>(() =&gt; {
+  const dur = 30000; // ms en recorrer toda la página
+  const end = document.documentElement.scrollHeight - window.innerHeight;
+  const t0 = performance.now();
+  (function step(t) {
+    const p = Math.min((t - t0) / dur, 1);
+    window.scrollTo(0, end * p);
+    if (p &lt; 1) requestAnimationFrame(step);
+  })(t0);
+})();</pre>
+</details>
+
+</body>
+</html>

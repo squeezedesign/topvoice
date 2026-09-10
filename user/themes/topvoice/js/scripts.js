@@ -188,20 +188,6 @@ async function setupLeopard() {
         window.__leopardPause  = () => { leopardSuspended = true;  stopTicker(); };
         window.__leopardResume = () => { leopardSuspended = false; if (heroActive) startTicker(); };
 
-        // Capture helper (see captura-fondo.html): force the leopard into its fully
-        // settled state — spots formed, tile at 800px from the origin, opacity up —
-        // independent of scroll progress, so a frozen full-page screenshot shows it.
-        window.__leopardSettle = () => {
-            leopardSuspended = true;
-            stopTicker();
-            spotEntry.scale = 1;
-            applySize(800);
-            pat.setAttribute('x', 0);
-            pat.setAttribute('y', 0);
-            gsap.set(bgLeopard, { opacity: 0.9 });
-            paintSpots();
-        };
-
         ScrollTrigger.create({
             trigger:             '#hero',
             start:               'top top+=50',

@@ -1437,6 +1437,14 @@ body.is-video-playing .hero-circle::after {
     margin: 0;
     padding: 0;
 }
+
+/* Cap (captcha de prova-de-treball, mode invisible): el widget ja va
+   amb display:none, però amaguem també el wrapper del plugin perquè
+   no consumeixi el gap del flex. */
+.contact-form .cap-field {
+    display: none;
+}
+
 .contact-form .form-errors {
     color: var(--pink);
     font-size: 0.82rem;

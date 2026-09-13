@@ -53,5 +53,12 @@
 <script src="{{ theme_url }}/js/vendor/gsap.min.js"></script>
 <script src="{{ theme_url }}/js/vendor/ScrollTrigger.min.js"></script>
 <script src="{{ theme_url }}/js/scripts.js"></script>
+
+{# The theme hardcodes its own assets, but plugin JS still arrives through Grav's
+   Assets pipeline, so the 'bottom' group has to be emitted or it is dropped
+   silently. The Cap captcha on the contact form depends on it. Only this group
+   is printed on purpose: assets.css() would inject the Form plugin's
+   form-styles.css and restyle the contact form. #}
+{{ assets.js('bottom')|raw }}
 </body>
 </html>

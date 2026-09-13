@@ -518,7 +518,10 @@ $(function () {
             });
             const html = await res.text();
             const doc  = new DOMParser().parseFromString(html, 'text/html');
-            const hasError = doc.querySelector('.notices.alert-danger, .form-errors');
+            // The Form plugin renders failures as <div class="notices error red">,
+            // not .alert-danger — so a server-side rejection (honeypot, captcha,
+            // validation) used to be reported to the user as a successful send.
+            const hasError = doc.querySelector('.notices.error, .notices.alert-danger, .form-errors');
             if (res.ok && !hasError) {
                 form.reset();
                 refreshNonce(doc);
@@ -529,6 +532,7 @@ $(function () {
         } catch (_) {
             show('err', msgs.err);
         } finally {
+            resetCap();
             btn.disabled = false;
             btn.value = originalLabel;
             btn.textContent = originalLabel;
@@ -537,10 +541,23 @@ $(function () {
         }
     });
 
+    // Cap tokens are single-use and form.reset() clears the hidden input, so the
+    // widget has to be re-armed after each attempt or the next send carries a
+    // stale token. The plugin only does this automatically for its own
+    // GravFormXHR submit path, and this theme uses its own fetch() above.
+    function resetCap() {
+        const cap = form.querySelector('[data-captcha-provider="cap"]');
+        if (cap && typeof cap.__capReset === 'function') cap.__capReset();
+    }
+
     function refreshNonce(doc) {
-        const newNonce = doc.querySelector('input[name="__form-nonce"]');
+        // The Form plugin renders this field as "form-nonce"; the old
+        // "__form-nonce" selector matched nothing, so the nonce was never
+        // actually refreshed. Both names are accepted to stay version-proof.
+        const nonceSel = 'input[name="form-nonce"], input[name="__form-nonce"]';
+        const newNonce = doc.querySelector(nonceSel);
         if (newNonce) {
-            const cur = form.querySelector('input[name="__form-nonce"]');
+            const cur = form.querySelector(nonceSel);
             if (cur) cur.value = newNonce.value;
         }
         const newUid = doc.querySelector('input[name="__unique_form_id__"]');

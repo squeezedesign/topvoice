@@ -6,3 +6,9 @@ cache:
   enabled: true
   check:
     method: file
+
+pages:
+  # Render Twig on every request instead of serving it from the content cache.
+  # The home page's concerts block filters by "now", so a cached render froze
+  # the date and kept past concerts on screen until something cleared the cache.
+  never_cache_twig: true

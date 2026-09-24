@@ -41,6 +41,11 @@ user/themes/quark/
 # ── Config: gestionada 100% des de l'admin (per-servidor, NO versionada) ─
 user/config/
 
+# La config per entorn (user/env/<hostname>/) SÍ es versiona: hi viuen els
+# ajustos que han de diferir a producció (errors amagats, cache activada).
+# Els YAML dels plugins, en canvi, contenen credencials — mai al repo.
+user/env/*/config/plugins/
+
 # ── OS ────────────────────────────────────────────────────────────
 .DS_Store
 Thumbs.db

@@ -1,0 +1,41 @@
+{# Legal pages (cookies, privacy). Standalone on purpose: scripts.js assumes the
+   home page sections exist, so this template skips it and the nav/offcanvas. #}
+{% set active_lang = grav.language.getActive() ?: 'ca' %}
+{% set raw_route = page.rawRoute() %}
+<!DOCTYPE html>
+<html lang="{{ active_lang }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} · {{ site.title }}</title>
+  <meta name="robots" content="noindex, follow">
+  <link rel="icon" type="image/png" href="{{ theme_url }}/images/favicon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="{{ theme_url }}/images/favicon/favicon.svg">
+  <link rel="shortcut icon" href="{{ theme_url }}/images/favicon/favicon.ico">
+  <link rel="stylesheet" href="{{ theme_url }}/css/style.css">
+  {% for lang in grav.languages.supported %}
+  <link rel="alternate" hreflang="{{ lang }}" href="{{ page.translateUrl(lang) }}">
+  {% endfor %}
+</head>
+<body>
+
+<div id="site-bg" aria-hidden="true">
+  <div class="bg-blobs"></div>
+  <div class="bg-tint"></div>
+</div>
+
+<main class="legal-wrap">
+  <div class="legal-top">
+    <a href="{{ base_url ?: '/' }}">← {{ 'SITE.LEGAL.BACK'|t }}</a>
+    <div class="legal-lang">
+      <a href="{{ base_url_simple ~ raw_route }}" class="{{ active_lang == 'ca' ? 'active' : '' }}">CA</a>
+      <a href="{{ base_url_simple ~ '/es' ~ raw_route }}" class="{{ active_lang == 'es' ? 'active' : '' }}">ES</a>
+    </div>
+  </div>
+
+  <h1>{{ page.title }}</h1>
+  {{ page.content|raw }}
+</main>
+
+</body>
+</html>

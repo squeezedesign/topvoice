@@ -334,7 +334,7 @@ function playPromo() {
     const id   = wrap ? wrap.dataset.videoId : null;
     if (!id) return;
     const iframe = document.createElement('iframe');
-    iframe.src             = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0';
+    iframe.src             = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
     iframe.allow           = 'autoplay; fullscreen';
     iframe.allowFullscreen = true;
     wrap.innerHTML = '';

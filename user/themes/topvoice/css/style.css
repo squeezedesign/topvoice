@@ -1613,6 +1613,69 @@ footer {
 
 footer p { margin: 0; }
 
+.footer-legal {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .25rem 1.25rem;
+}
+
+.footer-legal a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.2s ease;
+}
+
+.footer-legal a:hover {
+    color: var(--primary);
+}
+
+/* LEGAL PAGES — standalone template (legal.html.twig), no scroll scenes */
+.legal-wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 4rem;
+    line-height: 1.7;
+}
+
+.legal-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    font-size: .85rem;
+}
+
+.legal-top a { color: var(--muted); text-decoration: none; }
+.legal-top a:hover, .legal-top a.active { color: var(--primary); }
+.legal-lang { display: flex; gap: .75rem; }
+
+.legal-wrap h1 { font-size: clamp(1.8rem, 5vw, 2.6rem); line-height: 1.15; margin: 0 0 1.5rem; }
+.legal-wrap h2 { font-size: 1.25rem; margin: 2.5rem 0 .75rem; }
+.legal-wrap a { color: var(--primary); }
+
+.legal-wrap table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .85rem;
+    margin: 1rem 0;
+    display: block;
+    overflow-x: auto;
+}
+
+.legal-wrap th, .legal-wrap td {
+    text-align: left;
+    vertical-align: top;
+    padding: .6rem .75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.legal-wrap th { color: var(--muted); font-weight: 600; }
+
 .footer-credit {
     opacity: 0.7;
     font-size: .65rem;

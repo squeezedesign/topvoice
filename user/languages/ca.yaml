@@ -16,6 +16,9 @@ SITE:
     ES: "ES"
   FOOTER:
     COPYRIGHT: "© 2026 Top Voice · Cor Modern Tarragona"
+    COOKIES: "Política de galetes"
+  LEGAL:
+    BACK: "Tornar a l'inici"
   FORM:
     NOMBRE: "Nom"
     EMAIL: "Email"

@@ -1672,7 +1672,11 @@ footer p { margin: 0; }
     max-width: 760px;
     margin: 0 auto;
     padding: 3rem 1.5rem 4rem;
-    line-height: 1.7;
+    /* Same body text as the home sections (.about-text) */
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--muted);
 }
 
 .legal-top {
@@ -1681,21 +1685,32 @@ footer p { margin: 0; }
     align-items: center;
     gap: 1rem;
     margin-bottom: 3rem;
-    font-size: .85rem;
+    font-size: .8rem;
+    font-weight: 400;
 }
 
 .legal-top a { color: var(--muted); text-decoration: none; }
 .legal-top a:hover, .legal-top a.active { color: var(--primary); }
 .legal-lang { display: flex; gap: .75rem; }
 
-.legal-wrap h1 { font-size: clamp(1.8rem, 5vw, 2.6rem); line-height: 1.15; margin: 0 0 1.5rem; }
-.legal-wrap h2 { font-size: 1.25rem; margin: 2.5rem 0 .75rem; }
+.legal-wrap h1 { font-size: clamp(1.5rem, 3.5vw, 2.1rem); font-weight: 800; line-height: 1.15; color: var(--text); margin: 0 0 1.25rem; }
+.legal-wrap h2 { font-size: 1.05rem; font-weight: 700; color: var(--text); margin: 2.25rem 0 .6rem; }
+.legal-wrap strong { font-weight: 600; color: var(--text); }
 .legal-wrap a { color: var(--primary); }
+
+/* The global reset zeroes margins and padding; give the prose its rhythm back. */
+.legal-wrap p,
+.legal-wrap ul,
+.legal-wrap ol { margin: 0 0 1rem; }
+.legal-wrap ul,
+.legal-wrap ol { padding-left: 1.5rem; }
+.legal-wrap li { margin-bottom: .35rem; }
+.legal-wrap li::marker { color: var(--primary); }
 
 .legal-wrap table {
     width: 100%;
     border-collapse: collapse;
-    font-size: .85rem;
+    font-size: .8rem;
     margin: 1rem 0;
     display: block;
     overflow-x: auto;

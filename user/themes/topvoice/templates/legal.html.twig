@@ -13,7 +13,7 @@
   <link rel="icon" type="image/png" href="{{ theme_url }}/images/favicon/favicon-96x96.png" sizes="96x96">
   <link rel="icon" type="image/svg+xml" href="{{ theme_url }}/images/favicon/favicon.svg">
   <link rel="shortcut icon" href="{{ theme_url }}/images/favicon/favicon.ico">
-  <link rel="stylesheet" href="{{ theme_url }}/css/style.css">
+  <link rel="stylesheet" href="{{ 'css/style.css'|theme_asset }}">
   {% for lang in grav.languages.supported %}
   <link rel="alternate" hreflang="{{ lang }}" href="{{ page.translateUrl(lang) }}">
   {% endfor %}

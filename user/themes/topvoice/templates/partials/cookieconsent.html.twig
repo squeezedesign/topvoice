@@ -111,8 +111,8 @@
     }
   }
 } %}
-<link rel="stylesheet" href="{{ theme_url }}/css/cookieconsent-3.0.0.css" media="print" onload="this.media='all';this.onload=null">
-<script src="{{ theme_url }}/js/vendor/cookieconsent-3.0.0.umd.js"></script>
+<link rel="stylesheet" href="{{ 'css/cookieconsent-3.0.0.css'|theme_asset }}" media="print" onload="this.media='all';this.onload=null">
+<script src="{{ 'js/vendor/cookieconsent-3.0.0.umd.js'|theme_asset }}"></script>
 <script>
 (function () {
   // Own gtag: pushes to the same dataLayer as the one in gtm_head, and keeps

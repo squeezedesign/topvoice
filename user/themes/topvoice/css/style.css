@@ -1452,17 +1452,17 @@ body.is-video-playing .hero-circle::after {
 .contact-form .privacy-field .form-input-wrapper {
     display: flex;
     align-items: flex-start;
-    gap: .6rem;
-    font-size: .85rem;
+    gap: .5rem;
+    font-size: .75rem;
     color: var(--muted);
     line-height: 1.5;
 }
 
 .contact-form .privacy-field input[type="checkbox"] {
     flex-shrink: 0;
-    width: 1.05rem;
-    height: 1.05rem;
-    margin-top: .15rem;
+    width: .95rem;
+    height: .95rem;
+    margin-top: .1rem;
     accent-color: var(--primary);
     cursor: pointer;
 }
@@ -1471,8 +1471,9 @@ body.is-video-playing .hero-circle::after {
 .contact-form .privacy-field label p { display: inline; margin: 0; }
 .contact-form .privacy-field .required { display: none; }
 
+/* Same colour as the sentence, told apart only by the underline */
 .contact-form .privacy-field a {
-    color: var(--text);
+    color: inherit;
     text-decoration: underline;
     text-underline-offset: 2px;
 }

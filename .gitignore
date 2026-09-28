@@ -28,7 +28,6 @@ SECURITY.md
 
 # ── Contenido gestionado por SFTP ────────────────────────────────
 user/pages/*
-!user/pages/error/
 user/accounts/
 user/data/
 user/plugins/*

@@ -12,3 +12,6 @@ license: MIT
 
 dependencies:
   - { name: grav, version: '>=1.7.0' }
+
+# Google Tag Manager container. Empty disables GTM and the cookie banner.
+gtm_id: GTM-5D6CW423

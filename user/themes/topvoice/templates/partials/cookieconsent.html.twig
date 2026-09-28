@@ -1,0 +1,173 @@
+{# Cookie banner: vanilla-cookieconsent 3.0.0, ported from the egluu October
+   plugin without its backend. Only one optional category, analytics, because GA
+   via GTM is the only non-technical cookie on the site; YouTube already loads
+   from youtube-nocookie.com on click. Nothing to ask without GTM, so no banner. #}
+{% if theme.gtm_id|default('') %}
+{% set cc_lang = grav.language.getActive() ?: 'ca' %}
+{% set cc_policy = base_url ~ '/politica-cookies' %}
+{% set cc_texts = {
+  ca: {
+    consentModal: {
+      title: 'Galetes',
+      description: "Fem servir galetes analítiques per saber com es fa servir el web i millorar-lo. Només les activarem si ho acceptes. Pots canviar d'opinió quan vulguis des de «Configura les galetes», al peu de pàgina.",
+      acceptAllBtn: 'Accepta-ho tot',
+      acceptNecessaryBtn: 'Rebutja-ho tot',
+      showPreferencesBtn: 'Gestiona les preferències',
+      footer: '<a href="' ~ cc_policy ~ '">Política de galetes</a>'
+    },
+    preferencesModal: {
+      title: 'Preferències de galetes',
+      acceptAllBtn: 'Accepta-ho tot',
+      acceptNecessaryBtn: 'Rebutja-ho tot',
+      savePreferencesBtn: 'Desa les preferències',
+      closeIconLabel: 'Tanca',
+      serviceCounterLabel: 'Serveis',
+      sections: [
+        {
+          title: 'Ús de galetes',
+          description: 'Aquest web fa servir galetes tècniques, necessàries perquè funcioni, i, si ho acceptes, galetes analítiques de Google Analytics per saber quantes persones ens visiten i quines seccions interessen més.'
+        },
+        {
+          title: 'Galetes estrictament necessàries <span class="pm__badge">Sempre actives</span>',
+          description: "Són imprescindibles perquè el web funcioni i per recordar les teves preferències de galetes. No es poden desactivar.",
+          linkedCategory: 'necessary',
+          cookieTable: {
+            headers: { name: 'Nom', domain: 'Domini', description: 'Descripció', expiration: 'Caducitat' },
+            body: [
+              { name: 'grav-site-*', domain: 'topvoicetgn.com', description: 'Sessió tècnica del web (formulari de contacte).', expiration: 'Sessió' },
+              { name: 'cc_cookie', domain: 'topvoicetgn.com', description: 'Desa la teva elecció sobre les galetes.', expiration: '6 mesos' }
+            ]
+          }
+        },
+        {
+          title: 'Galetes analítiques',
+          description: 'Google Analytics recull informació estadística i agregada sobre les visites: pàgines vistes, durada, dispositiu o procedència aproximada.',
+          linkedCategory: 'analytics',
+          cookieTable: {
+            headers: { name: 'Nom', domain: 'Domini', description: 'Descripció', expiration: 'Caducitat' },
+            body: [
+              { name: '_ga', domain: 'Google Analytics', description: 'Distingeix visitants de manera anònima.', expiration: '2 anys' },
+              { name: '_ga_*', domain: 'Google Analytics', description: "Manté l'estat de la sessió de visita.", expiration: '2 anys' }
+            ]
+          }
+        },
+        {
+          title: 'Més informació',
+          description: 'Consulta la nostra <a class="cc__link" href="' ~ cc_policy ~ '">política de galetes</a>.'
+        }
+      ]
+    }
+  },
+  es: {
+    consentModal: {
+      title: 'Cookies',
+      description: 'Usamos cookies analíticas para saber cómo se usa la web y mejorarla. Solo las activaremos si lo aceptas. Puedes cambiar de opinión cuando quieras desde «Configurar cookies», en el pie de página.',
+      acceptAllBtn: 'Aceptar todo',
+      acceptNecessaryBtn: 'Rechazar todo',
+      showPreferencesBtn: 'Gestionar preferencias',
+      footer: '<a href="' ~ cc_policy ~ '">Política de cookies</a>'
+    },
+    preferencesModal: {
+      title: 'Preferencias de cookies',
+      acceptAllBtn: 'Aceptar todo',
+      acceptNecessaryBtn: 'Rechazar todo',
+      savePreferencesBtn: 'Guardar preferencias',
+      closeIconLabel: 'Cerrar',
+      serviceCounterLabel: 'Servicios',
+      sections: [
+        {
+          title: 'Uso de cookies',
+          description: 'Esta web usa cookies técnicas, necesarias para que funcione, y, si lo aceptas, cookies analíticas de Google Analytics para saber cuántas personas nos visitan y qué secciones interesan más.'
+        },
+        {
+          title: 'Cookies estrictamente necesarias <span class="pm__badge">Siempre activas</span>',
+          description: 'Son imprescindibles para que la web funcione y para recordar tus preferencias de cookies. No se pueden desactivar.',
+          linkedCategory: 'necessary',
+          cookieTable: {
+            headers: { name: 'Nombre', domain: 'Dominio', description: 'Descripción', expiration: 'Caducidad' },
+            body: [
+              { name: 'grav-site-*', domain: 'topvoicetgn.com', description: 'Sesión técnica de la web (formulario de contacto).', expiration: 'Sesión' },
+              { name: 'cc_cookie', domain: 'topvoicetgn.com', description: 'Guarda tu elección sobre las cookies.', expiration: '6 meses' }
+            ]
+          }
+        },
+        {
+          title: 'Cookies analíticas',
+          description: 'Google Analytics recoge información estadística y agregada sobre las visitas: páginas vistas, duración, dispositivo o procedencia aproximada.',
+          linkedCategory: 'analytics',
+          cookieTable: {
+            headers: { name: 'Nombre', domain: 'Dominio', description: 'Descripción', expiration: 'Caducidad' },
+            body: [
+              { name: '_ga', domain: 'Google Analytics', description: 'Distingue visitantes de forma anónima.', expiration: '2 años' },
+              { name: '_ga_*', domain: 'Google Analytics', description: 'Mantiene el estado de la sesión de visita.', expiration: '2 años' }
+            ]
+          }
+        },
+        {
+          title: 'Más información',
+          description: 'Consulta nuestra <a class="cc__link" href="' ~ cc_policy ~ '">política de cookies</a>.'
+        }
+      ]
+    }
+  }
+} %}
+<link rel="stylesheet" href="{{ theme_url }}/css/cookieconsent-3.0.0.css" media="print" onload="this.media='all';this.onload=null">
+<script src="{{ theme_url }}/js/vendor/cookieconsent-3.0.0.umd.js"></script>
+<script>
+(function () {
+  // Own gtag: pushes to the same dataLayer as the one in gtm_head, and keeps
+  // working if that partial is ever dropped.
+  function gtag() { (window.dataLayer = window.dataLayer || []).push(arguments); }
+
+  // Send the full Consent Mode state on every load with a valid choice
+  // (onConsent) and on every change, in both directions. Sending it only on
+  // accept leaves GTM with the unresolved default and a 0% consent rate report.
+  // Ads and personalisation are not used at all, so they stay denied.
+  function syncConsentMode() {
+    var analytics = CookieConsent.acceptedCategory('analytics') ? 'granted' : 'denied';
+    gtag('consent', 'update', {
+      analytics_storage:       analytics,
+      ad_storage:              'denied',
+      ad_user_data:            'denied',
+      ad_personalization:      'denied',
+      functionality_storage:   'denied',
+      personalization_storage: 'denied'
+    });
+  }
+
+  document.documentElement.classList.add('cc--topvoice');
+
+  CookieConsent.run({
+    revision: 1,
+    cookie: { expiresAfterDays: 182 },
+    autoClearCookies: true,
+    lazyHtmlGeneration: true,
+    mode: 'opt-in',
+    guiOptions: {
+      consentModal:     { layout: 'box', position: 'bottom left', equalWeightButtons: true, flipButtons: false },
+      preferencesModal: { layout: 'box', equalWeightButtons: true, flipButtons: false }
+    },
+    onConsent: syncConsentMode,
+    onChange: function (e) {
+      syncConsentMode();
+      // GA is already running once granted; withdrawing needs a reload to stop it.
+      var revoked = (e.changedCategories || []).some(function (c) {
+        return !CookieConsent.acceptedCategory(c);
+      });
+      if (revoked) window.location.reload();
+    },
+    categories: {
+      necessary: { readOnly: true, enabled: true },
+      analytics: {
+        enabled: false,
+        autoClear: { cookies: [{ name: /^_ga/ }, { name: '_gid' }] }
+      }
+    },
+    language: {
+      default: '{{ cc_lang }}',
+      translations: { '{{ cc_lang }}': {{ (cc_texts[cc_lang] ?? cc_texts.ca)|json_encode(constant('JSON_UNESCAPED_UNICODE') b-or constant('JSON_UNESCAPED_SLASHES') b-or constant('JSON_HEX_TAG'))|raw }} }
+    }
+  });
+})();
+</script>
+{% endif %}

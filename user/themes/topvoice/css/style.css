@@ -1952,3 +1952,44 @@ footer p { margin: 0; }
     .lb-prev { left: 0.5rem; }
     .lb-next { right: 0.5rem; }
 }
+
+/* COOKIE BANNER — vanilla-cookieconsent 3 variables, site palette */
+.cc--topvoice #cc-main {
+    color-scheme: dark;
+    --cc-font-family: 'Outfit', sans-serif;
+    --cc-modal-border-radius: 1rem;
+    --cc-btn-border-radius: 999px;
+    --cc-bg: var(--dark2);
+    --cc-primary-color: var(--text);
+    --cc-secondary-color: var(--muted);
+    --cc-btn-primary-bg: var(--primary);
+    --cc-btn-primary-color: #fff;
+    --cc-btn-primary-border-color: var(--primary);
+    --cc-btn-primary-hover-bg: #a52fc4;
+    --cc-btn-primary-hover-color: #fff;
+    --cc-btn-primary-hover-border-color: #a52fc4;
+    --cc-btn-secondary-bg: var(--dark3);
+    --cc-btn-secondary-color: var(--text);
+    --cc-btn-secondary-border-color: var(--dark3);
+    --cc-btn-secondary-hover-bg: #2a2a44;
+    --cc-btn-secondary-hover-color: #fff;
+    --cc-btn-secondary-hover-border-color: #2a2a44;
+    --cc-separator-border-color: rgba(255, 255, 255, 0.08);
+    --cc-toggle-on-bg: var(--primary);
+    --cc-toggle-off-bg: #4a4a66;
+    --cc-toggle-on-knob-bg: #fff;
+    --cc-toggle-off-knob-bg: var(--dark2);
+    --cc-toggle-readonly-bg: #34344d;
+    --cc-toggle-readonly-knob-bg: var(--muted);
+    --cc-cookie-category-block-bg: var(--dark3);
+    --cc-cookie-category-block-border: var(--dark3);
+    --cc-cookie-category-block-hover-bg: #232338;
+    --cc-cookie-category-block-hover-border: #232338;
+    --cc-cookie-category-expanded-block-bg: transparent;
+    --cc-cookie-category-expanded-block-hover-bg: #232338;
+    --cc-overlay-bg: rgba(5, 5, 10, 0.75);
+    --cc-footer-bg: var(--dark);
+    --cc-footer-color: var(--muted);
+    --cc-footer-border-color: rgba(255, 255, 255, 0.06);
+    --cc-link-color: var(--primary);
+}

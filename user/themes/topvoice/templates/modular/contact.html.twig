@@ -57,6 +57,10 @@
   <footer>
     <p>{{ 'SITE.FOOTER.COPYRIGHT'|t }}</p>
     <div class="footer-legal">
+      {# Content pages ship by SFTP, apart from the theme: only link what is there. #}
+      {% if grav.pages.find('/politica-privacitat') %}
+      <a href="{{ base_url }}/politica-privacitat">{{ 'SITE.FOOTER.PRIVACY'|t }}</a>
+      {% endif %}
       <a href="{{ base_url }}/politica-cookies">{{ 'SITE.FOOTER.COOKIES'|t }}</a>
       {% if theme.gtm_id|default('') %}
       <a href="#" data-cc="show-preferencesModal">{{ 'SITE.FOOTER.COOKIE_SETTINGS'|t }}</a>

@@ -1445,6 +1445,40 @@ body.is-video-playing .hero-circle::after {
     display: none;
 }
 
+/* Privacy acceptance checkbox. The plugin also prints an empty label block
+   above it; the real label sits next to the input. */
+.contact-form .privacy-field .form-label { display: none; }
+
+.contact-form .privacy-field .form-input-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: .6rem;
+    font-size: .85rem;
+    color: var(--muted);
+    line-height: 1.5;
+}
+
+.contact-form .privacy-field input[type="checkbox"] {
+    flex-shrink: 0;
+    width: 1.05rem;
+    height: 1.05rem;
+    margin-top: .15rem;
+    accent-color: var(--primary);
+    cursor: pointer;
+}
+
+.contact-form .privacy-field label { cursor: pointer; }
+.contact-form .privacy-field label p { display: inline; margin: 0; }
+.contact-form .privacy-field .required { display: none; }
+
+.contact-form .privacy-field a {
+    color: var(--text);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.contact-form .privacy-field a:hover { color: var(--primary); }
+
 .contact-form .form-errors {
     color: var(--pink);
     font-size: 0.82rem;

@@ -1,0 +1,27 @@
+name: Admin Next Català
+slug: admin2-ca
+type: plugin
+version: 1.0.0
+description: Catalan translation for the Admin Next interface (admin2).
+icon: language
+author:
+  name: Squeeze Design
+  email: info@squeezedesign.es
+license: MIT
+dependencies:
+  - { name: grav, version: '>=2.0.0' }
+  - { name: admin2 }
+
+form:
+  validation: loose
+  fields:
+    enabled:
+      type: toggle
+      label: PLUGIN_ADMIN.PLUGIN_STATUS
+      highlight: 1
+      default: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool

@@ -32,6 +32,7 @@ user/accounts/
 user/data/
 user/plugins/*
 !user/plugins/topvoice-hooks/
+!user/plugins/admin2-ca/
 user/images/
 
 # ── Temas de terceros (instalados con Grav, no nuestro código) ────

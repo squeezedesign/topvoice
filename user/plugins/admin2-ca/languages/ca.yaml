@@ -1,0 +1,2318 @@
+ICU:
+    ADMIN_NEXT:
+        ADD_PAGE: 'Afegeix una pàgina'
+        CANCEL: Cancel·la
+        CLEAR_SEARCH: 'Neteja la cerca'
+        CLOSE: Tanca
+        COLLAPSE_SIDEBAR: 'Redueix la barra lateral'
+        EXPAND_SIDEBAR: 'Amplia la barra lateral'
+        CONFIRM: Confirma
+        CONFIRM_DELETE: 'Suprimir "{title}" a {route}?'
+        DELETE: Suprimeix
+        DONE: Fet
+        EDIT: Edita
+        LOADING: "S'està carregant..."
+        NO_CHANGES: 'No hi ha canvis per desar'
+        RETRY: 'Torna-ho a provar'
+        SAVE: Desa
+        SAVING: "S'està desant..."
+        SEARCH: Cerca
+        SIGN_OUT: 'Tanca la sessió'
+        TOGGLE_DARK_MODE: 'Alterna el mode fosc'
+        TOGGLE_MENU: 'Alterna el menú'
+        UNSAVED_CHANGES: 'Canvis sense desar'
+        NOTICES:
+            HEADING: '{count, plural, one {Avís} other {Avisos}}'
+            SHOW: 'Mostra els avisos'
+            HIDE: 'Amaga els avisos'
+        UNSAVED_CHANGES_DIALOG:
+            LEAVE_MESSAGE: 'Tens canvis sense desar. Vols sortir igualment?'
+            LEAVE: Surt
+            STAY: "Queda't"
+            SWITCH_LANGUAGE_MESSAGE: "Tens canvis sense desar. Vols canviar d'idioma igualment?"
+            SWITCH_LANGUAGE: Canvia
+        VALIDATION:
+            FIELD_REQUIRED: '{label} és obligatori'
+            REQUIRED_GENERIC: 'Aquest camp és obligatori'
+            FORM_HAS_ERRORS: '{count, plural, one {# camp necessita la teva atenció} other {# camps necessiten la teva atenció}}'
+        SECURITY_CHECK:
+            USER_FOLDER_EXPOSED_TITLE: "El teu servidor web no aplica les regles d'accés de Grav"
+            USER_FOLDER_EXPOSED_BODY: "El teu servidor web no aplica les regles d'accés recomanades per Grav, de manera que es pot accedir directament per web als fitxers de user/. Val la pena reforçar-ho, ja que alguns plugins hi desen dades."
+            STORAGE_EXPOSED_BODY: "El servidor web ha servit fitxers de prova des de directoris que haurien de ser privats. Els tipus de fitxer llistats a continuació poden exposar trameses desades, còpies de seguretat o fitxers temporals. Demana al teu proveïdor d'allotjament que bloquegi l'accés directe, o mou l'emmagatzematge privat fora de l'arrel web."
+            USER_FOLDER_EXPOSED_LEARN_MORE: 'Com solucionar-ho'
+            STORAGE_EXPOSED_TITLE: "Es poden baixar d'aquest lloc fitxers que haurien de ser privats"
+            STORAGE_EXPOSED_COUNT: '{n, plural, one {# tipus de fitxer} other {# tipus de fitxer}}'
+            STORAGE_EXPOSED_TMP: 'Els fitxers de prova a tmp/ es podien baixar, mentre que les altres carpetes estaven bloquejades. Les regles del teu servidor probablement són anteriors a Grav 2.1.7, que va afegir tmp/ a la llista de carpetes bloquejades. Afegeix tmp a aquesta llista al teu .htaccess, o a la configuració de nginx, Caddy o IIS, perquè coincideixi amb les regles que inclou Grav.'
+            STORAGE_EXPOSED_BY_TYPE: "Alguns tipus de fitxer estaven bloquejats en aquestes carpetes mentre que d'altres es podien baixar. Això sol significar que alguna cosa se situa davant les regles de Grav, com ara nginx servint fitxers estàtics abans que Apache, que respon a tipus de fitxer habituals com .zip abans que es comprovin les regles. Bloqueja també aquestes carpetes a la configuració d'aquesta capa."
+            STORAGE_EXPOSED_ALL: "Tots els fitxers de prova es podien baixar, per la qual cosa el teu servidor web no aplica en absolut les regles d'accés de Grav. A Apache, comprova que AllowOverride permeti que el .htaccess del lloc tingui efecte. A nginx, Caddy o IIS, afegeix les regles de seguretat de la carpeta webserver-configs de Grav."
+            STORAGE_EXPOSED_CDN: "Si el lloc és darrere d'una CDN com Cloudflare, buida'n la memòria cau després de solucionar-ho. Les còpies que ja té emmagatzemades es podran continuar baixant fins que ho facis."
+            COLLAPSE: Redueix
+            SHOW_DETAILS: 'Mostra els detalls'
+            SNOOZE: Ajorna
+            SNOOZE_HINT: 'Amaga aquest avís durant 24 hores. Tornarà abans si es troben fitxers diferents.'
+        DASHBOARD:
+            TITLE: Tauler
+            CUSTOMIZE: Personalitza
+            CUSTOMIZE_TITLE: 'Personalitza el tauler'
+            EDIT_HINT: 'Mode de personalització — arrossega, redimensiona, amaga ginys i després desa.'
+            PRESETS: Preajustos
+            SAVE_SITE_DEFAULT: 'Desa com a predeterminat del lloc'
+            RESET_LAYOUT: 'Restableix el meu disseny'
+            ADD_WIDGET: 'Afegeix un giny'
+            HIDE_WIDGET: 'Amaga el giny'
+            PICKER_TITLE: 'Afegeix un giny'
+            PICKER_SUBTITLE: 'Tria un giny per tornar-lo a afegir al teu tauler.'
+            PICKER_EMPTY: 'Tots els ginys disponibles ja són al teu tauler.'
+            EMPTY: 'El teu tauler és buit'
+            EMPTY_HINT: 'Fes clic a la icona del llapis de dalt per afegir ginys'
+            LAYOUT_SAVED: 'Disseny del tauler desat'
+            SITE_LAYOUT_SAVED: 'Predeterminat del lloc desat'
+            LAYOUT_RESET: 'Disseny restablert al predeterminat'
+            WIDGETS:
+                STATS: 'Estadístiques del lloc'
+                POPULARITY: 'Visualitzacions de pàgina'
+                SYSTEM_HEALTH: 'Estat del sistema'
+                RECENT_PAGES: 'Pàgines recents'
+                TOP_PAGES: 'Pàgines principals'
+                BACKUPS: 'Còpies de seguretat'
+                NOTIFICATIONS: Notificacions
+                NEWS_FEED: 'Canal de notícies'
+            PRESET_DEFAULT: Predeterminat
+            PRESET_DEFAULT_DESC: 'Disseny recomanat pel servidor — esborra les teves personalitzacions.'
+            PRESET_MINIMAL: Mínim
+            PRESET_MINIMAL_DESC: 'Només estadístiques i pàgines recents.'
+            PRESET_COMPACT: Compacte
+            PRESET_COMPACT_DESC: 'Tots els ginys a la mida més petita que admet cadascun.'
+        PAGES:
+            TITLE: Pàgines
+            SEARCH_PLACEHOLDER: 'Cerca pàgines...'
+            NO_PAGES: "No s'ha trobat cap pàgina"
+            NO_SEARCH_RESULTS: 'Cap pàgina coincideix amb la teva cerca'
+            LOADING: "S'estan carregant les pàgines..."
+            REORDER_MOVE: Mou
+            REORDER_DONE: Fet
+            REORDER_EXIT_TITLE: 'Surt del mode de reordenació'
+            REORDER_START_TITLE: 'Reordena les pàgines'
+            STATS_TOTAL: '{n} en total'
+            STATS_PUBLISHED: '{n} publicades'
+            STATS_UNPUBLISHED: '{n} sense publicar'
+            REORDER_SAME_PARENT: "Només es poden reordenar pàgines sota el mateix pare. Fes servir la vista d'arbre per a moviments entre pares diferents."
+            MOVED: 'S''ha mogut "{title}"'
+            REORDERED: 'S''ha reordenat "{title}"'
+            MOVE_FAILED: "No s'ha pogut moure la pàgina"
+            REORDER_FAILED: "No s'ha pogut reordenar"
+            DELETED: 'S''ha suprimit "{title}"'
+            DELETE_FAILED: "No s'ha pogut suprimir la pàgina"
+            SAVED: 'Pàgina desada correctament'
+            SAVE_FAILED: "No s'ha pogut desar la pàgina"
+            VALIDATION_FAILED_FOR_FIELDS: "No s'ha pogut desar — aquests camps no són vàlids: {fields}"
+            VIEW_TREE: Arbre
+            VIEW_LIST: Llista
+            VIEW_COLUMNS: Columnes
+            FILTER:
+                BUTTON: Filtra
+                TITLE: 'Filtra les pàgines'
+                PUBLISHED: Publicada
+                VISIBLE: Visible
+                ROUTABLE: Enrutable
+                TEMPLATE: Plantilla
+                ALL: Totes
+                'YES': Sí
+                'NO': 'No'
+                ALL_TEMPLATES: 'Totes les plantilles'
+                CLEAR: Neteja
+            CHUNK_SIZE: Fragment
+            CHUNK_SIZE_HELP: 'Files a obtenir per sol·licitud a mesura que et desplaces. Els valors més alts triguen més la primera vegada, però redueixen les sol·licituds posteriors.'
+            LOADING_CHUNK: "S'estan carregant les files {from}–{to}…"
+            LOADED_OF: '{n, plural, one {# carregada} other {# carregades}} de {total}'
+            REORDER_LOADING: "Encara s'està carregant la llista completa — torna-ho a provar d'aquí un moment."
+            REORDER_LOADING_ALL: "S'estan carregant tots els fragments perquè la reordenació pugui afectar tota la llista…"
+            NO_MATCH: 'Cap pàgina coincideix amb la teva cerca'
+            SEARCH_MATCH_COUNT: '{n, plural, one {# coincidència} other {# coincidències}} a totes les pàgines'
+            SEARCH_SHOWING: 'Es mostren {shown} de {total} coincidències'
+            SEARCH_SHOW_MORE: "Mostra'n més"
+            COLUMN_EMPTY: Buit
+            HEADER_TITLE: Títol
+            HEADER_TEMPLATE: Plantilla
+            HEADER_STATUS: Estat
+            HEADER_MODIFIED: Modificat
+            HEADER_PARENT: Pare
+            PUBLISHED: Publicada
+            DRAFT: Esborrany
+            PUBLISH: Publica
+            UNPUBLISH: Despublica
+            STATUS:
+                SCHEDULED: Programada
+                EXPIRED: Caducada
+                SCHEDULED_FOR: 'Programada per publicar-se el {date}'
+                EXPIRED_ON: 'Sense publicar des del {date}'
+                TOGGLE_TITLE: '{action} ({status})'
+            SORT_ORDER: Ordre
+            SORT_TITLE_AZ: 'Títol A-Z'
+            SORT_TITLE_ZA: 'Títol Z-A'
+            SORT_NEWEST: 'Més recents'
+            SORT_OLDEST: 'Més antigues'
+            SORT_DATE_NEWEST: 'Data (més recents)'
+            RAW_HEADER: 'Capçalera de pàgina en brut (JSON)'
+            PAGE_INFO: 'Informació de la pàgina'
+            EDIT_PAGE: 'Edita la pàgina'
+            MODE_NORMAL: Normal
+            MODE_EXPERT: Expert
+            FRONTMATTER: Frontmatter
+            TWIG_BANNER:
+                LEAK_GATE_OFF: 'Aquesta pàgina conté marcatge Twig, però Twig al contingut està desactivat a tot el lloc, de manera que es mostra als visitants com a text sense format.'
+                LEAK_PAGE_OFF: 'Aquesta pàgina conté marcatge Twig, però Twig està desactivat per a aquesta pàgina, de manera que es mostra als visitants com a text sense format.'
+                RECENT_BLOCKS: "{n, plural, one {# construcció de Twig d'aquesta pàgina s'ha bloquejat recentment} other {# construccions de Twig d'aquesta pàgina s'han bloquejat recentment}}."
+                VIEW_REPORT: "Mostra l'informe"
+            INFO_PUBLISHED: Publicada
+            INFO_VISIBLE: 'Visible en navegació'
+            INFO_ROUTABLE: Enrutable
+            INFO_ROUTE: Ruta
+            INFO_SLUG: Slug
+            INFO_TEMPLATE: Plantilla
+            INFO_LANGUAGE: Idioma
+            INFO_ORDER: Ordre
+            INFO_DATE: Data
+            INFO_MODIFIED: Modificat
+            INFO_PUBLISH_ON: 'Publicar el'
+            INFO_UNPUBLISH_ON: 'Despublicar el'
+            PAGES_MILLER_VIEW:
+                DRAFT_UNPUBLISHED: 'Esborrany (sense publicar)'
+                FOLDER_ORDER: 'Ordre de carpeta'
+                VISIBLE: Visible
+                HAS_CHILDREN: 'Té subpàgines'
+                SUMMARY: Resum
+                DROP_HERE: 'Deixa-ho anar aquí'
+            PAGES_TREE_VIEW:
+                FAILED_TO_REORGANIZE_PAGES: "No s'han pogut reorganitzar les pàgines"
+                SEARCHING: "S'està cercant…"
+                NO_PAGES_MATCH: 'Cap pàgina coincideix amb "{query}"'
+            DELETE_PAGE: 'Suprimeix la pàgina'
+            PAGES_GRAV_ADMIN: 'Pàgines — Grav Admin'
+            ADD_PAGE: 'Afegeix una pàgina'
+            ADD_FOLDER: 'Afegeix una carpeta'
+            ADD_MODULE: 'Afegeix un mòdul'
+            ADD_MENU: 'Afegeix un menú'
+            EDIT:
+                TOGGLE_PAGE_NAVIGATOR: 'Alterna el navegador de pàgines'
+                PREVIEW_PAGE: 'Previsualitza la pàgina'
+                COPY_PAGE: 'Copia la pàgina'
+                DELETE_PAGE: 'Suprimeix la pàgina'
+                WRITE_YOUR_MARKDOWN_CONTENT_HERE: 'Escriu aquí el teu contingut en Markdown...'
+                CONNECTING_TO_COLLAB: "S'està connectant a la sessió de col·laboració…"
+                RESET_TRANSLATION: 'Restableix la traducció'
+                PAGE_PREVIEW: 'Previsualització de la pàgina'
+                PREVIEW_SHOWING_HOST_PAGE: 'mostrada a la seva pàgina pare'
+                INVALID_YAML_FRONTMATTER: 'Frontmatter YAML no vàlid'
+                INVALID_YAML_FRONTMATTER_FIX_SYNTAX: 'Frontmatter YAML no vàlid — corregeix la sintaxi abans de desar'
+                PAGE_SAVED_AND_MOVED: 'Pàgina desada i moguda'
+                SAVED_BY_PEER: '{user} ha desat aquesta pàgina'
+                SAVED_BY_PEER_ANON: 'Un altre usuari ha desat aquesta pàgina'
+                FAILED_TO_CREATE_TRANSLATION: "No s'ha pogut crear la traducció"
+                FAILED_TO_SYNC_TRANSLATION: "No s'ha pogut sincronitzar la traducció"
+                PAGE_DELETED: 'Pàgina suprimida'
+                PAGE_COPIED: 'Pàgina copiada'
+                PAGE_CHANGED_ELSEWHERE_SAVE_TO: "La pàgina s'ha modificat en un altre lloc — desa per sobreescriure-la o torna-la a carregar"
+                LOADING_PAGE: "S'està carregant la pàgina..."
+                FOLDER_NAME: 'Nom de la carpeta'
+                THE_FOLDER_NAME_ON_DISK_URL_SLUG: "El nom de la carpeta al disc (slug d'URL)"
+                FALLBACK: (alternativa)
+                NOT_TRANSLATED: 'No traduït:'
+                RESET_CONTENT_FROM: 'Restableix el contingut des de:'
+                OPEN_IN_NEW_TAB: 'Obre en una pestanya nova'
+                SAVE_AS_LANGUAGE: 'Desa com a {language}'
+                CREATE_LANGUAGE: 'Crea {language}'
+                EDIT_PAGE: 'Edita la pàgina'
+                FALLBACK_NOTICE: 'No existeix cap traducció a {active}. Es mostra l''alternativa {effective}. Fes servir "Desa com a {active}" per crear una traducció que puguis editar.'
+                PUBLISH_ON: 'Publicar el'
+                UNPUBLISH_ON: 'Despublicar el'
+                RESET_FROM: 'Restableix des de {language}'
+            NEW:
+                MY_NEW_PAGE: 'La meva pàgina nova'
+                FILTER_PAGES: 'Filtra les pàgines...'
+                FAILED_TO_LOAD_PAGE_TEMPLATES: "No s'han pogut carregar les plantilles de pàgina"
+                ADD_PAGE_GRAV_ADMIN: 'Afegeix una pàgina — Grav Admin'
+                PAGE_DETAILS: 'Detalls de la pàgina'
+                PAGE_TITLE: 'Títol de la pàgina'
+                FOLDER_NAME: 'Nom de la carpeta'
+                URL_SAFE_FOLDER_NAME_FOR_THIS_PAGE: 'Nom de carpeta segur per a URL per a aquesta pàgina'
+                PARENT_PAGE: 'Pàgina pare'
+                ROOT: '<root> /'
+                PAGE_TEMPLATE: 'Plantilla de pàgina'
+                LOADING_TEMPLATES: "S'estan carregant les plantilles..."
+                CHILD_TYPE_HINT: 'La pàgina pare suggereix "{template}" per a les seves subpàgines. Encara pots triar una plantilla diferent.'
+                STATUS_HELP: 'Els esborranys es desen però no són visibles al lloc fins que els publiques'
+                VISIBLE: Visible
+                CONTROLS_WHETHER_THIS_PAGE_APPEARS_IN: 'Controla si aquesta pàgina apareix als menús de navegació'
+                CONTINUE: Continua
+                PAGE_CREATED: 'Pàgina "{title}" creada'
+                FOLDER_CREATED: 'Carpeta "{title}" creada'
+                MODULE_CREATED: 'Mòdul "{title}" creat'
+                FAILED_TO_CREATE: "No s'ha pogut crear la pàgina"
+                ORDERING: Ordenació
+                ORDERING_HELP_MODULE: "Afegeix un prefix numèric que estableix la posició d'aquest mòdul dins del seu pare modular."
+                ORDERING_HELP_FOLDER: "Afegeix un prefix numèric que estableix la posició d'aquesta carpeta entre les seves germanes."
+                ORDERING_NONE: Cap
+                FOLDER_DETAILS: 'Detalls de la carpeta'
+            PAGE_COUNT: '{n, plural, one{# pàgina} other{# pàgines}}'
+            SUBTITLE: "Gestiona el contingut i l'estructura del teu lloc"
+        FIELDS:
+            CLEAR_DATE: 'Neteja la data'
+            SET_DATE_NOW: 'Estableix el moment actual'
+            REGENERATE_SLUG: 'Regenera automàticament a partir del títol de la pàgina'
+            ADD_ENTRY: 'Afegeix una entrada'
+            ADD_ITEM: 'Afegeix un element'
+            SELECTIZE_PLACEHOLDER: 'Escriu i prem Enter...'
+            SELECT_A_PAGE: 'Selecciona una pàgina...'
+            SELECT_AN_ICON: 'Selecciona una icona...'
+            NO_TAXONOMY_TYPES: 'No hi ha tipus de taxonomia configurats'
+            FILE_PICKER_SOON: 'Selector de fitxers — pròximament'
+            CRON:
+                AT_MINUTE: 'En el minut'
+                ON_DAY: 'En el dia'
+                CRON: 'Cron:'
+                MIN_HR_DOM_MON_DOW: 'min h dm mes ds'
+            CRON_STATUS:
+                FAILED_TO_LOAD_SCHEDULER_STATUS: "No s'ha pogut carregar l'estat del planificador"
+                PROCESS_UNAVAILABLE: "Les tasques no es poden executar des d'aquí en aquest servidor, perquè la funció proc_open de PHP està desactivada. Continuaran executant-se quan el planificador s'activi mitjançant cron o un webhook."
+                SCHEDULER_RUN_COMPLETED: 'Execució del planificador completada'
+                FAILED_TO_RUN_SCHEDULER: "No s'ha pogut executar el planificador"
+                LOADING_SCHEDULER_STATUS: "S'està carregant l'estat del planificador..."
+                SCHEDULER_STATUS: 'Estat del planificador'
+                NO_SCHEDULED_JOBS_REGISTERED: 'No hi ha tasques programades registrades.'
+                JOB_ID: 'ID de la tasca'
+                HEALTH_STATUS: 'Estat de salut'
+                STATUS: 'Estat:'
+                LAST_RUN: 'Darrera execució'
+                SCHEDULED_JOBS: 'Tasques programades'
+                QUEUE_SIZE: 'Mida de la cua:'
+                ACTIVE_TRIGGERS: 'Activadors actius'
+                CRON: 'Cron:'
+                NOT_CONFIGURED: 'NO CONFIGURAT'
+                WEBHOOK: 'Webhook:'
+                NOT_INSTALLED: 'NO INSTAL·LAT'
+                NOT_ENABLED: 'NO ACTIVAT'
+                NO_TRIGGERS_ACTIVE_ENABLE_WEBHOOKS_OR: 'Cap activador actiu! Activa els webhooks o configura el cron.'
+                RUNNING: "S'està executant..."
+                RUN_ALL: 'Executa-ho tot'
+                RUN_ALL_HELP: 'Executa ara totes les tasques activades, sigui quina sigui la seva programació.'
+                RUN_PENDING: 'Executa les pendents'
+                RUN_NOW: 'Executa aquesta tasca ara'
+                PENDING: Pendent
+                NEVER: Mai
+                BY_HAND: manualment
+                MANUAL_RUN_HELP: "Executa les pendents executa les tasques que han deixat passar la seva darrera hora programada, cosa que és el que vols en un lloc sense entrada de cron. Les execucions que inicies aquí es registren com a manuals, i no compten per a l'estat del cron de dalt."
+            CUSTOM_FIELD_WRAPPER:
+                LOADING_CUSTOM_FIELD: "S'està carregant el camp personalitzat..."
+            DATE_FORMAT:
+                SELECT_FORMAT: '— Selecciona el format —'
+                FORMAT_STRING: 'Cadena de format:'
+                CUSTOM: Personalitzat…
+                CUSTOM_PLACEHOLDER: 'P. ex.: Y-m-d H:i'
+                PREVIEW: 'Previsualització:'
+            ICON_PICKER:
+                SEARCH_ICONS: 'Cerca icones...'
+                NO_ICONS_FOUND: "No s'ha trobat cap icona"
+                SHOWING_FIRST_200_RESULTS_TYPE_TO_NARROW: 'Es mostren els primers 200 resultats — escriu per refinar'
+                FAMILY_ALL: Totes
+                FAMILY_SOLID: Sòlida
+                FAMILY_REGULAR: Regular
+                FAMILY_BRANDS: Marques
+            PAGE_EXISTS:
+                CHECKING_PAGE: "S'està comprovant la pàgina..."
+            PAGE_MEDIA:
+                PAGE_MEDIA_UNAVAILABLE: 'Multimèdia de la pàgina no disponible'
+            PAGES:
+                FILTER_PAGES: 'Filtra les pàgines...'
+                ROOT: '/ (arrel)'
+            PERMISSIONS:
+                NO_PERMISSIONS_CONFIGURED: 'No hi ha permisos configurats'
+                NOT_SET: 'No definit'
+            TABS:
+                NO_FIELDS_MATCH_YOUR_FILTER: 'Cap camp coincideix amb el teu filtre'
+            THEME_SELECT:
+                LOADING_THEMES: "S'estan carregant els temes..."
+                SELECT_THEME: '— Selecciona el tema —'
+            WEBHOOK_EXAMPLES:
+                HOW_TO_USE_WEBHOOKS: 'Com utilitzar els webhooks:'
+                TRIGGER_ALL_DUE_JOBS_RESPECTS_SCHEDULE: 'Activa totes les tasques pendents (respecta la programació):'
+                FORCE_RUN_SPECIFIC_JOB_IGNORES_SCHEDULE: "Força l'execució d'una tasca específica (ignora la programació):"
+                CHECK_HEALTH_STATUS: "Comprova l'estat de salut:"
+                GITHUB_ACTIONS_EXAMPLE: 'Exemple de GitHub Actions:'
+            WEBHOOK_STATUS:
+                CHECKING_WEBHOOK_PLUGIN_STATUS: "S'està comprovant l'estat del plugin de webhook..."
+                PLUGIN_IS_INSTALLED_AND_ENABLED: 'el plugin està instal·lat i activat.'
+                PLUGIN_IS_INSTALLED_ENABLE_WEBHOOK: 'el plugin està instal·lat. Activa els activadors de webhook a continuació per activar-lo.'
+                WEBHOOK_PLUGIN_REQUIRED: 'Cal el plugin de webhook'
+                PLUGIN_IS_REQUIRED_FOR_WEBHOOK: 'el plugin és necessari per a la funcionalitat de webhook.'
+                INSTALL_PLUGIN_NOW: 'Instal·la el plugin ara'
+                OR_RUN: 'o executa:'
+                BIN_GPM_INSTALL_SCHEDULER_WEBHOOK: 'bin/gpm install scheduler-webhook'
+            FILE_PICKER:
+                NO_MEDIA_UPLOADED: "Encara no s'ha pujat cap fitxer multimèdia"
+                NO_MATCHING_FILES: 'Cap fitxer coincideix'
+                SELECT_FILE: 'Selecciona un fitxer…'
+                SELECT_FILES: 'Selecciona fitxers…'
+            FILE:
+                LIMIT_REACHED: 'Aquest camp accepta com a màxim {limit} fitxer(s).'
+            MEDIA:
+                TITLE: 'Selecciona multimèdia'
+                SELECT: 'Selecciona multimèdia…'
+                ADD: 'Afegeix multimèdia…'
+                CHANGE: Canvia
+                REMOVE: Elimina
+                MOVE_EARLIER: 'Mou abans'
+                MOVE_LATER: 'Mou després'
+                DONE: Fet
+                SELECTED_COUNT: '{count, plural, =0 {Res seleccionat} one {# seleccionat} other {# seleccionats}}'
+        NAV:
+            DASHBOARD: Tauler
+            CONFIGURATION: Configuració
+            PAGES: Pàgines
+            MEDIA: Multimèdia
+            USERS: Usuaris
+            PLUGINS: Plugins
+            THEMES: Temes
+            TRANSLATIONS: Traduccions
+            TOOLS: Eines
+            SYSTEM: Sistema
+            SETTINGS: Configuració
+            UPDATES_AVAILABLE: '{count, plural, one {# actualització disponible} other {# actualitzacions disponibles}}'
+        LANG:
+            SWITCH_LANGUAGE: "Canvia l'idioma del contingut"
+            TRANSLATIONS: Traduccions
+            TRANSLATED: Traduït
+            NOT_TRANSLATED: 'No traduït'
+            SAVE_AS: 'Desa com a {language}'
+            CREATE_TRANSLATION: 'Crea la traducció a {language}'
+            FALLBACK_NOTICE: 'No hi ha traducció a {language}. Es mostra el contingut predeterminat.'
+            SYNC_FROM: 'Restableix des de {language}'
+            TRANSLATION_CREATED: 'Traducció a {language} creada'
+            DELETE_TRANSLATION: 'Suprimeix la traducció a {language}'
+            CURRENT: actual
+            DEFAULT: predeterminat
+        TIME:
+            JUST_NOW: 'ara mateix'
+            MINUTES_AGO: 'fa {n}m'
+            HOURS_AGO: 'fa {n}h'
+            DAYS_AGO: 'fa {n}d'
+        ADD_PLUGIN_MODAL:
+            FILTER_PLUGINS: 'Filtra els plugins...'
+            FAILED_TO_LOAD_AVAILABLE_PLUGINS_FROM: "No s'han pogut carregar els plugins disponibles des de GPM"
+            ADD_PLUGIN: 'Afegeix un plugin'
+            SELECT_A_PLUGIN_TO_VIEW_DETAILS: "Selecciona un plugin per veure'n els detalls"
+        PREMIUM: Premium
+        AUTHOR: Autor
+        HOMEPAGE: "Pàgina d'inici"
+        README: README
+        DOCUMENTATION: Documentació
+        REPORT_ISSUE: "Informa d'un problema"
+        VERSION: Versió
+        KEYWORDS: 'Paraules clau'
+        DEPENDENCIES: Dependències
+        COMPATIBILITY: Compatibilitat
+        ADD_THEME_MODAL:
+            FILTER_THEMES: 'Filtra els temes...'
+            FAILED_TO_LOAD_AVAILABLE_THEMES_FROM_GPM: "No s'han pogut carregar els temes disponibles des del GPM"
+            ADD_THEME: 'Afegeix un tema'
+            SELECT_A_THEME_TO_VIEW_DETAILS: "Selecciona un tema per veure'n els detalls"
+        API_CLIENT:
+            INVALID_JSON_TITLE: 'Resposta inesperada del servidor'
+            INVALID_JSON_DETAIL: "No s'ha pogut llegir la resposta del servidor perquè no és JSON vàlid. És possible que el servidor estigui imprimint contingut addicional, com ara un avís de PHP, juntament amb la resposta de l'API. Els detalls són a la consola del navegador."
+            UNEXPECTED_RESPONSE_TITLE: 'Resposta inesperada del servidor'
+            UNEXPECTED_RESPONSE_DETAIL: 'El servidor ha respost amb dades en un format que aquesta pantalla no espera. Els detalls són a la consola del navegador.'
+        API_KEYS_FIELD:
+            REVOKE_KEY: 'Revoca la clau'
+            E_G_MY_CLI_TOOL: 'p. ex. La meva eina CLI'
+            REVOKE_API_KEY: 'Revoca la clau API'
+            FAILED_TO_LOAD_API_KEYS: "No s'han pogut carregar les claus API"
+            PLEASE_ENTER_A_KEY_NAME: 'Introdueix un nom per a la clau'
+            API_KEY_GENERATED: 'Clau API generada'
+            FAILED_TO_GENERATE_API_KEY: "No s'ha pogut generar la clau API"
+            FAILED_TO_REVOKE_API_KEY: "No s'ha pogut revocar la clau API"
+            FAILED_TO_COPY_TO_CLIPBOARD: "No s'ha pogut copiar al porta-retalls"
+            API_KEYS: 'Claus API'
+            NO_API_KEYS_HAVE_BEEN_GENERATED_YET: "Encara no s'ha generat cap clau API."
+            KEY_PREFIX: 'Prefix de la clau'
+            CREATED: Creada
+            EXPIRES: Venç
+            LAST_USED: 'Darrer ús'
+            COPY_THIS_KEY_NOW_IT_WILL_NOT_BE_SHOWN: 'Copia aquesta clau ara — no es tornarà a mostrar.'
+            KEY_NAME: 'Nom de la clau'
+            EXPIRY: Venciment
+            BLANK_NEVER: '(en blanc = mai)'
+            GENERATING: "S'està generant..."
+            GENERATE_KEY: 'Genera una clau'
+        APP_SHELL:
+            CLOSE_MENU: 'Tanca el menú'
+            GRAV_VERSION: 'Grav v{version}'
+            ADMIN_VERSION: 'Admin v{version}'
+        NORMAL_MODE: 'Mode normal'
+        EXPERT_MODE: 'Mode expert'
+        ALLOWED: Permès
+        DENIED: Denegat
+        PERMISSIONS_FIELD:
+            NOT_SET: 'No establert'
+            FAILED_TO_LOAD_PERMISSIONS: "No s'han pogut carregar els permisos"
+            ADMIN_LEGACY: 'Admin (heretat)'
+            INHERITED_ALLOWED: 'Permès mitjançant el grup: {groups}'
+            INHERITED_DENIED: 'Denegat mitjançant el grup: {groups}'
+            OVERRIDES_GROUP: 'La teva configuració directa anul·la el grup: {groups}'
+            LEGEND_INTRO: "Els interruptors tènues provenen de la pertinença a un grup i es mostren com a referència. Estableix-ne un per convertir-lo en un permís directe d'aquest usuari."
+            LEGEND_DIRECT: 'Establert directament'
+            LEGEND_INHERITED: "Heretat d'un grup"
+            LEGEND_OVERRIDE: 'Anul·la un grup'
+            LEGEND_SUPER: 'Concedit pel superadministrador'
+        TWO_FACTOR_FIELD:
+            2FA_QR_CODE: 'Codi QR de la 2FA'
+            SCAN_THE_QR_CODE_WITH_YOUR: "Escaneja el codi QR amb la teva aplicació d'autenticació"
+            FAILED_TO_GENERATE_2FA_SECRET: "No s'ha pogut generar el secret de la 2FA"
+            ENTER_THE_6_DIGIT_CODE_FROM_YOUR: "Introdueix el codi de 6 dígits de la teva aplicació d'autenticació"
+            2FA_ENABLED: '2FA activada'
+            2FA_DISABLED: '2FA desactivada'
+            TWO_FACTOR_AUTHENTICATION_IS_OFF: "L'autenticació de dos factors està desactivada"
+            ADD_AN_EXTRA_LAYER_OF_SECURITY_BY: "Afegeix una capa extra de seguretat i exigeix un codi d'un sol ús en iniciar la sessió."
+            FINISH_ENABLING_2FA: "Acaba d'activar la 2FA"
+            SCAN_THE_QR_CODE_WITH_YOUR_2: "Escaneja el codi QR amb la teva aplicació d'autenticació i després introdueix el codi de 6 dígits per verificar-lo i activar-lo."
+            SECRET_FOR_MANUAL_ENTRY: "Secret (per a l'entrada manual):"
+            A_SECRET_IS_ALREADY_GENERATED_BUT_NOT: "Ja s'ha generat un secret, però no es mostra per motius de seguretat."
+            REGENERATE_AND_SHOW_QR: 'Regenera i mostra el QR'
+            VERIFICATION_CODE: 'Codi de verificació'
+            2FA_IS_ENABLED: 'La 2FA està activada'
+            A_ONE_TIME_CODE_IS_REQUIRED_WHENEVER: "Cal un codi d'un sol ús cada vegada que aquest compte inicia sessió."
+            ENTER_YOUR_CURRENT_6_DIGIT_CODE_TO: 'Introdueix el teu codi actual de 6 dígits per confirmar'
+            ENABLE_2FA: 'Activa la 2FA'
+            VERIFY_ENABLE: 'Verifica i activa'
+            FORCE_DISABLE: 'Força la desactivació'
+            CONFIRM_DISABLE: 'Confirma la desactivació'
+            FORCE_DISABLE_PROMPT: 'Vols forçar la desactivació de la 2FA per a **{username}**? Fes-ho servir només per recuperar dispositius perduts.'
+        DISABLE: Desactiva
+        USER_AVATAR_CARD:
+            AVATAR_UPDATED: 'Avatar actualitzat'
+            FAILED_TO_UPLOAD_AVATAR: "No s'ha pogut pujar l'avatar"
+            AVATAR_REMOVED: 'Avatar eliminat'
+            FAILED_TO_REMOVE_AVATAR: "No s'ha pogut eliminar l'avatar"
+            UPLOAD_AVATAR: 'Puja un avatar'
+        REAUTH_MODAL:
+            SESSION_EXPIRED: 'Sessió caducada'
+            PLEASE_RE_ENTER_YOUR_PASSWORD_TO: "Torna a introduir la contrasenya per continuar. La teva feina s'ha conservat."
+            SIGN_IN_AGAIN_TO_CONTINUE: "Torna a iniciar la sessió per continuar. La teva feina s'ha conservat."
+        USERNAME: "Nom d'usuari"
+        PASSWORD: Contrasenya
+        REMOVE: Elimina
+        ENABLED: Activat
+        DISABLED: Desactivat
+        EXPAND_ALL: 'Expandeix-ho tot'
+        COLLAPSE_ALL: 'Redueix-ho tot'
+        CONFIG_INFO_PAGE:
+            LOADING_SYSTEM_INFORMATION: "S'està carregant la informació del sistema..."
+            EXPORT_YAML: 'Exporta el YAML'
+            SERVER: Servidor
+            GRAV_VERSION: 'Versió de Grav'
+            PHP_VERSION: 'Versió de PHP'
+            SERVER_SOFTWARE: 'Programari del servidor'
+            ENVIRONMENT: Entorn
+            PHP_EXTENSIONS: 'Extensions de PHP'
+            PHP_CONFIGURATION: 'Configuració de PHP'
+        DASHBOARD_GRID:
+            DRAG_TO_REORDER: 'Arrossega per reordenar'
+        EDIT_MODE_TOOLBAR:
+            SAVE_AS_SITE_DEFAULT_FOR_ALL_USERS: 'Desa com a valor predeterminat del lloc per a tots els usuaris'
+            LAYOUT_PRESETS: 'Dissenys predefinits'
+        PLUGIN_WIDGET_LOADER:
+            WIDGET_FAILED_TO_LOAD: "No s'ha pogut carregar el giny"
+        TOP_BANNER:
+            SITE_NOTIFICATION: 'Notificació del lloc'
+            PREVIOUS: Anterior
+        DISMISS: Descarta
+        BACKUPS_WIDGET:
+            CREATE_A_NEW_BACKUP_NOW: 'Crea una còpia de seguretat nova ara'
+            NO_BACKUPS_FOUND: "No s'ha trobat cap còpia de seguretat"
+            BACKING_UP: "S'està fent la còpia de seguretat…"
+            BACKUP_NOW: Nova
+            DOWNLOAD_FILE: 'Baixa {filename}'
+        NEWS_FEED_WIDGET:
+            NO_FEED_ITEMS: 'Sense elements al feed'
+        NOTIFICATIONS_WIDGET:
+            NO_NOTIFICATIONS: 'Sense notificacions'
+        POPULARITY_WIDGET:
+            LAST_14_DAYS: 'Els últims 14 dies'
+            THIS_WEEK: 'Aquesta setmana'
+            THIS_MONTH: 'Aquest mes'
+        RECENT_PAGES_WIDGET:
+            VIEW_ALL: 'Veure-ho tot'
+        STATS_WIDGET:
+            ACTIVE_THEME: 'Tema actiu'
+            UPDATE_COUNT: '{n, plural, one{# actualització} other{# actualitzacions}}'
+            ACTIVE_COUNT: '({n} actiu)'
+        DEMO:
+            BANNER_LABEL: 'Mode de demostració'
+            BANNER_READONLY: 'Demostració de només lectura — els canvis estan desactivats'
+            BANNER_MESSAGE: 'Mode de demostració — els canvis es restableixen cada {minutes, plural, one{# minut} other{# minuts}}'
+            BANNER_COUNTDOWN: 'Pròxim reinici en {time}'
+        SYSTEM_HEALTH_WIDGET:
+            UPDATES: Actualitzacions
+            EVERYTHING_UP_TO_DATE: 'Tot actualitzat'
+            GRAV_UPDATE_AVAILABLE: 'Actualització de Grav disponible'
+            GRAV_IS_INSTALLED_VIA_SYMLINK_UPGRADE: "Grav està instal·lat mitjançant un enllaç simbòlic — actualitza'l manualment."
+            SERVER: Servidor
+            UPGRADE_GRAV: 'Actualitza Grav'
+            UPDATE_ALL: 'Actualitza-ho tot'
+            UPDATE_ALL_CONFIRM_TITLE: 'Vols actualitzar tots els paquets?'
+            UPDATE_ALL_CONFIRM_MESSAGE: "{n, plural, one{S'actualitzarà # paquet:} other{S'actualitzaran # paquets:}}"
+            PERCENT_USED: '{percent}% utilitzat'
+            UPDATES_AVAILABLE_COUNT: '{n} disponibles'
+            PACKAGES_OUTDATED: '{n, plural, one{# paquet desactualitzat} other{# paquets desactualitzats}}'
+            MORE_COUNT: '+ {n} més…'
+            CACHE: 'Memòria cau'
+            DISK: Disc
+            BYTES_USED: '{size} utilitzats'
+            BYTES_FREE: '{size} lliures'
+        TOP_PAGES_WIDGET:
+            NO_VIEW_DATA_YET: 'Encara no hi ha dades de visites'
+        MARKDOWN_EDITOR:
+            NOTHING_TO_PREVIEW: 'Res per previsualitzar'
+            IMAGE_INSERT:
+                TITLE: 'Insereix una imatge'
+                PAGE_MEDIA: 'Multimèdia de la pàgina'
+                SITE_MEDIA: 'Multimèdia del lloc'
+                NO_MEDIA: 'Encara no hi ha cap imatge adjunta a aquesta pàgina.'
+                FROM_URL: "Insereix des d'un URL"
+                URL_LABEL: 'URL de la imatge'
+                URL_PLACEHOLDER: 'https://example.com/image.jpg o media://file.jpg'
+                ALT_LABEL: 'Text alternatiu'
+                ALT_PLACEHOLDER: 'Descriu la imatge'
+                INSERT: Insereix
+        FLOATING_WIDGET_LOADER:
+            CLOSE_WIDGETS_MENU: 'Tanca el menú de ginys'
+        MEDIA:
+            FILE_DETAILS:
+                TITLE: 'Detalls del fitxer'
+                PATH: Camí
+                TYPE: Tipus
+                SIZE: Mida
+                URL: URL
+                MEDIA_PATH: 'Camí multimèdia'
+                MARKDOWN: Markdown
+                OPEN: Obre
+            MEDIA_INSPECTOR:
+                PREVIOUS_FILE: 'Fitxer anterior'
+                NEXT_FILE: 'Fitxer següent'
+                RENAME: 'Canvia el nom'
+                FAILED_TO_COPY: "No s'ha pogut copiar"
+                FILE_RENAMED: "S'ha canviat el nom del fitxer"
+                DIMENSIONS: Dimensions
+            MEDIA_MANAGER:
+                ROOT: Multimèdia
+                NO_RESULTS_FOUND: "No s'ha trobat cap resultat"
+                TRY_A_DIFFERENT_SEARCH_TERM: 'Prova amb un altre terme de cerca'
+                FOLDER_IS_EMPTY: 'Aquesta carpeta és buida'
+                DROP_FILES_OR_CLICK_UPLOAD: 'Deixa anar els fitxers aquí o fes clic a Puja per començar'
+                DROP_FILES_TO_UPLOAD: 'Deixa anar els fitxers per pujar-los'
+                DROP_FILES_TO_UPLOAD_TO_PATH: 'Deixa anar els fitxers per pujar-los a **{path}**'
+                FOLDER_NAME: 'Nom de la carpeta'
+                FILES_DELETED: 'Fitxers suprimits'
+                UPLOAD_FILES: 'Puja fitxers'
+                NEW_FOLDER: 'Carpeta nova'
+                CREATE: Crea
+                CUSTOM_ORDER: 'Ordre personalitzat'
+                REORDER: 'Arrossega per reordenar'
+                REORDER_MODE: Reordena
+                REORDER_DONE: Fet
+                ORDER_SAVE_FAILED: "No s'ha pogut desar el nou ordre"
+            MEDIA_TOOLBAR:
+                SEARCH_MEDIA: 'Cerca multimèdia...'
+                GRID_VIEW: 'Vista de graella'
+                LIST_VIEW: 'Vista de llista'
+                NEW_FOLDER: 'Carpeta nova'
+                FOLDER: Carpeta
+            MEDIA_GRAV_ADMIN: 'Multimèdia — Grav Admin'
+            MANAGE_SITE_WIDE_MEDIA_FILES: 'Gestiona els fitxers multimèdia de tot el lloc'
+            PAGE_MEDIA:
+                PAGE_MEDIA: 'Multimèdia de la pàgina'
+                DROP_FILES_HERE: 'Deixa anar els fitxers aquí'
+                DROP_OR_CLICK_TO_ADD_MORE: 'Deixa anar o fes clic per afegir-ne més'
+                DROP_FILES_OR_CLICK_TO_UPLOAD: 'Deixa anar els fitxers o fes clic per pujar-los'
+                DRAG_INTO_EDITOR: "Arrossega a l'editor"
+                REORDER: 'Arrossega per reordenar'
+                REORDER_MODE: Reordena
+                REORDER_DONE: Fet
+                REORDER_HINT: "Arrossega les imatges per establir-ne l'ordre."
+                INSERT_AT_CURSOR: 'Insereix al cursor'
+                INSERTED: "S'ha inserit {filename}"
+            METADATA:
+                TITLE: Metadades
+                EDIT: 'Edita les metadades'
+                SAVING: "S'està desant…"
+                RESET: Restableix
+                SAVED: 'Metadades desades'
+                SAVE_FAILED: "No s'han pogut desar les metadades"
+                LOAD_FAILED: "No s'han pogut carregar les metadades"
+                EMPTY: 'No hi ha cap camp de metadades editable configurat.'
+                STORED: 'Metadades emmagatzemades'
+                TAGS_PLACEHOLDER: 'Afegeix una etiqueta…'
+                BATCH_EDITING: "S'estan editant {n} fitxers seleccionats — els camps modificats s'aplicaran a tots."
+                APPLY_TO_N: 'Aplica a {n} fitxers'
+                BATCH_SAVED: "S'han actualitzat {n} fitxers"
+                BATCH_PARTIAL: "S'han actualitzat {saved} fitxers; {failed} no s'han pogut actualitzar"
+        UPLOAD: Puja
+        CACHE_CLEAR_BUTTON:
+            LABEL: 'Memòria cau'
+            CLEAR_CACHE: 'Buida la memòria cau'
+            CACHE_OPTIONS: 'Opcions de la memòria cau'
+            FAILED_TO_CLEAR_CACHE: "No s'ha pogut buidar la memòria cau"
+        CONFIRM_ACTION: "Confirma l'acció"
+        VIEW_SITE_BUTTON:
+            OPEN_SITE_FRONTEND_IN_A_NEW_TAB: 'Obre el lloc en una pestanya nova'
+            VIEW_SITE: 'Veure el lloc'
+        PLUGIN_PAGE_COMPONENT:
+            LOADING_PLUGIN_PAGE: "S'està carregant la pàgina del plugin..."
+        SYNC:
+            EDITOR_LOCK_NOTICE:
+                SWITCH_YOUR_EDITOR_PREFERENCE: "canvia la teva preferència d'editor"
+                TO_COLLABORATE_LIVE: 'per col·laborar en temps real.'
+                LOCKED: "Només lectura — {owner} hi està editant amb **{editor}**. Els tipus d'editor mixtos no es poden coeditar; [canvia la teva preferència d'editor]({href}) per col·laborar en temps real."
+                BUILTIN_MARKDOWN_EDITOR: "l'editor de markdown integrat"
+        DOWNLOAD: Baixa
+        TRANSLATIONS:
+            TITLE: Traduccions
+            DESCRIPTION: "Reformula qualsevol cadena que mostri aquest lloc, en qualsevol idioma. Els canvis es desen com a modificacions a user/languages i mai toquen els fitxers propis d'un plugin o tema, de manera que una actualització no els pot esborrar."
+            IMPORT_TITLE: 'Modificacions pendents al plugin Translation Strings'
+            IMPORT_BODY: '{count, plural, one {# modificació encara està emmagatzemada dins del plugin Translation Strings. Importa-la per gestionar-la aquí.} other {# modificacions en {languages, plural, one {# idioma} other {# idiomes}} encara estan emmagatzemades dins del plugin Translation Strings. Importa-les per gestionar-les aquí.}}'
+            IMPORT_CONFLICTS: '{count, plural, one {# clau està} other {# claus estan}} establerta(es) en ambdós llocs amb una redacció diferent. Preval la versió del plugin, ja que és la que mostra actualment el teu lloc.'
+            IMPORT_ACTION: 'Importa les modificacions'
+            IMPORT_DONE: "{count, plural, one {S'ha importat # modificació} other {S'han importat # modificacions}}"
+            IMPORT_FAILED: 'Ha fallat la importació'
+            IMPORT_UNKNOWN_WARNING: '{count, plural, one {# clau importada anomena una cadena} other {# claus importades anomenen cadenes}} que res en aquest lloc proporciona. Troba-les amb el filtre Desconegudes.'
+            IMPORT_UNKNOWN_NOTE: '{count, plural, one {# clau anomena una cadena que cap plugin, tema o fitxer del nucli proporciona. Es conserva perquè la puguis revisar, però no té cap efecte.} other {# claus anomenen cadenes que cap plugin, tema o fitxer del nucli proporciona. Es conserven perquè les puguis revisar, però no tenen cap efecte.}}'
+            IMPORT_ALREADY_DONE: '{count, plural, one {# modificació ja hi és} other {Les # modificacions ja hi són}}'
+            IMPORT_STILL_ENABLED_TITLE: 'El plugin Translation Strings encara està activat'
+            IMPORT_STILL_ENABLED_BODY: "Aplica les seves cadenes després d'aquest editor, per la qual cosa encara sobreescriu qualsevol canvi que facis aquí. Comprova que el lloc es llegeixi correctament i després desactiva'l per completar el canvi. La seva configuració es manté, de manera que és reversible."
+            IMPORT_DISABLE_ACTION: 'Desactiva el plugin'
+            IMPORT_DISABLE_BLOCKED: 'Importa primer les modificacions, o desapareixeran del lloc.'
+            IMPORT_DISABLE_FAILED: "No s'ha pogut desactivar el plugin"
+            IMPORT_PLUGIN_DISABLED: "Translation Strings desactivat. Ara aquest editor se n'encarrega."
+            IMPORT_SHOW_DETAIL: "Mostra què s'importarà"
+            IMPORT_HIDE_DETAIL: 'Amaga els detalls'
+            IMPORT_COL_LANGUAGE: Idioma
+            IMPORT_COL_NEW: Nova
+            IMPORT_COL_CONFLICT: 'En conflicte'
+            IMPORT_COL_ALREADY: 'Ja hi és'
+            IMPORT_COL_SHIPPED: "Igual que l'original"
+            IMPORT_COL_UNKNOWN: Desconeguda
+            IMPORT_LEGEND: "Les cadenes marcades com a «igual que l'original» coincideixen amb el que ja proporciona el plugin o tema, per la qual cosa es descarten en lloc de desar-se com a modificacions que no fan res."
+            IMPORT_NO_PERMISSION: 'No tens permís per escriure modificacions de traducció, per la qual cosa la importació no està disponible.'
+            IMPORT_NO_CONFIG_PERMISSION: "No tens permís per canviar la configuració del plugin, per la qual cosa un administrador l'ha de desactivar."
+            TRANSLATE_UNAVAILABLE_NOT_INSTALLED: 'La traducció mitjançant IA de les cadenes que falten està disponible amb el plugin premium AI Translate.'
+            TRANSLATE_UNAVAILABLE_NOT_ENABLED: 'AI Translate està instal·lat però desactivat, per la qual cosa la traducció automàtica no està disponible.'
+            TRANSLATE_UNAVAILABLE_NOT_CONFIGURED: 'AI Translate encara no té cap proveïdor de traducció configurat, per la qual cosa la traducció automàtica no està disponible.'
+            TRANSLATE_UNAVAILABLE_FIND_IT: 'Obtén el plugin'
+            TRANSLATE_UNAVAILABLE_OPEN_IT: 'Obre la seva configuració'
+            SUPERSEDED_TITLE: 'Integrat a Grav 2.0'
+            SUPERSEDED_BODY: 'La secció Traduccions fa tot el que fa aquest plugin, i hi afegeix cerca en totes les cadenes del lloc, cobertura per idioma, traducció automàtica i un informe de claus que ja no proporciona res. Aquest plugin continua sent compatible amb Grav 1.7.'
+            SUPERSEDED_PENDING: '{count, plural, one {# modificació encara està emmagatzemada aquí i es pot importar} other {# modificacions encara estan emmagatzemades aquí i es poden importar}}'
+            SUPERSEDED_ACTION: 'Obre Traduccions'
+            SEARCH_PLACEHOLDER: 'Cerca text o clau...'
+            SOURCE_LANGUAGE: Font
+            SOURCE: font
+            LANGUAGES: Idiomes
+            FILTER_LANGUAGES: 'Filtra els idiomes'
+            EDITED: editat
+            KEY: Clau
+            ALL_SOURCES: 'Totes les fonts'
+            KIND_SYSTEM: Nucli
+            KIND_PLUGINS: Plugins
+            KIND_THEMES: Temes
+            KIND_USER: 'Aquest lloc'
+            INACTIVE: inactiu
+            INACTIVE_HELP: "Aquest plugin està desactivat o aquest tema no és l'actiu, per la qual cosa les seves cadenes no s'utilitzen al lloc."
+            STATUS_ALL: Tot
+            STATUS_MISSING: Falta
+            STATUS_OVERRIDDEN: Modificada
+            STATUS_UNKNOWN: Desconeguda
+            STATE_OVERRIDDEN: modificada
+            STATE_MISSING: falta
+            STATE_MISSING_FALLBACK: 'utilitzant alternativa'
+            UNKNOWN_KEY_HELP: "Cap plugin, tema o fitxer del nucli proporciona aquesta clau. Probablement sigui un error tipogràfic o una resta d'alguna cosa que ja no està instal·lada."
+            SHIPPED_VALUE: 'Originalment: {value}'
+            REVERT: Reverteix
+            REVERT_HELP: 'Elimina aquesta modificació i torna al que proporciona el plugin o tema.'
+            REVERTED_TO_SHIPPED: "S'ha revertit a la redacció original"
+            OVERRIDE_REMOVED: 'Modificació eliminada'
+            SAVED_UNKNOWN_KEY: "Desat, però res proporciona {key} — revisa l'ortografia"
+            EDIT_HINT: 'Retorn per desar, Escapada per cancel·lar, Majús+Retorn per a una línia nova. Buida el camp per eliminar la teva modificació.'
+            REFRESH: Actualitza
+            LOADING: "S'estan carregant les traduccions..."
+            NO_RESULTS: 'Cap cadena coincideix amb aquests filtres.'
+            NO_RESULTS_FILTERED: 'Estàs cercant dins de: {filters}'
+            FILTERED_BY: 'Es mostra només'
+            REMOVE_FILTER: 'Elimina aquest filtre'
+            CLEAR_ALL_FILTERS: 'Neteja els filtres'
+            FAILED_TO_LOAD: "No s'han pogut carregar les traduccions"
+            FAILED_TO_SAVE: "No s'ha pogut desar aquest canvi"
+            SHOWING: 'Mostrant {from}–{to} de {total}'
+            PREVIOUS: Anterior
+            NEXT: Següent
+            EDIT_AS_YAML: 'Edita com a YAML'
+            EDIT_AS_GRID: 'Torna a la graella'
+            EDITING_LANGUAGE: "S'està editant"
+            SCOPED_TO: 'Només {namespace}'
+            SCOPE_WHOLE_FILE: "S'estan editant totes les modificacions d'aquest idioma"
+            SAVE: Desa
+            SAVING: "S'està desant..."
+            YAML_SAVED: "{count, plural, =0 {No queda cap modificació a {lang}} one {S'ha desat # modificació a {lang}} other {S'han desat # modificacions a {lang}}}"
+            YAML_PLACEHOLDER: "EL_MEU_PLUGIN:\n  ALGUNA_CLAU: La teva redacció aquí"
+            YAML_HELP: 'Enganxa o edita les modificacions directament. Els valors que coincideixin amb el que ja proporciona el plugin o tema es descarten, de manera que el fitxer només conté canvis reals.'
+            UNKNOWN_KEYS_SAVED: 'Desat, però res proporciona aquestes claus'
+            TRANSLATE_MISSING: 'Tradueix les que falten'
+            TRANSLATING: "S'està traduint..."
+            TRANSLATE_FAILED: 'Ha fallat la traducció'
+            PICK_A_TARGET_LANGUAGE: "Afegeix primer una columna d'idioma — no hi ha res on traduir."
+            NOTHING_TO_TRANSLATE: 'En aquesta pàgina no falta cap traducció.'
+            PROPOSALS_PENDING: '{count, plural, one {# suggeriment per revisar} other {# suggeriments per revisar}}'
+            SKIPPED_COUNT: '{count, plural, one {# omès} other {# omesos}}'
+            ACCEPT_ALL: 'Accepta-ho tot'
+            DISCARD_ALL: Descarta
+            ACCEPTED_ALL: "{count, plural, one {S'ha desat # traducció} other {S'han desat # traduccions}}"
+            SUGGESTED: Suggerida
+            ACCEPT: Accepta
+            DISCARD: Descarta
+            TRANSLATE_THIS: 'Suggereix una traducció per a aquesta cadena'
+            TRANSLATE_ROW: 'Suggereix traduccions per a aquesta cadena en tots els idiomes mostrats'
+            SKIP_NO_SOURCE: "No hi ha cap redacció en l'idioma d'origen des de la qual traduir."
+            SKIP_ICU: 'Aquest missatge canvia segons un número o una opció, i cada idioma necessita el seu propi conjunt de formes. Escriu-lo manualment.'
+            SKIP_NOTHING: 'Aquesta cadena només conté marcadors de posició, per la qual cosa no hi ha paraules per traduir.'
+            SKIP_EMPTY: 'El servei de traducció no ha retornat res per a aquesta cadena.'
+            SKIP_PLACEHOLDERS: "La traducció ha tornat amb els marcadors de posició alterats, per la qual cosa s'ha descartat en lloc de desar-se."
+        TOOLS:
+            BACKUPS:
+                DELETE_BACKUP: 'Suprimeix la còpia de seguretat'
+                FAILED_TO_LOAD_BACKUPS: "No s'han pogut carregar les còpies de seguretat"
+                BACKUP_CREATED_SUCCESSFULLY: 'Còpia de seguretat creada correctament'
+                FAILED_TO_CREATE_BACKUP: "No s'ha pogut crear la còpia de seguretat"
+                BACKUP_DELETED: 'Còpia de seguretat suprimida'
+                FAILED_TO_DELETE_BACKUP: "No s'ha pogut suprimir la còpia de seguretat"
+                BACKUP_STATISTICS: 'Estadístiques de còpies de seguretat'
+                NUMBER_OF_BACKUPS: 'Nombre de còpies de seguretat'
+                NUMBER_OF_PROFILES: 'Nombre de perfils'
+                NEWEST_BACKUP: 'Còpia de seguretat més recent'
+                OLDEST_BACKUP: 'Còpia de seguretat més antiga'
+                BACKUP_HISTORY: 'Historial de còpies de seguretat'
+                LOADING_BACKUPS: "S'estan carregant les còpies de seguretat..."
+                NO_BACKUPS_FOUND_CREATE_ONE_TO_GET: "No s'ha trobat cap còpia de seguretat. Crea'n una per començar."
+                BACKUP_DATE: 'Data de la còpia de seguretat'
+                ACTION: Acció
+                CREATING: "S'està creant..."
+                BACKUP_NOW: 'Fes una còpia de seguretat ara'
+            DIRECT_INSTALL:
+                PACKAGE_INSTALLED_SUCCESSFULLY: 'Paquet instal·lat correctament'
+                ONLY_ZIP_FILES_ARE_SUPPORTED: "Només s'admeten fitxers .zip"
+                INSTALL_FROM_FILE: "Instal·la des d'un fitxer"
+                DROP_A_ZIP_FILE_HERE_OR_CLICK_TO_BROWSE: 'Arrossega un fitxer .zip aquí o fes clic per explorar'
+                SUPPORTS_GRAV_PLUGIN_AND_THEME_PACKAGES: 'Compatible amb paquets de plugins i temes de Grav'
+                INSTALL_FROM_URL: "Instal·la des d'un URL"
+            LOGS:
+                SEARCH_MESSAGES: 'Cerca missatges...'
+                FAILED_TO_LOAD_LOGS: "No s'han pogut carregar els registres"
+                FAILED_TO_LOAD_LOG_FILES: "No s'han pogut carregar els fitxers de registre"
+                LOG_FILE: 'Fitxer de registre'
+                ALL_LEVELS: 'Tots els nivells'
+                EMERGENCY: Emergència
+                CRITICAL: Crític
+                WARNING: Advertiment
+                NOTICE: Avís
+                25_LINES: '25 línies'
+                50_LINES: '50 línies'
+                100_LINES: '100 línies'
+                200_LINES: '200 línies'
+                REFRESH: Actualitza
+                LOADING_LOGS: "S'estan carregant els registres..."
+                MESSAGE: Missatge
+                CLEAR_LOG: 'Buida el registre'
+                CLEAR_LOG_CONFIRM: 'Vols suprimir permanentment totes les entrades de {file}? Aquesta acció no es pot desfer, i es perdrà tot el registre del que ha anat malament fins ara.'
+                LOG_CLEARED: "S'ha buidat {file}"
+                FAILED_TO_CLEAR_LOG: "No s'ha pogut buidar el registre"
+            AUDIT:
+                DESCRIPTION: "Un registre de l'activitat de l'API: inicis de sessió, contingut, usuaris, configuració i canvis de paquets. Admin Next passa per l'API, de manera que això inclou l'administrador i qualsevol client extern de l'API."
+                COVERAGE_DETAILED: Detallat
+                SEARCH_PLACEHOLDER: 'Cerca per actor, destinació, esdeveniment, IP...'
+                EVENT: Esdeveniment
+                ALL_EVENTS: 'Tots els esdeveniments'
+                SEVERITY: Gravetat
+                ALL_SEVERITIES: 'Totes les gravetats'
+                FROM: 'Des de'
+                TO: 'Fins a'
+                REFRESH: Actualitza
+                FAILED_TO_LOAD: "No s'ha pogut carregar el registre d'auditoria"
+                LOADING: "S'està carregant el registre d'auditoria..."
+                NO_ENTRIES: "No s'ha trobat cap entrada d'auditoria."
+                WHEN: Quan
+                ACTOR: Actor
+                TARGET: Destinació
+                IP: IP
+                EVENT_CODE: "Codi de l'esdeveniment"
+                AUTH_METHOD: "Mètode d'autenticació"
+                USER_AGENT: "Agent d'usuari"
+                CHANGES: Canvis
+                DETAILS: Detalls
+                SHOWING: Mostrant
+            REPORT_COMPONENT_WRAPPER:
+                LOADING_REPORT_COMPONENT: "S'està carregant el component de l'informe..."
+            REPORTS:
+                FAILED_TO_LOAD_REPORTS: "No s'han pogut carregar els informes"
+                LOADING_REPORTS: "S'estan carregant els informes..."
+                NO_REPORTS_AVAILABLE: 'No hi ha informes disponibles.'
+                CONTENT_FIELD: 'contingut: {field}'
+                TWIG_CONTENT:
+                    GATE_ON: 'Twig al contingut activat'
+                    GATE_OFF: 'Twig al contingut desactivat'
+                    SANDBOX_ON: 'Sandbox activat'
+                    SANDBOX_OFF: 'Sandbox desactivat'
+                    SECTION_LEAKS: 'Pàgines que filtren Twig en brut'
+                    SECTION_EVENTS: 'Bloquejos recents'
+                    LEAK_GATE_OFF: "El control d'accés del lloc està desactivat, per la qual cosa el marcatge Twig d'aquesta pàgina es renderitza com a text pla per als visitants."
+                    LEAK_PAGE_OFF: 'Twig està desactivat per a aquesta pàgina, per la qual cosa el seu marcatge Twig es renderitza com a text pla per als visitants.'
+                    ADD_TO_ALLOWLIST: 'Afegeix a la llista de permesos'
+                    ADDED_TO_ALLOWLIST: "S'ha afegit «{token}» a {key}"
+                    ADD_FAILED: "No s'ha pogut actualitzar la llista de permesos"
+                    CLEAR_EVENTS: 'Buida els bloquejos'
+                    CLEARED_EVENTS: "S'han buidat els bloquejos recents"
+                    CLEAR_FAILED: "No s'han pogut buidar els bloquejos"
+                    OPEN_SECURITY_SETTINGS: 'Obre la configuració de seguretat'
+                    EVENT_GATE_BLOCKED: "El control d'accés ha bloquejat Twig al contingut d'aquesta pàgina"
+                    EVENT_SANDBOX_TAG: 'El sandbox ha bloquejat una etiqueta'
+                    EVENT_SANDBOX_FILTER: 'El sandbox ha bloquejat un filtre'
+                    EVENT_SANDBOX_FUNCTION: 'El sandbox ha bloquejat una funció'
+                    EVENT_SANDBOX_METHOD: 'El sandbox ha bloquejat un mètode'
+                    EVENT_SANDBOX_PROPERTY: 'El sandbox ha bloquejat una propietat'
+                    SCAN_INTRO: 'Analitza tot el contingut de les pàgines a la recerca de Twig que el sandbox bloquejaria.'
+                    SCAN_CONTENT: 'Analitza el contingut'
+                    SCAN_FAILED: "L'anàlisi del contingut ha fallat"
+                    SCAN_CLEAN: 'Cap contingut utilitza Twig fora de les llistes de permesos actuals.'
+                    SCAN_TAGS: 'Etiquetes bloquejades al contingut'
+                    SCAN_FILTERS: 'Filtres bloquejats al contingut'
+                    SCAN_FUNCTIONS: 'Funcions bloquejades al contingut'
+                    POLICY_INTRO: "La política bàsica del sandbox ve inclosa al codi; la teva configuració només l'amplia o la restringeix."
+                    POLICY_VIEW: 'Mostra la política efectiva'
+                    POLICY_HIDE: 'Amaga la política efectiva'
+                    POLICY_FAILED: "No s'ha pogut carregar la política del sandbox"
+                    POLICY_TAGS: Etiquetes
+                    POLICY_FILTERS: Filtres
+                    POLICY_FUNCTIONS: Funcions
+                    POLICY_METHODS: Mètodes
+                    POLICY_PROPERTIES: Propietats
+                    POLICY_EFFECTIVE_COUNT: '{count, plural, one {# efectiu} other {# efectius}}'
+                    POLICY_CLASS_COUNT: '{count, plural, one {# classe} other {# classes}}'
+                    POLICY_ADDED: '+{count} afegits'
+                    POLICY_DENIED: '−{count} denegats'
+                    POLICY_ALL_DEFAULTS: 'Tots els valors predeterminats, sense canvis'
+                    GLOBAL_REQUEST_GATED: 'system.pages.process.twig està activat, però Twig al contingut està desactivat per a tot el lloc, per la qual cosa aquestes pàgines es renderitzen en brut. Tria un perfil més amunt per activar-lo, o elimina la bandera global.'
+                    FRONTMATTER_REQUEST_GATED: "S'ha sol·licitat Twig al frontmatter (pages.frontmatter.process_twig), però Twig al contingut està desactivat per a tot el lloc, de manera que no s'executarà. Tria un perfil més amunt per activar-lo."
+            SCHEDULER:
+                FAILED_TO_LOAD_SCHEDULER_CONFIGURATION: "No s'ha pogut carregar la configuració del planificador."
+                STATUS_UNAVAILABLE: "No s'ha pogut llegir l'estat del planificador en aquest servidor. Les teves tasques es continuen mostrant a sota i es poden editar com sempre."
+                PROCESS_UNAVAILABLE: "Aquest servidor té desactivada la funció proc_open de PHP, per la qual cosa les tasques no es poden iniciar des de l'administrador. Tot i així, s'executen sempre que el teu planificador s'activa mitjançant cron o un webhook."
+                CRON_UNDETERMINED: "Grav no pot inspeccionar el crontab d'aquest servidor, per la qual cosa no pot confirmar com s'activa el planificador."
+                LAST_TRIGGERED: 'Última activació'
+                LAST_MANUAL_RUN: 'Última execució manual'
+                ENVIRONMENT_MISMATCH: "El planificador es va executar per última vegada sota l'entorn **{last}**, però aquest lloc utilitza **{current}**, que té la seva pròpia configuració a user/env/{current}/config. Les tasques i configuracions personalitzades definides només allà mai s'executen des d'aquest activador. Actualitza la línia de bin/grav scheduler al teu crontab amb l'ordre següent (passa --env={current}), o exporta GRAV_ENVIRONMENT={current} abans que s'executi."
+                SCHEDULER_CONFIGURATION_SAVED: 'Configuració del planificador desada'
+                FAILED_TO_SAVE: "No s'ha pogut desar"
+                LOADING_SCHEDULER: "S'està carregant el planificador..."
+                NOT_ENABLED_FOR_USER: "No activat per a l'usuari:"
+                GRAV_SCHEDULER: 'Grav Scheduler'
+                INFO_BANNER: 'El planificador pot utilitzar el crontab del sistema o activadors de webhook per executar ordres. Els webhooks es recomanen per a entorns al núvol.'
+                CRONTAB_INSTRUCTIONS: "Per activar la funcionalitat del planificador, has d'afegir el **Grav Scheduler** al fitxer crontab del teu sistema per a l'usuari **{user}**. Executa l'ordre anterior des del terminal per afegir-lo automàticament. Un cop desat, actualitza aquesta pàgina per veure l'estat."
+                WEBHOOK_ALTERNATIVE: "Alternativament, instal·la el plugin **scheduler-webhook** per utilitzar l'activació de cron basada en webhook, recomanada per a entorns al núvol on no hi ha accés al crontab del sistema."
+                SECURITY_WARNING: 'Només els usuaris avançats haurien de configurar tasques personalitzades del planificador. Una configuració incorrecta pot causar problemes de rendiment o vulnerabilitats de seguretat.'
+            SYSTEM_INFO:
+                FAILED_TO_LOAD_SYSTEM_INFO: "No s'ha pogut carregar la informació del sistema"
+                LOADING_SYSTEM_INFO: "S'està carregant la informació del sistema..."
+                GRAV_VERSION: 'Versió de Grav'
+                PHP_VERSION: 'Versió de PHP'
+                PHP_SAPI: 'PHP SAPI'
+                MEMORY_LIMIT: 'Límit de memòria'
+                MAX_EXECUTION: 'Execució màxima'
+                MAX_UPLOAD: 'Pujada màxima'
+                MAX_POST: 'POST màxim'
+                DISK_USAGE: 'Ús del disc'
+                DRIVER: Controlador
+                DISK_FREE_OF: '{free} lliures de {total}'
+            TOOLS_GRAV_ADMIN: 'Eines — Grav Admin'
+            BACKUPS_SCHEDULER_LOGS_AND_DIAGNOSTICS: 'Còpies de seguretat, planificador, registres i diagnòstics'
+        INSTALLING: "S'està instal·lant..."
+        ACCESS_DENIED:
+            ACCESS_DENIED: 'Accés denegat'
+        ARE_YOU_SURE: 'Segur que vols continuar?'
+        ENVIRONMENT_SWITCHER:
+            PREFIX: 'Entorn:'
+            SELECT_WHERE_CONFIG_WRITES_ARE_SAVED: "Selecciona l'entorn actiu — controla quina configuració veus i on es desen els canvis"
+            HAS_OVERRIDES: 'té anul·lacions'
+            SELECTED_ENV: 'Entorn seleccionat'
+            NO_LONGER_EXISTS_PICK_ANOTHER: "ja no existeix. Tria'n un altre."
+            SAVE_CONFIG_TO: 'Entorn actiu'
+            SWITCH_DISCARDS_UNSAVED: "Canviar d'entorn recarrega l'administrador i descarta els canvis sense desar. Vols continuar?"
+            SWITCH_AND_RELOAD: 'Canvia i recarrega'
+            CREATES_PATH: 'Crea user/env/{name}/config/'
+            DEFAULT: Predeterminat
+            SAVING_TO_DEFAULT: 'Desant al predeterminat (user/config)'
+            SAVING_TO_ENV: "Desant a l'entorn: {name}"
+            ENV_CREATED: 'Entorn {name} creat i seleccionat'
+            ENV_DELETED: 'Entorn {name} eliminat'
+            FAILED_TO_CREATE: "No s'ha pogut crear l'entorn"
+            FAILED_TO_DELETE: "No s'ha pogut eliminar l'entorn"
+            CREATE_ENVIRONMENT: 'Crea un entorn…'
+            CREATE_ENV_NAMED: "Crea l'entorn «{name}»…"
+            CREATE: Crea
+            DELETE: Suprimeix
+            DELETE_ENV_TOOLTIP: "Suprimeix l'entorn {name}"
+            CONFIRM_DELETE: 'Vols suprimir {name}?'
+            CONFIRM_DELETE_WITH_OVERRIDES: 'Vols suprimir {name} i totes les seves anul·lacions de configuració?'
+        INLINE_ICON_PICKER:
+            SEARCH_ICONS: 'Cerca icones...'
+            NO_ICONS_FOUND: "No s'ha trobat cap icona"
+            TYPE_TO_NARROW_RESULTS: 'Escriu per filtrar els resultats'
+        PASSWORD_FIELD:
+            PASSWORD_REQUIREMENTS: 'Requisits de la contrasenya'
+            PASSWORD_STRENGTH: 'Seguretat de la contrasenya'
+            REQUIREMENTS: Requisits
+        TOP_PROGRESS_BAR:
+            WORKING: Processant
+        UNSAVED_INDICATOR:
+            SAVING_CHANGES: "S'estan desant els canvis…"
+            SAVING_CHANGES_2: "S'estan desant els canvis"
+            UNSAVED_CHANGES_CLICK_SAVE_TO_PERSIST: 'Canvis sense desar — fes clic a Desa per conservar-los'
+            YOU_HAVE_UNSAVED_CHANGES: 'Tens canvis sense desar'
+        ALL_CHANGES_SAVED: 'Tots els canvis desats'
+        APP:
+            CREATING_BACKUP: "S'està creant la còpia de seguretat…"
+            DASHBOARD_GRAV_ADMIN: 'Tauler — Grav Admin'
+            REFRESH: Actualitza
+            WELCOME_BACK: 'Benvingut de nou, {name}'
+            PAGE_TITLE: '{name} — Grav Admin'
+        CONFIG:
+            TITLE: Configuració
+            TITLE_SCROLLED: 'Configuració: {scope}'
+            LOADING_CONFIGURATION: "S'està carregant la configuració..."
+            FAILED_TO_LOAD_CONFIGURATION: "No s'ha pogut carregar la configuració."
+            SCOPE_NOT_FOUND: "No s'ha trobat cap àmbit de configuració anomenat {scope}."
+            TWIG_PROFILE:
+                LABEL: 'Twig al contingut'
+                HELP: 'Tria qui pot executar Twig dins del contingut de la pàgina. Això configura els commutadors avançats de sota.'
+                'OFF': Desactivat
+                TRUSTED: 'Només rols de confiança'
+                ALL: 'Tots els editors'
+                CUSTOM: Personalitzat
+                OFF_DESC: "Twig al contingut de la pàgina està desactivat. El marcatge es mostra tal com s'ha escrit."
+                TRUSTED_DESC: 'Només els superusuaris i els titulars del permís «pages twig» poden activar Twig en una pàgina.'
+                ALL_DESC: 'Qualsevol editor pot activar Twig a les pàgines que edita.'
+                CUSTOM_DESC: 'La configuració actual no coincideix amb cap perfil amb nom. Ajusta els commutadors avançats de sota, o tria un perfil per restablir-los.'
+            FILTER_FIELDS: 'Filtra camps...'
+            CLEAR_FILTER: 'Neteja el filtre'
+            NO_MATCHES_FOUND: "No s'ha trobat cap coincidència"
+            CONFIGURATION_SAVED_SUCCESSFULLY: 'Configuració desada correctament'
+            CONFIGURATION_WAS_MODIFIED_ELSEWHERE: "La configuració s'ha modificat en un altre lloc. Recarrega per veure els canvis més recents."
+            FAILED_TO_SAVE_CONFIGURATION: "No s'ha pogut desar la configuració"
+            VALIDATION_FAILED_FOR_FIELDS: "No s'ha pogut desar: aquests camps no són vàlids: {fields}"
+            CONFIGURATION_RELOADED: 'Configuració recarregada'
+            CONFIGURATION_CHANGED_ELSEWHERE_SAVE_TO: "La configuració s'ha modificat en un altre lloc — desa per sobreescriure-la o recarrega"
+            RELOAD: Recarrega
+            NO_CONFIGURATION_BLUEPRINT_AVAILABLE: 'No hi ha cap blueprint de configuració disponible per a aquest àmbit.'
+            PAGE_TITLE: 'Configuració: {scope} — Grav Admin'
+            OVERRIDE:
+                REVERT_TOOLTIP: 'Substitueix el valor predeterminat ({value}). Fes clic per revertir-lo.'
+                DEFAULT_EMPTY: buit
+                REVERTED: "S'ha revertit al valor heretat"
+                REVERT_FAILED: "No s'ha pogut revertir"
+                RESET_BUTTON: 'Restableix les anul·lacions'
+                RESET_TOOLTIP: 'Elimina totes les anul·lacions i restaura els valors heretats'
+                RESET_TITLE: 'Vols restablir totes les anul·lacions?'
+                RESET_MESSAGE: 'Això elimina totes les anul·lacions de {scope} i restaura els valors heretats. Aquesta acció no es pot desfer.'
+                RESET_CONFIRM: Restableix
+                RESET_DONE: 'Anul·lacions restablertes'
+        FLEX_OBJECTS:
+            ADD: Afegeix
+            SEARCH: Cerca...
+            PREVIOUS: Anterior
+            DELETE_OBJECT: "Suprimeix l'objecte"
+            FAILED_TO_LOAD_DIRECTORY: "No s'ha pogut carregar el directori"
+            FAILED_TO_LOAD_OBJECTS: "No s'han pogut carregar els objectes"
+            OBJECT_DELETED: 'Objecte suprimit'
+            FAILED_TO_DELETE_OBJECT: "No s'ha pogut suprimir l'objecte"
+            EXPORT_FAILED: "L'exportació ha fallat"
+            EXPORT: Exporta
+            ACTIONS: Accions
+            OBJECT_WAS_MODIFIED_ELSEWHERE_PLEASE: "L'objecte s'ha modificat en un altre lloc. Recarrega, si us plau."
+            FAILED_TO_SAVE: "No s'ha pogut desar."
+            OBJECT_CHANGED_ELSEWHERE_SAVE_TO: "L'objecte s'ha modificat en un altre lloc — desa per sobreescriure'l o recarrega"
+            BACK_TO_LIST: 'Torna a la llista'
+            INFO:
+                TITLE: "Informació de l'objecte"
+                ID: ID
+                DIRECTORY: Directori
+                STORAGE_KEY: "Clau d'emmagatzematge"
+                LOCATION: Ubicació
+                SHOW_INFO: "Mostra la informació de l'objecte"
+            NEW:
+                OBJECT_CREATED: 'Objecte creat'
+                BACK_TO_LIST: 'Torna a la llista'
+                CREATE: Crea
+        FORGOT:
+            UNABLE_TO_CONNECT_TO_SERVER: "No s'ha pogut connectar amb el servidor."
+            FORGOT_PASSWORD_GRAV_ADMIN: 'He oblidat la contrasenya — Grav Admin'
+            FORGOT_PASSWORD: 'He oblidat la contrasenya'
+            EMAIL_ADDRESS: 'Correu electrònic'
+            ENTER_A_VALID_EMAIL_ADDRESS: 'Introdueix una adreça de correu electrònic vàlida'
+            IF_AN_ACCOUNT_EXISTS_FOR_THAT_EMAIL_A: "Si existeix un compte per a aquest correu, s'ha enviat un enllaç de restabliment."
+            BACK_TO_SIGN_IN: "Torna a l'inici de sessió"
+            SENDING: "S'està enviant..."
+            SEND_RESET_LINK: "Envia l'enllaç de restabliment"
+            CHECK_INBOX: "Revisa la teva bústia per trobar l'enllaç de restabliment."
+            SUBTITLE: "Introdueix el teu correu electrònic i t'enviarem un enllaç de restabliment."
+        LOGIN:
+            SIGNED_IN_SUCCESSFULLY: 'Sessió iniciada correctament'
+            PLEASE_FILL_IN_ALL_REQUIRED_FIELDS: 'Omple tots els camps obligatoris'
+            INVALID_USERNAME_OR_PASSWORD: "Nom d'usuari o contrasenya no vàlids"
+            UNABLE_TO_CONNECT_TO_SERVER_CHECK_YOUR: "No s'ha pogut connectar amb el servidor. Comprova l'URL del servidor i torna-ho a provar."
+            UNABLE_TO_VERIFY_CODE_CHECK_YOUR: "No s'ha pogut verificar el codi. Comprova la teva connexió i torna-ho a provar."
+            LOGIN_GRAV_ADMIN: 'Inici de sessió — Grav Admin'
+            GRAV_ADMIN: 'Grav Admin'
+            SERVER_CONFIGURATION: 'Configuració del servidor'
+            SERVER_URL: 'URL del servidor'
+            ENVIRONMENT: Entorn
+            USERNAME_IS_REQUIRED: "El nom d'usuari és obligatori"
+            PASSWORD_IS_REQUIRED: 'La contrasenya és obligatòria'
+            FORGOT_PASSWORD: 'Has oblidat la contrasenya?'
+            AUTHENTICATION_CODE: "Codi d'autenticació"
+            ENTER_A_VALID_6_DIGIT_CODE: 'Introdueix un codi vàlid de 6 dígits'
+            BACK_TO_SIGN_IN: "Torna a l'inici de sessió"
+            POWERED_BY_GRAV_CMS: 'Amb tecnologia Grav CMS'
+            SIGNING_IN: "S'està iniciant la sessió..."
+            SIGN_IN: 'Inicia la sessió'
+            VERIFYING: "S'està verificant..."
+            VERIFY: Verifica
+            TWOFA_SUBTITLE: "Introdueix el codi d'autenticació per continuar"
+            SUBTITLE: 'Inicia la sessió per gestionar el teu lloc'
+            AUTH_CODE_PROMPT: "Obre la teva aplicació d'autenticació i introdueix el codi de 6 dígits per a **{username}**."
+            OR_CONTINUE_WITH: 'O continua amb'
+            CONTINUE_WITH: 'Continua amb {provider}'
+            SSO_FAILED: "No s'ha pogut iniciar la sessió amb aquest proveïdor. Torna-ho a provar."
+            INVALID_AUTHENTICATION_CODE: "Codi d'autenticació no vàlid"
+            CAPTCHA_VERIFYING: "S'està comprovant que ets humà..."
+            CAPTCHA_VERIFIED: "S'ha verificat que ets humà"
+            CAPTCHA_NOT_COMPLETED: 'Completa el repte per continuar'
+            CAPTCHA_FAILED_TO_LOAD: "No s'ha pogut carregar el repte. Recarrega la pàgina i torna-ho a provar."
+        PLUGIN:
+            BACK_TO_DASHBOARD: 'Torna al tauler'
+            NO_CONTENT_AVAILABLE_FOR_THIS_PLUGIN: 'No hi ha contingut disponible per a aquesta pàgina de plugin.'
+        PLUGINS:
+            SEARCH_PLUGINS: 'Cerca plugins...'
+            SYMLINKED: 'Enllaçat simbòlicament'
+            FAILED_TO_LOAD_PLUGINS: "No s'han pogut carregar els plugins"
+            FAILED_TO_CHECK_FOR_UPDATES: "No s'han pogut comprovar les actualitzacions"
+            PLUGINS_GRAV_ADMIN: 'Plugins — Grav Admin'
+            CHECK_UPDATES: 'Comprova les actualitzacions'
+            CONFIGURE: Configura
+            SELECT_A_PLUGIN_TO_VIEW_DETAILS: "Selecciona un plugin per veure'n els detalls"
+            REMOVE_PLUGIN: 'Elimina el plugin'
+            CONFIGURATION_WAS_MODIFIED_ELSEWHERE: "La configuració s'ha modificat en un altre lloc. Recarrega, si us plau."
+            FAILED_TO_SAVE_CONFIGURATION: "No s'ha pogut desar la configuració."
+            PLUGIN_CHANGED_ELSEWHERE_SAVE_TO: "El plugin s'ha modificat en un altre lloc — desa per sobreescriure'l o recarrega"
+            BACK_TO_PLUGINS: 'Torna als plugins'
+            CHANGELOG: 'Registre de canvis'
+            PLUGIN_MUST_BE_ENABLED_TO_CONFIGURE: "El plugin ha d'estar activat per configurar-lo."
+            NO_CONFIGURATION_OPTIONS_AVAILABLE_FOR: 'No hi ha opcions de configuració disponibles per a aquest plugin.'
+            ENABLE_PLUGIN: 'Activa el plugin'
+            PAGE_TITLE: '{name} — Plugins — Grav Admin'
+            REMOVE_CONFIRM_TITLE: 'Vols eliminar el plugin?'
+            REMOVE_CONFIRM_MESSAGE: 'Vols eliminar {name}? Això desinstal·larà el plugin i suprimirà els seus fitxers. La configuració es conservarà.'
+            UPDATE_CONFIRM_TITLE: 'Vols actualitzar el plugin?'
+            UPDATE_CONFIRM_MESSAGE: 'Vols actualitzar {name} a la v{version}?'
+            UPDATE_ALL_CONFIRM_TITLE: 'Vols actualitzar els plugins?'
+            UPDATE_ALL_CONFIRM_MESSAGE: "{n, plural, one{S'actualitzarà # plugin:} other{S'actualitzaran # plugins:}}"
+            UPDATE_ALL: 'Actualitza-ho tot'
+            TITLE: Plugins
+        RESET:
+            PASSWORD_RESET_SUCCESSFULLY_PLEASE_SIGN: 'Contrasenya restablerta correctament. Inicia la sessió.'
+            UNABLE_TO_CONNECT_TO_SERVER: "No s'ha pogut connectar amb el servidor."
+            RESET_PASSWORD_GRAV_ADMIN: 'Restableix la contrasenya — Grav Admin'
+            RESET_PASSWORD: 'Restableix la contrasenya'
+            THIS_RESET_LINK_IS_MISSING_REQUIRED: "Aquest enllaç de restabliment no té els paràmetres necessaris. Sol·licita'n un de nou des de la pàgina de recuperació de contrasenya."
+            CONFIRM_PASSWORD: 'Confirma la contrasenya'
+            PASSWORDS_DO_NOT_MATCH: 'Les contrasenyes no coincideixen'
+            BACK_TO_SIGN_IN: "Torna a l'inici de sessió"
+            RESETTING: "S'està restablint..."
+            INVALID_LINK: 'Enllaç de restabliment no vàlid.'
+            NEW_PASSWORD_FOR: 'Tria una contrasenya nova per a **{username}**.'
+        SETTINGS:
+            LIGHT_LOGO: 'Logotip clar'
+            DARK_LOGO: 'Logotip fosc'
+            REMOVE_LINK: "Elimina l'enllaç"
+            RESET_PREFERENCES: 'Restableix les preferències'
+            PREFERENCES_RESET_RELOAD_TO_APPLY: 'Preferències restablertes. Recarrega per aplicar-les.'
+            SETTINGS_GRAV_ADMIN: 'Configuració — Grav Admin'
+            ADMIN_PREFERENCES_AND_APPEARANCE: "Preferències i aparença de l'administrador"
+            CUSTOMIZE_THE_LOGO_SHOWN_IN_THE_SIDEBAR: "Personalitza el logotip que es mostra a la barra lateral i a la pàgina d'inici de sessió"
+            LOGO_TYPE: 'Tipus de logotip'
+            CHOOSE_HOW_THE_LOGO_IS_DISPLAYED: 'Tria com es mostra el logotip'
+            GRAV_LOGO: 'Logotip de Grav'
+            CUSTOM_TEXT: 'Text personalitzat'
+            CUSTOM_IMAGE: 'Imatge personalitzada'
+            LOGO_TEXT: 'Text del logotip'
+            THE_FIRST_LETTER_BECOMES_THE_ICON: 'La primera lletra esdevé la icona'
+            LIGHT_MODE_LOGO: 'Logotip del mode clar'
+            USED_ON_LIGHT_BACKGROUNDS: "S'utilitza en fons clars"
+            DARK_MODE_LOGO: 'Logotip del mode fosc'
+            SIDEBAR_LOGO_HEIGHT: 'Alçada del logotip a la barra lateral'
+            SIDEBAR_LOGO_HEIGHT_DESC: "Com d'alt apareix el teu logotip a la part superior de la barra lateral."
+            LOGO_HEIGHT_DEFAULT: Predeterminada
+            LOGO_HEIGHT_CUSTOM: Personalitzada
+            USED_ON_DARK_BACKGROUNDS: "S'utilitza en fons foscos"
+            APPEARANCE: Aparença
+            CUSTOMIZE_THE_LOOK_AND_FEEL_OF_THE_ADMIN: "Personalitza l'aspecte i el comportament de l'administrador"
+            COLOR_MODE: 'Mode de color'
+            CHOOSE_BETWEEN_LIGHT_AND_DARK_APPEARANCE: "Tria entre l'aparença clara i fosca"
+            ACCENT_COLOR: "Color d'èmfasi"
+            PRIMARY_COLOR_USED_FOR_BUTTONS_LINKS: 'Color principal utilitzat per a botons, enllaços i ressaltats'
+            SATURATION: Saturació
+            CURRENT_COLOR: Color
+            COPY_COLOR: 'Copia aquest color'
+            TYPEFACE_USED_THROUGHOUT_THE_ADMIN: "Tipus de lletra utilitzat a tot l'administrador"
+            FONT_SIZE: 'Mida de la lletra'
+            TEXT_SIZE_USED_THROUGHOUT_THE_ADMIN: "Mida del text utilitzada a tot l'administrador"
+            FONT_SIZE_SMALL: Petita
+            FONT_SIZE_NORMAL: Normal
+            FONT_SIZE_LARGE: Gran
+            FONT_SIZE_XLARGE: 'Molt gran'
+            DEFAULT_SETTINGS_FOR_THE_PAGE_BROWSER: 'Configuració predeterminada per al navegador de pàgines'
+            DEFAULT_VIEW: 'Vista predeterminada'
+            HOW_PAGES_ARE_DISPLAYED_BY_DEFAULT: 'Com es mostren les pàgines per defecte'
+            OTHER_LIST_VIEWS: 'Altres vistes de llista'
+            OTHER_LIST_VIEWS_DESC: "Disposició predeterminada per a les llistes d'usuaris, plugins i temes"
+            ITEMS_PER_PAGE: 'Elements per pàgina'
+            NUMBER_OF_PAGES_SHOWN_IN_LIST_VIEW: 'Nombre de pàgines mostrades a la vista de llista'
+            EDITING: Edició
+            AUTO_SAVE_AND_UNDO_BEHAVIOR_FOR_FORM: 'Comportament de desament automàtic i desfer per als editors de formularis'
+            AUTO_SAVE: 'Desament automàtic'
+            AUTOMATICALLY_SAVE_WHEN_YOU_LEAVE_A: "Desa automàticament quan surtis d'un camp"
+            TOOLBAR_UNDO_BUTTON: "Botó de desfer a la barra d'eines"
+            SHOW_AN_UNDO_BUTTON_IN_THE_EDITOR: "Mostra un botó de desfer a la barra d'eines de l'editor"
+            UNDO_BATCH_WINDOW: "Finestra d'agrupació de desfer"
+            GROUP_RAPID_FIELD_CHANGES_INTO_A_SINGLE: 'Agrupa els canvis ràpids de camps en un únic pas de desfer'
+            NONE_1_FIELD_1_UNDO: 'Cap (1 camp = 1 desfer)'
+            1_SECOND: '1 segon'
+            2_SECONDS: '2 segons'
+            REAL_TIME_COLLABORATION: 'Col·laboració en temps real'
+            PLUGIN_ON_THE_SERVER_EXPERIMENTAL: 'plugin al servidor. Experimental.'
+            ADMIN_INTERFACE_LANGUAGE: "Idioma de la interfície d'administració"
+            ADMIN_LANGUAGE: "Idioma d'administració"
+            ENGLISH: English
+            FRAN_AIS: Français
+            DEUTSCH: Deutsch
+            ESPA_OL: Español
+            ITALIANO: Italiano
+            PORTUGU_S: Português
+            NEDERLANDS: Nederlands
+            MENUBAR_LINKS: 'Enllaços de la barra de menú'
+            CUSTOM_SHORTCUTS_SHOWN_IN_THE_TOP: 'Dreceres personalitzades mostrades a la barra de menú superior'
+            EXTERNAL: Extern
+            ADD_LINK: 'Afegeix un enllaç'
+            CONNECTION: Connexió
+            SERVER_CONNECTION_DETAILS: 'Detalls de connexió del servidor'
+            SERVER_URL: 'URL del servidor'
+            ENVIRONMENT: Entorn
+            AUTHENTICATED_AS: 'Autenticat com a'
+            RESET_ALL_PREFERENCES: 'Restableix totes les preferències'
+            COLLAB_DESCRIPTION: 'Edició multiusuari en viu amb presència. Requereix el plugin `sync` al servidor. Experimental.'
+            ADMIN_LANGUAGE_DESC: 'Idioma per a etiquetes, menús i missatges ({count} cadenes carregades)'
+            LANGUAGE_CHANGED: 'Idioma canviat a {language}'
+            HUE: To
+            FONT: 'Tipus de lletra'
+            LIGHT: Clar
+            DARK: Fosc
+            FOLLOW_OS: 'Segueix el SO'
+            'ON': Activat
+            'OFF': Desactivat
+            RESET_TO_SITE_DEFAULTS: 'Restableix les meves preferències als valors predeterminats del lloc'
+            SITE_DEFAULTS: 'Valors predeterminats del lloc'
+            SITE_DEFAULTS_DESCRIPTION: "La configuració següent s'aplica a tots els usuaris administradors com a base. Els elements de nivell B (aparença, pàgines, idioma, editor) es poden sobreescriure a les preferències de cada usuari, indicades més amunt. Els elements de nivell A (edició, barra de menú) són d'àmbit global i no es poden sobreescriure."
+            BRANDING: Marca
+            BRANDING_DESC: "Logotip, títol, favicon i pantalla d'inici de sessió mostrats a tot l'administrador."
+            SAVED_AUTOMATICALLY: 'Desat automàticament'
+            SITE_SETTINGS_HEADING: 'Configuració del lloc'
+            SITE_SETTINGS_DESC: "Preferències predeterminades per als usuaris nous, més el comportament global del lloc. Els canvis s'apliquen a la propera recàrrega per als usuaris afectats."
+            DEFAULT_APPEARANCE: 'Aparença predeterminada'
+            DEFAULT_COLOR_APPEARANCE_DESC: 'Aparença de color predeterminada per als usuaris nous.'
+            DEFAULT_PRIMARY_COLOR_DESC: 'Color primari predeterminat per a botons, enllaços i ressaltats.'
+            DEFAULT_TYPEFACE_DESC: "Tipus de lletra predeterminat per a la interfície d'administració."
+            DEFAULT_TEXT_SIZE_DESC: "Mida de text predeterminada per a la interfície d'administració."
+            DEFAULT_PAGES: 'Pàgines predeterminades'
+            DEFAULT_LANGUAGE: 'Idioma predeterminat'
+            DEFAULT_INTERFACE_LANGUAGE_DESC: "Idioma d'interfície predeterminat per als usuaris nous."
+            EDITOR_HEADING: Editor
+            EDITOR_MODE: "Mode d'editor"
+            DEFAULT_FORM_EDITOR_DENSITY: "Densitat predeterminada de l'editor de formularis."
+            EDITOR_SECTION_DESC: "Com es comporta l'editor de Markdown mentre escrius."
+            EDITOR_KEYMAP: 'Dreceres de teclat'
+            EDITOR_KEYMAP_DESC: "Utilitza les dreceres de teclat de Vim als editors de Markdown i de codi. L'opció predeterminada manté l'edició estàndard."
+            EDITOR_KEYMAP_DEFAULT: Predeterminat
+            EDITOR_KEYMAP_VIM: Vim
+            STICKY_TOOLBAR: "Barra d'eines fixa"
+            STICKY_TOOLBAR_DESC: "Mantén la barra d'eines de format i el botó de previsualització fixats a la vista mentre et desplaces."
+            EDITOR_HEIGHT: "Alçada de l'editor"
+            EDITOR_HEIGHT_DESC: "Permet que l'editor creixi amb el teu contingut, o limita'l a una alçada fixa amb la seva pròpia barra de desplaçament."
+            EDITOR_HEIGHT_AUTO: Auto
+            EDITOR_HEIGHT_FIXED: Fixa
+            USERS_MAY_OVERRIDE: 'Els usuaris poden sobreescriure-ho'
+            SITE_WIDE_ONLY: "Només d'àmbit global"
+            REVERT_CHANGES: 'Desfés els canvis'
+            SAVE_SITE_DEFAULTS: 'Desa els valors predeterminats del lloc'
+            RESET_PREFERENCES_MSG: 'Vols eliminar totes les teves substitucions personals i tornar als valors predeterminats del lloc?'
+            RESET: Restableix
+            FAILED_TO_SAVE_LOGO_MODE: "No s'ha pogut desar el mode de logotip."
+            FAILED_TO_SAVE_LOGO_TEXT: "No s'ha pogut desar el text del logotip."
+            LIGHT_LOGO_UPLOADED: "S'ha pujat el logotip clar."
+            DARK_LOGO_UPLOADED: "S'ha pujat el logotip fosc."
+            LOGO_UPLOAD_FAILED: "No s'ha pogut pujar el logotip."
+            LIGHT_LOGO_REMOVED: "S'ha eliminat el logotip clar."
+            DARK_LOGO_REMOVED: "S'ha eliminat el logotip fosc."
+            FAILED_TO_REMOVE_LOGO: "No s'ha pogut eliminar el logotip."
+            FAILED_TO_SAVE_BRANDING: "No s'ha pogut desar la marca."
+            ADMIN_TITLE: "Títol d'administració"
+            ADMIN_TITLE_DESC: "Es mostra com a encapçalament d'inici de sessió i a la pestanya del navegador. Deixa-ho en blanc per a «Grav Admin»."
+            LOGIN_SUBTITLE: "Subtítol d'inici de sessió"
+            LOGIN_SUBTITLE_DESC: "Línia opcional que es mostra sota l'encapçalament d'inici de sessió."
+            SHOW_POWERED_BY: 'Mostra «Powered by Grav»'
+            SHOW_POWERED_BY_DESC: "Mostra la línia «Powered by Grav CMS» a les pantalles d'inici de sessió i configuració."
+            FAVICON: Favicon
+            FAVICON_DESC: 'Icona personalitzada per a la pestanya del navegador (SVG, PNG, WebP o ICO). Deixa-ho en blanc per a la icona generada automàticament.'
+            FAVICON_UPLOADED: "S'ha pujat el favicon."
+            FAVICON_REMOVED: "S'ha eliminat el favicon."
+            SITE_DEFAULTS_SAVED: "S'han desat els valors predeterminats del lloc. Tots els usuaris els veuran a la propera recàrrega."
+            FAILED_TO_SAVE_SITE_DEFAULTS: "No s'han pogut desar els valors predeterminats del lloc."
+            FAILED_TO_RESET_PREFERENCES: "No s'han pogut restablir les preferències."
+        CUSTOM: Personalitzat
+        PREVIEW: Previsualització
+        SETUP:
+            PLEASE_FIX_THE_ERRORS_ABOVE_AND_TRY: 'Corregeix els errors anteriors i torna-ho a provar'
+            ADMINISTRATOR_ACCOUNT_CREATED_WELCOME: "Compte d'administrador creat — benvingut a Grav"
+            SETUP_HAS_ALREADY_BEEN_COMPLETED_PLEASE: "La configuració ja s'ha completat. Inicia la sessió."
+            UNABLE_TO_CONNECT_TO_SERVER_CHECK_YOUR: "No s'ha pogut connectar amb el servidor. Comprova la URL del servidor i torna-ho a provar."
+            SETUP_GRAV_ADMIN: 'Configuració — Grav Admin'
+            WELCOME_TO_GRAV: 'Benvingut a Grav'
+            CREATE_YOUR_ADMINISTRATOR_ACCOUNT_TO: "Crea el teu compte d'administrador per començar"
+            CHECKING_SERVER: "S'està comprovant el servidor…"
+            SERVER_CONFIGURATION: 'Configuració del servidor'
+            SERVER_URL: 'URL del servidor'
+            ENVIRONMENT: Entorn
+            3_64_CHARACTERS_LETTERS_NUMBERS_HYPHENS: '3-64 caràcters: lletres, números, guions, guions baixos'
+            FULL_NAME: 'Nom complet'
+            OPTIONAL: (opcional)
+            ENTER_A_VALID_EMAIL_ADDRESS: 'Introdueix una adreça de correu electrònic vàlida'
+            CONFIRM_PASSWORD: 'Confirma la contrasenya'
+            PASSWORDS_DO_NOT_MATCH: 'Les contrasenyes no coincideixen'
+            POWERED_BY_GRAV_CMS: 'Powered by Grav CMS'
+            CREATING_ACCOUNT: "S'està creant el compte..."
+            CREATE_ADMINISTRATOR: "Crea l'administrador"
+        SYSTEM:
+            SYSTEM_GRAV_ADMIN: 'Sistema — Grav Admin'
+            COMING_SOON: Properament
+        THEMES:
+            SEARCH_THEMES: 'Cerca temes...'
+            SYMLINKED: 'Enllaçat simbòlicament'
+            FAILED_TO_LOAD_THEMES: "No s'han pogut carregar els temes"
+            FAILED_TO_CHECK_FOR_UPDATES: "No s'han pogut comprovar les actualitzacions"
+            THEMES_GRAV_ADMIN: 'Temes — Grav Admin'
+            CHECK_UPDATES: 'Comprova les actualitzacions'
+            CONFIGURE: Configura
+            SELECT_A_THEME_TO_VIEW_DETAILS: "Selecciona un tema per veure'n els detalls"
+            ACTIVE_THEME: 'Tema actiu'
+            CLICK_TO_VIEW_FULL_SIZE: 'Fes clic per veure-ho a mida completa'
+            REMOVE_THEME: 'Elimina el tema'
+            CONFIGURATION_WAS_MODIFIED_ELSEWHERE: "La configuració s'ha modificat en un altre lloc. Torna-la a carregar."
+            FAILED_TO_SAVE_CONFIGURATION: "No s'ha pogut desar la configuració."
+            BACK_TO_THEMES: 'Torna a Temes'
+            CHANGELOG: 'Registre de canvis'
+            NO_CONFIGURATION_OPTIONS_AVAILABLE_FOR: 'No hi ha opcions de configuració disponibles per a aquest tema.'
+            PAGE_TITLE: '{name} — Temes — Grav Admin'
+            TITLE: Temes
+            ACTIVATE: Activa
+            ACTIVATE_THEME: 'Activa {name}'
+            ACTIVATE_CONFIRM_TITLE: 'Vols activar el tema?'
+            ACTIVATE_CONFIRM_MESSAGE: 'Vols canviar el tema actiu del lloc a {name}? La representació del frontend utilitzarà aquest tema immediatament.'
+            REMOVE_CONFIRM_TITLE: 'Vols eliminar el tema?'
+            REMOVE_CONFIRM_MESSAGE: "Vols eliminar {name}? Això desinstal·larà el tema i n'eliminarà els fitxers."
+            UPDATE_ALL_CONFIRM_TITLE: 'Vols actualitzar els temes?'
+            UPDATE_ALL_CONFIRM_MESSAGE: "{n, plural, one{S'actualitzarà # tema:} other{S'actualitzaran # temes:}}"
+            UPDATE_ALL: 'Actualitza-ho tot'
+            REMOVE_ACTIVE_CONFIRM_MESSAGE: "{name} és el tema actiu actualment. Si l'elimines, el lloc es quedarà sense tema fins que se n'activi un altre. Vols continuar?"
+            DELETE_ACTIVE_WARNING: 'Actualment actiu. Es recomana canviar de tema abans de suprimir-lo.'
+        ACTIVE: Actiu
+        ACTIVATE: Activa
+        USERS:
+            TITLE: Usuaris
+            STATUS: Estat
+            STATUS_HELP: "Els comptes desactivats no poden iniciar sessió ni utilitzar l'API."
+            SEARCH_USERS: 'Cerca usuaris...'
+            FAILED_TO_LOAD_USERS: "No s'han pogut carregar els usuaris"
+            USERS_GRAV_ADMIN: 'Usuaris — Grav Admin'
+            ADD_USER: 'Afegeix un usuari'
+            SUPER_ADMIN: 'Super Admin'
+            CREATED: Creat
+            PERMISSIONS: Permisos
+            SELECT_A_USER_TO_VIEW_DETAILS: "Selecciona un usuari per veure'n els detalls"
+            DELETE_USER: "Suprimeix l'usuari"
+            CONFIRM_DELETE_USER: "Vols suprimir l'usuari ''{username}''? Això no es pot desfer."
+            USER_WAS_MODIFIED_ELSEWHERE_PLEASE: "L'usuari s'ha modificat en un altre lloc. Torna'l a carregar."
+            FAILED_TO_SAVE_USER: "No s'ha pogut desar l'usuari."
+            YOU_CANNOT_DELETE_YOUR_OWN_ACCOUNT: 'No pots suprimir el teu propi compte.'
+            USER_CHANGED_ELSEWHERE_SAVE_TO: "L'usuari s'ha modificat en un altre lloc — desa per sobreescriure'l o torna'l a carregar"
+            BACK_TO_USERS: 'Torna a Usuaris'
+            2_FACTOR_AUTHENTICATION: 'Autenticació de dos factors'
+            NEW:
+                LOWERCASE_3_64_CHARS: '3-64 caràcters: lletres, números, . - _'
+                NEW_USER_GRAV_ADMIN: 'Usuari nou — Grav Admin'
+                NEW_USER: 'Usuari nou'
+                ACCOUNT: Compte
+                FULL_NAME: 'Nom complet'
+                PERMISSIONS: Permisos
+                CREATE: Crea
+            PAGE_TITLE: '{name} — Usuaris — Grav Admin'
+        USERS_NAV:
+            USERS: Usuaris
+            GROUPS: Grups
+            INVITATIONS: Invitacions
+            CONFIGURATION: Configuració
+        INVITATIONS:
+            INVITE: Convida
+            INVITE_USER: 'Convida un usuari'
+            SEND_INVITE: 'Envia la invitació'
+            RECIPIENT: Destinatari
+            RECIPIENT_HINT: "Triaran el seu propi nom d'usuari i contrasenya quan acceptin."
+            EMAIL: 'Correu electrònic'
+            FULL_NAME_OPTIONAL: 'Nom complet (opcional)'
+            MESSAGE_OPTIONAL: 'Missatge personal (opcional)'
+            EXPIRES_AFTER: 'La invitació caduca després de'
+            EXPIRY_1_DAY: '1 dia'
+            EXPIRY_3_DAYS: '3 dies'
+            EXPIRY_7_DAYS: '7 dies'
+            EXPIRY_14_DAYS: '14 dies'
+            EXPIRY_30_DAYS: '30 dies'
+            GROUPS: Grups
+            GROUPS_HINT: "Grups als quals s'afegirà l'usuari convidat."
+            LOADING_GROUPS: "S'estan carregant els grups..."
+            NO_GROUPS: 'Encara no hi ha cap grup definit.'
+            PERMISSIONS: Permisos
+            PERMISSIONS_HINT: "Permisos que rebrà l'usuari convidat. No es podran atorgar més permisos dels que estableixis aquí."
+            INVITE_READY: 'Invitació preparada'
+            EMAIL_SENT_TO: "S'ha enviat un correu d'invitació a {email}."
+            INVITE_LINK: "Enllaç d'invitació"
+            COPY: Copia
+            COPIED: Copiat
+            INVITE_ANOTHER: "Convida'n un altre"
+            VIEW_PENDING: 'Mostra les pendents'
+            SENT_TOAST: 'Invitació enviada a {email}.'
+            CREATED_NO_EMAIL_TOAST: "Invitació creada. El correu electrònic no està configurat, així que comparteix l'enllaç manualment."
+            RESENT_TOAST: 'Invitació reenviada a {email}.'
+            REVOKED_TOAST: 'Invitació revocada.'
+            SEND_FAILED: "No s'ha pogut enviar la invitació."
+            RESEND_FAILED: "No s'ha pogut reenviar la invitació."
+            REVOKE_FAILED: "No s'ha pogut revocar la invitació."
+            LOAD_FAILED: "No s'han pogut carregar les invitacions."
+            COPY_FAILED: "No s'ha pogut copiar l'enllaç."
+            PENDING_COUNT: '{count, plural, =0 {Cap invitació pendent} one {# invitació pendent} other {# invitacions pendents}}'
+            NONE_PENDING: 'Cap invitació pendent'
+            NONE_PENDING_HINT: 'Convida algú a unir-se i la seva invitació pendent apareixerà aquí.'
+            INVITED_BY: 'Convidat per {name}'
+            EXPIRED: Caducada
+            EXPIRES_IN_DAYS: "{count, plural, one {Caduca d'aquí a # dia} other {Caduca d'aquí a # dies}}"
+            EXPIRES_IN_HOURS: "{count, plural, one {Caduca d'aquí a # hora} other {Caduca d'aquí a # hores}}"
+            RESEND: Reenvia
+            REVOKE: Revoca
+            REVOKE_TITLE: 'Revoca la invitació'
+            CONFIRM_REVOKE: "Vols revocar la invitació per a {email}? L'enllaç deixarà de funcionar."
+            ACCEPT_TITLE: 'Accepta la invitació — Grav Admin'
+            ACCEPT_HEADING: 'Accepta la invitació'
+            ACCEPT_SUBHEADING: 'Configura el teu compte per començar.'
+            CHECKING_INVITE: "S'està comprovant la teva invitació..."
+            INVALID_INVITE: 'Aquesta invitació no és vàlida.'
+            INVALID_INVITE_BODY: "Aquest enllaç d'invitació no és vàlid o ja s'ha utilitzat."
+            EXPIRED_INVITE: 'Aquesta invitació ha caducat.'
+            EXPIRED_INVITE_BODY: "Aquesta invitació ha caducat. Demana a un administrador que n'enviï una de nova."
+            TITLE_OPTIONAL: 'Títol (opcional)'
+            CHOOSE_PASSWORD: 'Tria una contrasenya'
+            PASSWORD_POLICY: 'La contrasenya no compleix la política requerida'
+            USERNAME_INVALID: "El nom d'usuari ha de tenir entre 3 i 64 caràcters."
+            USERNAME_TAKEN: "Aquest nom d'usuari ja està en ús."
+            CREATE_ACCOUNT: 'Crea el compte'
+            CREATING_ACCOUNT: "S'està creant el compte..."
+            ACCEPT_SUCCESS: 'Compte creat. Benvingut!'
+            ACCEPT_FAILED: "No s'ha pogut crear el teu compte."
+        USERS_TABLE:
+            USERNAME: "Nom d'usuari"
+            EMAIL: 'Correu electrònic'
+            FULL_NAME: 'Nom complet'
+            STATUS: Estat
+            PERMISSIONS: Permisos
+            ACTIONS: Accions
+            ENABLED: Activat
+            DISABLED: Desactivat
+            'ON': Activat
+            'OFF': Desactivat
+            EDIT: Edita
+            DELETE: Suprimeix
+            NO_USERS: "No s'ha trobat cap usuari"
+            CARDS: Targetes
+            TABLE: Taula
+        USERS_FILTER:
+            PERMISSION: Permís
+            GROUP: Grup
+            GROUPS: Grups
+            BACKEND_ACCESS: 'Accés al backend'
+            CLEAR: Neteja
+            CLEAR_ALL: 'Neteja els filtres'
+            TYPE_TO_FILTER: 'Escriu per filtrar…'
+            LOADING: "S'està carregant…"
+            NO_MATCHES: 'Sense coincidències'
+            NO_MATCHES_FILTERS: 'Cap usuari coincideix amb aquests filtres'
+            FILTER_BY_PERMISSION: 'Filtra per aquest permís'
+            FILTER_BY_GROUP: 'Filtra per aquest grup'
+        PLUGINS_TABLE:
+            NAME: Nom
+            VERSION: Versió
+            NO_PLUGINS: 'No hi ha cap plugin instal·lat'
+            PROTECTED_PLUGIN: "Aquest plugin no es pot desactivar des d'admin-next sense bloquejar-te l'accés."
+        THEMES_TABLE:
+            NO_THEMES: 'No hi ha cap tema instal·lat'
+        GROUPS:
+            GROUPS: Grups
+            GROUPS_GRAV_ADMIN: 'Grups — Grav Admin'
+            ADD_GROUP: 'Afegeix un grup'
+            NEW_GROUP: 'Grup nou'
+            NEW_GROUP_GRAV_ADMIN: 'Grup nou — Grav Admin'
+            GROUP_NAME: 'Nom del grup'
+            GROUP_NAME_PLACEHOLDER: 'p. ex. editors'
+            GROUP_NAME_HELP: "1–200 caràcters de lletres, números, guions o guions baixos. S'utilitza com a clau d'emmagatzematge."
+            DISPLAY_NAME: 'Nom per mostrar'
+            DESCRIPTION: Descripció
+            SEARCH_GROUPS: 'Cerca grups...'
+            NO_GROUPS: "No s'ha trobat cap grup"
+            NO_GROUPS_MATCH_SEARCH: 'Cap grup coincideix amb la cerca'
+            SELECT_A_GROUP_TO_VIEW_DETAILS: "Selecciona un grup per veure'n els detalls"
+            BACK_TO_GROUPS: 'Torna a Grups'
+            CREATE: Crea
+            DELETE_GROUP: 'Suprimeix el grup'
+            CONFIRM_DELETE_GROUP: "Vols suprimir el grup ''{name}''? Això no es pot desfer."
+            FAILED_TO_LOAD_GROUPS: "No s'han pogut carregar els grups"
+            FAILED_TO_LOAD_GROUP: "No s'ha pogut carregar el grup ''{name}''."
+            FAILED_TO_SAVE_GROUP: "No s'ha pogut desar el grup."
+            FAILED_TO_CREATE_GROUP: "No s'ha pogut crear el grup."
+            GROUP_SAVED: "S'ha desat el grup ''{name}''"
+            GROUP_CREATED: "S'ha creat el grup ''{name}''"
+            GROUP_DELETED: "S'ha suprimit el grup ''{name}''"
+            GROUP_DELETE_FAILED: "No s'ha pogut suprimir el grup ''{name}''"
+            GROUP_MODIFIED_ELSEWHERE: "El grup s'ha modificat en un altre lloc. Torna'l a carregar."
+            GROUP_PAGE_TITLE: '{name} — Grups — Grav Admin'
+            GROUP_COUNT_ONE: '{n} grup'
+            GROUP_COUNT_OTHER: '{n} grups'
+        ACCOUNTS_CONFIG:
+            TITLE: 'Configuració de comptes'
+            SUBTITLE: "Configuració predeterminada per als comptes d'usuari i el registre"
+            PAGE_TITLE: 'Configuració de comptes — Grav Admin'
+            SAVED: 'Configuració desada'
+            FAILED_TO_LOAD: "No s'ha pogut carregar la configuració de comptes"
+            FAILED_TO_SAVE: "No s'ha pogut desar la configuració de comptes"
+            MODIFIED_ELSEWHERE: "La configuració s'ha modificat en un altre lloc. Torna-la a carregar."
+            NO_FIELDS: 'No hi ha opcions de configuració disponibles.'
+        PAGINATION:
+            PAGE_OF: 'Pàgina {current} de {total}'
+        INFO: Informació
+        INSTALL: Instal·la
+        COPY_BUTTON:
+            COPIED: Copiat!
+            COPY: Copia
+        WIDGET_HOST:
+            UNKNOWN_WIDGET: 'Giny desconegut: {id}'
+        UPDATE_AVAILABLE_VERSION: 'Actualització disponible: v{version}'
+        UPDATE_TO_VERSION: 'Actualitza a v{version}'
+        2FA_ENABLED: '2FA activat'
+        2FA_SECRET: 'Secret 2FA'
+        2FA_SECRET_HELP: "Escaneja aquest codi QR a la teva [aplicació d'autenticació](https://learn.getgrav.org/admin-panel/2fa#apps). També és una bona idea fer una còpia de seguretat del secret en un lloc segur, per si has de reinstal·lar l'aplicació. Consulta la [documentació de Grav](https://learn.getgrav.org/admin-panel/2fa) per obtenir més informació "
+        2FA_TITLE: 'Autenticació de dos factors'
+        ABSOLUTE_URLS: 'URL absolutes'
+        ABSOLUTE_URLS_HELP: 'URL absolutes o relatives per a `base_url`'
+        ACCESS: Accés
+        ACCESS_LEVELS: "Nivells d'accés"
+        ACCOUNT: Compte
+        ACCOUNTS: Comptes
+        ACCOUNTS_STORAGE: 'Emmagatzematge de comptes'
+        ACCOUNTS_STORAGE_HELP: "El mecanisme d'emmagatzematge que s'utilitzarà per al tipus de compte d'objecte Flex. Files és l'enfocament tradicional on els comptes s'emmagatzemen en un fitxer YAML en una única carpeta, mentre que Folder crea una carpeta nova per a cada compte"
+        ACCOUNTS_TYPE: 'Tipus de comptes'
+        ACCOUNTS_TYPE_HELP: "Sistema d'objectes Flex per emmagatzemar comptes d'usuari"
+        ACTIVE_LANGUAGE_IN_SESSION: 'Idioma actiu a la sessió'
+        ACTIVE_LANGUAGE_IN_SESSION_HELP: "Emmagatzema l'idioma actiu a la sessió"
+        ADD: Afegeix
+        ADD_ACCOUNT: 'Afegeix un compte'
+        ADMIN_CHILDREN_DISPLAY_ORDER: 'Ordre de visualització dels fills'
+        ADMIN_CHILDREN_DISPLAY_ORDER_HELP: "L'ordre en què s'han de mostrar els fills d'aquesta pàgina a la vista «Pàgines» del plugin d'administració"
+        ADMIN_SPECIFIC_OVERRIDES: "Substitucions específiques d'administració"
+        ADVANCED: Avançat
+        ALLOW_URL_TAXONOMY_FILTERS: "Filtres de taxonomia a l'URL"
+        ALLOW_URL_TAXONOMY_FILTERS_HELP: 'Les col·leccions basades en pàgines et permeten filtrar mitjançant `/taxonomy:value`.'
+        ALLOW_WEBSERVER_GZIP: 'Permet el Gzip del servidor web'
+        ALLOW_WEBSERVER_GZIP_HELP: "Desactivat per defecte. Quan s'activa, la compressió Gzip/Deflate configurada al servidor web funcionarà, però la connexió HTTP no es tancarà abans de l'esdeveniment onShutDown(), la qual cosa provoca una càrrega de pàgina més lenta"
+        APPEND_URL_EXT: "Afegeix una extensió a l'URL"
+        APPEND_URL_EXT_HELP: "Afegirà una extensió personalitzada a l'URL de la pàgina. Tingues en compte que això significa que Grav cercarà la plantilla `<template>.<extension>.twig`"
+        ASCENDING: Ascendent
+        ASSETS: Recursos
+        AUTO: Automàtic
+        AUTO_LINE_BREAKS: 'Salts de línia automàtics'
+        AUTO_LINE_BREAKS_HELP: 'Activa la compatibilitat amb salts de línia automàtics a Markdown'
+        AUTO_URL_LINKS: "Enllaços d'URL automàtics"
+        AUTO_URL_LINKS_HELP: "Activa la conversió automàtica d'URL en hiperenllaços HTML"
+        AUTOESCAPE_VARIABLES: 'Escapament automàtic de variables'
+        AUTOESCAPE_VARIABLES_HELP: "Aplica l'escapament automàtic a totes les variables. Segurament, això trencarà el teu lloc"
+        AVATAR: "Generador d'avatar"
+        AVATAR_HASH: "NOTA: Cadena «hash» d'avatar personalitzat opcional"
+        AVATAR_HELP: 'Multiavatar és un avatar generat localment. Gravatar és un servei extern que utilitza la teva adreça de correu electrònic per obtenir un avatar preconfigurat de manera remota'
+        BACK: Enrere
+        BACKUPS: 'Còpies de seguretat'
+        BACKUPS_HISTORY: 'Historial de còpies de seguretat'
+        BACKUPS_MAX_COUNT: 'Nombre màxim de còpies de seguretat'
+        BACKUPS_MAX_RETENTION_TIME: 'Temps màxim de retenció'
+        BACKUPS_MAX_RETENTION_TIME_APPEND: 'en dies'
+        BACKUPS_MAX_SPACE: 'Espai màxim de còpies de seguretat'
+        BACKUPS_PROFILE_ENVIRONMENT: Entorn
+        BACKUPS_PROFILE_ENVIRONMENT_HELP: "Entorn de Grav amb què s'executa la còpia de seguretat programada."
+        BACKUPS_PROFILE_EXCLUDE_FILES: 'Exclou fitxers'
+        BACKUPS_PROFILE_EXCLUDE_FILES_HELP: 'Fitxers o carpetes concrets a excloure, un per línia'
+        BACKUPS_PROFILE_EXCLUDE_PATHS: 'Exclou rutes'
+        BACKUPS_PROFILE_EXCLUDE_PATHS_HELP: 'Rutes absolutes a excloure, una per línia'
+        BACKUPS_PROFILE_NAME: 'Nom de la còpia de seguretat'
+        BACKUPS_PROFILE_ROOT_FOLDER: 'Carpeta arrel'
+        BACKUPS_PROFILE_ROOT_FOLDER_HELP: 'Pot ser una ruta absoluta o un flux'
+        BACKUPS_PROFILE_SCHEDULE: 'Activa la tasca programada'
+        BACKUPS_PROFILE_SCHEDULE_AT: 'Executa la tasca programada'
+        BACKUPS_PROFILES: 'Perfils de còpia de seguretat'
+        BACKUPS_PURGE_CONFIG: 'Configuració de purga de còpies de seguretat'
+        BACKUPS_STORAGE_PURGE_TRIGGER: "Desencadenant de purga d'emmagatzematge de còpies de seguretat"
+        BODY_CLASSES: 'Classes del cos'
+        CACHE_ALL: 'Desa totes les imatges a la memòria cau'
+        CACHE_ALL_HELP: 'Passa totes les imatges pel sistema de memòria cau de Grav encara que no tinguin manipulacions de multimèdia'
+        CACHE_CHECK_METHOD: 'Mètode de comprovació de la memòria cau'
+        CACHE_CHECK_METHOD_HELP: "Selecciona el mètode que fa servir Grav per comprovar si els fitxers de pàgina s'han modificat."
+        CACHE_CLEAR_JOB: 'Executa la tasca de buidatge programada'
+        CACHE_CLEAR_JOB_HELP: 'Amb el planificador pots buidar periòdicament la memòria cau de Grav'
+        CACHE_CONTROL: 'HTTP Cache-Control'
+        CACHE_CONTROL_HELP: 'Estableix-lo a un valor de cache-control vàlid, com ara `no-cache, no-store, must-revalidate`'
+        CACHE_DRIVER: 'Controlador de memòria cau'
+        CACHE_DRIVER_HELP: 'Tria quin controlador de memòria cau ha de fer servir Grav. «Detecció automàtica» intenta trobar el millor per a tu'
+        CACHE_JOB_TYPE: 'Tipus de tasca de memòria cau'
+        CACHE_JOB_TYPE_HELP: 'Buida amb les carpetes «estàndard» o amb «totes» les carpetes'
+        CACHE_PERMS: 'Permisos de la memòria cau'
+        CACHE_PERMS_HELP: 'Permisos predeterminats de la carpeta de memòria cau. Normalment 0755 o 0775 segons la configuració'
+        CACHE_PREFIX: 'Prefix de la memòria cau'
+        CACHE_PREFIX_HELP: 'Un identificador per a part de la clau de Grav. No el canviïs si no saps què estàs fent.'
+        CACHE_PREFIX_PLACEHOLDER: "Derivat de l'URL base (anul·la-ho introduint una cadena aleatòria)"
+        CACHE_PURGE_AGE: 'Antiguitat de purga de la memòria cau'
+        CACHE_PURGE_AGE_HELP: 'Purga tots els elements de la memòria cau més antics que aquesta antiguitat (en dies)'
+        CACHE_PURGE_JOB: 'Executa la tasca de purga programada'
+        CACHE_PURGE_JOB_HELP: 'Amb el planificador pots eliminar periòdicament les carpetes antigues de memòria cau de fitxers de Doctrine amb aquesta tasca'
+        CACHING: 'Memòria cau'
+        CACHING_HELP: "Interruptor global d'ACTIVAT/DESACTIVAT per habilitar o desactivar la memòria cau de Grav"
+        CHARACTERS: caràcters
+        CLEAR_IMAGES_BY_DEFAULT: "Buida la memòria cau d'imatges per defecte"
+        CLEAR_IMAGES_BY_DEFAULT_HELP: 'Per defecte, les imatges processades es buiden a cada buidatge de la memòria cau; això es pot desactivar'
+        CLI_COMPATIBILITY: 'Compatibilitat amb CLI'
+        CLI_COMPATIBILITY_HELP: "Assegura que només s'utilitzin controladors de memòria cau no volàtils (fitxer, redis, memcache, etc.)"
+        COLLECTIONS: Col·leccions
+        COMMAND: Ordre
+        CONFIGURATION: Configuració
+        CONTENT: Contingut
+        CONTENT_EDITOR: 'Editor de contingut'
+        CONTENT_EDITOR_HELP: 'Es poden preferir editors personalitzats per editar el contingut'
+        CONTENT_FALLBACK_LANGUAGE_HELP: "Especifica el codi d'idioma que vols personalitzar."
+        CONTENT_LANGUAGE_FALLBACK: 'Idiomes alternatius'
+        CONTENT_LANGUAGE_FALLBACK_HELP: "Introdueix una llista de codis d'idioma. Tingues en compte que si omets el codi de l'idioma predeterminat, no es farà servir."
+        CONTENT_LANGUAGE_FALLBACKS: "Alternativa d'idioma de contingut"
+        CONTENT_LANGUAGE_FALLBACKS_HELP: "Per defecte, si el contingut no està traduït, Grav mostrarà el contingut en l'idioma predeterminat. Fes servir aquesta configuració per anul·lar aquest comportament segons l'idioma."
+        COPY: Copia
+        CREATE: Crea
+        CSS_ASSETS: 'Recursos CSS'
+        CSS_MINIFY: 'Minificació de CSS'
+        CSS_MINIFY_HELP: 'Minifica el CSS durant la canalització'
+        CSS_MINIFY_WINDOWS_OVERRIDE: 'Anul·lació de minificació de CSS per a Windows'
+        CSS_MINIFY_WINDOWS_OVERRIDE_HELP: 'Anul·lació de la minificació per a plataformes Windows. Desactivat per defecte a causa de ThreadStackSize'
+        CSS_PIPELINE: 'Canalització de CSS'
+        CSS_PIPELINE_BEFORE_EXCLUDES: 'Renderitza primer la canalització de CSS'
+        CSS_PIPELINE_BEFORE_EXCLUDES_HELP: 'Renderitza la canalització de CSS abans que qualsevol altra referència de CSS no inclosa'
+        CSS_PIPELINE_HELP: 'La canalització de CSS és la unificació de diversos recursos CSS en un sol fitxer'
+        CSS_PIPELINE_INCLUDE_EXTERNALS: 'Inclou externs a la canalització de CSS'
+        CSS_PIPELINE_INCLUDE_EXTERNALS_HELP: "Les URL externes de vegades tenen referències de fitxer relatives i no s'haurien de canalitzar"
+        CSS_REWRITE: 'Reescriptura de CSS'
+        CSS_REWRITE_HELP: 'Reescriu qualsevol URL relativa de CSS durant la canalització'
+        CURL: cURL
+        CUSTOM_BASE_URL: 'URL base personalitzada'
+        CUSTOM_BASE_URL_HELP: 'Fes-la servir si vols reescriure el domini del lloc o utilitzar una subcarpeta diferent de la que fa servir Grav. Exemple: http://localhost'
+        CUSTOM_REDIRECTS: 'Redireccions personalitzades'
+        CUSTOM_REDIRECTS_HELP: 'rutes per redirigir a altres pàgines. És vàlida la substitució estàndard amb expressions regulars'
+        CUSTOM_REDIRECTS_PLACEHOLDER_KEY: /el/teu/àlies
+        CUSTOM_REDIRECTS_PLACEHOLDER_VALUE: /la/teva/redirecció
+        CUSTOM_ROUTES: 'Rutes personalitzades'
+        CUSTOM_ROUTES_HELP: 'rutes per assignar un àlies a altres pàgines. És vàlida la substitució estàndard amb expressions regulars'
+        CUSTOM_ROUTES_PLACEHOLDER_KEY: /el/teu/àlies
+        CUSTOM_ROUTES_PLACEHOLDER_VALUE: /la/teva/ruta
+        DATE: Data
+        DATE_BASED_PUBLISHING: 'Publicació basada en la data'
+        DATE_BASED_PUBLISHING_HELP: 'Publica o deixa de publicar automàticament els articles segons la seva data'
+        DATE_HELP: 'La variable de data et permet establir específicament una data associada a aquesta pàgina.'
+        DEBUGGER: Depurador
+        DEBUGGER_CENSORED: 'Censura dades sensibles'
+        DEBUGGER_CENSORED_HELP: "NOMÉS per al proveïdor Clockwork: si és Sí, es censura la informació potencialment sensible (paràmetres POST, galetes, fitxers, configuració i la majoria de dades d'array/objecte als missatges de registre)"
+        DEBUGGER_CLOCKWORK: 'Extensió de navegador Clockwork'
+        DEBUGGER_DEBUGBAR: 'Barra de depuració de PHP'
+        DEBUGGER_FLEX_RENDER_HINTS: 'Pistes de renderització de Flex'
+        DEBUGGER_FLEX_RENDER_HINTS_HELP: "Envolta cada objecte i col·lecció Flex renderitzats amb un comentari HTML que els identifica, de manera que es pugui trobar l'origen d'un bloc en el marcatge de la pàgina. Només s'aplica a pàgines HTML"
+        DEBUGGER_HELP: 'Activa el depurador de Grav i la configuració següent'
+        DEBUGGER_PROVIDER: 'Proveïdor del depurador'
+        DEBUGGER_PROVIDER_HELP: "Per defecte és la barra de depuració de PHP, però l'extensió de navegador Clockwork ofereix un enfocament menys intrusiu"
+        DEFAULT: Predeterminat
+        DEFAULT_AUTHOR: 'Autor predeterminat'
+        DEFAULT_AUTHOR_HELP: "Un nom d'autor predeterminat, sovint utilitzat en temes o contingut de pàgines"
+        DEFAULT_CHILD_TYPE: 'Tipus de fill predeterminat'
+        DEFAULT_DATE_FORMAT: 'Format de data de la pàgina'
+        DEFAULT_DATE_FORMAT_HELP: 'Format de data de pàgina utilitzat per Grav. Per defecte, Grav intenta endevinar el teu format de data, però pots especificar-ne un fent servir la sintaxi de data de PHP (p. ex.: Y-m-d H:i)'
+        DEFAULT_DATE_FORMAT_PLACEHOLDER: 'Endevina-ho automàticament'
+        DEFAULT_EMAIL: 'Correu electrònic predeterminat'
+        DEFAULT_EMAIL_HELP: 'Un correu electrònic predeterminat per fer-hi referència en temes o pàgines'
+        DEFAULT_IMAGE_QUALITY: "Qualitat d'imatge predeterminada"
+        DEFAULT_IMAGE_QUALITY_HELP: "Qualitat d'imatge predeterminada a l'hora de remostrejar o desar imatges a la memòria cau (85%)"
+        DEFAULT_LANG: "Anul·la l'idioma predeterminat"
+        DEFAULT_LANG_HELP: 'Per defecte és el primer idioma compatible. Es pot anul·lar configurant aquesta opció, però ha de ser un dels idiomes compatibles'
+        DEFAULT_ORDER_DIRECTION: "Direcció d'ordenació predeterminada"
+        DEFAULT_ORDER_DIRECTION_HELP: 'La direcció de les pàgines en una llista'
+        DEFAULT_ORDERING: 'Ordenació predeterminada'
+        DEFAULT_ORDERING_DATE: 'Data - basada en el camp de data de la capçalera'
+        DEFAULT_ORDERING_DEFAULT: 'Predeterminada - basada en el nom de la carpeta'
+        DEFAULT_ORDERING_FOLDER: 'Carpeta - basada en el nom de la carpeta sense prefix'
+        DEFAULT_ORDERING_HELP: "Les pàgines d'una llista es renderitzaran amb aquest ordre llevat que s'anul·li"
+        DEFAULT_ORDERING_TITLE: 'Títol - basat en el camp de títol de la capçalera'
+        DEFAULT_PAGE_COUNT: 'Recompte de pàgines predeterminat'
+        DEFAULT_PAGE_COUNT_HELP: 'Nombre màxim predeterminat de pàgines en una llista'
+        DEFAULT_THEME: 'Tema predeterminat'
+        DEFAULT_THEME_HELP: 'Estableix el tema predeterminat que ha de fer servir Grav (el predeterminat és Antimatter)'
+        DEFAULTS: 'Valors predeterminats'
+        DELIMITER: Delimitador
+        DELIMITER_HELP: 'El delimitador de resum (predeterminat «===»)'
+        DESCENDING: Descendent
+        DESCRIPTION: Descripció
+        DETAILS: Detalls
+        DETECT_CHANGES: 'Detecta canvis'
+        DETECT_CHANGES_HELP: 'Twig recompilarà automàticament la memòria cau de Twig si detecta canvis a les plantilles de Twig'
+        DISPLAY_ERRORS: 'Mostra errors'
+        DISPLAY_ERRORS_HELP: "Mostra una pàgina d'error completa amb estil de traça"
+        DISPLAY_NAME: 'Nom per mostrar'
+        DISPLAY_TEMPLATE: 'Plantilla de visualització'
+        EMAIL: 'Correu electrònic'
+        EMAIL_VALIDATION_MESSAGE: 'Ha de ser una adreça de correu electrònic vàlida'
+        ENABLE_AUTO_METADATA: "Metadades automàtiques des d'Exif"
+        ENABLE_AUTO_METADATA_HELP: 'Genera automàticament fitxers de metadades per a les imatges amb informació Exif'
+        ENABLE_MEDIA_TIMESTAMP: 'Activa les marques de temps als continguts multimèdia'
+        ENABLE_MEDIA_TIMESTAMP_HELP: "Afegeix una marca de temps basada en la data de l'última modificació a cada element multimèdia"
+        ENABLED_HELP: 'Activa el resum de pàgina (el resum retorna el mateix que el contingut de la pàgina)'
+        ENABLED_SRI_ON_ASSETS: 'Activa SRI als recursos'
+        ENABLED_SRI_ON_ASSETS_HELP: 'Activa SRI als recursos'
+        ENABLED_TIMESTAMPS_ON_ASSETS: 'Activa les marques de temps als recursos'
+        ENABLED_TIMESTAMPS_ON_ASSETS_HELP: 'Activa les marques de temps dels recursos'
+        ERROR_FULL_BACKTRACE: 'Error amb traça completa'
+        ERROR_HANDLER: "Gestor d'errors"
+        ERROR_SIMPLE: 'Error simple'
+        ERROR_SYSTEM: 'Error del sistema'
+        ESCAPE_MARKUP: 'Escapa el marcatge'
+        ESCAPE_MARKUP_HELP: 'Escapa les etiquetes de marcatge a entitats HTML'
+        ETAG: ETag
+        ETAG_HELP: "Estableix la capçalera etag per ajudar a identificar quan s'ha modificat una pàgina"
+        EVENTS: Esdeveniments
+        EVENTS_HELP: 'Activa o desactiva esdeveniments específics. Desactivar-los pot trencar plugins'
+        EXPERIMENTAL: Experimental
+        EXPIRES: Expira
+        EXPIRES_HELP: "Estableix la capçalera d'expiració. El valor és en segons."
+        EXTERNAL: 'Pàgina externa'
+        EXTERNAL_URL: 'URL externa'
+        EXTRA_ARGUMENTS: 'Arguments addicionals'
+        FALLBACK_TYPES: 'Tipus alternatius permesos'
+        FALLBACK_TYPES_HELP: "Tipus de fitxer permesos que es poden trobar si s'hi accedeix a través de la ruta de la pàgina. Per defecte, qualsevol tipus de multimèdia compatible."
+        FILE: Fitxer
+        FILE_EXTENSION: 'Extensió de fitxer'
+        FILE_STREAMS: 'Fluxos de fitxer'
+        FLEX: 'Objecte Flex (EXPERIMENTAL)'
+        FLEX_CACHING: 'Memòria cau de Flex'
+        FLEX_INDEX_CACHE_ENABLED: "Activa la memòria cau d'índexs"
+        FLEX_INDEX_CACHE_LIFETIME: "Durada de la memòria cau d'índexs (segons)"
+        FLEX_OBJECT_CACHE_ENABLED: "Activa la memòria cau d'objectes"
+        FLEX_OBJECT_CACHE_LIFETIME: "Durada de la memòria cau d'objectes (segons)"
+        FLEX_RENDER_CACHE_ENABLED: 'Activa la memòria cau de renderització'
+        FLEX_RENDER_CACHE_LIFETIME: 'Durada de la memòria cau de renderització (segons)'
+        FOLDER: Carpeta
+        FOLDER_NAME: 'Nom de la carpeta'
+        FOLDER_NUMERIC_PREFIX: 'Prefix numèric de carpeta'
+        FOLDER_NUMERIC_PREFIX_HELP: 'Prefix numèric que proporciona ordenació manual i implica visibilitat'
+        FOPEN: fopen
+        FORCE_LOWERCASE_URLS: 'Força URL en minúscules'
+        FORCE_LOWERCASE_URLS_HELP: 'Per defecte, Grav establirà tots els slugs i rutes en minúscules. Si això es desactiva, es poden fer servir slugs i rutes en majúscules'
+        FORCE_SSL: 'Força SSL'
+        FORCE_SSL_HELP: "Força SSL globalment; si està activat, quan s'accedeix al lloc per HTTP, Grav envia una redirecció a la pàgina HTTPS"
+        FORMAT: Format
+        FORMAT_HELP: "short = fa servir la primera aparició del delimitador o mida; long = s'ignorarà el delimitador de resum"
+        FRONTMATTER_IGNORE_FIELDS: 'Ignora camps de frontmatter'
+        FRONTMATTER_IGNORE_FIELDS_HELP: "Alguns camps de frontmatter poden contenir Twig però no s'han de processar, com ara «forms»"
+        FRONTMATTER_NATIVE_YAML: 'Anàlisi ràpida del frontmatter'
+        FRONTMATTER_NATIVE_YAML_HELP: "Llegeix el frontmatter de la pàgina amb l'extensió PHP libyaml quan estigui instal·lada, cosa que accelera la reconstrucció de la memòria cau de pàgines. Llegeix alguns valors de manera diferent, així que comprova primer les teves pàgines. Una data sense cometes es manté com a text en lloc de convertir-se en una marca de temps, i yes, no, on i off sense cometes es converteixen en true o false."
+        PAGES_LAZY_INDEX: 'Índex de pàgines diferit'
+        PAGES_LAZY_INDEX_HELP: "Carrega les pàgines, les rutes i la taxonomia sota demanda des d'un índex SQLite per pàgina, en lloc d'un únic fitxer de memòria cau gran. El mode automàtic l'utilitza en llocs amb 1.000 pàgines o més. Recorre a la memòria cau clàssica quan no hi ha cap motor de base de dades disponible."
+        SESSION_LAZY: 'Inicia les sessions només quan calgui'
+        SESSION_LAZY_HELP: "Els visitants sense galeta de sessió només obtenen una sessió quan s'hi desa alguna cosa, com un inici de sessió, un formulari o un missatge, de manera que un servidor intermediari o una CDN pot desar a la memòria cau les visites anònimes de pàgina. Els plugins que desen dades a cada visita de pàgina segueixen iniciant-ne una."
+        CACHE_MODULES: 'Desa a la memòria cau la sortida dels mòduls'
+        CACHE_MODULES_HELP: "Desa a la memòria cau la sortida renderitzada dels mòduls d'aquesta pàgina. Fes-ho servir només quan els mòduls mostrin el mateix contingut a tots els visitants. Els mòduls amb Twig propi o un formulari, els visitants que han iniciat sessió i els enviaments de formularis sempre es renderitzen de nou. Si només s'edita una plantilla parcial cal buidar la memòria cau."
+        FRONTMATTER_PROCESS_TWIG: 'Processa Twig al frontmatter'
+        FRONTMATTER_PROCESS_TWIG_HELP: 'Quan està activat, pots utilitzar variables de configuració de Twig al frontmatter de la pàgina'
+        FULL_NAME: 'Nom complet'
+        GENERAL_CONFIG: 'Configuració general de recursos'
+        GPM_METHOD: 'Mètode de descàrrega remota'
+        GPM_METHOD_HELP: "Quan s'estableix a Automàtic, Grav determinarà si fopen està disponible i l'utilitzarà; en cas contrari, recorrerà a cURL. Per forçar l'ús d'un o altre, canvia la configuració."
+        GPM_OFFICIAL_ONLY: 'Només GPM oficial'
+        GPM_OFFICIAL_ONLY_HELP: 'Només permet instal·lacions directes des del repositori oficial de GPM.'
+        GPM_RELEASES: 'Versions de GPM'
+        GPM_RELEASES_HELP: 'Tria «Testing» per instal·lar versions beta o de prova'
+        GPM_SECTION: 'Secció de GPM'
+        GROUP_NAME: 'Nom del grup'
+        GROUPS_HELP: "Llista de grups dels quals forma part l'usuari"
+        GZIP_COMPRESSION: 'Compressió Gzip'
+        GZIP_COMPRESSION_HELP: 'Activa la compressió GZip de la pàgina de Grav per augmentar el rendiment.'
+        HIDE_EMPTY_FOLDERS: 'Amaga les carpetes buides'
+        HIDE_EMPTY_FOLDERS_HELP: "Si una carpeta no té cap fitxer .md, s'ha d'amagar a la navegació, a més de no ser enrutable"
+        HIDE_HOME_IN_URLS: "Amaga la ruta d'inici a les URL"
+        HIDE_HOME_IN_URLS_HELP: "Assegurarà que les rutes predeterminades de qualsevol pàgina sota l'inici no facin referència a la ruta habitual de l'inici"
+        HOME_PAGE: "Pàgina d'inici"
+        HOME_PAGE_HELP: "La pàgina que Grav farà servir com a pàgina d'arribada predeterminada"
+        HTTP_ACCEPT_LANGUAGE: "Estableix l'idioma des del navegador"
+        HTTP_ACCEPT_LANGUAGE_HELP: "Pots optar per intentar establir l'idioma a partir de l'etiqueta de capçalera `http_accept_language` del navegador"
+        HTTP_ACCEPT_LANGUAGE_FALLBACK: "Alternatives d'idioma del navegador"
+        HTTP_ACCEPT_LANGUAGE_FALLBACK_HELP: "Associa idiomes de navegador no compatibles a idiomes compatibles en establir l'idioma des de la capçalera `http_accept_language`. Això no afegeix idiomes compatibles ni crea rutes d'idioma."
+        HTTP_ACCEPT_LANGUAGE_FALLBACK_SOURCE_HELP: "Especifica un codi d'idioma de navegador no compatible, p. ex. `hr` o `sr-Latn`."
+        HTTP_ACCEPT_LANGUAGE_FALLBACK_TARGETS: 'Idiomes alternatius'
+        HTTP_ACCEPT_LANGUAGE_FALLBACK_TARGETS_HELP: "Introdueix una llista de codis d'idioma compatibles. Es farà servir el primer idioma compatible."
+        HTTP_CONNECTIONS: 'Connexions HTTP'
+        HTTP_CONNECTIONS_HELP: 'El nombre de connexions HTTP simultànies durant les sol·licituds multiplexades'
+        HTTP_HEADERS: 'Capçaleres HTTP'
+        HTTP_SECTION: 'Secció HTTP'
+        ICON: Icona
+        IGNORE_FILES: 'Ignora fitxers'
+        IGNORE_FILES_HELP: 'Fitxers concrets a ignorar en processar pàgines'
+        IGNORE_FOLDERS: 'Ignora carpetes'
+        IGNORE_FOLDERS_HELP: 'Carpetes concretes a ignorar en processar pàgines'
+        IGNORE_HIDDEN: 'Ignora els ocults'
+        IGNORE_HIDDEN_HELP: 'Ignora tots els fitxers i carpetes que comencen amb un PUNT'
+        IMAGE_ADAPTER: "Adaptador d'imatge"
+        IMAGE_ADAPTER_HELP: "L'adaptador d'imatge a utilitzar per a la manipulació d'imatges. «GD» és el predeterminat, «Imagick» és una alternativa"
+        IMAGE_OPTIONS: "Opcions d'imatge"
+        IMAGES_AUTO_FIX_ORIENTATION: "Corregeix l'orientació automàticament"
+        IMAGES_AUTO_FIX_ORIENTATION_HELP: "Corregeix automàticament l'orientació de la imatge segons les dades Exif"
+        IMAGES_CLS_ASPECT_RATIO: "Activa la relació d'aspecte"
+        IMAGES_CLS_ASPECT_RATIO_HELP: "Variable CSS opcional que s'aplica mitjançant un atribut «style» que es pot fer servir a CSS per a estils personalitzats"
+        IMAGES_CLS_AUTO_SIZES: 'Activa les mides automàtiques'
+        IMAGES_CLS_AUTO_SIZES_HELP: 'Afegeix automàticament atributs «width» i «height» a les imatges per resoldre el CLS'
+        IMAGES_CLS_RETINA_SCALE: "Factor d'escala Retina"
+        IMAGES_CLS_RETINA_SCALE_HELP: "Agafarà la mida calculada i la dividirà pel factor d'escala per mostrar una imatge de resolució més alta a una mida de píxel més petita, per gestionar millor les resolucions HiDPI"
+        IMAGES_CLS_TITLE: 'Canvi de disseny acumulat (CLS)'
+        IMAGES_DEBUG: "Marca d'aigua de depuració d'imatge"
+        IMAGES_DEBUG_HELP: 'Mostra una superposició sobre les imatges que indica la profunditat de píxel de la imatge, per exemple quan es treballa amb retina'
+        IMAGES_DECODING: "Comportament de descodificació d'imatge"
+        IMAGES_DECODING_HELP: "L'atribut decoding permet a un navegador ajornar la descodificació d'imatges fora de pantalla fins que els usuaris s'hi acostin fent scroll. decoding admet tres valors: auto, sync, async"
+        IMAGES_FETCHPRIORITY: 'Propietat fetchpriority de la imatge'
+        IMAGES_FETCHPRIORITY_HELP: "La propietat fetchpriority en HTML és un atribut que especifica la prioritat de càrrega d'alguns recursos, com ara imatges o iframes, per optimitzar el rendiment. Els valors possibles són high, low o auto."
+        IMAGES_LOADING: "Comportament de càrrega d'imatge"
+        IMAGES_LOADING_HELP: "L'atribut loading permet a un navegador ajornar la càrrega d'imatges i iframes fora de pantalla fins que els usuaris s'hi acostin fent scroll. loading admet tres valors: auto, lazy, eager"
+        IMAGES_MAX_PIXELS: "Píxels màxims d'imatge"
+        IMAGES_MAX_PIXELS_HELP: "Límit total de píxels (amplada x alçada) per a les accions de canvi de mida basades en URL. Es rebutgen les sol·licituds per sobre d'aquest límit. Estableix-lo a 0 per desactivar la comprovació."
+        IMAGES_PROGRESSIVE_JPEG: 'JPEG progressius'
+        IMAGES_PROGRESSIVE_JPEG_HELP: "Desa els JPEG redimensionats i emmagatzemats a la memòria cau com a progressius, de manera que apareguin com una imatge borrosa sencera que es va enfocant, en lloc d'omplir-se de dalt a baix. Normalment també són més petits. No afecta els PNG, WebP ni AVIF."
+        IMAGES_SEOFRIENDLY: "Noms d'imatge amigables amb el SEO"
+        IMAGES_SEOFRIENDLY_HELP: "Quan està activat, el nom de la imatge es mostra primer, seguit d'un hash més petit que reflecteix les operacions processades"
+        IMAGES_URL_ACTIONS: "Permet accions d'imatge basades en URL"
+        IMAGES_URL_ACTIONS_HELP: "Permet transformacions d'imatge mitjançant paràmetres de consulta a l'URL (p. ex. `image.jpg?resize=600,400`). Desactivat per defecte; no afecta el canvi de mida normal d'imatges amb Twig i Markdown."
+        INCLUDE_DEFAULT_LANG: "Inclou l'idioma predeterminat"
+        INCLUDE_DEFAULT_LANG_FILE_EXTENSION: "Inclou l'idioma predeterminat a l'extensió de fitxer"
+        INCLUDE_DEFAULT_LANG_HELP: "Això afegirà l'idioma predeterminat al principi de totes les URL en l'idioma predeterminat. P. ex. `/en/blog/my-post`"
+        INCLUDE_DEFAULT_LANG_HELP_FILE_EXTENSION: "Si està activat, afegirà l'idioma predeterminat al davant de l'extensió de fitxer (p. ex. `.en.md`). Desactiva-ho per mantenir l'idioma predeterminat amb l'extensió de fitxer `.md`."
+        INLINE_TYPES: 'Tipus alternatius en línia'
+        INLINE_TYPES_HELP: "Una llista de tipus de fitxer que s'han de mostrar en línia en lloc de descarregar-se"
+        INTL_ENABLED: 'Integració del mòdul Intl'
+        INTL_ENABLED_HELP: 'Utilitza el mòdul PHP Intl i la col·lació per ordenar col·leccions basades en UTF8'
+        ITEMS: Elements
+        JAVASCRIPT_MINIFY: 'Minificació de JavaScript'
+        JAVASCRIPT_MINIFY_HELP: 'Minifica el JS durant la canalització'
+        JAVASCRIPT_MODULE_PIPELINE: 'Canalització de mòduls JavaScript'
+        JAVASCRIPT_MODULE_PIPELINE_BEFORE_EXCLUDES: 'Renderitza primer la canalització de mòduls JS'
+        JAVASCRIPT_MODULE_PIPELINE_BEFORE_EXCLUDES_HELP: 'Renderitza la canalització de JS abans que qualsevol altra referència de JS no inclosa'
+        JAVASCRIPT_MODULE_PIPELINE_HELP: 'La canalització de mòduls JS és la unificació de diversos recursos JS en un sol fitxer'
+        JAVASCRIPT_MODULE_PIPELINE_INCLUDE_EXTERNALS: 'Inclou externs a la canalització de mòduls JS'
+        JAVASCRIPT_MODULE_PIPELINE_INCLUDE_EXTERNALS_HELP: "Les URL externes de vegades tenen referències de fitxer relatives i no s'haurien de canalitzar"
+        JAVASCRIPT_PIPELINE: 'Canalització de JavaScript'
+        JAVASCRIPT_PIPELINE_BEFORE_EXCLUDES: 'Renderitza primer la canalització de JS'
+        JAVASCRIPT_PIPELINE_BEFORE_EXCLUDES_HELP: 'Renderitza la canalització de JS abans que qualsevol altra referència de JS no inclosa'
+        JAVASCRIPT_PIPELINE_HELP: 'La canalització de JS és la unificació de diversos recursos JS en un sol fitxer'
+        JAVASCRIPT_PIPELINE_INCLUDE_EXTERNALS: 'Inclou externs a la canalització de JS'
+        JAVASCRIPT_PIPELINE_INCLUDE_EXTERNALS_HELP: "Les URL externes de vegades tenen referències de fitxer relatives i no s'haurien de canalitzar"
+        JS_ASSETS: 'Recursos JavaScript'
+        JS_MODULE_ASSETS: 'Recursos de mòduls JavaScript'
+        LANGUAGE: Idioma
+        LANGUAGE_DEBUG: "Depura l'idioma"
+        LANGUAGE_DEBUG_HELP: 'Activa la depuració dels idiomes que fan servir el filtre twig |t afegint-hi un span que es pot estilitzar per ajudar a diagnosticar problemes'
+        LANGUAGE_HELP: "Estableix l'idioma preferit"
+        LANGUAGE_TRANSLATIONS: Traduccions
+        LANGUAGE_TRANSLATIONS_HELP: 'Si és fals, es fan servir les claus de traducció en lloc de les cadenes traduïdes. Aquesta funció es pot fer servir per ajudar a corregir traduccions incorrectes o trobar cadenes en anglès codificades directament.'
+        LANGUAGES: Idiomes
+        LAST_MODIFIED: 'Última modificació'
+        LAST_MODIFIED_HELP: "Estableix la capçalera d'última modificació, que pot ajudar a optimitzar la memòria cau del servidor intermediari i del navegador"
+        LIFETIME: Durada
+        LIFETIME_HELP: 'Estableix la durada de la memòria cau en segons. 0 = infinita'
+        LIST: Llista
+        LOG_ERRORS: 'Registra errors'
+        LOG_ERRORS_HELP: 'Registra els errors a la carpeta /logs'
+        LOG_HANDLER: 'Gestor de registres'
+        LOG_HANDLER_HELP: 'On enviar la sortida dels registres'
+        LONG: Llarg
+        LONG_DATE_FORMAT: 'Format de data llarg per mostrar'
+        LONG_DATE_FORMAT_HELP: 'Estableix el format de data llarg que poden fer servir els temes'
+        MARKDOWN: Markdown
+        MARKDOWN_EXTRA_HELP: 'Activa la compatibilitat predeterminada amb Markdown Extra - https://michelf.ca/projects/php-markdown/extra/'
+        MEDIA_TYPES: 'Tipus de multimèdia'
+        MEMCACHED_PORT: 'Port de Memcached'
+        MEMCACHED_PORT_HELP: 'El port del servidor Memcached'
+        MEMCACHED_SERVER: 'Servidor Memcached'
+        MEMCACHED_SERVER_HELP: "L'adreça del servidor Memcached"
+        MENU: Menú
+        MENU_HELP: "La cadena que s'utilitzarà en un menú. Si no s'estableix, es farà servir el títol."
+        METADATA: Metadades
+        METADATA_HELP: 'Valors de metadades predeterminats que es mostraran a totes les pàgines llevat que la pàgina els anul·li'
+        METADATA_KEY: 'Clau (p. ex. «Paraules clau»)'
+        METADATA_VALUE: 'Valor (p. ex. «Blog, Grav»)'
+        MIME_TYPE: 'Tipus MIME'
+        MISC_SECTION: 'Secció diversos'
+        MODULE: Mòdul
+        MODULE_SETUP: 'Configuració del mòdul'
+        MOVE: Mou
+        NAME: Nom
+        NEVER_CACHE_TWIG: 'No desis mai Twig a la memòria cau'
+        NEVER_CACHE_TWIG_HELP: 'Desa només el contingut a la memòria cau i processa Twig cada vegada per a les pàgines. Ignora la configuració twig_first.'
+        'NO': 'No'
+        OPTIONS: Opcions
+        ORDER: Ordre
+        ORDER_BY: 'Ordena per'
+        ORDER_DIGITS: "Dígits d'ordre"
+        ORDER_DIGITS_HELP: "Nombre de dígits que s'utilitzen per prefixar els noms de carpeta per ordenar-los (p. ex. `01.about`, `001.about`)."
+        ORDERING: Ordenació
+        OVERRIDE_LOCALE: 'Anul·la la configuració regional'
+        OVERRIDE_LOCALE_HELP: "Anul·la la configuració regional de PHP segons l'idioma actual"
+        OVERRIDES: Anul·lacions
+        PAGE: Pàgina
+        PAGE_ACCESS: 'Accés a la pàgina'
+        PAGE_ACCESS_HELP: "L'usuari amb els permisos d'accés següents pot accedir a la pàgina."
+        PAGE_AUTHORS: 'Autors de la pàgina'
+        PAGE_AUTHORS_HELP: "Els membres d'Autors de la pàgina tenen accés de nivell de propietari a aquesta pàgina, definit al grup de pàgina especial «Authors»."
+        PAGE_FILE: 'Plantilla de pàgina'
+        PAGE_FILE_HELP: "Nom del fitxer de plantilla de pàgina i, per defecte, la plantilla de visualització d'aquesta pàgina"
+        PAGE_GROUPS: 'Grups de la pàgina'
+        PAGE_GROUPS_HELP: 'Els membres dels grups de la pàgina tenen accés especial a aquesta pàgina.'
+        PAGE_INHERIT_PERMISSIONS: 'Hereta els permisos'
+        PAGE_INHERIT_PERMISSIONS_HELP: "Hereta l'ACL de la pàgina pare."
+        PAGE_MEDIA: 'Multimèdia de la pàgina'
+        PAGE_SUMMARY: 'Resum de la pàgina'
+        MARKDOWN_OUTPUT: 'Sortida Markdown'
+        MARKDOWN_OUTPUT_ENABLED: 'Serveix les pàgines com a Markdown'
+        MARKDOWN_OUTPUT_ENABLED_HELP: "Qualsevol pàgina es pot obtenir com a Markdown afegint `.md` a la seva URL, o enviant una capçalera de sol·licitud `Accept:&nbsp;text/markdown`. Pensat per a agents d'IA i altres clients de text. La pàgina es renderitza a través del tema, es redueix a la seva regió de contingut principal i es converteix, de manera que els llistats, botigues i pàgines modulars es llegeixen tal com es mostren."
+        MARKDOWN_OUTPUT_FRONTMATTER: 'Bloc de frontmatter'
+        MARKDOWN_OUTPUT_FRONTMATTER_HELP: "Comença el Markdown amb un bloc YAML que conté el títol, l'URL, la data, la descripció i la taxonomia."
+        MARKDOWN_OUTPUT_LINKS: 'Enllaços de navegació'
+        MARKDOWN_OUTPUT_LINKS_HELP: 'Acaba el Markdown amb enllaços a la pàgina pare, a les pàgines veïnes i a les pàgines filles, de manera que un agent pugui recórrer el lloc sense sortir de Markdown.'
+        MARKDOWN_OUTPUT_MAX_LINKS: "Nombre màxim d'enllaços fills"
+        MARKDOWN_OUTPUT_MAX_LINKS_HELP: 'El nombre màxim de pàgines filles llistades a la secció de navegació. Zero les llista totes.'
+        MARKDOWN_OUTPUT_ABSOLUTE_URLS: 'URL absolutes'
+        MARKDOWN_OUTPUT_ABSOLUTE_URLS_HELP: "Converteix els enllaços i les imatges relatius a l'arrel en URL completes, perquè continuïn funcionant quan el Markdown surti del lloc."
+        MARKDOWN_OUTPUT_TOKEN_HEADER: 'Capçalera de recompte de tokens'
+        MARKDOWN_OUTPUT_TOKEN_HEADER_HELP: 'Envia una capçalera de resposta `X-Markdown-Tokens` amb un recompte estimat de tokens, la mateixa capçalera que fa servir Markdown for Agents de Cloudflare.'
+        PAGE_TYPES: 'Tipus de pàgina'
+        PAGE_TYPES_HELP: "Determina els tipus de pàgina que admet Grav, i l'ordre determina a quin tipus recórrer si la sol·licitud és ambigua"
+        PAGE_VISIBILITY_REQUIRES_ACCESS: 'La visibilitat al menú requereix accés'
+        PAGE_VISIBILITY_REQUIRES_ACCESS_HELP: "Estableix-ho a Sí si la pàgina només s'ha de mostrar als menús quan l'usuari hi pugui accedir."
+        PAGES_FALLBACK_ONLY: 'Només recorre a pàgines'
+        PAGES_FALLBACK_ONLY_HELP: "Només «recorre» per trobar contingut de pàgina en els idiomes compatibles; el comportament predeterminat és mostrar qualsevol idioma trobat si falta l'idioma actiu"
+        PAGES_TYPE: 'Tipus de pàgina frontend'
+        PAGES_TYPE_HELP: "Aquesta opció habilita les pàgines d'objectes Flex al frontend. Les pàgines Flex de l'administrador requereixen el plugin Flex Objects"
+        PARAMETER_SEPARATOR: 'Separador de paràmetres'
+        PARAMETER_SEPARATOR_HELP: 'Separador per als paràmetres passats que es pot canviar per a Apache a Windows'
+        PARENT: Superior
+        PASSWORD_VALIDATION_MESSAGE: 'La contrasenya ha de contenir almenys un número, una lletra majúscula i una minúscula, i almenys 8 caràcters o més'
+        PERMISSIONS: Permisos
+        PLUGIN_STATUS: 'Estat del plugin'
+        PROCESS: Processament
+        PROCESS_HELP: 'Controla com es processen les pàgines. Es pot establir per pàgina en lloc de globalment'
+        PROXY_CERT: 'Ruta del certificat proxy'
+        PROXY_CERT_HELP: 'Ruta local a la carpeta que conté el fitxer pem del certificat proxy'
+        PROXY_URL: 'URL del proxy'
+        PROXY_URL_HELP: 'Introdueix el HOST o la IP i el PORT del proxy'
+        PUBLISH: Publica
+        PUBLISHED: Publicada
+        PUBLISHED_DATE: 'Data de publicació'
+        PUBLISHED_DATE_HELP: 'Pots indicar una data per activar automàticament la publicació.'
+        PUBLISHED_HELP: 'De manera predeterminada, una pàgina es publica llevat que estableixis explícitament published: false, o mitjançant una publish_date en el futur, o unpublish_date en el passat'
+        PUBLISHING: Publicació
+        PWD_REGEX: 'Expressió regular de la contrasenya'
+        PWD_REGEX_HELP: 'Per defecte: la contrasenya ha de contenir almenys un número, una lletra majúscula i una minúscula, i almenys 8 caràcters o més'
+        PWD_RULES: 'Regles de la contrasenya'
+        PWD_RULES_HELP: 'Regles personalitzades de validació de contrasenya. Cada regla té un ID, una etiqueta llegible i una expressió regular que la contrasenya ha de complir.'
+        PWD_RULES_ID: ID
+        PWD_RULES_LABEL: Etiqueta
+        PWD_RULES_PATTERN: 'Patró regex'
+        READ: Lectura
+        READ_FILE_ALLOWED_EXTENSIONS: 'Extensions de fitxer permeses'
+        READ_FILE_ALLOWED_EXTENSIONS_HELP: 'Extensions de fitxer que <code>read_file()</code> llegirà (sense distinció de majúscules i minúscules, sense punt inicial). Els valors predeterminats són només formats de text/contingut. Afegir formats executables o de configuració (<code>php</code>, <code>yaml</code>, <code>env</code>, <code>htaccess</code>, …) és arriscat i no es recomana.'
+        READ_FILE_ALLOWED_STREAMS: 'Fluxos permesos'
+        READ_FILE_ALLOWED_STREAMS_HELP: 'Esquemes de flux que <code>read_file()</code> pot resoldre. Predeterminats: <code>theme</code>, <code>themes</code>, <code>page</code>, <code>user-data</code>. Afegir fluxos amplis com <code>user</code>, <code>system</code>, <code>config</code>, <code>account</code>, <code>log</code> o <code>cache</code> exposa fitxers sensibles i es desaconsella fermament.'
+        READ_FILE_MAX_SIZE: 'Mida màxima de fitxer (bytes)'
+        READ_FILE_MAX_SIZE_HELP: 'Els fitxers més grans que això retornen <code>false</code> en lloc de carregar-se a la memòria. El valor predeterminat és <code>1048576</code> (1 MB). Estableix-lo a <code>0</code> per desactivar el límit de mida.'
+        READ_FILE_SECTION_HELP: "Restriccions sobre la funció Twig <code>read_file()</code>. Les lectures es forcen a través d'URI de flux de Grav i es verifiquen mitjançant una comprovació de contenció de ruta real canònica contra les arrels de flux resoltes, de manera que el recorregut codificat o amb enllaços simbòlics es bloqueja a la capa del sistema de fitxers independentment de com s'escrigui la ruta."
+        READ_FILE_SECTION_TITLE: 'Twig read_file()'
+        REDIRECT: 'Redirecció de pàgina'
+        REDIRECT_DEFAULT_CODE: 'Codi de redirecció predeterminat'
+        REDIRECT_DEFAULT_CODE_HELP: "El codi d'estat HTTP que s'utilitzarà per a les redireccions"
+        REDIRECT_DEFAULT_ROUTE: 'Ruta predeterminada de redirecció'
+        REDIRECT_DEFAULT_ROUTE_HELP: "Redirigeix automàticament a la ruta predeterminada d'una pàgina"
+        REDIRECT_HELP: 'Introdueix una ruta de pàgina o una URL externa a la qual redirigir aquesta pàgina. Per exemple: `/some/route` o `http://somesite.com`'
+        REDIRECT_OPTION_301: '301 - Mogut permanentment'
+        REDIRECT_OPTION_302: '302 - Mogut temporalment'
+        REDIRECT_OPTION_303: '303 - Vegeu un altre'
+        REDIRECT_OPTION_DEFAULT_REDIRECT: 'Utilitza el codi de redirecció predeterminat'
+        REDIRECT_OPTION_NO_REDIRECT: 'Sense redirecció'
+        REDIRECT_TRAILING_SLASH: 'Redirigeix la barra final'
+        REDIRECT_TRAILING_SLASH_HELP: 'Fa una redirecció 301 en lloc de gestionar de manera transparent els URI amb barra final.'
+        REDIRECTS_AND_ROUTES: 'Redireccions i rutes'
+        REDIS_DATABASE: 'ID de base de dades de Redis'
+        REDIS_DATABASE_HELP: "L'ID de la base de dades de la instància de Redis"
+        REDIS_PASSWORD: 'Contrasenya/secret de Redis'
+        REDIS_PORT: 'Port de Redis'
+        REDIS_PORT_HELP: 'El port del servidor Redis'
+        REDIS_SERVER: 'Servidor Redis'
+        REDIS_SERVER_HELP: "L'adreça del servidor Redis"
+        REDIS_SOCKET: 'Socket de Redis'
+        REDIS_SOCKET_HELP: 'El socket de Redis'
+        REGULAR: Regular
+        REVERSE_PROXY: 'Proxy invers'
+        REVERSE_PROXY_HELP: "Activa això si estàs darrere d'un proxy invers i tens problemes amb URL que contenen ports incorrectes"
+        ROOT: Arrel
+        ROUTABLE: Enrutable
+        ROUTABLE_HELP: 'Si aquesta pàgina és accessible mitjançant una URL'
+        ROUTE_ALIASES: 'Àlies de ruta'
+        ROUTE_CANONICAL: 'Ruta canònica'
+        ROUTE_DEFAULT: 'Ruta predeterminada'
+        ROUTE_OVERRIDES: 'Substitucions de ruta'
+        SANITIZE_SVG: "Saneja l'SVG"
+        SANITIZE_SVG_HELP: "Elimina qualsevol codi XSS de l'SVG"
+        SCHEDULER: Planificador
+        SCHEDULER_EMAIL: 'Correu electrònic'
+        SCHEDULER_EMAIL_HELP: 'Correu electrònic al qual enviar la sortida. NOTA: cal establir el fitxer de sortida'
+        SCHEDULER_JOBS: 'Tasques personalitzades del planificador'
+        SCHEDULER_OUTPUT: 'Fitxer de sortida'
+        SCHEDULER_OUTPUT_HELP: "La ruta/nom del fitxer de sortida (des de l'arrel de la instal·lació de Grav)"
+        SCHEDULER_OUTPUT_TYPE: 'Tipus de sortida'
+        SCHEDULER_OUTPUT_TYPE_HELP: 'Afegeix al mateix fitxer a cada execució, o sobreescriu el fitxer a cada execució'
+        SCHEDULER_RUNAT: 'Executa a'
+        SCHEDULER_RUNAT_HELP: 'Sintaxi «at» en format cron. NOTA: totes les hores són en UTC!'
+        SCHEDULER_STATUS: 'Estat del planificador'
+        SECURITY: Seguretat
+        SESSION: Sessió
+        SESSION_DOMAIN: 'Domini de la sessió'
+        SESSION_DOMAIN_HELP: 'Utilitza-ho només si reescrius el domini del lloc, per exemple en un contenidor Docker.'
+        SESSION_ENABLED_HELP: 'Activa la compatibilitat de sessions a Grav'
+        SESSION_HTTPONLY: 'Només HTTP'
+        SESSION_HTTPONLY_HELP: "Si és cert, indica que les galetes només s'han d'utilitzar per HTTP i no es permet la modificació per JavaScript"
+        SESSION_INITIALIZE: 'Inicialitza la sessió'
+        SESSION_INITIALIZE_HELP: "Fa que Grav iniciï una sessió. Aquesta funció és necessària perquè funcioni qualsevol interacció de l'usuari, com l'inici de sessió, els formularis, etc. El plugin d'administració no es veu afectat per aquesta configuració."
+        SESSION_NAME_HELP: 'Un identificador utilitzat per formar el nom de la galeta de sessió'
+        SESSION_PATH: 'Ruta de la sessió'
+        SESSION_PATH_HELP: 'Utilitza-ho només si reescrius la ruta del lloc, per exemple en un contenidor Docker.'
+        SESSION_SAMESITE: "L'atribut SameSite de la sessió"
+        SESSION_SAMESITE_HELP: 'Lax|Strict|None. Consulta https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite per obtenir més informació'
+        SESSION_SECURE: Segur
+        SESSION_SECURE_HELP: "Si és cert, indica que la comunicació d'aquesta galeta s'ha de fer mitjançant una transmissió xifrada. AVÍS: activa això només en llocs que funcionin exclusivament amb HTTPS"
+        SESSION_SECURE_HTTPS: 'Segur (HTTPS)'
+        SESSION_SECURE_HTTPS_HELP: 'Estableix la sessió segura en HTTPS però no en HTTP. No té cap efecte si la configuració de Segur anterior és certa. Estableix-ho a fals si el teu lloc canvia entre HTTP i HTTPS.'
+        SESSION_SPLIT: 'Divisió de sessió'
+        SESSION_SPLIT_HELP: "Sessions dividides independents entre el lloc i altres plugins (com l'administració)"
+        SESSION_UNIQUENESS: 'Cadena única'
+        SESSION_UNIQUENESS_HELP: 'Hash MD5 de la ruta arrel de Grav, és a dir, `GRAV_ROOT` (predeterminat), o basat en la cadena aleatòria `security.salt`.'
+        SHORT: Curt
+        SHORT_DATE_FORMAT: 'Format de data de visualització curt'
+        SHORT_DATE_FORMAT_HELP: 'Estableix el format de data curt que poden utilitzar els temes'
+        SHUTDOWN_CLOSE_CONNECTION: 'Tanca la connexió en apagar'
+        SHUTDOWN_CLOSE_CONNECTION_HELP: 'Tanca la connexió abans de cridar onShutdown(). false per a la depuració'
+        SITE: Lloc
+        SITE_ACCESS: 'Accés al lloc'
+        SITE_DEFAULT_LANG: 'Idioma predeterminat'
+        SITE_DEFAULT_LANG_HELP: "Idioma predeterminat que utilitzarà l'etiqueta <HTML> del tema"
+        SITE_DEFAULT_LANG_PLACEHOLDER: "Idioma predeterminat que utilitzarà l'etiqueta <HTML> del tema"
+        SITE_TITLE: 'Títol del lloc'
+        SITE_TITLE_HELP: 'Títol predeterminat del teu lloc, sovint utilitzat pels temes'
+        SITE_TITLE_PLACEHOLDER: 'Títol general del lloc'
+        SLUG: Slug
+        SLUG_HELP: 'La variable slug et permet establir específicament la part de la URL corresponent a la pàgina'
+        SLUG_VALIDATE_MESSAGE: 'Un slug només pot contenir caràcters alfanumèrics en minúscula i guionets'
+        SORTABLE_PAGES: 'Pàgines ordenables:'
+        SSL_ENABLE_PROXY: 'Activa el servidor proxy'
+        SSL_VERIFY_HOST: "Verifica l'amfitrió remot"
+        SSL_VERIFY_HOST_HELP: 'Alguns poden fallar en verificar certificats SSL'
+        SSL_VERIFY_PEER: 'Verifica el peer remot'
+        SSL_VERIFY_PEER_HELP: 'Alguns poden fallar en verificar certificats SSL'
+        STABLE: Estable
+        STRICT_BLUEPRINT_COMPAT: 'Compatibilitat de Blueprint'
+        STRICT_BLUEPRINT_COMPAT_HELP: 'Activa la compatibilitat estricta amb versions anteriors per als blueprints. Si es desactiva, el nou comportament fa que la validació del formulari falli si hi ha dades addicionals que no estan definides al blueprint.'
+        STRICT_TWIG_COMPAT: 'Compatibilitat de Twig'
+        STRICT_TWIG_COMPAT_HELP: "Activa la configuració obsoleta d'autoescape de Twig. Quan es desactiva, cal el filtre |raw per generar HTML, ja que Twig escaparà la sortida automàticament"
+        STRICT_YAML_COMPAT: 'Compatibilitat de YAML'
+        STRICT_YAML_COMPAT_HELP: "Retorna a l'analitzador YAML de Symfony 2.4 si l'analitzador natiu o el 3.4 falla"
+        SUMMARY_SIZE: 'Mida del resum'
+        SUMMARY_SIZE_HELP: "La quantitat de caràcters d'una pàgina que s'utilitzaran com a resum del contingut"
+        SUPPORTED: Compatible
+        SUPPORTED_HELP: "Llista separada per comes de codis d'idioma de 2 lletres (per exemple, «en,fr,de»)"
+        SYSLOG_FACILITY: 'Facilitat de Syslog'
+        SYSLOG_FACILITY_HELP: 'Facilitat de Syslog per a la sortida'
+        SYSLOG_TAG: 'Etiqueta de Syslog'
+        SYSLOG_TAG_HELP: 'Etiqueta de Syslog per a la sortida'
+        TAXONOMIES: Taxonomies
+        TAXONOMY: Taxonomia
+        TAXONOMY_TYPES: 'Tipus de taxonomia'
+        TAXONOMY_TYPES_HELP: "Els tipus de taxonomia s'han de definir aquí si vols utilitzar-los a les pàgines"
+        TESTING: Proves
+        THUMB: Miniatura
+        TIMEOUT: "Temps d'espera"
+        TIMEOUT_HELP: "Estableix el temps d'espera de la sessió en segons"
+        TIMEZONE: 'Zona horària'
+        TIMEZONE_HELP: 'Substitueix la zona horària predeterminada del servidor'
+        TITLE: Títol
+        TRANSLATIONS_FALLBACK: 'Alternativa de traduccions'
+        TRANSLATIONS_FALLBACK_HELP: "Recorre les traduccions compatibles si l'idioma actiu no existeix"
+        TWIG_CACHING: 'Memòria cau de Twig'
+        TWIG_CACHING_HELP: 'Controla el mecanisme de memòria cau de Twig. Deixa-ho activat per obtenir el millor rendiment.'
+        TWIG_DEBUG: 'Depuració de Twig'
+        TWIG_DEBUG_HELP: "Permet l'opció de no carregar l'extensió Twig Debugger"
+        TWIG_FIRST: 'Processa primer Twig'
+        TWIG_FIRST_HELP: 'Si has activat el processament de pàgines Twig, pots configurar Twig perquè es processi abans o després del Markdown'
+        TWIG_SANDBOX: 'Sandbox de Twig'
+        TWIG_SANDBOX_ADMIN_HINT: "Comentari d'avís per a l'administrador"
+        TWIG_SANDBOX_ALLOWED_FILTERS: 'Filtres permesos'
+        TWIG_SANDBOX_ALLOWED_FILTERS_HELP: 'Filtres de Twig que el contingut de la pàgina pot aplicar.'
+        TWIG_SANDBOX_ALLOWED_FUNCTIONS: 'Funcions permeses'
+        TWIG_SANDBOX_ALLOWED_FUNCTIONS_HELP: 'Funcions de Twig que el contingut de la pàgina pot cridar.'
+        TWIG_SANDBOX_ALLOWED_METHODS: 'Mètodes permesos'
+        TWIG_SANDBOX_ALLOWED_METHODS_HELP: "Llistes per classe dels mètodes d'objectes que el contingut de la pàgina pot invocar."
+        TWIG_SANDBOX_ALLOWED_PROPERTIES: 'Propietats permeses'
+        TWIG_SANDBOX_ALLOWED_PROPERTIES_HELP: "Llistes per classe de les propietats d'objectes que el contingut de la pàgina pot llegir."
+        TWIG_SANDBOX_ALLOWED_TAGS: 'Etiquetes permeses'
+        TWIG_SANDBOX_ALLOWED_TAGS_HELP: 'Etiquetes de Twig que el contingut de la pàgina pot utilitzar. Afegeix només les etiquetes els efectes de les quals vulguis exposar als autors.'
+        TWIG_SANDBOX_CLASS: Classe
+        TWIG_SANDBOX_ENABLED: 'Activa el sandbox de Twig'
+        TWIG_SANDBOX_HELP: "Llista de permesos d'etiquetes, filtres, funcions, mètodes i propietats de Twig que poden utilitzar les plantilles de contingut de pàgina. El contingut creat pels editors es renderitza a través d'aquest sandbox perquè un autor compromès o un error d'injecció de plantilles no pugui accedir al contenidor més ampli."
+        TWIG_SANDBOX_LOGGING: 'Registra les infraccions'
+        TWIG_SANDBOX_LOGGING_HELP: 'Escriu cada expressió bloquejada a <code>logs/twig-sandbox.log</code>. Útil mentre ajustes la llista de permesos; desactiva-ho en producció per mantenir els registres nets.'
+        TWIG_SANDBOX_METHODS: Mètodes
+        TWIG_SANDBOX_PROPERTIES: Propietats
+        TWIG_TEMPLATING: 'Plantilles de Twig'
+        TYPE: Tipus
+        UNPUBLISHED_DATE: 'Data de despublicació'
+        UNPUBLISHED_DATE_HELP: 'Pots indicar una data per activar automàticament la despublicació.'
+        UPDATE: Actualitza
+        UPLOADS_DANGEROUS_EXTENSIONS: 'Extensions perilloses'
+        UPLOADS_DANGEROUS_EXTENSIONS_HELP: "Bloqueja la pujada d'aquestes extensions independentment dels tipus MIME acceptats"
+        UPLOADS_SECURITY: 'Seguretat de les pujades'
+        USE_GLOBAL: 'Utilitza el global'
+        USERNAME_HELP: "El nom d'usuari ha de tenir entre 3 i 16 caràcters, incloent-hi lletres minúscules, números, guions baixos i guions. No es permeten lletres majúscules, espais ni caràcters especials"
+        USERNAME_REGEX: "Expressió regular del nom d'usuari"
+        USERNAME_REGEX_HELP: 'Per defecte: només caràcters en minúscula, dígits, guions i guions baixos. 3 - 16 caràcters'
+        VALID_LINK_ATTRIBUTES: "Atributs d'enllaç vàlids"
+        VALID_LINK_ATTRIBUTES_HELP: "Atributs que s'afegiran automàticament a l'element HTML del multimèdia"
+        VARY_ACCEPT_ENCODING: 'Capçalera Vary: Accept-Encoding'
+        VARY_ACCEPT_ENCODING_HELP: 'Estableix la capçalera `Vary: Accept Encoding` per ajudar amb la memòria cau de proxy i CDN'
+        VISIBLE: Visible
+        VISIBLE_HELP: 'Determina si una pàgina és visible a la navegació.'
+        WRAPPED_SITE: 'Lloc encapsulat'
+        WRAPPED_SITE_HELP: 'Perquè els temes/plugins sàpiguen si Grav està encapsulat per una altra plataforma'
+        XSS_DANGEROUS_TAGS: 'Filtra les etiquetes HTML perilloses'
+        XSS_DANGEROUS_TAGS_LIST: "Llista d'etiquetes HTML perilloses"
+        XSS_HTML_INLINE_STYLES: 'Filtra els estils HTML en línia'
+        XSS_INVALID_PROTOCOLS: 'Filtra els protocols no vàlids'
+        XSS_INVALID_PROTOCOLS_LIST: 'Llista de protocols no vàlids'
+        XSS_MOZ_BINDINGS: 'Filtra les vinculacions Moz'
+        XSS_ON_EVENTS: 'Filtra els esdeveniments On'
+        XSS_SECURITY: 'Seguretat XSS per al contingut'
+        XSS_WHITELIST_PERMISSIONS: 'Permisos en llista blanca'
+        XSS_WHITELIST_PERMISSIONS_HELP: 'Els usuaris amb aquests permisos ometran les regles XSS en desar el contingut'
+        'YES': Sí
+        YUBIKEY_HELP: "Insereix la teva YubiKey a l'ordinador i fes clic al botó per generar un OTP. Els primers 12 caràcters són el teu ID de client i es desaran."
+        YUBIKEY_ID: 'ID de YubiKey'
+        CACHE_CHECK_INTERVAL: 'Interval de comprovació de la memòria cau'
+        CACHE_CHECK_INTERVAL_HELP: 'Segons per reutilitzar el hash del sistema de fitxers calculat prèviament abans de tornar a comprovar. Zero manté les comprovacions existents per sol·licitud.'
+        HTTP_X_FORWARDED_HOST_ENABLED: 'HTTP_X_FORWARDED_HOST activat'
+        HTTP_X_FORWARDED_HOST_HELP: "Confia en la capçalera de sol·licitud <code>X-Forwarded-Host</code>. Activa-ho només quan el lloc estigui realment darrere d'un proxy invers que estableixi i sobreescrigui aquesta capçalera; en cas contrari, els clients poden falsificar l'amfitrió que veu Grav."
+        HTTP_X_FORWARDED_IP_ENABLED: 'HTTP_X_FORWARDED IP activat'
+        HTTP_X_FORWARDED_IP_HELP: "Confia en les capçaleres <code>X-Forwarded-For</code> / <code>X-Forwarded</code> / <code>Forwarded</code> en resoldre la IP del client. Activa-ho només quan el lloc estigui realment darrere d'un proxy invers que estableixi i sobreescrigui aquestes capçaleres; en cas contrari, els clients poden falsificar la seva IP i eludir la limitació de velocitat, els bloquejos d'IP i el registre d'auditoria."
+        HTTP_X_FORWARDED_PORT_ENABLED: 'HTTP_X_FORWARDED_PORT activat'
+        HTTP_X_FORWARDED_PORT_HELP: "Confia en la capçalera de sol·licitud <code>X-Forwarded-Port</code>. Activa-ho només quan el lloc estigui realment darrere d'un proxy invers que estableixi i sobreescrigui aquesta capçalera."
+        HTTP_X_FORWARDED_PROTO_ENABLED: 'HTTP_X_FORWARDED_PROTO activat'
+        HTTP_X_FORWARDED_PROTO_HELP: "Confia en la capçalera de sol·licitud <code>X-Forwarded-Proto</code> (normalment utilitzada per detectar HTTPS darrere d'un proxy que finalitza TLS). Activa-ho només quan el lloc estigui realment darrere d'un proxy invers que estableixi i sobreescrigui aquesta capçalera."
+        HTTP_CLIENT_IP_ENABLED: 'HTTP_CLIENT_IP activat'
+        HTTP_CLIENT_IP_HELP: "Confia en la capçalera de sol·licitud <code>Client-IP</code> en resoldre la IP del client. Poc habitual; normalment només l'estableixen equilibradors de càrrega específics. Deixa-ho desactivat llevat que sàpigues que el teu proxy estableix i sobreescriu aquesta capçalera."
+        HTTP_CF_CONNECTING_IP_ENABLED: 'HTTP_CF_CONNECTING_IP activat'
+        HTTP_CF_CONNECTING_IP_HELP: "Confia en la capçalera de sol·licitud <code>CF-Connecting-IP</code> en resoldre la IP del client. Activa-ho quan el lloc estigui realment darrere de Cloudflare; en cas contrari, els clients poden falsificar la seva IP. Per a més seguretat, restringeix també l'accés d'origen als rangs d'IP de Cloudflare al servidor web."
+        MARKDOWN_EXTRA: 'Markdown extra'
+        ORDER_DIR_HELP: '«desc» o «asc» són valors vàlids'
+        TWIG_3_COMPATIBILITY: 'Compatibilitat amb Twig 3'
+        TWIG_3_COMPATIBILITY_HELP: 'Activa les reescriptures automàtiques de la sintaxi antiga de Twig 1/2 que falla a Twig 3 (p. ex. les guardes <code>for ... if ...</code>).'
+        TWIG_SANDBOX_ADMIN_HINT_HELP: "Quan el sandbox bloqueja una expressió, afegeix un comentari HTML d'una línia a la pàgina renderitzada perquè els superadministradors que vegin el codi font vegin que s'ha filtrat alguna cosa. Els visitants i els administradors no superadministradors no veuen res."
+        TWIG_SANDBOX_ENABLED_HELP: "Renderitza el contingut de pàgina creat pels editors dins d'una SecurityPolicy de Twig basada en una llista de permesos. <strong>Desactivar-ho elimina l'única protecció contra els atacs d'injecció de plantilles a través del contingut de la pàgina</strong>: qualsevol compte amb accés de nivell d'editor (o qualsevol persona que comprometi el sistema de fitxers) pot executar PHP arbitrari mitjançant Twig. Desactiva-ho només si un lloc necessita realment accés al contenidor des del contingut de la pàgina i confies plenament en tots els autors."
+        ACCOUNTS_CONFIGURATION: 'Configuració de comptes'
+        FLEX_ADMIN_EVENT_COMPAT: "Compatibilitat d'esdeveniments d'administració"
+        FLEX_ADMIN_EVENT_COMPAT_HELP: 'Activa els esdeveniments onAdminSave i onAdminAfterSave per als plugins.'
+        ID: ID
+        PAGE_PERMISSIONS: 'Permisos de pàgina'
+        PAGES_CONFIGURATION: 'Configuració de pàgines'
+        ROUTE: Ruta
+        SCHEDULER_ACTIVE_TRIGGERS: 'Disparadors actius'
+        SCHEDULER_ADVANCED_FEATURES: 'Funcions avançades'
+        SCHEDULER_CONCURRENT_WORKERS: 'Treballadors concurrents'
+        SCHEDULER_CONCURRENT_WORKERS_HELP: 'Nombre de tasques que es poden executar simultàniament (1 = seqüencial).'
+        SCHEDULER_HEALTH_CHECK_CONFIG: "Configuració de la verificació d'estat"
+        SCHEDULER_HEALTH_CHECK_ENABLED: "Activa la verificació d'estat"
+        SCHEDULER_HEALTH_CHECK_ENABLED_HELP: "Proporciona un punt final d'estat de salut per a la monitorització."
+        SCHEDULER_HEALTH_CHECK_PATH: "Ruta de la verificació d'estat"
+        SCHEDULER_HEALTH_CHECK_PATH_HELP: "Ruta URL per al punt final de verificació d'estat."
+        SCHEDULER_HEALTH_STATUS: 'Estat de salut'
+        SCHEDULER_HISTORY: 'Historial de tasques'
+        SCHEDULER_HISTORY_ENABLED: "Activa l'historial de tasques"
+        SCHEDULER_HISTORY_ENABLED_HELP: "Fes un seguiment de l'historial d'execució de totes les tasques."
+        SCHEDULER_HISTORY_RETENTION: "Retenció de l'historial (dies)"
+        SCHEDULER_HISTORY_RETENTION_HELP: "Quant de temps s'ha de conservar l'historial de tasques."
+        SCHEDULER_QUEUE_CONFIG: 'Configuració de la cua'
+        SCHEDULER_QUEUE_MAX_SIZE: 'Mida màxima de la cua'
+        SCHEDULER_QUEUE_MAX_SIZE_HELP: 'Nombre màxim de tasques que es poden posar a la cua.'
+        SCHEDULER_QUEUE_PATH: "Ruta d'emmagatzematge de la cua"
+        SCHEDULER_QUEUE_PATH_HELP: 'On emmagatzemar les tasques en cua.'
+        SCHEDULER_RETRY_BACKOFF: "Estratègia d'espera entre reintents"
+        SCHEDULER_RETRY_BACKOFF_HELP: 'Com calcular el retard entre reintents.'
+        SCHEDULER_RETRY_CONFIG: 'Configuració de reintents'
+        SCHEDULER_RETRY_ENABLED: 'Activa el reintent de tasques'
+        SCHEDULER_RETRY_ENABLED_HELP: 'Reintenta automàticament les tasques fallides.'
+        SCHEDULER_RETRY_MAX_ATTEMPTS: 'Intents màxims de reintent'
+        SCHEDULER_RETRY_MAX_ATTEMPTS_HELP: 'Nombre màxim de vegades que es reintenta una tasca fallida.'
+        SCHEDULER_USAGE_EXAMPLES: "Exemples d'ús"
+        SCHEDULER_WEBHOOK_CONFIG: 'Configuració del webhook'
+        SCHEDULER_WEBHOOK_ENABLED: 'Activa els disparadors de webhook'
+        SCHEDULER_WEBHOOK_ENABLED_HELP: 'Permet activar el planificador mitjançant un webhook HTTP.'
+        SCHEDULER_WEBHOOK_PATH: 'Ruta del webhook'
+        SCHEDULER_WEBHOOK_PATH_HELP: 'Ruta URL per al punt final del webhook.'
+        SCHEDULER_WEBHOOK_TOKEN: 'Token de seguretat del webhook'
+        SCHEDULER_WEBHOOK_TOKEN_HELP: 'Token secret per autenticar les sol·licituds de webhook. Mantén-lo en secret!'
+        SCHEDULER_WORKER_CONFIG: 'Configuració del treballador'
+        USER_ACCOUNTS: "Comptes d'usuari"
+        TWIG_CONTENT: 'Twig al contingut'
+        TWIG_CONTENT_HELP: "Controls per al Twig creat pels editors i incrustat al contingut de la pàgina. Les plantilles de tema al disc no es veuen afectades per aquesta configuració; només s'aplica al Twig que els autors posen als cossos de pàgina o al frontmatter."
+        TWIG_CONTENT_PROCESS_ENABLED: 'Activa Twig al contingut'
+        TWIG_CONTENT_PROCESS_ENABLED_HELP: "Permet que les pàgines amb <code>process: twig: true</code> al seu frontmatter (i l'opció d'activació global <code>system.pages.frontmatter.process_twig</code>) executin realment Twig. <strong>Desactivat per defecte a Grav 2.0.</strong> Deixar-ho desactivat redueix la superfície d'atac d'injecció de plantilles, però trenca qualsevol pàgina que necessiti Twig al seu cos."
+        TWIG_CONTENT_EDITOR_ENABLED: 'Permet que els editors activin o desactivin Twig al contingut'
+        TWIG_CONTENT_EDITOR_ENABLED_HELP: "Quan està desactivat (predeterminat), la casella de Twig a la pestanya Avançat de l'editor de pàgines només és visible per als usuaris amb el permís <code>admin.pages_twig</code>, i les pàgines que ja tenen Twig activat només poden ser editades per aquests usuaris. Quan està activat, qualsevol persona amb accés d'edició de pàgines pot activar o desactivar Twig a pàgines individuals."
+        TWIG_CONTENT_CONFIG_ACCESS: "Permet l'accés a la variable config a Twig"
+        TWIG_CONTENT_CONFIG_ACCESS_HELP: "Si la variable de Twig <code>config</code> es pot llegir des del contingut de la pàgina. Quan està desactivat (predeterminat), llegir <code>config.system.title</code> des d'una pàgina no retorna res. Quan està activat, <code>config</code> queda exposat però encara filtrat per <code>config_denied_paths</code> (vegeu Sandbox de Twig més avall), de manera que les credencials i altres subarbres sensibles es mantenen ocults."
+        GRAV_UPGRADE:
+            CONFIRM_TITLE: 'Vols actualitzar el nucli de Grav?'
+            CONFIRM_MESSAGE: "Això actualitzarà Grav de la v{current} a la v{target}. És possible que el lloc no estigui disponible breument durant l'actualització."
+            UPGRADING: "S'està actualitzant Grav a la v{version}…"
+            FAILED: "L'actualització de Grav ha fallat: {detail}"
+            NO_DETAIL: 'el servidor no ha donat cap motiu'
+            PREFLIGHT_TITLE: 'Grav encara no es pot actualitzar a la v{version}'
+            PREFLIGHT_MESSAGE: "Les comprovacions que s'executen abans d'una actualització l'han aturada pels motius següents. Soluciona'ls i torna-ho a provar, o actualitza igualment si saps que aquests plugins i temes funcionen amb la versió nova."
+            INCOMPATIBLE_PACKAGE: '{name} {version} està marcat com a compatible amb Grav {compatible}'
+            UPGRADE_ANYWAY: 'Actualitza igualment'
+            STILL_BLOCKED: "L'actualització de Grav encara està bloquejada: {detail}"
+        TOASTS:
+            CONFIG_SAVED: 'Configuració de {name} desada'
+            CONFIG_MODIFIED_ELSEWHERE: "La configuració s'ha modificat en un altre lloc — recarrega per veure l'última versió"
+            SAVE_FAILED: "No s'ha pogut desar"
+            DEMO_MODE_BLOCKED: 'Això és una demostració de només lectura: els canvis estan desactivats.'
+            DEPENDENCY_INSTALLED: 'Plugin {slug} instal·lat (dependència)'
+            PACKAGE_UPDATED: '{name} actualitzat'
+            PACKAGE_UPDATE_FAILED: "No s'ha pogut actualitzar {name}: {detail}"
+            PACKAGE_REMOVED: '{name} eliminat'
+            PACKAGE_REMOVE_FAILED: "No s'ha pogut eliminar {name}"
+            PACKAGES_UPDATED: "{n, plural, one{S'ha actualitzat # paquet} other{S'han actualitzat # paquets}}"
+            UPDATE_FAILED: "L'actualització ha fallat: {detail}"
+            PLUGIN_ENABLED: '{name} activat'
+            PLUGIN_DISABLED: '{name} desactivat'
+            PLUGIN_ENABLE_FAILED: "No s'ha pogut activar {name}: {detail}"
+            PLUGIN_DISABLE_FAILED: "No s'ha pogut desactivar {name}: {detail}"
+            PLUGIN_LOCKOUT_BLOCK: "{name} no es pot desactivar des d'admin-next: et deixaria bloquejat l'accés."
+            PLUGIN_REQUIRED_BLOCK: '{name} no es pot eliminar: admin-next el necessita.'
+            PLUGIN_REMOVED: '{name} eliminat'
+            PLUGIN_REMOVE_FAILED: "No s'ha pogut eliminar {name}: {detail}"
+            THEME_ACTIVATED: '{name} ara és el tema actiu'
+            THEME_ACTIVATE_FAILED: "No s'ha pogut activar {name}: {detail}"
+            THEME_REMOVED: '{name} eliminat'
+            THEME_REMOVE_FAILED: "No s'ha pogut eliminar {name}: {detail}"
+            THEME_REMOVE_BLOCK: '{name} no es pot eliminar.'
+            ACTIVE_THEME_REMOVE_BLOCK: 'No es pot eliminar el tema actiu. Canvia a un altre tema primer.'
+            PAGE_PUBLISHED: '«{name}» publicada'
+            PAGE_UNPUBLISHED: '«{name}» despublicada'
+            PAGE_PUBLISH_FAILED: "No s'ha pogut canviar l'estat de publicació: {detail}"
+            USER_ENABLED: 'Usuari {username} activat'
+            USER_DISABLED: 'Usuari {username} desactivat'
+            USER_STATE_FAILED: "No s'ha pogut canviar l'estat de {username}: {detail}"
+            GPM_REFRESHED: '{n, plural, =0{GPM actualitzat — no hi ha actualitzacions disponibles} one{GPM actualitzat — # actualització disponible} other{GPM actualitzat — # actualitzacions disponibles}}'
+            GRAV_UPGRADED: 'Grav actualitzat a la v{version}'
+            BACKUP_CREATED: 'Còpia de seguretat creada ({size})'
+            CACHE_CLEARED: 'Memòria cau buidada ({scope})'
+            FILES_UPLOADED: "{n, plural, one{S'ha pujat # fitxer} other{S'han pujat # fitxers}}"
+            FOLDER_CREATED: 'Carpeta «{name}» creada'
+            FILE_DELETED: '{name} suprimit'
+            FILE_DELETE_FAILED: "No s'ha pogut suprimir {name}"
+            FILES_DELETE_FAILED: "{n, plural, one{No s'ha pogut suprimir # fitxer} other{No s'han pogut suprimir # fitxers}}"
+            COPIED: '{label} copiat'
+            COPY_FAILED: "No s'ha pogut copiar: {detail}"
+            SAVED_AS_LANGUAGE: 'Desat com a {language}'
+            TRANSLATION_CREATED: 'Traducció de {language} creada'
+            TRANSLATION_RESET: '{target} restablert a partir de {source}'
+            SAVED: Desat
+            ITEM_SAVED: '{name} desat'
+            ITEM_DELETED: '«{name}» suprimit'
+            ITEM_DELETE_FAILED: "No s'ha pogut suprimir «{name}»"
+            ITEM_COPIED: '«{name}» copiat a «{target}»'
+            ITEM_MOVED: '«{name}» mogut'
+            ITEM_REORDERED: '«{name}» reordenat'
+            USER_CREATED: 'Usuari {username} creat'
+            USER_SAVED: 'Usuari {username} desat'
+            USER_DELETED: 'Usuari {username} suprimit'
+            USER_DELETE_FAILED: "No s'ha pogut suprimir l'usuari {username}"
+            USER_ROW_ACTION_FAILED: "No s'ha pogut completar l'acció: {label}"
+            API_KEY_REVOKED: "Clau d'API «{name}» revocada"
+            PLUGIN_INSTALLED: 'Plugin {name} instal·lat'
+            THEME_INSTALLED: 'Tema {name} instal·lat'
+            INSTALL_FAILED: "No s'ha pogut instal·lar {slug}: {detail}"
+            TOTP_CODE_REQUIRED: 'Introdueix el codi de 6 dígits del teu autenticador'
+            SAVE_FORM_FAILED: "No s'ha pogut desar {form}"
+            FORM_LABEL:
+                FORM: Formulari
+                CONFIGURATION: Configuració
+                PLUGIN: Plugin
+                PLUGIN_PAGE: 'Pàgina de plugin'
+                FLEX_OBJECT: 'Objecte Flex'
+                USER: Usuari
+                THEME: Tema
+                PAGE: Pàgina

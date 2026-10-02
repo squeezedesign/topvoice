@@ -45,7 +45,7 @@ ICU:
             STORAGE_EXPOSED_TMP: 'Els fitxers de prova a tmp/ es podien baixar, mentre que les altres carpetes estaven bloquejades. Les regles del teu servidor probablement són anteriors a Grav 2.1.7, que va afegir tmp/ a la llista de carpetes bloquejades. Afegeix tmp a aquesta llista al teu .htaccess, o a la configuració de nginx, Caddy o IIS, perquè coincideixi amb les regles que inclou Grav.'
             STORAGE_EXPOSED_BY_TYPE: "Alguns tipus de fitxer estaven bloquejats en aquestes carpetes mentre que d'altres es podien baixar. Això sol significar que alguna cosa se situa davant les regles de Grav, com ara nginx servint fitxers estàtics abans que Apache, que respon a tipus de fitxer habituals com .zip abans que es comprovin les regles. Bloqueja també aquestes carpetes a la configuració d'aquesta capa."
             STORAGE_EXPOSED_ALL: "Tots els fitxers de prova es podien baixar, per la qual cosa el teu servidor web no aplica en absolut les regles d'accés de Grav. A Apache, comprova que AllowOverride permeti que el .htaccess del lloc tingui efecte. A nginx, Caddy o IIS, afegeix les regles de seguretat de la carpeta webserver-configs de Grav."
-            STORAGE_EXPOSED_CDN: "Si el lloc és darrere d'una CDN com Cloudflare, buida'n la memòria cau després de solucionar-ho. Les còpies que ja té emmagatzemades es podran continuar baixant fins que ho facis."
+            STORAGE_EXPOSED_CDN: "Si el lloc és darrere d'una CDN com Cloudflare, buida'n la caché després de solucionar-ho. Les còpies que ja té emmagatzemades es podran continuar baixant fins que ho facis."
             COLLAPSE: Redueix
             SHOW_DETAILS: 'Mostra els detalls'
             SNOOZE: Ajorna
@@ -564,7 +564,7 @@ ICU:
             UPDATES_AVAILABLE_COUNT: '{n} disponibles'
             PACKAGES_OUTDATED: '{n, plural, one{# paquet desactualitzat} other{# paquets desactualitzats}}'
             MORE_COUNT: '+ {n} més…'
-            CACHE: 'Memòria cau'
+            CACHE: 'Caché'
             DISK: Disc
             BYTES_USED: '{size} utilitzats'
             BYTES_FREE: '{size} lliures'
@@ -657,10 +657,10 @@ ICU:
                 BATCH_PARTIAL: "S'han actualitzat {saved} fitxers; {failed} no s'han pogut actualitzar"
         UPLOAD: Puja
         CACHE_CLEAR_BUTTON:
-            LABEL: 'Memòria cau'
-            CLEAR_CACHE: 'Buida la memòria cau'
-            CACHE_OPTIONS: 'Opcions de la memòria cau'
-            FAILED_TO_CLEAR_CACHE: "No s'ha pogut buidar la memòria cau"
+            LABEL: 'Caché'
+            CLEAR_CACHE: 'Buida la caché'
+            CACHE_OPTIONS: 'Opcions de la caché'
+            FAILED_TO_CLEAR_CACHE: "No s'ha pogut buidar la caché"
         CONFIRM_ACTION: "Confirma l'acció"
         VIEW_SITE_BUTTON:
             OPEN_SITE_FRONTEND_IN_A_NEW_TAB: 'Obre el lloc en una pestanya nova'
@@ -1597,34 +1597,34 @@ ICU:
         BACKUPS_PURGE_CONFIG: 'Configuració de purga de còpies de seguretat'
         BACKUPS_STORAGE_PURGE_TRIGGER: "Desencadenant de purga d'emmagatzematge de còpies de seguretat"
         BODY_CLASSES: 'Classes del cos'
-        CACHE_ALL: 'Desa totes les imatges a la memòria cau'
-        CACHE_ALL_HELP: 'Passa totes les imatges pel sistema de memòria cau de Grav encara que no tinguin manipulacions de multimèdia'
-        CACHE_CHECK_METHOD: 'Mètode de comprovació de la memòria cau'
+        CACHE_ALL: 'Desa totes les imatges a la caché'
+        CACHE_ALL_HELP: 'Passa totes les imatges pel sistema de caché de Grav encara que no tinguin manipulacions de multimèdia'
+        CACHE_CHECK_METHOD: 'Mètode de comprovació de la caché'
         CACHE_CHECK_METHOD_HELP: "Selecciona el mètode que fa servir Grav per comprovar si els fitxers de pàgina s'han modificat."
         CACHE_CLEAR_JOB: 'Executa la tasca de buidatge programada'
-        CACHE_CLEAR_JOB_HELP: 'Amb el planificador pots buidar periòdicament la memòria cau de Grav'
+        CACHE_CLEAR_JOB_HELP: 'Amb el planificador pots buidar periòdicament la caché de Grav'
         CACHE_CONTROL: 'HTTP Cache-Control'
         CACHE_CONTROL_HELP: 'Estableix-lo a un valor de cache-control vàlid, com ara `no-cache, no-store, must-revalidate`'
-        CACHE_DRIVER: 'Controlador de memòria cau'
-        CACHE_DRIVER_HELP: 'Tria quin controlador de memòria cau ha de fer servir Grav. «Detecció automàtica» intenta trobar el millor per a tu'
-        CACHE_JOB_TYPE: 'Tipus de tasca de memòria cau'
+        CACHE_DRIVER: 'Controlador de caché'
+        CACHE_DRIVER_HELP: 'Tria quin controlador de caché ha de fer servir Grav. «Detecció automàtica» intenta trobar el millor per a tu'
+        CACHE_JOB_TYPE: 'Tipus de tasca de caché'
         CACHE_JOB_TYPE_HELP: 'Buida amb les carpetes «estàndard» o amb «totes» les carpetes'
-        CACHE_PERMS: 'Permisos de la memòria cau'
-        CACHE_PERMS_HELP: 'Permisos predeterminats de la carpeta de memòria cau. Normalment 0755 o 0775 segons la configuració'
-        CACHE_PREFIX: 'Prefix de la memòria cau'
+        CACHE_PERMS: 'Permisos de la caché'
+        CACHE_PERMS_HELP: 'Permisos predeterminats de la carpeta de caché. Normalment 0755 o 0775 segons la configuració'
+        CACHE_PREFIX: 'Prefix de la caché'
         CACHE_PREFIX_HELP: 'Un identificador per a part de la clau de Grav. No el canviïs si no saps què estàs fent.'
         CACHE_PREFIX_PLACEHOLDER: "Derivat de l'URL base (anul·la-ho introduint una cadena aleatòria)"
-        CACHE_PURGE_AGE: 'Antiguitat de purga de la memòria cau'
-        CACHE_PURGE_AGE_HELP: 'Purga tots els elements de la memòria cau més antics que aquesta antiguitat (en dies)'
+        CACHE_PURGE_AGE: 'Antiguitat de purga de la caché'
+        CACHE_PURGE_AGE_HELP: 'Purga tots els elements de la caché més antics que aquesta antiguitat (en dies)'
         CACHE_PURGE_JOB: 'Executa la tasca de purga programada'
-        CACHE_PURGE_JOB_HELP: 'Amb el planificador pots eliminar periòdicament les carpetes antigues de memòria cau de fitxers de Doctrine amb aquesta tasca'
-        CACHING: 'Memòria cau'
-        CACHING_HELP: "Interruptor global d'ACTIVAT/DESACTIVAT per habilitar o desactivar la memòria cau de Grav"
+        CACHE_PURGE_JOB_HELP: 'Amb el planificador pots eliminar periòdicament les carpetes antigues de caché de fitxers de Doctrine amb aquesta tasca'
+        CACHING: 'Caché'
+        CACHING_HELP: "Interruptor global d'ACTIVAT/DESACTIVAT per habilitar o desactivar la caché de Grav"
         CHARACTERS: caràcters
-        CLEAR_IMAGES_BY_DEFAULT: "Buida la memòria cau d'imatges per defecte"
-        CLEAR_IMAGES_BY_DEFAULT_HELP: 'Per defecte, les imatges processades es buiden a cada buidatge de la memòria cau; això es pot desactivar'
+        CLEAR_IMAGES_BY_DEFAULT: "Buida la caché d'imatges per defecte"
+        CLEAR_IMAGES_BY_DEFAULT_HELP: 'Per defecte, les imatges processades es buiden a cada buidatge de la caché; això es pot desactivar'
         CLI_COMPATIBILITY: 'Compatibilitat amb CLI'
-        CLI_COMPATIBILITY_HELP: "Assegura que només s'utilitzin controladors de memòria cau no volàtils (fitxer, redis, memcache, etc.)"
+        CLI_COMPATIBILITY_HELP: "Assegura que només s'utilitzin controladors de caché no volàtils (fitxer, redis, memcache, etc.)"
         COLLECTIONS: Col·leccions
         COMMAND: Ordre
         CONFIGURATION: Configuració
@@ -1686,7 +1686,7 @@ ICU:
         DEFAULT_EMAIL: 'Correu electrònic predeterminat'
         DEFAULT_EMAIL_HELP: 'Un correu electrònic predeterminat per fer-hi referència en temes o pàgines'
         DEFAULT_IMAGE_QUALITY: "Qualitat d'imatge predeterminada"
-        DEFAULT_IMAGE_QUALITY_HELP: "Qualitat d'imatge predeterminada a l'hora de remostrejar o desar imatges a la memòria cau (85%)"
+        DEFAULT_IMAGE_QUALITY_HELP: "Qualitat d'imatge predeterminada a l'hora de remostrejar o desar imatges a la caché (85%)"
         DEFAULT_LANG: "Anul·la l'idioma predeterminat"
         DEFAULT_LANG_HELP: 'Per defecte és el primer idioma compatible. Es pot anul·lar configurant aquesta opció, però ha de ser un dels idiomes compatibles'
         DEFAULT_ORDER_DIRECTION: "Direcció d'ordenació predeterminada"
@@ -1708,7 +1708,7 @@ ICU:
         DESCRIPTION: Descripció
         DETAILS: Detalls
         DETECT_CHANGES: 'Detecta canvis'
-        DETECT_CHANGES_HELP: 'Twig recompilarà automàticament la memòria cau de Twig si detecta canvis a les plantilles de Twig'
+        DETECT_CHANGES_HELP: 'Twig recompilarà automàticament la caché de Twig si detecta canvis a les plantilles de Twig'
         DISPLAY_ERRORS: 'Mostra errors'
         DISPLAY_ERRORS_HELP: "Mostra una pàgina d'error completa amb estil de traça"
         DISPLAY_NAME: 'Nom per mostrar'
@@ -1746,13 +1746,13 @@ ICU:
         FILE_EXTENSION: 'Extensió de fitxer'
         FILE_STREAMS: 'Fluxos de fitxer'
         FLEX: 'Objecte Flex (EXPERIMENTAL)'
-        FLEX_CACHING: 'Memòria cau de Flex'
-        FLEX_INDEX_CACHE_ENABLED: "Activa la memòria cau d'índexs"
-        FLEX_INDEX_CACHE_LIFETIME: "Durada de la memòria cau d'índexs (segons)"
-        FLEX_OBJECT_CACHE_ENABLED: "Activa la memòria cau d'objectes"
-        FLEX_OBJECT_CACHE_LIFETIME: "Durada de la memòria cau d'objectes (segons)"
-        FLEX_RENDER_CACHE_ENABLED: 'Activa la memòria cau de renderització'
-        FLEX_RENDER_CACHE_LIFETIME: 'Durada de la memòria cau de renderització (segons)'
+        FLEX_CACHING: 'Caché de Flex'
+        FLEX_INDEX_CACHE_ENABLED: "Activa la caché d'índexs"
+        FLEX_INDEX_CACHE_LIFETIME: "Durada de la caché d'índexs (segons)"
+        FLEX_OBJECT_CACHE_ENABLED: "Activa la caché d'objectes"
+        FLEX_OBJECT_CACHE_LIFETIME: "Durada de la caché d'objectes (segons)"
+        FLEX_RENDER_CACHE_ENABLED: 'Activa la caché de renderització'
+        FLEX_RENDER_CACHE_LIFETIME: 'Durada de la caché de renderització (segons)'
         FOLDER: Carpeta
         FOLDER_NAME: 'Nom de la carpeta'
         FOLDER_NUMERIC_PREFIX: 'Prefix numèric de carpeta'
@@ -1767,13 +1767,13 @@ ICU:
         FRONTMATTER_IGNORE_FIELDS: 'Ignora camps de frontmatter'
         FRONTMATTER_IGNORE_FIELDS_HELP: "Alguns camps de frontmatter poden contenir Twig però no s'han de processar, com ara «forms»"
         FRONTMATTER_NATIVE_YAML: 'Anàlisi ràpida del frontmatter'
-        FRONTMATTER_NATIVE_YAML_HELP: "Llegeix el frontmatter de la pàgina amb l'extensió PHP libyaml quan estigui instal·lada, cosa que accelera la reconstrucció de la memòria cau de pàgines. Llegeix alguns valors de manera diferent, així que comprova primer les teves pàgines. Una data sense cometes es manté com a text en lloc de convertir-se en una marca de temps, i yes, no, on i off sense cometes es converteixen en true o false."
+        FRONTMATTER_NATIVE_YAML_HELP: "Llegeix el frontmatter de la pàgina amb l'extensió PHP libyaml quan estigui instal·lada, cosa que accelera la reconstrucció de la caché de pàgines. Llegeix alguns valors de manera diferent, així que comprova primer les teves pàgines. Una data sense cometes es manté com a text en lloc de convertir-se en una marca de temps, i yes, no, on i off sense cometes es converteixen en true o false."
         PAGES_LAZY_INDEX: 'Índex de pàgines diferit'
-        PAGES_LAZY_INDEX_HELP: "Carrega les pàgines, les rutes i la taxonomia sota demanda des d'un índex SQLite per pàgina, en lloc d'un únic fitxer de memòria cau gran. El mode automàtic l'utilitza en llocs amb 1.000 pàgines o més. Recorre a la memòria cau clàssica quan no hi ha cap motor de base de dades disponible."
+        PAGES_LAZY_INDEX_HELP: "Carrega les pàgines, les rutes i la taxonomia sota demanda des d'un índex SQLite per pàgina, en lloc d'un únic fitxer de caché gran. El mode automàtic l'utilitza en llocs amb 1.000 pàgines o més. Recorre a la caché clàssica quan no hi ha cap motor de base de dades disponible."
         SESSION_LAZY: 'Inicia les sessions només quan calgui'
-        SESSION_LAZY_HELP: "Els visitants sense galeta de sessió només obtenen una sessió quan s'hi desa alguna cosa, com un inici de sessió, un formulari o un missatge, de manera que un servidor intermediari o una CDN pot desar a la memòria cau les visites anònimes de pàgina. Els plugins que desen dades a cada visita de pàgina segueixen iniciant-ne una."
-        CACHE_MODULES: 'Desa a la memòria cau la sortida dels mòduls'
-        CACHE_MODULES_HELP: "Desa a la memòria cau la sortida renderitzada dels mòduls d'aquesta pàgina. Fes-ho servir només quan els mòduls mostrin el mateix contingut a tots els visitants. Els mòduls amb Twig propi o un formulari, els visitants que han iniciat sessió i els enviaments de formularis sempre es renderitzen de nou. Si només s'edita una plantilla parcial cal buidar la memòria cau."
+        SESSION_LAZY_HELP: "Els visitants sense galeta de sessió només obtenen una sessió quan s'hi desa alguna cosa, com un inici de sessió, un formulari o un missatge, de manera que un servidor intermediari o una CDN pot desar a la caché les visites anònimes de pàgina. Els plugins que desen dades a cada visita de pàgina segueixen iniciant-ne una."
+        CACHE_MODULES: 'Desa a la caché la sortida dels mòduls'
+        CACHE_MODULES_HELP: "Desa a la caché la sortida renderitzada dels mòduls d'aquesta pàgina. Fes-ho servir només quan els mòduls mostrin el mateix contingut a tots els visitants. Els mòduls amb Twig propi o un formulari, els visitants que han iniciat sessió i els enviaments de formularis sempre es renderitzen de nou. Si només s'edita una plantilla parcial cal buidar la caché."
         FRONTMATTER_PROCESS_TWIG: 'Processa Twig al frontmatter'
         FRONTMATTER_PROCESS_TWIG_HELP: 'Quan està activat, pots utilitzar variables de configuració de Twig al frontmatter de la pàgina'
         FULL_NAME: 'Nom complet'
@@ -1836,7 +1836,7 @@ ICU:
         IMAGES_MAX_PIXELS: "Píxels màxims d'imatge"
         IMAGES_MAX_PIXELS_HELP: "Límit total de píxels (amplada x alçada) per a les accions de canvi de mida basades en URL. Es rebutgen les sol·licituds per sobre d'aquest límit. Estableix-lo a 0 per desactivar la comprovació."
         IMAGES_PROGRESSIVE_JPEG: 'JPEG progressius'
-        IMAGES_PROGRESSIVE_JPEG_HELP: "Desa els JPEG redimensionats i emmagatzemats a la memòria cau com a progressius, de manera que apareguin com una imatge borrosa sencera que es va enfocant, en lloc d'omplir-se de dalt a baix. Normalment també són més petits. No afecta els PNG, WebP ni AVIF."
+        IMAGES_PROGRESSIVE_JPEG_HELP: "Desa els JPEG redimensionats i emmagatzemats a la caché com a progressius, de manera que apareguin com una imatge borrosa sencera que es va enfocant, en lloc d'omplir-se de dalt a baix. Normalment també són més petits. No afecta els PNG, WebP ni AVIF."
         IMAGES_SEOFRIENDLY: "Noms d'imatge amigables amb el SEO"
         IMAGES_SEOFRIENDLY_HELP: "Quan està activat, el nom de la imatge es mostra primer, seguit d'un hash més petit que reflecteix les operacions processades"
         IMAGES_URL_ACTIONS: "Permet accions d'imatge basades en URL"
@@ -1874,9 +1874,9 @@ ICU:
         LANGUAGE_TRANSLATIONS_HELP: 'Si és fals, es fan servir les claus de traducció en lloc de les cadenes traduïdes. Aquesta funció es pot fer servir per ajudar a corregir traduccions incorrectes o trobar cadenes en anglès codificades directament.'
         LANGUAGES: Idiomes
         LAST_MODIFIED: 'Última modificació'
-        LAST_MODIFIED_HELP: "Estableix la capçalera d'última modificació, que pot ajudar a optimitzar la memòria cau del servidor intermediari i del navegador"
+        LAST_MODIFIED_HELP: "Estableix la capçalera d'última modificació, que pot ajudar a optimitzar la caché del servidor intermediari i del navegador"
         LIFETIME: Durada
-        LIFETIME_HELP: 'Estableix la durada de la memòria cau en segons. 0 = infinita'
+        LIFETIME_HELP: 'Estableix la durada de la caché en segons. 0 = infinita'
         LIST: Llista
         LOG_ERRORS: 'Registra errors'
         LOG_ERRORS_HELP: 'Registra els errors a la carpeta /logs'
@@ -1904,8 +1904,8 @@ ICU:
         MODULE_SETUP: 'Configuració del mòdul'
         MOVE: Mou
         NAME: Nom
-        NEVER_CACHE_TWIG: 'No desis mai Twig a la memòria cau'
-        NEVER_CACHE_TWIG_HELP: 'Desa només el contingut a la memòria cau i processa Twig cada vegada per a les pàgines. Ignora la configuració twig_first.'
+        NEVER_CACHE_TWIG: 'No desis mai Twig a la caché'
+        NEVER_CACHE_TWIG_HELP: 'Desa només el contingut a la caché i processa Twig cada vegada per a les pàgines. Ignora la configuració twig_first.'
         'NO': 'No'
         OPTIONS: Opcions
         ORDER: Ordre
@@ -2102,8 +2102,8 @@ ICU:
         TITLE: Títol
         TRANSLATIONS_FALLBACK: 'Alternativa de traduccions'
         TRANSLATIONS_FALLBACK_HELP: "Recorre les traduccions compatibles si l'idioma actiu no existeix"
-        TWIG_CACHING: 'Memòria cau de Twig'
-        TWIG_CACHING_HELP: 'Controla el mecanisme de memòria cau de Twig. Deixa-ho activat per obtenir el millor rendiment.'
+        TWIG_CACHING: 'Caché de Twig'
+        TWIG_CACHING_HELP: 'Controla el mecanisme de caché de Twig. Deixa-ho activat per obtenir el millor rendiment.'
         TWIG_DEBUG: 'Depuració de Twig'
         TWIG_DEBUG_HELP: "Permet l'opció de no carregar l'extensió Twig Debugger"
         TWIG_FIRST: 'Processa primer Twig'
@@ -2142,7 +2142,7 @@ ICU:
         VALID_LINK_ATTRIBUTES: "Atributs d'enllaç vàlids"
         VALID_LINK_ATTRIBUTES_HELP: "Atributs que s'afegiran automàticament a l'element HTML del multimèdia"
         VARY_ACCEPT_ENCODING: 'Capçalera Vary: Accept-Encoding'
-        VARY_ACCEPT_ENCODING_HELP: 'Estableix la capçalera `Vary: Accept Encoding` per ajudar amb la memòria cau de proxy i CDN'
+        VARY_ACCEPT_ENCODING_HELP: 'Estableix la capçalera `Vary: Accept Encoding` per ajudar amb la caché de proxy i CDN'
         VISIBLE: Visible
         VISIBLE_HELP: 'Determina si una pàgina és visible a la navegació.'
         WRAPPED_SITE: 'Lloc encapsulat'
@@ -2160,7 +2160,7 @@ ICU:
         'YES': Sí
         YUBIKEY_HELP: "Insereix la teva YubiKey a l'ordinador i fes clic al botó per generar un OTP. Els primers 12 caràcters són el teu ID de client i es desaran."
         YUBIKEY_ID: 'ID de YubiKey'
-        CACHE_CHECK_INTERVAL: 'Interval de comprovació de la memòria cau'
+        CACHE_CHECK_INTERVAL: 'Interval de comprovació de la caché'
         CACHE_CHECK_INTERVAL_HELP: 'Segons per reutilitzar el hash del sistema de fitxers calculat prèviament abans de tornar a comprovar. Zero manté les comprovacions existents per sol·licitud.'
         HTTP_X_FORWARDED_HOST_ENABLED: 'HTTP_X_FORWARDED_HOST activat'
         HTTP_X_FORWARDED_HOST_HELP: "Confia en la capçalera de sol·licitud <code>X-Forwarded-Host</code>. Activa-ho només quan el lloc estigui realment darrere d'un proxy invers que estableixi i sobreescrigui aquesta capçalera; en cas contrari, els clients poden falsificar l'amfitrió que veu Grav."
@@ -2278,7 +2278,7 @@ ICU:
             GPM_REFRESHED: '{n, plural, =0{GPM actualitzat — no hi ha actualitzacions disponibles} one{GPM actualitzat — # actualització disponible} other{GPM actualitzat — # actualitzacions disponibles}}'
             GRAV_UPGRADED: 'Grav actualitzat a la v{version}'
             BACKUP_CREATED: 'Còpia de seguretat creada ({size})'
-            CACHE_CLEARED: 'Memòria cau buidada ({scope})'
+            CACHE_CLEARED: 'Caché buidada ({scope})'
             FILES_UPLOADED: "{n, plural, one{S'ha pujat # fitxer} other{S'han pujat # fitxers}}"
             FOLDER_CREATED: 'Carpeta «{name}» creada'
             FILE_DELETED: '{name} suprimit'

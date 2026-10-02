@@ -150,6 +150,16 @@ hay que llevar ese cambio a git antes.
   conciertos, multimedia; sin configuración, plugins ni temas). Puede editar
   su propio perfil.
 - Las estadísticas del tauler necesitan el permiso Sistema → Lectura.
+- **Menú del admin:** «Multimèdia» y «Eines» aparecen con los mismos
+  permisos que necesita la clienta (imágenes de las páginas y estadísticas).
+  Para ocultárselos, el plugin `topvoice-hooks` añade dos permisos propios en
+  «Top Voice: menú de l'admin»: «Mostra Multimèdia al menú» y «Mostra Eines
+  al menú». Solo ocultan los enlaces, no quitan ningún permiso. El grupo autor
+  los tiene desactivados. Después de cambiarlos hay que cerrar sesión y
+  volver a entrar.
+- Ver, hacer o descargar copias de seguridad requiere Sistema → Còpies de
+  seguretat. No se da al grupo autor: las copias contienen las cuentas y la
+  configuración con contraseñas.
 - El logo y el favicon del admin se configuran en Preferències → Valors
   predeterminats del lloc → Marca (ficheros en `user/media/admin-next/`).
 - El editor de páginas es Markdown. Si hiciera falta un editor visual, la

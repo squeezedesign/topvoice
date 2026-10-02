@@ -121,8 +121,22 @@ da 403.
   Si se añaden textos nuevos al admin, faltarán en catalán hasta traducirlos.
 - `topvoice-hooks` oculta con CSS el panel "Configuració del servidor" del
   login (Admin Next no ofrece otra forma).
+- `topvoice-hooks` también registra `api.topvoice.menu_media` y
+  `api.topvoice.menu_tools` (`permissions.yaml`): solo deciden si se ven
+  «Multimèdia» y «Eines» en el menú. Un script inyectado en el admin lee los
+  permisos del usuario en `localStorage` (`grav_admin_auth::/admin`, solo
+  incluye `api.*`), oculta los enlaces y redirige al tauler si se escribe la
+  URL. Los permisos reales no cambian: las imágenes de las páginas necesitan
+  `api.media.*` y las estadísticas del tauler `api.system.read`, que son los
+  mismos que muestran esos enlaces. Tras cambiar permisos hay que cerrar
+  sesión y volver a entrar.
 - Permisos: la clienta está en el grupo `autor`; ser superadmin es el
   permiso `api.super`, no un grupo. Las estadísticas del tauler requieren
-  `api.system.read`.
+  `api.system.read`. Ver la lista de copias exige `api.system.backup`, que
+  también permite descargarlas (contienen cuentas y secretos): no se lo des
+  al grupo `autor`.
+- No abras el admin en el Chrome de Raquel mientras trabaja: la pantalla de
+  login reescribe el `localStorage` compartido y le vacía los permisos del
+  menú hasta que vuelve a iniciar sesión.
 - Admin Next tiene fallos propios (avatar al cambiar de tema, textos en inglés
   fijos en el código); Raquel ha decidido no reportarlos.

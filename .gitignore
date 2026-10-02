@@ -6,7 +6,6 @@
 /composer.json
 /composer.lock
 /now.json
-/robots.txt
 /images/
 /webserver-configs/
 CHANGELOG.md
@@ -18,6 +17,16 @@ SECURITY.md
 .github/
 .phan/
 .htaccess
+# Grav 2: .env files configure the site (may hold secrets), .env.example ships with core
+/.env*
+
+# ── Migración a Grav 2 (migrate-grav): staging y asistente, temporales ──
+/grav-2/
+/migrate.php
+/migrate-wizard.php
+/.migrating
+/.mg-promote.json
+/.migration-complete
 
 # ── Runtime generado ──────────────────────────────────────────────
 /cache/
@@ -34,6 +43,8 @@ user/plugins/*
 !user/plugins/topvoice-hooks/
 !user/plugins/admin2-ca/
 user/images/
+# Admin Next branding uploads (logos, favicon), set per server from the admin
+user/media/
 
 # ── Temas de terceros (instalados con Grav, no nuestro código) ────
 user/themes/quark/

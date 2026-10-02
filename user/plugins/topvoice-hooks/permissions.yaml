@@ -10,3 +10,5 @@ actions:
         label: 'Mostra «Multimèdia» al menú'
       menu_tools:
         label: 'Mostra «Eines» al menú'
+      dashboard_customize:
+        label: 'Permet personalitzar el tauler'

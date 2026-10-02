@@ -36,6 +36,20 @@ class TopvoiceHooksPlugin extends Plugin
     { perm: 'api.topvoice.menu_media', path: '/media' },
     { perm: 'api.topvoice.menu_tools', path: '/tools' }
   ];
+  // The dashboard's Customize button has no stable selector: match its label
+  // (ADMIN_NEXT.DASHBOARD.CUSTOMIZE in ca, es-ES and en-US).
+  var customizeLabels = ['Personalitza', 'Personalizar', 'Customize'];
+  var hidden = 'data-topvoice-hidden';
+
+  function toggleCustomize(show) {
+    var buttons = document.querySelectorAll('main button');
+    for (var i = 0; i < buttons.length; i++) {
+      var b = buttons[i];
+      if (customizeLabels.indexOf(b.textContent.trim()) === -1) continue;
+      if (show && b.hasAttribute(hidden)) { b.style.display = ''; b.removeAttribute(hidden); }
+      if (!show && !b.hasAttribute(hidden)) { b.style.display = 'none'; b.setAttribute(hidden, ''); }
+    }
+  }
   var style = document.createElement('style');
   document.head.appendChild(style);
 
@@ -48,7 +62,8 @@ class TopvoiceHooksPlugin extends Plugin
 
   function apply() {
     var a = auth();
-    if (!a || !a.accessToken) { style.textContent = ''; return; }
+    if (!a || !a.accessToken) { style.textContent = ''; toggleCustomize(true); return; }
+    toggleCustomize(!!(a.superAdmin || (a.access && a.access['api.topvoice.dashboard_customize'])));
     var css = '';
     rules.forEach(function (r) {
       if (a.superAdmin || (a.access && a.access[r.perm])) return;

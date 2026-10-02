@@ -154,7 +154,8 @@ hay que llevar ese cambio a git antes.
   permisos que necesita la clienta (imágenes de las páginas y estadísticas).
   Para ocultárselos, el plugin `topvoice-hooks` añade dos permisos propios en
   «Top Voice: menú de l'admin»: «Mostra Multimèdia al menú» y «Mostra Eines
-  al menú». Solo ocultan los enlaces, no quitan ningún permiso. El grupo autor
+  al menú», además de «Permet personalitzar el tauler», que oculta el botón
+  Personalitza. Solo ocultan los enlaces, no quitan ningún permiso. El grupo autor
   los tiene desactivados. Después de cambiarlos hay que cerrar sesión y
   volver a entrar.
 - Ver, hacer o descargar copias de seguridad requiere Sistema → Còpies de

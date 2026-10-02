@@ -121,9 +121,11 @@ da 403.
   Si se añaden textos nuevos al admin, faltarán en catalán hasta traducirlos.
 - `topvoice-hooks` oculta con CSS el panel "Configuració del servidor" del
   login (Admin Next no ofrece otra forma).
-- `topvoice-hooks` también registra `api.topvoice.menu_media` y
-  `api.topvoice.menu_tools` (`permissions.yaml`): solo deciden si se ven
-  «Multimèdia» y «Eines» en el menú. Un script inyectado en el admin lee los
+- `topvoice-hooks` también registra `api.topvoice.menu_media`,
+  `api.topvoice.menu_tools` y `api.topvoice.dashboard_customize`
+  (`permissions.yaml`): solo deciden si se ven
+  «Multimèdia» y «Eines» en el menú y el botón «Personalitza» del tauler
+  (buscado por su texto). Un script inyectado en el admin lee los
   permisos del usuario en `localStorage` (`grav_admin_auth::/admin`, solo
   incluye `api.*`), oculta los enlaces y redirige al tauler si se escribe la
   URL. Los permisos reales no cambian: las imágenes de las páginas necesitan

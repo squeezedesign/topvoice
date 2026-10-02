@@ -53,7 +53,8 @@ config:
           title: SITE.CONCERTS.FIELD_SHOW_FORMAT
     edit:
       title:
-        template: '{{ object.date ? object.date : "Nou" }}{% if object.venue %} — {{ object.venue }}{% endif %}'
+        # Admin Next only fills {{ object.x }} and {{ object.x ?? 'y' }}, no Twig tags; still valid Twig for Admin 1.x
+        template: "{{ object.date ?? 'Nou' }} — {{ object.venue }}"
     preview:
       enabled: false
     export:

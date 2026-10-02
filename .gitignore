@@ -56,6 +56,12 @@ user/config/
 # ajustos que han de diferir a producció (errors amagats, cache activada).
 # Els YAML dels plugins, en canvi, contenen credencials — mai al repo.
 user/env/*/config/plugins/
+# Grav 2 writes its salt and nonce key to the first config folder, which on a
+# server with an env folder is this one. Secrets, never in the repo.
+user/env/*/config/security.yaml
+user/env/*/config/security-private.php
+# Admin saves land there too; site settings are managed from the admin
+user/env/*/config/site.yaml
 
 # ── OS ────────────────────────────────────────────────────────────
 .DS_Store

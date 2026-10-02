@@ -1,0 +1,12 @@
+# Menu visibility only: they hide sidebar links in Admin Next and do not
+# restrict anything. Kept under api.* because that is the only namespace the
+# API sends to the browser, which is where the links get hidden.
+actions:
+  api.topvoice:
+    type: access
+    label: 'Top Voice: menú de l''admin'
+    actions:
+      menu_media:
+        label: 'Mostra «Multimèdia» al menú'
+      menu_tools:
+        label: 'Mostra «Eines» al menú'

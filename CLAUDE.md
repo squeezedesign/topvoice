@@ -29,6 +29,12 @@ hay que replicar a mano en producción (SFTP o admin).
 Haz commit o push solo cuando Raquel lo pida. Los commits llevan
 `Co-Authored-By` según indique la sesión.
 
+El push no sale desde las sesiones de Claude en el Mac de Docker: ssh no
+conoce la clave de github.com (`Host key verification failed`) y no hay `gh`.
+No añadas la clave por tu cuenta; pide a Raquel que lance
+`! git push origin main` en el prompt. Cita los hashes de commit copiados de
+`git log`, nunca de memoria.
+
 ## Producción
 
 - Servidor `ubuntu-blackpony`, raíz web `/home/topvoicetgn/www` (es un clon
@@ -43,6 +49,9 @@ Haz commit o push solo cuando Raquel lo pida. Los commits llevan
   Comprueba el resultado desde fuera con `curl`.
 - Despliegue habitual: `cd /home/topvoicetgn/www && git pull && chown -R
   www-data:www-data . && sudo -u www-data php bin/grav clearcache`.
+- Cuando Raquel diga que algo está desplegado, mira antes `git status -sb`:
+  si pone `ahead N`, el push no salió y el `git pull` del servidor no trajo
+  nada. Después compruébalo desde fuera con `curl`.
 
 ### Configuración por entorno (importante)
 

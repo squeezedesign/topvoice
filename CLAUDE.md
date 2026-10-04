@@ -155,7 +155,9 @@ páginas, configuración y cuentas, y desde una no se ve la otra.
   una página pública nueva, añádela ahí.
 - La página de error usa `http_response_code: 404` en su cabecera (no `code`).
 - Cookies: vanilla-cookieconsent 3 con Google Consent Mode v2 y GTM
-  `GTM-5D6CW423` (`partials/gtm_head` y `partials/cookieconsent`). El vídeo usa
+  `GTM-5D6CW423` (`partials/gtm_head`, `partials/gtm_body` y
+  `partials/cookieconsent`). El `<noscript>` de `gtm_body` va justo después de
+  `<body>`: sin él, la verificación de Search Console por GTM falla. El vídeo usa
   youtube-nocookie.
 
 ## Admin Next (Grav 2)

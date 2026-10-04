@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Static on purpose: only the two home pages are indexable (the legal pages
+     are noindex). Add any new public page here, with its hreflang pair. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://www.topvoicetgn.com/</loc>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://www.topvoicetgn.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.topvoicetgn.com/es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.topvoicetgn.com/"/>
+  </url>
+  <url>
+    <loc>https://www.topvoicetgn.com/es</loc>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://www.topvoicetgn.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.topvoicetgn.com/es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.topvoicetgn.com/"/>
+  </url>
+</urlset>

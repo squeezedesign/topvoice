@@ -14,7 +14,7 @@ clienta es Top Voice y entra al admin con la cuenta `topvoice`.
 Solo viajan por git el tema (`user/themes/topvoice/`), los plugins propios
 (`user/plugins/topvoice-hooks/`, `user/plugins/admin2-ca/`), los idiomas del
 sitio (`user/languages/`), los blueprints (`user/blueprints/`), los logos de
-`user/assets/`, `robots.txt` y la configuración de producción
+`user/assets/`, `robots.txt`, `sitemap.xml` y la configuración de producción
 `user/env/www.topvoicetgn.com/config/system.yaml`.
 
 Todo lo demás de `user/` (páginas, `config/`, `accounts/`, `data/` con los
@@ -139,6 +139,11 @@ páginas, configuración y cuentas, y desde una no se ve la otra.
   los plugins (Cap) carguen; el `|raw` es necesario. No añadas `assets.css()`.
 - El tema enlaza su CSS/JS con el filtro `theme_asset` (`topvoice.php`), que
   añade `?v=<mtime>` para evitar cachés del navegador.
+- SEO: `partials/alternates` saca `canonical`, `hreflang`, `og:url` y
+  `og:locale`; `partials/social` el resto de Open Graph, con la imagen
+  `images/og-image.jpg` del tema (1200×630). `sitemap.xml` es estático y solo
+  lista las dos portadas, porque las páginas legales son `noindex`: si se crea
+  una página pública nueva, añádela ahí.
 - La página de error usa `http_response_code: 404` en su cabecera (no `code`).
 - Cookies: vanilla-cookieconsent 3 con Google Consent Mode v2 y GTM
   `GTM-5D6CW423` (`partials/gtm_head` y `partials/cookieconsent`). El vídeo usa

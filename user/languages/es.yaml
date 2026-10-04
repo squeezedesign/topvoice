@@ -10,6 +10,8 @@ SITE:
     CLOSE: "Cerrar menú"
   ABOUT:
     IMAGE_ALT: "Las cantantes de Top Voice en concierto, con los brazos en alto sobre el escenario"
+  SOCIAL:
+    IMAGE_ALT: "Top Voice en concierto sobre el escenario, con el rótulo TOP VOICE iluminado"
   HERO:
     SCROLL: "Desplázate hacia abajo"
   VIDEO:

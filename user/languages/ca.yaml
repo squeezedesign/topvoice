@@ -9,6 +9,8 @@ SITE:
     CLOSE: "Tancar menú"
   ABOUT:
     IMAGE_ALT: "Les cantants de Top Voice en concert, amb els braços enlaire a l'escenari"
+  SOCIAL:
+    IMAGE_ALT: "Top Voice en concert a l'escenari, amb el rètol TOP VOICE il·luminat"
   HERO:
     SCROLL: "Desplaça't avall"
   VIDEO:

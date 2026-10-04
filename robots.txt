@@ -19,3 +19,5 @@ Allow: /
 Allow: *.css$
 Allow: *.js$
 Allow: /system/*.js$
+
+Sitemap: https://www.topvoicetgn.com/sitemap.xml

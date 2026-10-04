@@ -9,15 +9,16 @@
   {# Disable native scroll restoration before the browser can restore a mid-page
      position on reload — keeps scroll-driven backgrounds initialising at the top. #}
   <script>if ('scrollRestoration' in history) history.scrollRestoration = 'manual';</script>
-  <title>{{ page.home() ? 'SITE.TITLE'|t : page.title ~ ' · ' ~ 'SITE.TITLE'|t }}</title>
-
+  {% set page_title = page.home() ? 'SITE.TITLE'|t : page.title ~ ' · ' ~ 'SITE.TITLE'|t %}
   {% if page.header.description is defined %}
-  <meta name="description" content="{{ page.header.description }}">
+    {% set page_description = page.header.description %}
   {% elseif grav.language.getActive() == 'es' %}
-  <meta name="description" content="{{ 'SITE.DESCRIPTION'|t }}">
+    {% set page_description = 'SITE.DESCRIPTION'|t %}
   {% else %}
-  <meta name="description" content="{{ site.metadata.description }}">
+    {% set page_description = site.metadata.description %}
   {% endif %}
+  <title>{{ page_title }}</title>
+  <meta name="description" content="{{ page_description }}">
 
   <link rel="icon" type="image/png" href="{{ theme_url }}/images/favicon/favicon-96x96.png" sizes="96x96">
   <link rel="icon" type="image/svg+xml" href="{{ theme_url }}/images/favicon/favicon.svg">
@@ -30,6 +31,7 @@
   <link rel="stylesheet" href="{{ 'css/style.css'|theme_asset }}">
 
   {% include 'partials/alternates.html.twig' %}
+  {% include 'partials/social.html.twig' %}
 </head>
 <body>
 

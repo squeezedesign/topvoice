@@ -1,4 +1,5 @@
-{# Canonical and hreflang links. Catalan is the default language and has no
+{# Canonical and hreflang links, plus og:url and og:locale, which say the
+   same thing to social networks. Catalan is the default language and has no
    prefix; Spanish lives under /es. The home page is served at / and /es. #}
 {% set alt_root = uri.rootUrl(true) %}
 {% set alt_route = page.home() ? '' : page.rawRoute() %}
@@ -6,8 +7,17 @@
   'ca': alt_root ~ (alt_route ?: '/'),
   'es': alt_root ~ '/es' ~ alt_route
 } %}
-<link rel="canonical" href="{{ alt_urls[grav.language.getActive() ?: 'ca'] }}">
+{% set alt_lang = grav.language.getActive() ?: 'ca' %}
+{% set alt_locales = { 'ca': 'ca_ES', 'es': 'es_ES' } %}
+<link rel="canonical" href="{{ alt_urls[alt_lang] }}">
 {% for lang, url in alt_urls %}
 <link rel="alternate" hreflang="{{ lang }}" href="{{ url }}">
 {% endfor %}
 <link rel="alternate" hreflang="x-default" href="{{ alt_urls.ca }}">
+<meta property="og:url" content="{{ alt_urls[alt_lang] }}">
+<meta property="og:locale" content="{{ alt_locales[alt_lang] }}">
+{% for lang, locale in alt_locales %}
+{% if lang != alt_lang %}
+<meta property="og:locale:alternate" content="{{ locale }}">
+{% endif %}
+{% endfor %}

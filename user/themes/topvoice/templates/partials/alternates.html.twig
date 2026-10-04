@@ -1,0 +1,13 @@
+{# Canonical and hreflang links. Catalan is the default language and has no
+   prefix; Spanish lives under /es. The home page is served at / and /es. #}
+{% set alt_root = uri.rootUrl(true) %}
+{% set alt_route = page.home() ? '' : page.rawRoute() %}
+{% set alt_urls = {
+  'ca': alt_root ~ (alt_route ?: '/'),
+  'es': alt_root ~ '/es' ~ alt_route
+} %}
+<link rel="canonical" href="{{ alt_urls[grav.language.getActive() ?: 'ca'] }}">
+{% for lang, url in alt_urls %}
+<link rel="alternate" hreflang="{{ lang }}" href="{{ url }}">
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ alt_urls.ca }}">

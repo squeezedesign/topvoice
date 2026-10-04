@@ -12,11 +12,11 @@
            alt="Top Voice">
     </div>
     <div class="offcanvas-links">
-      <a onclick="goTo('about')">{{ 'SITE.NAV.ABOUT'|t }}<span class="arrow">→</span></a>
-      <a onclick="goTo('video')">{{ 'SITE.NAV.VIDEO'|t }}<span class="arrow">→</span></a>
-      <a onclick="goTo('oferim')">{{ 'SITE.NAV.OFERIM'|t }}<span class="arrow">→</span></a>
-      <a onclick="goTo('gallery')">{{ 'SITE.NAV.GALLERY'|t }}<span class="arrow">→</span></a>
-      <a onclick="goTo('contact')">{{ 'SITE.NAV.CONTACT'|t }}<span class="arrow">→</span></a>
+      <a href="#about" onclick="goTo('about'); return false;">{{ 'SITE.NAV.ABOUT'|t }}<span class="arrow">→</span></a>
+      <a href="#video" onclick="goTo('video'); return false;">{{ 'SITE.NAV.VIDEO'|t }}<span class="arrow">→</span></a>
+      <a href="#oferim" onclick="goTo('oferim'); return false;">{{ 'SITE.NAV.OFERIM'|t }}<span class="arrow">→</span></a>
+      <a href="#gallery" onclick="goTo('gallery'); return false;">{{ 'SITE.NAV.GALLERY'|t }}<span class="arrow">→</span></a>
+      <a href="#contact" onclick="goTo('contact'); return false;">{{ 'SITE.NAV.CONTACT'|t }}<span class="arrow">→</span></a>
     </div>
     <div class="offcanvas-footer">
       {% set raw_route = page.rawRoute() == '/home' ? '/' : page.rawRoute() %}

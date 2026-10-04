@@ -8,15 +8,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   {% include 'partials/gtm_head.html.twig' %}
-  <title>{{ page.title }} · {{ site.title }}</title>
+  <title>{{ page.title }} · {{ 'SITE.TITLE'|t }}</title>
   <meta name="robots" content="noindex, nofollow">
   <link rel="icon" type="image/png" href="{{ theme_url }}/images/favicon/favicon-96x96.png" sizes="96x96">
   <link rel="icon" type="image/svg+xml" href="{{ theme_url }}/images/favicon/favicon.svg">
   <link rel="shortcut icon" href="{{ theme_url }}/images/favicon/favicon.ico">
   <link rel="stylesheet" href="{{ 'css/style.css'|theme_asset }}">
-  {% for lang in grav.languages.supported %}
-  <link rel="alternate" hreflang="{{ lang }}" href="{{ page.translateUrl(lang) }}">
-  {% endfor %}
+  {% include 'partials/alternates.html.twig' %}
 </head>
 <body>
 

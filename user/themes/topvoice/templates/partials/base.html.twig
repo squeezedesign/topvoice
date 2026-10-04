@@ -9,10 +9,12 @@
   {# Disable native scroll restoration before the browser can restore a mid-page
      position on reload — keeps scroll-driven backgrounds initialising at the top. #}
   <script>if ('scrollRestoration' in history) history.scrollRestoration = 'manual';</script>
-  <title>{{ page.title }} {% if page.title != site.title %}· {{ site.title }}{% endif %}</title>
+  <title>{{ page.home() ? 'SITE.TITLE'|t : page.title ~ ' · ' ~ 'SITE.TITLE'|t }}</title>
 
   {% if page.header.description is defined %}
   <meta name="description" content="{{ page.header.description }}">
+  {% elseif grav.language.getActive() == 'es' %}
+  <meta name="description" content="{{ 'SITE.DESCRIPTION'|t }}">
   {% else %}
   <meta name="description" content="{{ site.metadata.description }}">
   {% endif %}
@@ -27,9 +29,7 @@
   <link rel="stylesheet" href="{{ 'css/slick.css'|theme_asset }}">
   <link rel="stylesheet" href="{{ 'css/style.css'|theme_asset }}">
 
-  {% for lang in grav.languages.supported %}
-  <link rel="alternate" hreflang="{{ lang }}" href="{{ page.translateUrl(lang) }}">
-  {% endfor %}
+  {% include 'partials/alternates.html.twig' %}
 </head>
 <body>
 

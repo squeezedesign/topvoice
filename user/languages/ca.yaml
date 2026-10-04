@@ -1,4 +1,5 @@
 SITE:
+  TITLE: "Top Voice · Cor Modern Tarragona"
   NAV:
     ABOUT: "Qui som"
     VIDEO: "Escolta'ns"
@@ -10,7 +11,7 @@ SITE:
     SCROLL: "Desplaça't avall"
   VIDEO:
     PLAY: "Reproduir vídeo"
-    YT_CHANNEL: "Veure més videos"
+    YT_CHANNEL: "Veure més vídeos"
   LANG:
     CA: "CA"
     ES: "ES"

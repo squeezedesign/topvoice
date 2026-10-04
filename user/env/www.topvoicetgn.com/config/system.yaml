@@ -12,3 +12,9 @@ pages:
   # The home page's concerts block filters by "now", so a cached render froze
   # the date and kept past concerts on screen until something cleared the cache.
   never_cache_twig: true
+  # Grav's default (expires: 604800) sent "Cache-Control: max-age=604800", so
+  # browsers reused a page for a week without asking, concerts included. With
+  # no-cache they ask every visit. The contact form's nonce changes the ETag on
+  # each request, so the HTML (~33 KB) is always sent again; assets stay cached.
+  expires: 0
+  cache_control: no-cache

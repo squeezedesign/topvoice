@@ -113,6 +113,9 @@ cuentas.
   `user/data/flex-objects/concerts.json`): la home filtra por la fecha de hoy
   dentro de un módulo; con la caché de contenido activada la fecha se
   congelaba. Por eso `pages.never_cache_twig: true` en producción.
+  Además, `pages.cache_control: no-cache` y `expires: 0`: el valor por
+  defecto de Grav mandaba `max-age` de 7 días y el navegador no volvía a pedir
+  la página.
   `topvoice-hooks` vacía la caché al guardar o borrar un objeto Flex.
 - **Formulario de contacto**: honeypot + captcha Cap (Form ≥ 9.1.5), envío por
   AJAX propio en `scripts.js`. Los campos están en las páginas

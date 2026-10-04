@@ -78,6 +78,14 @@ descargaron escáneres: el historial se considera público, así que **nunca
 commitees secretos**. Tras tocar nginx, comprueba desde fuera que lo privado
 da 403.
 
+La caché de los estáticos en el navegador también se pone en nginx: un `map
+$request_uri $static_expires` fuera del `server` y una `location` por
+extensión con `expires $static_expires`, colocada **después** del bloque de
+seguridad para que sus 403 sigan ganando. La versión de referencia está en
+`docker/nginx.conf`. Solo llevan un año los ficheros cuyo nombre o `?v=`
+cambia con el contenido; los plugins, que no llevan versión, se quedan en un
+día.
+
 ## Local
 
 Hay dos entornos locales. Mira la ruta de trabajo de la sesión para saber en

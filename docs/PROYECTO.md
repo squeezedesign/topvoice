@@ -104,10 +104,21 @@ servidor tiene los suyos:
 
 ### Local
 
-- Carpeta `/Volumes/X10Pro/Sites/topvoice-grav`, servida por MAMP PRO como
-  `https://topvoicetgn-grav.test` (Apache, PHP 8.3).
-- MailHog en `http://localhost:8025` para probar correos, pero la
-  configuración local usa el SMTP real: cámbiala antes de probar envíos.
+Hay dos copias locales independientes, cada una con sus páginas,
+configuración y cuentas:
+
+- **Docker**: carpeta `~/Sites/topvoicetgn`, en `http://topvoicetgn.test`
+  (Colima + Traefik, nginx + PHP 8.3-FPM). Se levanta con
+  `docker compose up -d` en la carpeta del proyecto, con Traefik ya
+  arrancado (`docker compose -f ~/Sites/traefik/docker-compose.yml up -d`).
+  La configuración está en `docker-compose.yml` y `docker/`. Los comandos de
+  Grav se lanzan dentro del contenedor:
+  `docker compose exec -u www-data php php bin/grav clearcache`.
+- **MAMP PRO**: carpeta `/Volumes/X10Pro/Sites/topvoice-grav`, servida como
+  `https://topvoicetgn-grav.test` (Apache, PHP 8.3). Tiene MailHog en
+  `http://localhost:8025` para probar correos.
+- En los dos, la configuración de correo usa el SMTP real de Gmail: cámbiala
+  antes de probar envíos.
 
 ### Producción
 

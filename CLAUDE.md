@@ -60,8 +60,9 @@ después `user/config/`. Consecuencias:
   de `user/config/` puede estar desfasado. La CLI también parece leer el
   entorno, pero no está confirmado; no des por buena una prueba por CLI como
   prueba de que la web funciona.
-- En local no hay carpeta de entorno (el host es `topvoicetgn-grav.test`), así
-  que se usa `user/config/`.
+- En local no hay carpeta de entorno (los hosts son `topvoicetgn.test` y
+  `topvoicetgn-grav.test`), así que se usa `user/config/`. Si aparece una
+  `user/env/topvoicetgn*.test/`, algo la ha creado: avisa antes de seguir.
 
 ### Seguridad (nginx)
 
@@ -69,23 +70,42 @@ nginx no lee `.htaccess`. Las reglas de seguridad están en
 `/etc/nginx/sites-available/topvoicetgn` (enlazado desde `sites-enabled`),
 dentro de `## Begin - Security`: ficheros ocultos, `.git`, `tmp`, `bin`,
 `cache`, `logs`, `backup`, `user/config|env|accounts|data`, `.md` y ficheros
-del núcleo devuelven 403. En septiembre de 2026 el `.git` estuvo expuesto y lo
+del núcleo devuelven 403. El entorno Docker local también viaja por git
+(`docker/`, `docker-compose.yml`) y debe dar 403 con esta regla:
+`location ~ ^/(docker/|docker-compose\.yml|composer\.phar|composer-setup\.php) { return 403; }`.
+En septiembre de 2026 el `.git` estuvo expuesto y lo
 descargaron escáneres: el historial se considera público, así que **nunca
 commitees secretos**. Tras tocar nginx, comprueba desde fuera que lo privado
 da 403.
 
 ## Local
 
-- Vhost de MAMP PRO `topvoicetgn-grav.test` (Apache, PHP 8.3), no está en
-  `/etc/hosts`:
+Hay dos entornos locales. Mira la ruta de trabajo de la sesión para saber en
+cuál estás; son copias distintas, con sus propias páginas, configuración y
+cuentas.
+
+- **Docker** (`~/Sites/topvoicetgn`): Colima + Traefik, nginx + PHP 8.3-FPM,
+  en `http://topvoicetgn.test` (DNS `*.test` por dnsmasq, sin HTTPS).
+  `docker-compose.yml` y `docker/` (Dockerfile y `nginx.conf`) están en la
+  raíz. El contenedor PHP ejecuta `composer install` al arrancar. Los comandos
+  de Grav van dentro del contenedor y como www-data:
+  `docker compose exec -u www-data php php bin/grav clearcache`
+  `docker/nginx.conf` se monta como fichero suelto: tras editarlo, haz
+  `docker compose restart nginx` (un `reload` lee la copia vieja, cortada).
+- **MAMP PRO** (`/Volumes/X10Pro/Sites/topvoice-grav`): Apache, PHP 8.3, vhost
+  `topvoicetgn-grav.test`, que no está en `/etc/hosts`:
   `curl -sk --resolve topvoicetgn-grav.test:443:127.0.0.1 https://topvoicetgn-grav.test/`
-- MailHog en `localhost:1025` (web en `:8025`). Pero el correo local está
-  configurado con el **SMTP real de Gmail**: no envíes el formulario de
-  contacto ni pidas recuperaciones de contraseña sin apuntar antes el correo
-  a MailHog.
+  Aquí `php bin/grav clearcache` se lanza directamente.
+- El correo local está configurado con el **SMTP real de Gmail**: no envíes
+  el formulario de contacto ni pidas recuperaciones de contraseña. En MAMP hay
+  MailHog en `localhost:1025` (web en `:8025`) para desviarlo antes; en Docker
+  no hay MailHog.
 - El modo mantenimiento (`user/config/plugins/maintenance.yaml`) lo gestiona
   Raquel; no lo cambies por tu cuenta.
-- `php bin/grav clearcache` después de tocar frontmatter o blueprints.
+- Limpia la caché después de tocar frontmatter o blueprints.
+- Para revisar la web en un navegador, usa Playwright (navegador aparte), no
+  el Chrome de Raquel. Sus capturas van a `.playwright-mcp/`: bórrala al
+  acabar.
 
 ## Cosas que ya han mordido
 

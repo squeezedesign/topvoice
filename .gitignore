@@ -63,6 +63,11 @@ user/env/*/config/security-private.php
 # Admin saves land there too; site settings are managed from the admin
 user/env/*/config/site.yaml
 
+# ── Entorno local Docker: Composer descargado y capturas de Playwright ─
+/composer.phar
+/composer-setup.php
+/.playwright-mcp/
+
 # ── OS ────────────────────────────────────────────────────────────
 .DS_Store
 Thumbs.db

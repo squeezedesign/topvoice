@@ -88,9 +88,9 @@ día.
 
 ## Local
 
-Hay dos entornos locales. Mira la ruta de trabajo de la sesión para saber en
-cuál estás; son copias distintas, con sus propias páginas, configuración y
-cuentas.
+Hay dos entornos locales, en máquinas distintas. Mira la ruta de trabajo de
+la sesión para saber en cuál estás; son copias distintas, con sus propias
+páginas, configuración y cuentas, y desde una no se ve la otra.
 
 - **Docker** (`~/Sites/topvoicetgn`): Colima + Traefik, nginx + PHP 8.3-FPM,
   en `http://topvoicetgn.test` (DNS `*.test` por dnsmasq, sin HTTPS).
@@ -100,7 +100,8 @@ cuentas.
   `docker compose exec -u www-data php php bin/grav clearcache`
   `docker/nginx.conf` se monta como fichero suelto: tras editarlo, haz
   `docker compose restart nginx` (un `reload` lee la copia vieja, cortada).
-- **MAMP PRO** (`/Volumes/X10Pro/Sites/topvoice-grav`): Apache, PHP 8.3, vhost
+- **MAMP PRO** (`/Volumes/X10Pro/Sites/topvoice-grav`, disco conectado a otra
+  máquina): Apache, PHP 8.3, vhost
   `topvoicetgn-grav.test`, que no está en `/etc/hosts`:
   `curl -sk --resolve topvoicetgn-grav.test:443:127.0.0.1 https://topvoicetgn-grav.test/`
   Aquí `php bin/grav clearcache` se lanza directamente.

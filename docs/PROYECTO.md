@@ -114,7 +114,8 @@ configuración y cuentas:
   La configuración está en `docker-compose.yml` y `docker/`. Los comandos de
   Grav se lanzan dentro del contenedor:
   `docker compose exec -u www-data php php bin/grav clearcache`.
-- **MAMP PRO**: carpeta `/Volumes/X10Pro/Sites/topvoice-grav`, servida como
+- **MAMP PRO**, en otra máquina: carpeta `/Volumes/X10Pro/Sites/topvoice-grav`
+  (disco externo), servida como
   `https://topvoicetgn-grav.test` (Apache, PHP 8.3). Tiene MailHog en
   `http://localhost:8025` para probar correos.
 - En los dos, la configuración de correo usa el SMTP real de Gmail: cámbiala

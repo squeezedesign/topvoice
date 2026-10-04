@@ -157,8 +157,11 @@ páginas, configuración y cuentas, y desde una no se ve la otra.
 - Cookies: vanilla-cookieconsent 3 con Google Consent Mode v2 y GTM
   `GTM-5D6CW423` (`partials/gtm_head`, `partials/gtm_body` y
   `partials/cookieconsent`). El `<noscript>` de `gtm_body` va justo después de
-  `<body>`: sin él, la verificación de Search Console por GTM falla. El vídeo usa
-  youtube-nocookie.
+  `<body>`: sin él, la verificación de Search Console por GTM falla. El ID se
+  pone por servidor desde el admin (configuración del tema, campo `gtm_id`, que
+  en producción se guarda en `user/env/<host>/config/themes/`, ignorado en
+  git). Por defecto está vacío: sin ID no se cargan GTM ni el banner, y así
+  debe quedar en local. El vídeo usa youtube-nocookie.
 
 ## Admin Next (Grav 2)
 

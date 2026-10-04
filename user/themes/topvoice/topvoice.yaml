@@ -13,5 +13,7 @@ license: MIT
 dependencies:
   - { name: grav, version: '>=1.7.0' }
 
-# Google Tag Manager container. Empty disables GTM and the cookie banner.
-gtm_id: GTM-5D6CW423
+# Google Tag Manager container, set per server from the admin (theme
+# settings). Empty disables GTM and the cookie banner, which is what local
+# installs should keep so their visits stay out of the production stats.
+gtm_id: ''

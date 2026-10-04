@@ -59,6 +59,8 @@ Los textos fijos del tema (menú, pie, formulario, avisos) están en
 - `templates/partials/cookieconsent.html.twig`: banner de cookies
   (vanilla-cookieconsent 3.0.0, textos en catalán y castellano). Solo hay una
   categoría opcional, analíticas (Google Analytics vía GTM `GTM-5D6CW423`).
+  El ID del contenedor se pone desde el admin, en la configuración del tema
+  Top Voice; si está vacío no se cargan GTM ni el banner (así en local).
 - `templates/legal.html.twig`: plantilla de las páginas legales, sin menú ni
   scripts del tema.
 - `templates/forms/email/contact.html.twig`: plantilla del correo del

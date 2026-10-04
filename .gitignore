@@ -62,6 +62,8 @@ user/env/*/config/security.yaml
 user/env/*/config/security-private.php
 # Admin saves land there too; site settings are managed from the admin
 user/env/*/config/site.yaml
+# Theme settings (GTM container ID) are set per server from the admin
+user/env/*/config/themes/
 
 # ── Entorno local Docker: Composer descargado y capturas de Playwright ─
 /composer.phar

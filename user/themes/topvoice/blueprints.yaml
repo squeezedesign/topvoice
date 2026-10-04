@@ -15,3 +15,11 @@ form:
     dropdown.enabled:
       type: hidden
       default: 0
+    gtm_id:
+      type: text
+      label: "ID de Google Tag Manager"
+      placeholder: "GTM-XXXXXXX"
+      help: "Contenidor de GTM (analítica). Buit: no es carrega GTM ni es mostra el bàner de galetes."
+      validate:
+        pattern: '^(GTM-[A-Z0-9]+)?$'
+        message: "Ha de tenir la forma GTM-XXXXXXX, o quedar buit."

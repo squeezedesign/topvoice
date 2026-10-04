@@ -8,6 +8,8 @@ SITE:
     GALLERY: "Momentos"
     CONTACT: "Contacto"
     CLOSE: "Cerrar menú"
+  ABOUT:
+    IMAGE_ALT: "Las cantantes de Top Voice en concierto, con los brazos en alto sobre el escenario"
   HERO:
     SCROLL: "Desplázate hacia abajo"
   VIDEO:

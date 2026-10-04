@@ -1,4 +1,5 @@
 {% set h = page.header %}
+{% set image_alt = h.image_alt ?: 'SITE.ABOUT.IMAGE_ALT'|t %}
 
 <section id="about">
   <div class="inner">
@@ -11,9 +12,9 @@
       </div>
       <div class="about-img">
         {% if page.media['qui-som.webp'] %}
-          {{ page.media['qui-som.webp'].html('', '', '')|raw }}
+          {{ page.media['qui-som.webp'].html('', image_alt, '')|raw }}
         {% else %}
-          <img src="{{ theme_url }}/images/qui-som.webp" alt="Top Voice">
+          <img src="{{ theme_url }}/images/qui-som.webp" alt="{{ image_alt }}">
         {% endif %}
       </div>
     </div>

@@ -7,6 +7,8 @@ SITE:
     GALLERY: "Moments"
     CONTACT: "Contacte"
     CLOSE: "Tancar menú"
+  ABOUT:
+    IMAGE_ALT: "Les cantants de Top Voice en concert, amb els braços enlaire a l'escenari"
   HERO:
     SCROLL: "Desplaça't avall"
   VIDEO:

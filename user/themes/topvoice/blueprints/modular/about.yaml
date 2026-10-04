@@ -22,6 +22,11 @@ form:
               label: Títol de secció
               placeholder: "Moltes veus, una energia"
               ordering@: header.section_tag
+            header.image_alt:
+              type: text
+              label: "Text alternatiu de la imatge"
+              help: "Descriu la foto per a qui no la pot veure (lectors de pantalla, cercadors). Si el deixes buit, s'usa un text per defecte."
+              ordering@: header.section_title
             header.media_order:
               label: "Media de la secció (logos directors, imatge grup)"
             header.directors:

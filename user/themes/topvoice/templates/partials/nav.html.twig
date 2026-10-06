@@ -1,8 +1,14 @@
 <header>
   <nav>
+    {% if page.home() %}
     <div class="nav-logo-circle" id="navLogo" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Inici">
       <img src="{{ theme_url }}/images/topvoice_marca_color.webp" height="36" width="36" alt="Top Voice">
     </div>
+    {% else %}
+    <a class="nav-logo-circle" id="navLogo" href="{{ base_url ?: '/' }}">
+      <img src="{{ theme_url }}/images/topvoice_marca_color.webp" height="36" width="36" alt="Top Voice">
+    </a>
+    {% endif %}
     <div class="nav-right">
       <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menú">
         <span></span><span></span><span></span>

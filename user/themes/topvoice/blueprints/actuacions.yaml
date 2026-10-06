@@ -1,0 +1,38 @@
+name: Actuacions
+description: Pàgina amb les actuacions passades, el filtre per format i les galeries
+extends@: default
+
+form:
+  fields:
+    tabs:
+      fields:
+        content:
+          fields:
+            header.title:
+              label: "Títol de la pàgina"
+              help: "Surt a la pestanya del navegador i als cercadors."
+            header.section_tag:
+              type: text
+              label: "Etiqueta de secció"
+              placeholder: "Actuacions"
+              ordering@: header.title
+            header.section_title:
+              type: textarea
+              rows: 2
+              label: "Títol de secció"
+              placeholder: "Els nostres concerts"
+              ordering@: header.section_tag
+            content:
+              label: "Text d'introducció"
+            header.noindex:
+              type: toggle
+              label: "Amagar dels cercadors"
+              help: "Afegeix noindex. Deixa-ho activat mentre la pàgina no estigui enllaçada."
+              highlight: 1
+              default: 0
+              options:
+                1: PLUGIN_ADMIN.YES
+                0: PLUGIN_ADMIN.NO
+              validate:
+                type: bool
+              ordering@: header.section_title

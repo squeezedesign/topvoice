@@ -19,6 +19,9 @@
   {% endif %}
   <title>{{ page_title }}</title>
   <meta name="description" content="{{ page_description }}">
+  {% if page.header.noindex %}
+  <meta name="robots" content="noindex">
+  {% endif %}
 
   <link rel="icon" type="image/png" href="{{ theme_url }}/images/favicon/favicon-96x96.png" sizes="96x96">
   <link rel="icon" type="image/svg+xml" href="{{ theme_url }}/images/favicon/favicon.svg">
@@ -33,16 +36,18 @@
   {% include 'partials/alternates.html.twig' %}
   {% include 'partials/social.html.twig' %}
 </head>
-<body>
+<body{% block body_class %}{% endblock %}>
 {% include 'partials/gtm_body.html.twig' %}
 
 <script>window.THEME_URL = '{{ base_url_simple }}/user/themes/topvoice';</script>
 
+{% block background %}
 <div id="site-bg" aria-hidden="true">
   <div class="bg-blobs"></div>
   <div class="bg-tint"></div>
   <div id="bg-leopard"></div>
 </div>
+{% endblock %}
 
 <div class="overlay" id="overlay" onclick="closeMenu()"></div>
 
@@ -53,11 +58,14 @@
 {% block content %}{% endblock %}
 </main>
 
+<script src="{{ 'js/common.js'|theme_asset }}"></script>
+{% block scripts %}
 <script src="{{ 'js/vendor/jquery-3.7.1.min.js'|theme_asset }}"></script>
 <script src="{{ 'js/vendor/slick.min.js'|theme_asset }}"></script>
 <script src="{{ 'js/vendor/gsap.min.js'|theme_asset }}"></script>
 <script src="{{ 'js/vendor/ScrollTrigger.min.js'|theme_asset }}"></script>
 <script src="{{ 'js/scripts.js'|theme_asset }}"></script>
+{% endblock %}
 
 {# The theme hardcodes its own assets, but plugin JS still arrives through Grav's
    Assets pipeline, so the 'bottom' group has to be emitted or it is dropped

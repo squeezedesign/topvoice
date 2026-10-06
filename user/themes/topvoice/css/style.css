@@ -2044,3 +2044,298 @@ footer p { margin: 0; }
     --cc-footer-border-color: rgba(255, 255, 255, 0.06);
     --cc-link-color: var(--primary);
 }
+
+/* ACTUACIONS — light page with past concerts (actuacions.html.twig).
+   Colours are set per element on purpose: redefining --dark/--text on the body
+   would also turn the off-canvas menu and the cookie banner light. */
+body.theme-light {
+    --light-bg: #ffffff;
+    --light-soft: #f5f3f7;
+    --light-line: #e6e1ea;
+    --light-text: #1a1622;
+    --light-muted: #6b6475;
+    background: var(--light-bg);
+    color: var(--light-text);
+}
+
+/* Static, barely-there leopard: the home page's tile, fixed behind the content
+   and with none of its scroll animation. The mask keeps the top quarter of the
+   screen white and fades the pattern in until it is full in the bottom fifth. */
+body.theme-light::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: url('../images/leopard-tile.svg') center / 960px repeat;
+    opacity: 0.035;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 25%, #000 80%);
+    mask-image: linear-gradient(to bottom, transparent 25%, #000 80%);
+}
+
+body.theme-light nav.scrolled {
+    background: rgba(255, 255, 255, 0.94);
+    border-bottom-color: var(--light-line);
+}
+
+body.theme-light .hamburger span { background: var(--light-text); }
+
+/* The logo is a link here; show it from the start, not only once scrolled */
+body.theme-light .nav-logo-circle {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.arch {
+    padding: 7.5rem 2.5rem 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.arch > .inner { width: 100%; flex: 1; }
+
+.arch .section-title { color: var(--light-text); }
+
+.arch-intro {
+    color: var(--light-muted);
+    max-width: 60ch;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+}
+
+.arch-intro p + p { margin-top: 1rem; }
+
+.arch-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.arch-pill {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.55rem 1.1rem;
+    border-radius: 999px;
+    border: 1px solid var(--light-line);
+    background: var(--light-bg);
+    color: var(--light-muted);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.arch-pill:hover { border-color: var(--primary); color: var(--primary); }
+
+.arch-pill[aria-pressed="true"] {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+}
+
+.arch-pill:focus-visible,
+.arch-thumb:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 2px;
+}
+
+.arch-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.arch-item {
+    display: grid;
+    grid-template-columns: 84px 1fr;
+    gap: 1.75rem;
+    padding: 2.25rem 0;
+    border-top: 1px solid var(--light-line);
+}
+
+.arch-item:last-child { border-bottom: 1px solid var(--light-line); }
+
+.arch-item[hidden] { display: none; }
+
+.arch-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.85rem 0.5rem;
+    border-radius: 14px;
+    background: var(--light-soft);
+    align-self: start;
+    line-height: 1.1;
+}
+
+.arch-day {
+    font-size: 1.9rem;
+    font-weight: 900;
+    color: var(--primary);
+}
+
+.arch-month {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--light-text);
+}
+
+.arch-year {
+    font-size: 0.72rem;
+    color: var(--light-muted);
+    margin-top: 0.2rem;
+}
+
+.arch-venue {
+    font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--light-text);
+}
+
+.arch-sub {
+    margin-top: 0.35rem;
+    color: var(--light-muted);
+    font-size: 0.9rem;
+}
+
+.arch-sub span + .arch-context::before {
+    content: '·';
+    margin: 0 0.45rem;
+}
+
+.arch-format {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #008f7e;
+    background: rgba(0, 201, 177, 0.12);
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+}
+
+.arch-summary {
+    margin-top: 1rem;
+    color: var(--light-text);
+    line-height: 1.6;
+    max-width: 65ch;
+}
+
+.arch-gallery {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.6rem;
+    margin-top: 1.4rem;
+}
+
+.arch-thumb {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 1;
+    padding: 0;
+    border: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--light-soft);
+    cursor: zoom-in;
+}
+
+.arch-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.arch-thumb:hover img { transform: scale(1.05); }
+
+.arch-thumb--video { cursor: pointer; }
+
+.arch-play {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: rgba(13, 13, 20, 0.6);
+    border: 2px solid var(--primary);
+    transition: background 0.2s;
+}
+
+.arch-play::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 54%;
+    transform: translate(-50%, -50%);
+    border-style: solid;
+    border-width: 8px 0 8px 13px;
+    border-color: transparent transparent transparent #fff;
+}
+
+.arch-thumb--video:hover .arch-play { background: var(--primary); }
+
+.arch-empty {
+    color: var(--light-muted);
+    padding: 2rem 0;
+}
+
+.arch footer {
+    margin-top: 4rem;
+    border-top-color: var(--light-line);
+    color: var(--light-muted);
+}
+
+/* Viewer: video slot next to the shared .lb-img; a darker veil on the white page */
+body.theme-light .lb-overlay { background: rgba(0, 0, 0, 0.96); }
+
+.lb-media { display: flex; justify-content: center; }
+
+.lb-video {
+    width: min(90vw, 1100px, calc(80vh * 16 / 9));
+    aspect-ratio: 16 / 9;
+}
+
+.lb-video iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: 6px;
+    display: block;
+}
+
+.lb-prev[hidden],
+.lb-next[hidden] { display: none; }
+
+@media (max-width: 767.98px) {
+    .arch { padding: 6rem 1.25rem 0; }
+    .arch-item {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    .arch-date {
+        flex-direction: row;
+        align-self: start;
+        gap: 0.4rem;
+        padding: 0.45rem 0.85rem;
+        align-items: baseline;
+    }
+    .arch-day { font-size: 1.15rem; }
+    .arch-year { margin-top: 0; }
+    .arch-gallery { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 420px) {
+    .arch-gallery { grid-template-columns: repeat(2, 1fr); }
+}

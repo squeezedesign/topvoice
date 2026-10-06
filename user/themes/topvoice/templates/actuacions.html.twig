@@ -1,0 +1,129 @@
+{# Past concerts with a format filter and a small gallery each (YouTube videos
+   first, then the page's photos). Each concert is a child page with the
+   `actuacio` template and a single .ca.md file: Spanish falls back to it, and
+   the translatable texts come in pairs (context/context_es, summary/summary_es),
+   as in the concerts Flex objects. Light page: no scroll scenes, no leopard. #}
+{% extends 'partials/base.html.twig' %}
+
+{% block body_class %} class="theme-light"{% endblock %}
+{% block background %}{% endblock %}
+
+{% block content %}
+{% set lang = grav.language.getActive() ?: 'ca' %}
+{% set today = "now"|date("Y-m-d") %}
+{% set months_ca = ['gen.','febr.','març','abr.','maig','juny','jul.','ag.','set.','oct.','nov.','des.'] %}
+{% set months_es = ['ene.','feb.','mar.','abr.','may.','jun.','jul.','ago.','sep.','oct.','nov.','dic.'] %}
+{% set month_names = lang == 'es' ? months_es : months_ca %}
+
+{# Only past concerts, newest first. Dates are normalised so the comparison
+   holds whatever format the admin saved them in. #}
+{% set concerts = [] %}
+{% for c in page.children() %}
+  {% if c.template() == 'actuacio' and c.header.date and c.header.date|date('Y-m-d') < today %}
+    {% set concerts = concerts|merge([c]) %}
+  {% endif %}
+{% endfor %}
+{% set concerts = concerts|sort((a, b) => b.header.date|date('Y-m-d') <=> a.header.date|date('Y-m-d')) %}
+
+{% set formats = [] %}
+{% for f in ['essencial', 'banda', 'cor'] %}
+  {% for c in concerts %}
+    {% if c.header.format == f and f not in formats %}
+      {% set formats = formats|merge([f]) %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+<section id="actuacions" class="arch">
+  <div class="inner">
+    <p class="section-tag">{{ page.header.section_tag ?: 'SITE.ARCHIVE.TAG'|t }}</p>
+    <h1 class="section-title">{{ (page.header.section_title ?: page.title)|nl2br }}</h1>
+    <div class="divider"></div>
+    {% if page.content|trim %}
+    <div class="arch-intro">{{ page.content|raw }}</div>
+    {% endif %}
+
+    {% if formats|length > 1 %}
+    <div class="arch-filter" role="group" aria-label="{{ 'SITE.ARCHIVE.FILTER_LABEL'|t }}">
+      <button type="button" class="arch-pill" data-filter="" aria-pressed="true">{{ 'SITE.ARCHIVE.FILTER_ALL'|t }}</button>
+      {% for f in formats %}
+      <button type="button" class="arch-pill" data-filter="{{ f }}" aria-pressed="false">{{ ('SITE.CONCERTS.FORMAT.' ~ f|upper)|t }}</button>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if concerts|length == 0 %}
+    <p class="arch-empty">{{ 'SITE.ARCHIVE.NONE'|t }}</p>
+    {% else %}
+    <div class="arch-list">
+      {% for c in concerts %}
+      {% set h = c.header %}
+      {% set d = h.date|date('Y-m-d') %}
+      {% set ctx = (lang == 'es' and h.context_es) ? h.context_es : h.context %}
+      {% set summary = (lang == 'es' and h.summary_es) ? h.summary_es : h.summary %}
+      {% set label = h.venue ~ ' · ' ~ d|date('d/m/Y') %}
+      <article class="arch-item" data-format="{{ h.format }}">
+        <div class="arch-date">
+          <span class="arch-day">{{ d|date('j') }}</span>
+          <span class="arch-month">{{ month_names[d|date('n') - 1] }}</span>
+          <span class="arch-year">{{ d|date('Y') }}</span>
+        </div>
+        <div class="arch-body">
+          <h2 class="arch-venue">{{ h.venue }}</h2>
+          {% if h.place or ctx %}
+          <p class="arch-sub">
+            {%- if h.place %}<span>{{ h.place }}</span>{% endif -%}
+            {%- if ctx %}<span class="arch-context">{{ ctx }}</span>{% endif -%}
+          </p>
+          {% endif %}
+          {% if h.format %}
+          <span class="arch-format">{{ ('SITE.CONCERTS.FORMAT.' ~ h.format|upper)|t }}</span>
+          {% endif %}
+          {% if summary %}
+          <p class="arch-summary">{{ summary|nl2br }}</p>
+          {% endif %}
+
+          {% set photos = c.media.images %}
+          {% if h.videos or photos %}
+          <ul class="arch-gallery">
+            {% for v in h.videos %}
+            {% if v.id %}
+            <li>
+              <button type="button" class="arch-thumb arch-thumb--video" data-type="video" data-id="{{ v.id }}" data-caption="{{ label }}" aria-label="{{ 'SITE.ARCHIVE.PLAY_VIDEO'|t }}: {{ h.venue }}">
+                <img src="https://i.ytimg.com/vi/{{ v.id|url_encode }}/hqdefault.jpg" alt="" loading="lazy" width="480" height="360">
+                <span class="arch-play" aria-hidden="true"></span>
+              </button>
+            </li>
+            {% endif %}
+            {% endfor %}
+            {% for name, photo in photos %}
+            <li>
+              <button type="button" class="arch-thumb" data-type="photo" data-full="{{ photo.cropResize(1600, 1600).url }}" data-caption="{{ label }}" aria-label="{{ 'SITE.ARCHIVE.OPEN_PHOTO'|t }}: {{ h.venue }}">
+                <img src="{{ photo.cropZoom(480, 480).url }}" alt="{{ label }}" loading="lazy" width="480" height="480">
+              </button>
+            </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    <p class="arch-empty" hidden>{{ 'SITE.ARCHIVE.EMPTY'|t }}</p>
+    {% endif %}
+  </div>
+
+  {% include 'partials/footer.html.twig' %}
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  window.ARCH_I18N = {
+    prev: {{ 'SITE.ARCHIVE.PREV'|t|json_encode|raw }},
+    next: {{ 'SITE.ARCHIVE.NEXT'|t|json_encode|raw }},
+    close: {{ 'SITE.ARCHIVE.CLOSE'|t|json_encode|raw }}
+  };
+</script>
+<script src="{{ 'js/actuacions.js'|theme_asset }}"></script>
+{% endblock %}

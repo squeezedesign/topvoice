@@ -11,12 +11,15 @@
                    {{ theme_url }}/images/topvoice_logo_txt@2x.webp 2x"
            alt="Top Voice">
     </div>
+    {# On the home page the links scroll in place; elsewhere they lead to the home
+       page's section (scripts.js scrolls there on arrival). #}
+    {% set section_base = page.home() ? '' : (base_url ?: '/') %}
     <div class="offcanvas-links">
-      <a href="#about" onclick="goTo('about'); return false;">{{ 'SITE.NAV.ABOUT'|t }}<span class="arrow">→</span></a>
-      <a href="#video" onclick="goTo('video'); return false;">{{ 'SITE.NAV.VIDEO'|t }}<span class="arrow">→</span></a>
-      <a href="#oferim" onclick="goTo('oferim'); return false;">{{ 'SITE.NAV.OFERIM'|t }}<span class="arrow">→</span></a>
-      <a href="#gallery" onclick="goTo('gallery'); return false;">{{ 'SITE.NAV.GALLERY'|t }}<span class="arrow">→</span></a>
-      <a href="#contact" onclick="goTo('contact'); return false;">{{ 'SITE.NAV.CONTACT'|t }}<span class="arrow">→</span></a>
+      <a href="{{ section_base }}#about" onclick="return goTo('about')">{{ 'SITE.NAV.ABOUT'|t }}<span class="arrow">→</span></a>
+      <a href="{{ section_base }}#video" onclick="return goTo('video')">{{ 'SITE.NAV.VIDEO'|t }}<span class="arrow">→</span></a>
+      <a href="{{ section_base }}#oferim" onclick="return goTo('oferim')">{{ 'SITE.NAV.OFERIM'|t }}<span class="arrow">→</span></a>
+      <a href="{{ section_base }}#gallery" onclick="return goTo('gallery')">{{ 'SITE.NAV.GALLERY'|t }}<span class="arrow">→</span></a>
+      <a href="{{ section_base }}#contact" onclick="return goTo('contact')">{{ 'SITE.NAV.CONTACT'|t }}<span class="arrow">→</span></a>
     </div>
     <div class="offcanvas-footer">
       {% set raw_route = page.rawRoute() == '/home' ? '/' : page.rawRoute() %}

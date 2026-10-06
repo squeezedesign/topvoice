@@ -1,0 +1,18 @@
+{# One past concert. These pages are not routable: they only feed the list in
+   actuacions.html.twig. The template exists so the admin offers the type and
+   loads blueprints/actuacio.yaml; if a page is ever made routable by mistake,
+   it just points back to the list. #}
+{% extends 'partials/base.html.twig' %}
+
+{% block body_class %} class="theme-light"{% endblock %}
+{% block background %}{% endblock %}
+
+{% block content %}
+<section class="arch">
+  <div class="inner">
+    <p><a href="{{ page.parent().url }}">← {{ page.parent().title }}</a></p>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}{% endblock %}

@@ -1,0 +1,81 @@
+name: Actuació
+description: Una actuació passada (filla de la pàgina Actuacions) amb la seva galeria
+extends@: default
+
+form:
+  fields:
+    tabs:
+      fields:
+        content:
+          fields:
+            content:
+              unset@: true
+            header.title:
+              label: "Nom (ús intern)"
+              help: "Identificador intern de la pàgina, no es mostra al web."
+            header.date:
+              type: date
+              label: "Data"
+              validate:
+                required: true
+              ordering@: header.title
+            header.venue:
+              type: text
+              label: "Títol (esdeveniment, lloc o sala)"
+              placeholder: "Tarragona, Reus..."
+              validate:
+                required: true
+              ordering@: header.date
+            header.place:
+              type: text
+              label: "Espai concret"
+              placeholder: "Plaça Major, Auditori..."
+              ordering@: header.venue
+            header.context:
+              type: text
+              label: "Marc / context en CA"
+              placeholder: "Setmana Cultural, Festa Major..."
+              ordering@: header.place
+            header.context_es:
+              type: text
+              label: "Marc / context en ES"
+              placeholder: "Semana Cultural, Fiesta Mayor..."
+              ordering@: header.context
+            header.format:
+              type: select
+              label: "Format"
+              default: banda
+              options:
+                essencial: SITE.CONCERTS.FORMAT.ESSENCIAL
+                banda: SITE.CONCERTS.FORMAT.BANDA
+                cor: SITE.CONCERTS.FORMAT.COR
+              ordering@: header.context_es
+            header.summary:
+              type: textarea
+              rows: 3
+              label: "Descripció breu en CA"
+              ordering@: header.format
+            header.summary_es:
+              type: textarea
+              rows: 3
+              label: "Descripció breu en ES"
+              ordering@: header.summary
+            header.videos:
+              type: list
+              label: "Vídeos de YouTube"
+              help: "Surten primer a la galeria, abans de les fotos."
+              style: vertical
+              btnLabel: "Afegir vídeo"
+              ordering@: header.summary_es
+              fields:
+                .id:
+                  type: text
+                  label: "ID del vídeo"
+                  placeholder: "ysRsQjko-bg"
+                  help: "La part després de «v=» a l'URL de YouTube (11 caràcters)."
+                  validate:
+                    required: true
+                    pattern: '^[A-Za-z0-9_-]{11}$'
+                    message: "Ha de ser l'ID d'11 caràcters, no l'URL sencera."
+            header.media_order:
+              label: "Fotos de la galeria (es mostren després dels vídeos)"

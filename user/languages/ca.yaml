@@ -56,6 +56,17 @@ SITE:
       ESSENCIAL: "Format Essencial"
       BANDA: "Format Banda"
       COR: "Format Coristes"
+  ARCHIVE:
+    TAG: "Actuacions"
+    FILTER_LABEL: "Filtra per format"
+    FILTER_ALL: "Totes"
+    EMPTY: "No hi ha actuacions d'aquest format."
+    NONE: "Encara no hi ha actuacions."
+    PLAY_VIDEO: "Reprodueix el vídeo"
+    OPEN_PHOTO: "Obre la foto"
+    PREV: "Anterior"
+    NEXT: "Següent"
+    CLOSE: "Tanca"
   CONTACT:
     HIRE_TITLE: "Ens contractes?"
     HIRE_SUB: "Si vols formar part de Top Voice, també ens pots escriure ;)"

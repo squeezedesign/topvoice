@@ -1,28 +1,5 @@
-function toggleMenu() {
-    const open = document.getElementById('offcanvas').classList.toggle('open');
-    document.getElementById('overlay').classList.toggle('open', open);
-    document.getElementById('hamburger').classList.toggle('open', open);
-    document.getElementById('offcanvas').setAttribute('aria-hidden', !open);
-}
-function closeMenu() {
-    document.getElementById('offcanvas').classList.remove('open');
-    document.getElementById('overlay').classList.remove('open');
-    document.getElementById('hamburger').classList.remove('open');
-    document.getElementById('offcanvas').setAttribute('aria-hidden', 'true');
-}
-function goTo(id) {
-    closeMenu();
-    setTimeout(() => {
-        const el  = document.getElementById(id);
-        const top = el.getBoundingClientRect().top + window.scrollY - document.querySelector('nav').offsetHeight;
-        window.scrollTo({ top, behavior: 'smooth' });
-    }, 280);
-}
-
-// Nav scroll
-window.addEventListener('scroll', () => {
-    document.querySelector('header nav').classList.toggle('scrolled', window.scrollY > 80);
-}, { passive: true });
+// Home page scenes. Menu, goTo() and the nav scroll state live in common.js,
+// which base.html.twig loads before this file.
 
 // Hero scroll indicator: the loop runs on its own; just fade it out on scroll
 const heroScroll = document.querySelector('.hero-scroll');
@@ -573,3 +550,13 @@ $(function () {
         feedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 })();
+
+// Arriving from another page's menu (e.g. /#oferim): the page was forced to the
+// top above so the scroll scenes start at 0; once everything has laid out, go
+// to the requested section and drop the hash so a reload starts at the top.
+window.addEventListener('load', () => {
+    const id = decodeURIComponent(location.hash.slice(1));
+    if (!id || !document.getElementById(id)) return;
+    history.replaceState(null, '', location.pathname + location.search);
+    goTo(id);
+});

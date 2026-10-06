@@ -57,6 +57,17 @@ SITE:
       ESSENCIAL: "Formato Esencial"
       BANDA: "Formato Banda"
       COR: "Formato Coristas"
+  ARCHIVE:
+    TAG: "Actuaciones"
+    FILTER_LABEL: "Filtra por formato"
+    FILTER_ALL: "Todas"
+    EMPTY: "No hay actuaciones de este formato."
+    NONE: "Todavía no hay actuaciones."
+    PLAY_VIDEO: "Reproducir el vídeo"
+    OPEN_PHOTO: "Abrir la foto"
+    PREV: "Anterior"
+    NEXT: "Siguiente"
+    CLOSE: "Cerrar"
   CONTACT:
     HIRE_TITLE: "¿Nos contratas?"
     HIRE_SUB: "Si quieres formar parte de Top Voice, también puedes escribirnos ;)"

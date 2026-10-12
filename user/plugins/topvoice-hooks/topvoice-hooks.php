@@ -2,6 +2,7 @@
 namespace Grav\Plugin;
 
 use Grav\Common\Plugin;
+use Grav\Common\Utils;
 use Grav\Events\PermissionsRegisterEvent;
 use Grav\Framework\Acl\PermissionsReader;
 
@@ -87,8 +88,10 @@ JS;
         return [
             'onPluginsInitialized'           => ['onPluginsInitialized', 0],
             PermissionsRegisterEvent::class => ['onRegisterPermissions', 0],
-            'onFlexObjectAfterSave'          => ['clearCache', 0],
+            'onFlexObjectBeforeSave'         => ['onFlexObjectBeforeSave', 0],
+            'onFlexObjectAfterSave'          => ['onFlexObjectAfterSave', 0],
             'onFlexObjectAfterDelete'        => ['clearCache', 0],
+            'onApiBeforeMediaUpload'         => ['onApiBeforeMediaUpload', 0],
         ];
     }
 
@@ -123,8 +126,118 @@ JS;
         });
     }
 
+    /**
+     * Admin Next titles a folded list row with its first non-empty text value,
+     * and a photo is not text, so every "Fotos" row would read "Item". Copy
+     * the file name into the row's `name`, first, so folded rows say which
+     * photo they hold.
+     */
+    public function onFlexObjectBeforeSave($event): void
+    {
+        $object = $event['object'] ?? null;
+        if (!$object || !method_exists($object, 'getFlexType') || $object->getFlexType() !== 'actuacions') {
+            return;
+        }
+
+        $gallery = $object->getProperty('gallery');
+        if (!is_array($gallery)) {
+            return;
+        }
+
+        foreach ($gallery as $i => $row) {
+            $row = (array) $row;
+            $file = array_key_first((array) ($row['image'] ?? []));
+            unset($row['name']);
+            $gallery[$i] = ($file !== null ? ['name' => Utils::basename((string) $file)] : []) + $row;
+        }
+        $object->setProperty('gallery', array_values($gallery));
+    }
+
+    public function onFlexObjectAfterSave($event): void
+    {
+        $this->pruneActuacioPhotos($event['object'] ?? null);
+        $this->clearCache();
+    }
+
     public function clearCache(): void
     {
         \Grav\Common\Cache::clearCache();
+    }
+
+    /**
+     * Admin Next does not pass the field's avoid_overwriting to uploads made
+     * from a list row, so a photo named like an existing one (IMG_0001.jpg
+     * from two phones) would silently replace it. Refuse the upload instead.
+     */
+    public function onApiBeforeMediaUpload($event): void
+    {
+        $path = $this->actuacioFolder($event['object'] ?? null);
+        $name = Utils::basename((string) ($event['filename'] ?? ''));
+        if ($path !== null && $name !== '' && is_file($path . '/' . $name)) {
+            throw new \Grav\Plugin\Api\Exceptions\ConflictException(
+                "Aquesta actuació ja té una foto que es diu «{$name}». Canvia-li el nom al fitxer i torna-la a pujar."
+            );
+        }
+    }
+
+    /**
+     * Absolute path of an actuació's own folder (its item.json and photos), or
+     * null for any other object. getMediaFolder() returns a stream
+     * (user-data://...) or a path relative to the Grav root, as
+     * FlexApiController::resolveMediaFolder() handles it.
+     */
+    private function actuacioFolder($object): ?string
+    {
+        if (!$object || !method_exists($object, 'getFlexType') || $object->getFlexType() !== 'actuacions') {
+            return null;
+        }
+
+        $folder = (string) $object->getMediaFolder();
+        if ($folder === '') {
+            return null;
+        }
+        $locator = $this->grav['locator'];
+        $path = $locator->isStream($folder)
+            ? $locator->findResource($folder, true)
+            : (str_starts_with($folder, '/') ? $folder : GRAV_ROOT . '/' . $folder);
+
+        return $path && is_dir($path) ? $path : null;
+    }
+
+    /**
+     * Admin Next uploads each "Fotos" row of an actuació into the object's own
+     * folder the moment it is picked, but removing the row (or its image) only
+     * drops the reference: the file stays on disk. On save, every row still in
+     * the list is referenced, so delete the images in that folder that no row
+     * points to, with their .meta.yaml sidecars. Photos cannot be shared
+     * between actuacions or picked from elsewhere, so nothing else uses them.
+     */
+    private function pruneActuacioPhotos($object): void
+    {
+        $path = $this->actuacioFolder($object);
+        if ($path === null) {
+            return;
+        }
+
+        $keep = [];
+        foreach ((array) ($object->getProperty('gallery') ?? []) as $row) {
+            foreach (array_keys((array) ($row['image'] ?? [])) as $name) {
+                $keep[Utils::basename((string) $name)] = true;
+            }
+        }
+
+        // scandir, not glob(GLOB_BRACE): musl (Alpine) builds lack GLOB_BRACE.
+        $images = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'avif'];
+        foreach (scandir($path) ?: [] as $name) {
+            $file = $path . '/' . $name;
+            if (isset($keep[$name]) || !is_file($file)
+                || !in_array(strtolower(pathinfo($name, PATHINFO_EXTENSION)), $images, true)) {
+                continue;
+            }
+            @unlink($file);
+            if (is_file($file . '.meta.yaml')) {
+                @unlink($file . '.meta.yaml');
+            }
+        }
     }
 }

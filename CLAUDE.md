@@ -109,6 +109,9 @@ páginas, configuración y cuentas, y desde una no se ve la otra.
   `docker compose exec -u www-data php php bin/grav clearcache`
   `docker/nginx.conf` se monta como fichero suelto: tras editarlo, haz
   `docker compose restart nginx` (un `reload` lee la copia vieja, cortada).
+  Las subidas del admin admiten 64 MB (`client_max_body_size` en
+  `docker/nginx.conf` y `docker/php-uploads.ini`, montado en el contenedor
+  PHP); los valores por defecto (1 MB y 2 MB) cortaban las fotos.
 - **MAMP PRO** (`/Volumes/X10Pro/Sites/topvoice-grav`, disco conectado a otra
   máquina): Apache, PHP 8.3, vhost
   `topvoicetgn-grav.test`, que no está en `/etc/hosts`:
@@ -154,6 +157,12 @@ páginas, configuración y cuentas, y desde una no se ve la otra.
   lista las dos portadas, porque las páginas legales son `noindex`: si se crea
   una página pública nueva, añádela ahí.
 - La página de error usa `http_response_code: 404` en su cabecera (no `code`).
+- Páginas internas con cabecera y menú: `partials/base.html.twig` tiene los
+  bloques `body_class`, `background` y `scripts`. `scripts.js` es solo de la
+  home (escenas de scroll con GSAP y Slick); el menú, `goTo()` y la barra al
+  hacer scroll están en `js/common.js`, que cargan todas. Fuera de la home, los
+  enlaces del menú llevan a `/#seccion` y `scripts.js` baja hasta ella al
+  cargar. El pie está en `partials/footer.html.twig`.
 - Cookies: vanilla-cookieconsent 3 con Google Consent Mode v2 y GTM
   `GTM-5D6CW423` (`partials/gtm_head`, `partials/gtm_body` y
   `partials/cookieconsent`). El `<noscript>` de `gtm_body` va justo después de
@@ -162,6 +171,54 @@ páginas, configuración y cuentas, y desde una no se ve la otra.
   en producción se guarda en `user/env/<host>/config/themes/`, ignorado en
   git). Por defecto está vacío: sin ID no se cargan GTM ni el banner, y así
   debe quedar en local. El vídeo usa youtube-nocookie.
+
+## Actuacions (`/actuacions`)
+
+Página de conciertos pasados: filtro por formato y, por actuación, fecha,
+lugar, marco, descripción y galería (vídeos de YouTube primero, después
+fotos, en el visor de la home; en móvil la galería es un slider). Aún sin
+enlazar: la página lleva `visible: false` y `noindex: true` y no está en
+`sitemap.xml`. Al publicarla, quita el `noindex` y añádela al sitemap.
+
+- **Datos:** directorio Flex propio `actuacions`
+  (`user/blueprints/flex-objects/actuacions.yaml`), con su entrada en el menú
+  del admin, aparte de los conciertos futuros (`concerts`) y del árbol de
+  páginas. Usa `FolderStorage`: cada actuación es una carpeta
+  `user/data/flex-objects/actuacions/<id>/` con `item.json` y sus fotos (no
+  van en git). Es lo que permite subir fotos a un objeto Flex; `concerts` es un
+  único JSON y no puede.
+- **Página:** `user/pages/05.actuacions/actuacions.{ca,es}.md` (plantilla
+  `actuacions`, blueprint del tema `blueprints/actuacions.yaml`): título,
+  etiqueta, título de sección e introducción, por idioma. Va por SFTP.
+- **Plantilla y estilos:** `templates/actuacions.html.twig`,
+  `js/actuacions.js` y la sección `ACTUACIONS` de `css/style.css`. Fondo de las
+  páginas legales (`#site-bg`, sin leopardo); colores en las variables
+  `--arch-*` de `body.page-actuacions`. Solo salen las activas con fecha
+  anterior a hoy, de la más nueva a la más antigua. Textos traducibles en
+  pares `campo`/`campo_es`, como en `concerts`.
+- **Fotos:** el campo `gallery` es una lista de filas (`.name`, `.image`,
+  `.caption`) y no un `file` múltiple, porque Admin Next solo deja arrastrar
+  filas de una lista. Las filas salen plegadas (`collapsed: true`): al
+  arrastrar, el panel no se desplaza, así que todas tienen que caber en
+  pantalla. Una fila plegada se titula con su primer texto, por eso
+  `.name` va primero.
+- **`topvoice-hooks`** hace tres cosas con las actuaciones:
+  - Antes de guardar, rellena `.name` de cada fila con el nombre del fichero.
+  - Al guardar, borra de la carpeta las imágenes que ya no están en ninguna
+    fila: Admin Next solo quita la referencia. No hay papelera; las fotos no
+    se comparten entre actuaciones.
+  - Rechaza (409) una subida cuyo nombre ya existe en esa carpeta: desde una
+    fila de lista Admin Next no pasa `avoid_overwriting` y sobrescribiría.
+- **Limitación de Admin Next:** en una actuación nueva hay que guardar antes
+  de subir fotos (la carpeta aún no existe y la subida da 422).
+- **En cada servidor** (no va en git), a mano:
+  - Registrar el directorio en la configuración del plugin Flex Objects
+    (`blueprints://flex-objects/actuacions.yaml`).
+  - Dar al grupo `autor` `admin.actuacions` (crear, leer, editar, borrar,
+    listar), igual que `admin.concerts`.
+  - Subir la página por SFTP.
+  - En producción, revisar `client_max_body_size` de nginx y
+    `upload_max_filesize`/`post_max_size` de PHP antes de subir fotos.
 
 ## Admin Next (Grav 2)
 

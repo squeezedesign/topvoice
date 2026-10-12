@@ -22,6 +22,37 @@
         });
     });
 
+    // Mobile slider dots. The CSS turns each gallery into a scroll-snapping
+    // row below 768px and only shows the dots there; they mark the slide in
+    // view and jump to a slide when tapped.
+    document.querySelectorAll('.arch-gallery').forEach(gallery => {
+        const slides = Array.from(gallery.children);
+        if (slides.length < 2) return;
+
+        const dots = document.createElement('div');
+        dots.className = 'arch-dots';
+        const buttons = slides.map((slide, i) => {
+            const b = document.createElement('button');
+            b.type = 'button';
+            b.setAttribute('aria-label', `${i + 1} / ${slides.length}`);
+            b.addEventListener('click', () => {
+                gallery.scrollTo({ left: slide.offsetLeft - slides[0].offsetLeft, behavior: 'smooth' });
+            });
+            dots.appendChild(b);
+            return b;
+        });
+        gallery.after(dots);
+
+        function update() {
+            const step = slides.length > 1 ? slides[1].offsetLeft - slides[0].offsetLeft : 1;
+            const atEnd = gallery.scrollLeft >= gallery.scrollWidth - gallery.clientWidth - 2;
+            const idx = atEnd ? slides.length - 1 : Math.round(gallery.scrollLeft / step);
+            buttons.forEach((b, i) => b.setAttribute('aria-current', String(i === idx)));
+        }
+        gallery.addEventListener('scroll', update, { passive: true });
+        update();
+    });
+
     // Viewer: same markup and .lb-* styles as the home page gallery
     const t = window.ARCH_I18N || {};
     const lb = document.createElement('div');

@@ -1,12 +1,19 @@
 {# Past concerts with a format filter and a small gallery each (YouTube videos
-   first, then the page's photos). Each concert is a child page with the
-   `actuacio` template and a single .ca.md file: Spanish falls back to it, and
-   the translatable texts come in pairs (context/context_es, summary/summary_es),
-   as in the concerts Flex objects. Light page: no scroll scenes, no leopard. #}
+   first, then the photos). The data comes from the `actuacions` Flex directory
+   (user/blueprints/flex-objects/actuacions.yaml), managed from its own admin
+   section, apart from the upcoming concerts and from the page tree. Texts come
+   in CA/ES pairs (context/context_es, summary/summary_es), as in concerts.
+   No scroll scenes; the legal pages' dark background. #}
 {% extends 'partials/base.html.twig' %}
 
-{% block body_class %} class="theme-light"{% endblock %}
-{% block background %}{% endblock %}
+{% block body_class %} class="page-actuacions"{% endblock %}
+{# Same background as the legal pages: the glows, without the leopard #}
+{% block background %}
+<div id="site-bg" aria-hidden="true">
+  <div class="bg-blobs"></div>
+  <div class="bg-tint"></div>
+</div>
+{% endblock %}
 
 {% block content %}
 {% set lang = grav.language.getActive() ?: 'ca' %}
@@ -15,20 +22,24 @@
 {% set months_es = ['ene.','feb.','mar.','abr.','may.','jun.','jul.','ago.','sep.','oct.','nov.','dic.'] %}
 {% set month_names = lang == 'es' ? months_es : months_ca %}
 
-{# Only past concerts, newest first. Dates are normalised so the comparison
-   holds whatever format the admin saved them in. #}
+{# Only active, past concerts, newest first. Dates are normalised so the
+   comparison holds whatever format the admin saved them in. #}
+{% set flex = grav['flex_objects'] %}
+{% set dir = flex ? flex.getDirectory('actuacions') : null %}
 {% set concerts = [] %}
-{% for c in page.children() %}
-  {% if c.template() == 'actuacio' and c.header.date and c.header.date|date('Y-m-d') < today %}
-    {% set concerts = concerts|merge([c]) %}
-  {% endif %}
-{% endfor %}
-{% set concerts = concerts|sort((a, b) => b.header.date|date('Y-m-d') <=> a.header.date|date('Y-m-d')) %}
+{% if dir %}
+  {% for c in dir.getCollection() %}
+    {% if (c.active is null or c.active) and c.date and c.date|date('Y-m-d') < today %}
+      {% set concerts = concerts|merge([c]) %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+{% set concerts = concerts|sort((a, b) => b.date|date('Y-m-d') <=> a.date|date('Y-m-d')) %}
 
 {% set formats = [] %}
 {% for f in ['essencial', 'banda', 'cor'] %}
   {% for c in concerts %}
-    {% if c.header.format == f and f not in formats %}
+    {% if c.format == f and f not in formats %}
       {% set formats = formats|merge([f]) %}
     {% endif %}
   {% endfor %}
@@ -57,7 +68,7 @@
     {% else %}
     <div class="arch-list">
       {% for c in concerts %}
-      {% set h = c.header %}
+      {% set h = c %}
       {% set d = h.date|date('Y-m-d') %}
       {% set ctx = (lang == 'es' and h.context_es) ? h.context_es : h.context %}
       {% set summary = (lang == 'es' and h.summary_es) ? h.summary_es : h.summary %}
@@ -68,7 +79,7 @@
           <span class="arch-month">{{ month_names[d|date('n') - 1] }}</span>
           <span class="arch-year">{{ d|date('Y') }}</span>
         </div>
-        <div class="arch-body">
+        <div class="arch-head">
           <h2 class="arch-venue">{{ h.venue }}</h2>
           {% if h.place or ctx %}
           <p class="arch-sub">
@@ -79,11 +90,23 @@
           {% if h.format %}
           <span class="arch-format">{{ ('SITE.CONCERTS.FORMAT.' ~ h.format|upper)|t }}</span>
           {% endif %}
+        </div>
+        {# Beside the date on desktop; full width under it on mobile #}
+        <div class="arch-more">
           {% if summary %}
           <p class="arch-summary">{{ summary|nl2br }}</p>
           {% endif %}
 
-          {% set photos = c.media.images %}
+          {# Photos in the order of the gallery rows (draggable in the admin), each
+             row holding one file from the object's folder and an optional caption #}
+          {% set media = c.getMedia() %}
+          {% set photos = [] %}
+          {% for row in h.gallery ?: [] %}
+            {% set name = (row.image ?: {})|keys|first %}
+            {% if name and media[name] %}
+              {% set photos = photos|merge([{ medium: media[name], caption: row.caption }]) %}
+            {% endif %}
+          {% endfor %}
           {% if h.videos or photos %}
           <ul class="arch-gallery">
             {% for v in h.videos %}
@@ -96,10 +119,15 @@
             </li>
             {% endif %}
             {% endfor %}
-            {% for name, photo in photos %}
+            {% for photo in photos %}
+            {% set caption = photo.caption ? label ~ ' — ' ~ photo.caption : label %}
             <li>
-              <button type="button" class="arch-thumb" data-type="photo" data-full="{{ photo.cropResize(1600, 1600).url }}" data-caption="{{ label }}" aria-label="{{ 'SITE.ARCHIVE.OPEN_PHOTO'|t }}: {{ h.venue }}">
-                <img src="{{ photo.cropZoom(480, 480).url }}" alt="{{ label }}" loading="lazy" width="480" height="480">
+              <button type="button" class="arch-thumb" data-type="photo" data-full="{{ photo.medium.cropResize(1600, 1600).url }}" data-caption="{{ caption }}" aria-label="{{ 'SITE.ARCHIVE.OPEN_PHOTO'|t }}: {{ h.venue }}">
+                {# Square in the desktop grid; a larger 5:3 crop for the mobile slider #}
+                <picture>
+                  <source media="(max-width: 767.98px)" srcset="{{ photo.medium.cropZoom(900, 540).url }}" width="900" height="540">
+                  <img src="{{ photo.medium.cropZoom(480, 480).url }}" alt="{{ caption }}" loading="lazy" width="480" height="480">
+                </picture>
               </button>
             </li>
             {% endfor %}

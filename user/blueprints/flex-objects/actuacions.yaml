@@ -1,0 +1,190 @@
+title: Actuacions
+description: Actuacions passades de Top Voice amb la seva galeria de vídeos i fotos (pàgina /actuacions)
+type: flex-objects
+
+# Kept apart from the upcoming concerts on purpose: these are edited after the
+# event, with a description and a gallery. Folder storage (one folder per
+# actuació) is what lets Admin Next upload photos into each object; the
+# concerts directory uses a single JSON file and cannot hold media.
+config:
+  admin:
+    router:
+      path: '/actuacions'
+    menu:
+      list:
+        route: '/actuacions'
+        title: Actuacions
+        icon: fa-images
+        authorize: ['admin.super', 'admin.login']
+        priority: 5
+    template: default
+    permissions:
+      admin.actuacions:
+        type: crudpl
+        label: Actuacions
+    list:
+      title: venue
+      fields:
+        # The list header reads field.label, so it is set per column
+        active:
+          title: Activa
+          field:
+            label: Activa
+        date:
+          link: edit
+          title: Data
+          field:
+            label: Data
+        venue:
+          title: Títol
+          field:
+            label: Títol
+        place:
+          title: Espai
+          field:
+            label: Espai
+        format:
+          title: Format
+      options:
+        per_page: 20
+        order:
+          by: date
+          dir: desc
+    edit:
+      title:
+        # Admin Next only fills {{ object.x }} and {{ object.x ?? 'y' }}, no Twig tags
+        template: "{{ object.date ?? 'Nova' }} — {{ object.venue }}"
+    preview:
+      enabled: false
+    export:
+      enabled: false
+
+  site:
+    templates:
+      collection:
+        paths:
+          - 'flex/{TYPE}/collection/{LAYOUT}{EXT}'
+      object:
+        paths:
+          - 'flex/{TYPE}/object/{LAYOUT}{EXT}'
+      defaults:
+        type: actuacions
+        layout: default
+
+  data:
+    object: 'Grav\Common\Flex\Types\Generic\GenericObject'
+    collection: 'Grav\Common\Flex\Types\Generic\GenericCollection'
+    index: 'Grav\Common\Flex\Types\Generic\GenericIndex'
+    storage:
+      class: 'Grav\Framework\Flex\Storage\FolderStorage'
+      options:
+        formatter:
+          class: 'Grav\Framework\File\Formatter\JsonFormatter'
+        folder: user-data://flex-objects/actuacions
+
+form:
+  validation: loose
+
+  fields:
+    active:
+      type: toggle
+      label: Activa
+      help: "Si està desactivada, l'actuació no surt al web (útil mentre la prepares)."
+      highlight: 1
+      default: 1
+      options:
+        1: PLUGIN_ADMIN.YES
+        0: PLUGIN_ADMIN.NO
+      validate:
+        type: bool
+    date:
+      type: date
+      label: Data
+      help: "Només surten les actuacions amb data anterior a avui, de la més nova a la més antiga."
+      validate:
+        required: true
+    venue:
+      type: text
+      label: "Títol (esdeveniment, lloc o sala)"
+      placeholder: 'Tarragona, Reus...'
+      validate:
+        required: true
+    place:
+      type: text
+      label: Espai concret
+      placeholder: 'Plaça Major, Auditori...'
+    context:
+      type: text
+      label: Marc / context en CA
+      placeholder: 'Setmana Cultural, Festa Major...'
+    context_es:
+      type: text
+      label: Marc / context en ES
+      placeholder: 'Semana Cultural, Fiesta Mayor...'
+    format:
+      type: select
+      label: Format
+      default: banda
+      options:
+        essencial: SITE.CONCERTS.FORMAT.ESSENCIAL
+        banda: SITE.CONCERTS.FORMAT.BANDA
+        cor: SITE.CONCERTS.FORMAT.COR
+    summary:
+      type: textarea
+      rows: 3
+      label: Descripció breu en CA
+    summary_es:
+      type: textarea
+      rows: 3
+      label: Descripció breu en ES
+    videos:
+      type: list
+      label: Vídeos de YouTube
+      help: "Surten primer a la galeria, abans de les fotos."
+      style: vertical
+      btnLabel: Afegir vídeo
+      fields:
+        .id:
+          type: text
+          label: ID del vídeo
+          placeholder: ysRsQjko-bg
+          help: "La part després de «v=» a l'URL de YouTube (11 caràcters)."
+          validate:
+            required: true
+            pattern: '^[A-Za-z0-9_-]{11}$'
+            message: "Ha de ser l'ID d'11 caràcters, no l'URL sencera."
+    # A list of single-file rows rather than one multi-file field: Admin Next
+    # only lets list rows be dragged, and the photo order matters. Removing a
+    # row only drops the reference; topvoice-hooks deletes the unreferenced
+    # files from the folder when the actuació is saved, and refuses an upload
+    # whose name is already in the folder (Admin Next would overwrite it).
+    gallery:
+      type: list
+      label: Fotos
+      help: "Una fila per foto; surten després dels vídeos. Arrossega les files per canviar l'ordre (plegades caben totes a la pantalla). En una actuació nova, desa-la abans de pujar fotos."
+      style: vertical
+      btnLabel: Afegir foto
+      # Folded rows are short enough for the whole list to fit on screen:
+      # dragging does not scroll the panel, so a row can only be dropped on
+      # another one that is visible.
+      collapsed: true
+      fields:
+        # A folded row is titled with its first non-empty text value. The
+        # photo is not text, so topvoice-hooks copies its file name here on
+        # save; keep this field first.
+        .name:
+          type: text
+          label: Fitxer
+          readonly: true
+          help: "S'omple sol en desar."
+        .image:
+          type: file
+          label: Foto
+          multiple: false
+          destination: 'self@'
+          accept:
+            - image/*
+        .caption:
+          type: text
+          label: Peu de foto (opcional)
+          placeholder: 'Foto: Nom Cognom'

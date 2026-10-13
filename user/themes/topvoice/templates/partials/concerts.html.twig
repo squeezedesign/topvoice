@@ -8,17 +8,24 @@
 {% if dir %}
   {% set today = "now"|date("Y-m-d") %}
   {% for c in dir.getCollection() %}
-    {# active is null on legacy records saved before the toggle existed → keep them visible #}
-    {% if c.date >= today and (c.active is null or c.active) %}
-      {% set all = all|merge([c]) %}
+    {# active is null on legacy records saved before the toggle existed → keep them visible.
+       "Data per determinar" is always upcoming; a month-only date stays until
+       that month is over; a full date until its day has passed. #}
+    {% if c.active is null or c.active %}
+      {% if c.date_tbd %}
+        {% set all = all|merge([c]) %}
+      {% elseif c.date and (c.month_only ? c.date|slice(0, 7) >= today|slice(0, 7) : c.date >= today) %}
+        {% set all = all|merge([c]) %}
+      {% endif %}
     {% endif %}
   {% endfor %}
 {% endif %}
 
-{# sort by date ascending #}
+{# sort by date ascending (a month-only concert by the admin's approximate
+   day, which is not shown); pending dates last #}
 {% set dated = {} %}
 {% for c in all %}
-  {% set dated = dated|merge({(c.date ~ '_' ~ loop.index): c}) %}
+  {% set dated = dated|merge({((c.date_tbd ? '9999-99-99' : c.date) ~ '_' ~ loop.index): c}) %}
 {% endfor %}
 {% set all = [] %}
 {% for key in dated|keys|sort %}
@@ -38,12 +45,24 @@
     {{ (limit is defined and items|length == 1) ? 'SITE.CONCERTS.TITLE_SINGULAR'|t : 'SITE.CONCERTS.TITLE_PLURAL'|t }}
   </div>
   {% for c in items %}
-  {% set month_abbr = month_names[c.date|date("n") - 1] %}
   {% set ctx = (lang == 'es' and c.context_es) ? c.context_es : c.context %}
   <div class="event-item">
     <div class="event-datetime">
+      {% if c.date_tbd %}
+      <div class="event-day event-day--tbd">{{ 'SITE.CONCERTS.DATE_TBD'|t }}</div>
+      {% else %}
+      {% set month_abbr = month_names[c.date|date("n") - 1] %}
+      {% if c.month_only %}
+      {# Month only: the day in the admin just orders the list #}
+      <div class="event-day">{{ month_abbr }}</div>
+      <div class="event-hour">{{ c.date|date("Y") }}</div>
+      {% else %}
       <div class="event-day">{{ c.date|date("d") }} {{ month_abbr }}</div>
+      {% endif %}
+      {% endif %}
+      {% if c.hour %}
       <div class="event-hour">{{ c.hour }}h</div>
+      {% endif %}
     </div>
     <div class="event-content">
       <div class="event-venue">{{ c.venue }}</div>

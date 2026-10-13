@@ -92,6 +92,7 @@ JS;
             'onFlexObjectAfterSave'          => ['onFlexObjectAfterSave', 0],
             'onFlexObjectAfterDelete'        => ['clearCache', 0],
             'onApiBeforeMediaUpload'         => ['onApiBeforeMediaUpload', 0],
+            'onApiBlueprintResolved'         => ['onApiBlueprintResolved', 0],
         ];
     }
 
@@ -127,18 +128,77 @@ JS;
     }
 
     /**
+     * Admin Next shows or hides a `conditional` block from the form values, but
+     * the API names its children under the block (`date_fields.date`) because
+     * it only treats section/fieldset/tabs/columns as transparent. Grav itself
+     * treats `conditional` as a container (`input@: false`), so the values must
+     * stay top level: strip the block's prefix in Flex forms.
+     */
+    public function onApiBlueprintResolved($event): void
+    {
+        if (!str_starts_with((string) ($event['template'] ?? ''), 'flex-objects/')) {
+            return;
+        }
+        $event['fields'] = $this->unprefixConditionals((array) $event['fields']);
+    }
+
+    private function unprefixConditionals(array $fields): array
+    {
+        foreach ($fields as $i => $field) {
+            if (!is_array($field) || empty($field['fields']) || !is_array($field['fields'])) {
+                continue;
+            }
+            if (($field['type'] ?? '') === 'conditional') {
+                $prefix = $field['name'] . '.';
+                foreach ($field['fields'] as $j => $child) {
+                    if (is_array($child) && str_starts_with((string) ($child['name'] ?? ''), $prefix)) {
+                        $field['fields'][$j]['name'] = substr($child['name'], strlen($prefix));
+                    }
+                }
+            }
+            $field['fields'] = $this->unprefixConditionals($field['fields']);
+            $fields[$i] = $field;
+        }
+
+        return $fields;
+    }
+
+    public function onFlexObjectBeforeSave($event): void
+    {
+        $object = $event['object'] ?? null;
+        $type = $object && method_exists($object, 'getFlexType') ? $object->getFlexType() : null;
+        if ($type === 'actuacions') {
+            $this->nameGalleryRows($object);
+        } elseif ($type === 'concerts') {
+            $this->requireConcertDate($object);
+        }
+    }
+
+    /**
+     * An upcoming concert may be saved without a date only when it is marked
+     * "Data per determinar"; otherwise a missing date is a slip. The blueprint
+     * cannot make the date conditionally required (Grav would enforce it even
+     * while the field is hidden), so it is checked here.
+     */
+    private function requireConcertDate($object): void
+    {
+        if ($object->getProperty('date_tbd') || trim((string) $object->getProperty('date')) !== '') {
+            return;
+        }
+        $message = $this->grav['language']->translate(['SITE.CONCERTS.DATE_REQUIRED']);
+        throw new \Grav\Plugin\Api\Exceptions\ValidationException(
+            $message !== 'SITE.CONCERTS.DATE_REQUIRED' ? $message : 'Posa la data del concert o marca «Data per determinar».'
+        );
+    }
+
+    /**
      * Admin Next titles a folded list row with its first non-empty text value,
      * and a photo is not text, so every "Fotos" row would read "Item". Copy
      * the file name into the row's `name`, first, so folded rows say which
      * photo they hold.
      */
-    public function onFlexObjectBeforeSave($event): void
+    private function nameGalleryRows($object): void
     {
-        $object = $event['object'] ?? null;
-        if (!$object || !method_exists($object, 'getFlexType') || $object->getFlexType() !== 'actuacions') {
-            return;
-        }
-
         $gallery = $object->getProperty('gallery');
         if (!is_array($gallery)) {
             return;

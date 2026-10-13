@@ -661,7 +661,7 @@ p.hero-sub {
     justify-content: center;
     align-items: flex-start;
     gap: 0.15rem;
-    width: 4rem;
+    width: 4.6rem; /* room for "DETERMINAR" in "Data per determinar" */
     flex-shrink: 0;
 }
 
@@ -671,6 +671,13 @@ p.hero-sub {
     letter-spacing: 0.03em;
     color: #e8ddf0;
     line-height: 1.2;
+}
+
+/* "Data per determinar": longer than a date, so smaller to fit the column */
+.event-day--tbd {
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
 }
 
 .event-hour {

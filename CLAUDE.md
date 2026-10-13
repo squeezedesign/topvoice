@@ -138,6 +138,13 @@ páginas, configuración y cuentas, y desde una no se ve la otra.
   defecto de Grav mandaba `max-age` de 7 días y el navegador no volvía a pedir
   la página.
   `topvoice-hooks` vacía la caché al guardar o borrar un objeto Flex.
+  La fecha no es obligatoria en el blueprint: con «Data per determinar»
+  (`date_tbd`) se oculta y el concierto sale como «Data per determinar», siempre
+  como futuro y al final. Sin esa marca, `topvoice-hooks` rechaza guardar sin
+  fecha (no se pone `required` porque Grav lo aplicaría con el campo oculto).
+  Con «Només mes i any» (`month_only`) se publica el mes y el año; el día del
+  admin solo ordena (puede ser aproximado) y el concierto sigue en la agenda
+  hasta que acaba ese mes.
 - **Formulario de contacto**: honeypot + captcha Cap (Form ≥ 9.1.5), envío por
   AJAX propio en `scripts.js`. Los campos están en las páginas
   `user/pages/01.home/_06.contact/contact.{ca,es}.md` (no en git). El admin no
@@ -224,6 +231,12 @@ enlazar: la página lleva `visible: false` y `noindex: true` y no está en
 
 - Plantillas de título en blueprints: solo `{{ object.x }}` y
   `{{ object.x ?? 'y' }}`; nada de etiquetas Twig.
+- Campos que dependen de otro: bloque `type: conditional` con
+  `condition: "campo != valor"`, que Admin Next evalúa en el navegador (no
+  hay `readonly` condicional, solo ocultar). Su API pone a los hijos el prefijo
+  del bloque (`date_fields.date`) y los guardaría anidados; `topvoice-hooks`
+  lo quita en `onApiBlueprintResolved` para los formularios Flex, así que los
+  campos se guardan en la raíz. Lleva también `input@: false`.
 - Catalán del admin: plugin `admin2-ca`. El selector de idioma solo lista
   `admin2/languages/*.yaml`, así que el plugin deja ahí un `ca.yaml` vacío.
   Si se añaden textos nuevos al admin, faltarán en catalán hasta traducirlos.

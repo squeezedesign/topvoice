@@ -98,11 +98,43 @@ form:
         0: PLUGIN_ADMIN.NO
       validate:
         type: bool
-    date:
-      type: date
-      label: SITE.CONCERTS.FIELD_DATE
+    # Not required in the blueprint: Grav would apply it even while the date is
+    # hidden. topvoice-hooks refuses to save without a date unless date_tbd.
+    date_tbd:
+      type: toggle
+      label: SITE.CONCERTS.FIELD_DATE_TBD
+      help: SITE.CONCERTS.FIELD_DATE_TBD_HELP
+      highlight: 1
+      default: 0
+      options:
+        1: PLUGIN_ADMIN.YES
+        0: PLUGIN_ADMIN.NO
       validate:
-        required: true
+        type: bool
+    # Admin Next evaluates this condition on the form values (Grav core only
+    # treats the block as a container), hiding the date while it is pending.
+    date_fields:
+      type: conditional
+      # A container, not a value: keeps date and month_only at the top level.
+      # The Form plugin says so for its own forms, but not for Flex API saves.
+      input@: false
+      condition: "date_tbd != true"
+      fields:
+        date:
+          type: date
+          label: SITE.CONCERTS.FIELD_DATE
+          help: SITE.CONCERTS.FIELD_DATE_HELP
+        month_only:
+          type: toggle
+          label: SITE.CONCERTS.FIELD_MONTH_ONLY
+          help: SITE.CONCERTS.FIELD_MONTH_ONLY_HELP
+          highlight: 1
+          default: 0
+          options:
+            1: PLUGIN_ADMIN.YES
+            0: PLUGIN_ADMIN.NO
+          validate:
+            type: bool
     hour:
       type: time
       label: SITE.CONCERTS.FIELD_HOUR

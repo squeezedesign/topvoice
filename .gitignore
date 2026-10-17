@@ -74,3 +74,5 @@ user/env/*/config/themes/
 .DS_Store
 Thumbs.db
 .idea/
+# ── Claude Code: la memoria del proyecto sí va en git; los ajustes locales no ──
+.claude/settings.local.json

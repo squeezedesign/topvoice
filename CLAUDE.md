@@ -35,6 +35,20 @@ No añadas la clave por tu cuenta; pide a Raquel que lance
 `! git push origin main` en el prompt. Cita los hashes de commit copiados de
 `git log`, nunca de memoria.
 
+## Memoria de Claude
+
+La memoria del proyecto está en git, en `.claude/memory/` (`MEMORY.md` es el
+índice). En cada máquina, la carpeta de memoria que usa Claude Code es un
+enlace simbólico a ella, porque su nombre depende de la ruta del proyecto:
+
+- Docker: `~/.claude/projects/-Users-squeeze-Sites-topvoicetgn/memory`
+- MAMP: `~/.claude/projects/-Volumes-X10Pro-Sites-topvoice-grav/memory`
+
+Lo que guardes ahí se publica con el siguiente push, y el historial se
+considera público: nada de secretos, contraseñas ni datos personales. nginx
+devuelve 403 a `/.claude/` (regla de ficheros ocultos). Al empezar en una
+máquina, `git pull` para traer lo que haya aprendido la otra.
+
 ## Producción
 
 - Servidor `ubuntu-blackpony`, raíz web `/home/topvoicetgn/www` (es un clon

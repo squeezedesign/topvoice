@@ -23,8 +23,9 @@ config:
       fields:
         active:
           title: SITE.CONCERTS.FIELD_ACTIVE
+        # Admin Next formats a date column (dd/mm/yyyy in a ca/es browser)
+        # only when it is not the edit link, which shows the raw value.
         date:
-          link: edit
           title: SITE.CONCERTS.FIELD_DATE
         hour:
           title: SITE.CONCERTS.FIELD_HOUR
@@ -32,6 +33,7 @@ config:
         # override label per column here to keep short headers while the form
         # labels stay descriptive. These are all text fields → type defaults to text.
         venue:
+          link: edit
           title: SITE.CONCERTS.COL_NAME
           field:
             label: SITE.CONCERTS.COL_NAME

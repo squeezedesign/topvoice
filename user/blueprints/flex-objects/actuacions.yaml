@@ -30,12 +30,14 @@ config:
           title: Activa
           field:
             label: Activa
+        # Admin Next formats a date column (dd/mm/yyyy in a ca/es browser)
+        # only when it is not the edit link, which shows the raw value.
         date:
-          link: edit
           title: Data
           field:
             label: Data
         venue:
+          link: edit
           title: Títol
           field:
             label: Títol

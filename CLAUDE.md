@@ -230,6 +230,14 @@ enlazar: la página lleva `visible: false` y `noindex: true` y no está en
   arrastrar, el panel no se desplaza, así que todas tienen que caber en
   pantalla. Una fila plegada se titula con su primer texto, por eso
   `.name` va primero.
+- **«Mostrar la galeria»** (`show_gallery`): apagado, la actuación sale sin
+  vídeos ni fotos. Las guardadas antes de existir no lo tienen y se muestran.
+  Cada fila de foto tiene además «Mostrar al web» (`.visible`); solo se oculta
+  la que está a `false` (las filas antiguas o de la subida múltiple no lo
+  tienen).
+- **Miniaturas del admin:** `topvoice-hooks` inyecta CSS que agranda las
+  miniaturas de los campos `file` (Admin Next las pinta a 32 px) y las abre
+  ampliadas al pulsarlas.
 - **Subida múltiple:** el campo `gallery_upload` («Pujar diverses fotos»)
   admite muchas fotos a la vez; al guardar, `topvoice-hooks` las pasa a filas
   de `gallery`, al final y en orden natural de nombre, y vacía el campo.

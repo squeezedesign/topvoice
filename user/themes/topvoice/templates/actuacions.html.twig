@@ -103,11 +103,12 @@
           {% set photos = [] %}
           {% for row in h.gallery ?: [] %}
             {% set name = (row.image ?: {})|keys|first %}
-            {% if name and media[name] %}
+            {% if name and media[name] and (row.visible is null or row.visible) %}
               {% set photos = photos|merge([{ medium: media[name], caption: row.caption }]) %}
             {% endif %}
           {% endfor %}
-          {% if h.videos or photos %}
+          {# show_gallery is missing on actuacions saved before the switch existed #}
+          {% if (h.show_gallery is null or h.show_gallery) and (h.videos or photos) %}
           <ul class="arch-gallery">
             {% for v in h.videos %}
             {% if v.id %}

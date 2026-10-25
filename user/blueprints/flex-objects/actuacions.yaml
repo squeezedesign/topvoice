@@ -139,6 +139,17 @@ form:
       type: textarea
       rows: 3
       label: Descripció breu en ES
+    show_gallery:
+      type: toggle
+      label: Mostrar la galeria
+      help: "Si està desactivat, al web no surten ni els vídeos ni les fotos d'aquesta actuació; es conserven i es poden tornar a mostrar."
+      highlight: 1
+      default: 1
+      options:
+        1: PLUGIN_ADMIN.YES
+        0: PLUGIN_ADMIN.NO
+      validate:
+        type: bool
     videos:
       type: list
       label: Vídeos de YouTube
@@ -200,4 +211,16 @@ form:
         .caption:
           type: text
           label: Peu de foto (opcional)
-          placeholder: 'Foto: Nom Cognom'
+          placeholder: 'Peu de foto'
+        # Rows added before this switch (or by the batch upload) have no
+        # value: the template only hides a row set to false.
+        .visible:
+          type: toggle
+          label: Mostrar al web
+          highlight: 1
+          default: 1
+          options:
+            1: PLUGIN_ADMIN.YES
+            0: PLUGIN_ADMIN.NO
+          validate:
+            type: bool

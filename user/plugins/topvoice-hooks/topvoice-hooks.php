@@ -83,6 +83,38 @@ class TopvoiceHooksPlugin extends Plugin
 </script>
 JS;
 
+    /**
+     * A file field shows each uploaded image as a 32px square, too small to
+     * tell the photos of an actuació apart, though the API thumbnail behind
+     * it is 500px wide. Show it larger, uncropped, and open it over the page
+     * on click (Escape or a click closes it).
+     */
+    private const ADMIN_NEXT_THUMBS = <<<'HTML'
+<style>
+.rounded-md.border > img.h-8.w-8[src*="/thumbnails/"]{width:auto;height:96px;max-width:160px;object-fit:contain;cursor:zoom-in;background:#0001}
+#tv-preview{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:#000c;cursor:zoom-out}
+#tv-preview img{max-width:92vw;max-height:88vh;border-radius:6px;box-shadow:0 10px 40px #0008}
+</style>
+<script>
+(function () {
+  function close() { var o = document.getElementById('tv-preview'); if (o) o.remove(); }
+  document.addEventListener('click', function (e) {
+    var img = e.target.closest && e.target.closest('.rounded-md.border > img[src*="/thumbnails/"]');
+    if (!img) return;
+    e.preventDefault();
+    e.stopPropagation();
+    var o = document.createElement('div');
+    o.id = 'tv-preview';
+    o.innerHTML = '<img alt="">';
+    o.firstChild.src = img.src;
+    o.addEventListener('click', close);
+    document.body.appendChild(o);
+  }, true);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+})();
+</script>
+HTML;
+
     public static function getSubscribedEvents(): array
     {
         return [
@@ -122,7 +154,7 @@ JS;
                 return $html;
             }
 
-            $inject = self::ADMIN_NEXT_CSS . self::ADMIN_NEXT_MENU_JS;
+            $inject = self::ADMIN_NEXT_CSS . self::ADMIN_NEXT_MENU_JS . self::ADMIN_NEXT_THUMBS;
 
             return preg_replace('~</head>~i', $inject . '</head>', $html, 1) ?? $html;
         });

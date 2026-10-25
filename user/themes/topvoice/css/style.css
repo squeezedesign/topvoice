@@ -2206,11 +2206,10 @@ body.page-actuacions .nav-logo-circle {
     font-weight: 700;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    /* Outlined pill (in --primary-dark on the light version, which vanishes
-       on this background) */
-    color: var(--primary);
+    /* Outlined pill, like .btn-outline */
+    color: var(--cyan);
     background: transparent;
-    border: 1.5px solid var(--primary);
+    border: 1.5px solid var(--cyan);
     padding: 0.3rem 0.75rem;
     border-radius: 999px;
 }

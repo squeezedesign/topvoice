@@ -235,10 +235,35 @@ HTML;
         $object = $event['object'] ?? null;
         $type = $object && method_exists($object, 'getFlexType') ? $object->getFlexType() : null;
         if ($type === 'actuacions') {
+            $this->applyEmptiedLists($object);
             $this->appendUploadedPhotos($object);
             $this->nameGalleryRows($object);
         } elseif ($type === 'concerts') {
             $this->requireConcertDate($object);
+        }
+    }
+
+    /**
+     * Removing every row of a list (all the photos, all the videos) sends it
+     * as []. FlexObject::update() flattens the data into field => value pairs,
+     * an empty list yields none, so the stored rows stayed and came back on
+     * reload. The API fires nothing before update(), so read the request body
+     * (php://input can be read again) and empty those lists here.
+     */
+    private function applyEmptiedLists($object): void
+    {
+        if (!in_array($_SERVER['REQUEST_METHOD'] ?? '', ['PATCH', 'PUT', 'POST'], true)
+            || !str_contains((string) ($_SERVER['CONTENT_TYPE'] ?? ''), 'json')) {
+            return;
+        }
+        $body = json_decode((string) file_get_contents('php://input'), true);
+        if (!is_array($body)) {
+            return;
+        }
+        foreach ($body as $field => $value) {
+            if ($value === [] && is_string($field) && !empty($object->getProperty($field))) {
+                $object->setProperty($field, []);
+            }
         }
     }
 

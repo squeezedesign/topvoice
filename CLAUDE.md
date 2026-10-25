@@ -244,6 +244,11 @@ enlazar: la página lleva `visible: false` y `noindex: true` y no está en
 - **Subida múltiple:** el campo `gallery_upload` («Pujar diverses fotos»)
   admite muchas fotos a la vez; al guardar, `topvoice-hooks` las pasa a filas
   de `gallery`, al final y en orden natural de nombre, y vacía el campo.
+- **Listas vaciadas:** al borrar todas las filas de una lista (fotos o
+  vídeos) el admin manda `[]`, y `FlexObject::update()` no lo aplica (al
+  aplanar, una lista vacía no da ningún campo): las filas volvían al recargar.
+  `topvoice-hooks` relee el cuerpo de la petición antes de guardar y vacía
+  esas listas.
 - **`topvoice-hooks`** hace además tres cosas con las actuaciones:
   - Antes de guardar, rellena `.name` de cada fila con el nombre del fichero.
   - Al guardar, borra de la carpeta las imágenes que ya no están en ninguna

@@ -302,8 +302,14 @@ HTML;
         foreach ($gallery as $i => $row) {
             $row = (array) $row;
             $file = array_key_first((array) ($row['image'] ?? []));
+            // A row whose photo was removed with its ✕ (or never picked) has
+            // nothing to show: drop it rather than keep an empty "Item".
+            if ($file === null) {
+                unset($gallery[$i]);
+                continue;
+            }
             unset($row['name']);
-            $gallery[$i] = ($file !== null ? ['name' => Utils::basename((string) $file)] : []) + $row;
+            $gallery[$i] = ['name' => Utils::basename((string) $file)] + $row;
         }
         $object->setProperty('gallery', array_values($gallery));
     }
@@ -314,9 +320,15 @@ HTML;
         $this->clearCache();
     }
 
+    /**
+     * Drop Grav's data cache (page content, Flex indexes) so the home page
+     * shows the change. Not Cache::clearCache(): that also empties cache://,
+     * where the API keeps the records it builds admin thumbnails from, so
+     * every thumbnail on the edit page went 404 right after saving.
+     */
     public function clearCache(): void
     {
-        \Grav\Common\Cache::clearCache();
+        $this->grav['cache']->deleteAll();
     }
 
     /**

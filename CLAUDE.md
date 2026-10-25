@@ -151,7 +151,10 @@ páginas, configuración y cuentas, y desde una no se ve la otra.
   Además, `pages.cache_control: no-cache` y `expires: 0`: el valor por
   defecto de Grav mandaba `max-age` de 7 días y el navegador no volvía a pedir
   la página.
-  `topvoice-hooks` vacía la caché al guardar o borrar un objeto Flex.
+  `topvoice-hooks` vacía la caché de datos de Grav (`cache->deleteAll()`) al
+  guardar o borrar un objeto Flex. No uses `Cache::clearCache()`: vacía
+  `cache://`, donde la API guarda los registros de las miniaturas del admin, y
+  todas daban 404 justo después de guardar.
   La fecha no es obligatoria en el blueprint: con «Data per determinar»
   (`date_tbd`) se oculta y el concierto sale como «Data per determinar», siempre
   como futuro y al final. Sin esa marca, `topvoice-hooks` rechaza guardar sin

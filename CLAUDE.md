@@ -177,6 +177,13 @@ páginas, configuración y cuentas, y desde una no se ve la otra.
   `images/og-image.jpg` del tema (1200×630). `sitemap.xml` es estático y solo
   lista las dos portadas, porque las páginas legales son `noindex`: si se crea
   una página pública nueva, añádela ahí.
+- **Galería de la home** (`_05.gallery`): el orden es `media_order` (botón
+  «Reordena» de la lista de fotos y después Desa). Grav lo guarda en el `.md`
+  de cada idioma; `topvoice-hooks` lo copia a los demás idiomas al guardar
+  una página. El alt y el peu de foto van en el `.meta.yaml` de cada foto
+  (panel de la miniatura), uno por foto y no por idioma; la antigua lista
+  `gallery_items` del frontmatter ya no se lee. La imagen grande usa
+  `cropResize` (con `resize` Grav rellenaba de blanco hasta 16:9).
 - La página de error usa `http_response_code: 404` en su cabecera (no `code`).
 - Páginas internas con cabecera y menú: `partials/base.html.twig` tiene los
   bloques `body_class`, `background` y `scripts`. `scripts.js` es solo de la
@@ -223,7 +230,10 @@ enlazar: la página lleva `visible: false` y `noindex: true` y no está en
   arrastrar, el panel no se desplaza, así que todas tienen que caber en
   pantalla. Una fila plegada se titula con su primer texto, por eso
   `.name` va primero.
-- **`topvoice-hooks`** hace tres cosas con las actuaciones:
+- **Subida múltiple:** el campo `gallery_upload` («Pujar diverses fotos»)
+  admite muchas fotos a la vez; al guardar, `topvoice-hooks` las pasa a filas
+  de `gallery`, al final y en orden natural de nombre, y vacía el campo.
+- **`topvoice-hooks`** hace además tres cosas con las actuaciones:
   - Antes de guardar, rellena `.name` de cada fila con el nombre del fichero.
   - Al guardar, borra de la carpeta las imágenes que ya no están en ninguna
     fila: Admin Next solo quita la referencia. No hay papelera; las fotos no

@@ -26,23 +26,7 @@ form:
               ordering@: header.section_tag
             header.media_order:
               label: "Fotos de la galeria — Puja i arrossega per ordenar"
-            header.gallery_items:
-              type: list
-              label: Metadades de les imatges (alt i peu de foto)
-              help: "Per a cada foto pujada, afegeix el seu alt i peu de foto. El nom del fitxer ha de coincidir exactament."
-              style: vertical
-              btnLabel: Afegir títols
-              fields:
-                .file:
-                  type: text
-                  label: Nom del fitxer
-                  placeholder: "gallery-0001.webp"
-                .alt:
-                  type: text
-                  label: Text alternatiu (accessibilitat)
-                .title:
-                  type: text
-                  label: Títol / peu de foto
+              help: "El text alternatiu i el peu de foto de cada foto es posen a la mateixa foto (botó d'editar de la miniatura)."
         advanced:
           fields:
             columns:

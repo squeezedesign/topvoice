@@ -1,10 +1,5 @@
 {% set h = page.header %}
 
-{% set meta_index = {} %}
-{% for item in h.gallery_items %}
-  {% set meta_index = meta_index|merge({(item.file): item}) %}
-{% endfor %}
-
 <section id="gallery">
   <div class="inner">
     <p class="section-tag">{{ h.section_tag }}</p>
@@ -13,10 +8,11 @@
   </div>
   <div id="gallerySlider">
     {% for image in page.media.images %}
-      {% set meta = meta_index[image.filename] %}
+      {# Alt and caption come from the photo's .meta.yaml (Admin Next's media panel) #}
+      {% set meta = image.metadata %}
       <div class="gallery-item">
         <img src="{{ image.cropZoom(800, 480).url() }}"
-             data-full="{{ image.resize(1920, 1080).url() }}"
+             data-full="{{ image.cropResize(1920, 1080).url() }}"
              alt="{{ meta.alt ?: 'Top Voice' }}"
              {% if meta.title %}title="{{ meta.title }}"{% endif %}
              loading="lazy">

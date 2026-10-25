@@ -155,6 +155,17 @@ form:
             required: true
             pattern: '^[A-Za-z0-9_-]{11}$'
             message: "Ha de ser l'ID d'11 caràcters, no l'URL sencera."
+    # Several photos at once: the rows below take one file each, so they are
+    # uploaded one by one. topvoice-hooks turns whatever is here into rows at
+    # the end of "Fotos" (by file name) on save, and empties this field.
+    gallery_upload:
+      type: file
+      label: Pujar diverses fotos
+      help: "Selecciona o arrossega totes les fotos alhora. En desar, passen a la llista «Fotos» de sota, al final i per ordre de nom. En una actuació nova, desa-la abans de pujar fotos."
+      multiple: true
+      destination: 'self@'
+      accept:
+        - image/*
     # A list of single-file rows rather than one multi-file field: Admin Next
     # only lets list rows be dragged, and the photo order matters. Removing a
     # row only drops the reference; topvoice-hooks deletes the unreferenced

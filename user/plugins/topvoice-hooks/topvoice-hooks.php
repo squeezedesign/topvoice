@@ -93,6 +93,7 @@ JS;
             'onFlexObjectAfterDelete'        => ['clearCache', 0],
             'onApiBeforeMediaUpload'         => ['onApiBeforeMediaUpload', 0],
             'onApiBlueprintResolved'         => ['onApiBlueprintResolved', 0],
+            'onApiPageUpdated'               => ['onApiPageUpdated', 0],
         ];
     }
 
@@ -163,11 +164,46 @@ JS;
         return $fields;
     }
 
+    /**
+     * The photo order (header.media_order) is a property of the folder, but
+     * Grav keeps it in each language's file, so reordering the gallery in
+     * Catalan left Spanish in the old order. When a page is saved, copy its
+     * media_order to its other language files. An empty order is not copied.
+     */
+    public function onApiPageUpdated($event): void
+    {
+        $page = $event['page'] ?? null;
+        $own = $page ? (string) $page->filePath() : '';
+        $order = $page ? ($page->header()->media_order ?? null) : null;
+        if ($own === '' || !is_string($order) || trim($order) === '') {
+            return;
+        }
+
+        // gallery.ca.md → gallery; siblings are gallery.md and gallery.<lang>.md
+        $base = preg_replace('~(\.[a-z]{2}(-[a-z]{2})?)?\.md$~i', '', Utils::basename($own));
+        $dir = dirname($own);
+        foreach (scandir($dir) ?: [] as $name) {
+            $path = $dir . '/' . $name;
+            if ($path === $own || !preg_match('~^' . preg_quote($base, '~') . '(\.[a-z]{2}(-[a-z]{2})?)?\.md$~i', $name)) {
+                continue;
+            }
+            $file = \Grav\Common\File\CompiledMarkdownFile::instance($path);
+            $header = (array) $file->header();
+            if (($header['media_order'] ?? null) !== $order) {
+                $header['media_order'] = $order;
+                $file->header($header);
+                $file->save();
+            }
+            $file->free();
+        }
+    }
+
     public function onFlexObjectBeforeSave($event): void
     {
         $object = $event['object'] ?? null;
         $type = $object && method_exists($object, 'getFlexType') ? $object->getFlexType() : null;
         if ($type === 'actuacions') {
+            $this->appendUploadedPhotos($object);
             $this->nameGalleryRows($object);
         } elseif ($type === 'concerts') {
             $this->requireConcertDate($object);
@@ -189,6 +225,38 @@ JS;
         throw new \Grav\Plugin\Api\Exceptions\ValidationException(
             $message !== 'SITE.CONCERTS.DATE_REQUIRED' ? $message : 'Posa la data del concert o marca «Data per determinar».'
         );
+    }
+
+    /**
+     * "Pujar diverses fotos" takes many files at once, but the order and the
+     * captions live in the "Fotos" rows (one file each, so they can be
+     * dragged). Move every uploaded file not yet in a row to a new row at the
+     * end, in natural file-name order (…-002 before …-010), and empty the field.
+     */
+    private function appendUploadedPhotos($object): void
+    {
+        $uploads = (array) ($object->getProperty('gallery_upload') ?? []);
+        if ($uploads === []) {
+            return;
+        }
+
+        $gallery = array_values((array) ($object->getProperty('gallery') ?? []));
+        $taken = [];
+        foreach ($gallery as $row) {
+            foreach (array_keys((array) ($row['image'] ?? [])) as $name) {
+                $taken[Utils::basename((string) $name)] = true;
+            }
+        }
+
+        uksort($uploads, static fn ($a, $b) => strnatcasecmp(Utils::basename((string) $a), Utils::basename((string) $b)));
+        foreach ($uploads as $key => $file) {
+            if (!isset($taken[Utils::basename((string) $key)])) {
+                $gallery[] = ['image' => [$key => $file]];
+            }
+        }
+
+        $object->setProperty('gallery', $gallery);
+        $object->setProperty('gallery_upload', []);
     }
 
     /**

@@ -238,8 +238,10 @@ enlazar: la página lleva `visible: false` y `noindex: true` y no está en
   - Al guardar, borra de la carpeta las imágenes que ya no están en ninguna
     fila: Admin Next solo quita la referencia. No hay papelera; las fotos no
     se comparten entre actuaciones.
-  - Rechaza (409) una subida cuyo nombre ya existe en esa carpeta: desde una
-    fila de lista Admin Next no pasa `avoid_overwriting` y sobrescribiría.
+  - Rechaza (409) una subida cuyo nombre ya usa una fila guardada: desde una
+    fila de lista Admin Next no pasa `avoid_overwriting` y sobrescribiría. Si
+    el fichero está en la carpeta pero ninguna fila lo usa (subido y sin
+    guardar), deja sobrescribirlo.
 - **Limitación de Admin Next:** en una actuación nueva hay que guardar antes
   de subir fotos (la carpeta aún no existe y la subida da 422).
 - **En cada servidor** (no va en git), a mano:

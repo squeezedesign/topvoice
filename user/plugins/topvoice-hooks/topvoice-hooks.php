@@ -241,12 +241,7 @@ JS;
         }
 
         $gallery = array_values((array) ($object->getProperty('gallery') ?? []));
-        $taken = [];
-        foreach ($gallery as $row) {
-            foreach (array_keys((array) ($row['image'] ?? [])) as $name) {
-                $taken[Utils::basename((string) $name)] = true;
-            }
-        }
+        $taken = $this->galleryFiles($object);
 
         uksort($uploads, static fn ($a, $b) => strnatcasecmp(Utils::basename((string) $a), Utils::basename((string) $b)));
         foreach ($uploads as $key => $file) {
@@ -295,17 +290,38 @@ JS;
     /**
      * Admin Next does not pass the field's avoid_overwriting to uploads made
      * from a list row, so a photo named like an existing one (IMG_0001.jpg
-     * from two phones) would silently replace it. Refuse the upload instead.
+     * from two phones) would silently replace it. Refuse the upload instead,
+     * but only when a saved row uses that file: one uploaded and then left
+     * unsaved stays in the folder unseen (it goes on the next save), and
+     * uploading it again has to work.
      */
     public function onApiBeforeMediaUpload($event): void
     {
         $path = $this->actuacioFolder($event['object'] ?? null);
         $name = Utils::basename((string) ($event['filename'] ?? ''));
-        if ($path !== null && $name !== '' && is_file($path . '/' . $name)) {
+        if ($path !== null && $name !== '' && is_file($path . '/' . $name)
+            && isset($this->galleryFiles($event['object'])[$name])) {
             throw new \Grav\Plugin\Api\Exceptions\ConflictException(
                 "Aquesta actuació ja té una foto que es diu «{$name}». Canvia-li el nom al fitxer i torna-la a pujar."
             );
         }
+    }
+
+    /**
+     * File names the actuació's "Fotos" rows point to, as keys.
+     *
+     * @return array<string, true>
+     */
+    private function galleryFiles($object): array
+    {
+        $names = [];
+        foreach ((array) ($object->getProperty('gallery') ?? []) as $row) {
+            foreach (array_keys((array) ($row['image'] ?? [])) as $name) {
+                $names[Utils::basename((string) $name)] = true;
+            }
+        }
+
+        return $names;
     }
 
     /**
@@ -347,12 +363,7 @@ JS;
             return;
         }
 
-        $keep = [];
-        foreach ((array) ($object->getProperty('gallery') ?? []) as $row) {
-            foreach (array_keys((array) ($row['image'] ?? [])) as $name) {
-                $keep[Utils::basename((string) $name)] = true;
-            }
-        }
+        $keep = $this->galleryFiles($object);
 
         // scandir, not glob(GLOB_BRACE): musl (Alpine) builds lack GLOB_BRACE.
         $images = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'avif'];

@@ -10,3 +10,4 @@
 - [Git push and deploy check](git-push-and-deploy-check.md) — Claude can't push (key passphrase, empty ssh agent); Raquel runs `! git push`; check `git status -sb` before verifying a deploy
 - [Test prod config locally](test-prod-config-locally.md) — Host header trick against the Docker nginx; delete the security-private.php it creates; nonce breaks ETag
 - [Light page palette](light-page-palette.md) — the white /actuacions scheme (colours, bottom leopard fade) Raquel dropped for the dark one but wants kept for future inner pages
+- [Server kernel updates](server-kernel-updates.md) — prod installs kernels but never reboots; CVE-2026-98432 nft/MPTCP mitigation pending Ubuntu fix

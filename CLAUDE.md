@@ -29,12 +29,12 @@ hay que replicar a mano en producción (SFTP o admin).
 Haz commit o push solo cuando Raquel lo pida. Los commits llevan
 `Co-Authored-By` según indique la sesión.
 
-El push no sale desde las sesiones de Claude en el Mac de Docker: la clave
-`~/.ssh/id_rsa` tiene contraseña, el agente ssh está vacío y nadie puede
-escribirla desde la sesión (`Permission denied (publickey)`); no hay `gh`. No
-toques las claves ni la configuración de ssh. Raquel la carga en su terminal
-con `ssh-add --apple-use-keychain ~/.ssh/id_rsa` y después lanza
-`! git push origin main` en el prompt. Cita los hashes de commit copiados de
+En el Mac de Docker, cuando Raquel pida push, hazlo tú: funciona si la clave
+`~/.ssh/id_rsa` (con contraseña) está cargada en el agente ssh. Tras reiniciar
+el Mac el agente se vacía y el push falla con `Permission denied (publickey)`;
+entonces pide a Raquel que lance en su Terminal
+`ssh-add --apple-use-keychain ~/.ssh/id_rsa` y reinténtalo. No hay `gh`. No
+toques las claves ni la configuración de ssh. Cita los hashes de commit copiados de
 `git log`, nunca de memoria.
 
 ## Memoria de Claude

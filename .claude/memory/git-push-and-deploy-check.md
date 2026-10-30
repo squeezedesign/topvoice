@@ -1,6 +1,6 @@
 ---
 name: git-push-and-deploy-check
-description: "Claude cannot git push from this Mac (key passphrase, empty agent); Raquel pushes with `! git push`, and a \"deployed\" check must start with git status -sb"
+description: "Claude pushes itself when the ssh key is in the agent (after a Mac restart Raquel runs ssh-add), and a \"deployed\" check must start with git status -sb"
 metadata:
   node_type: memory
   type: feedback
@@ -8,14 +8,15 @@ metadata:
   modified: 2026-10-04T19:31:47.724Z
 ---
 
-`git push` from a Claude session on this Mac fails. Until October 2026 it was
-`Host key verification failed`; since github.com is in known_hosts (seen
-2026-10-30) it is `Permission denied (publickey)`. GitHub does accept
-`~/.ssh/id_rsa` (`ssh -vT` shows `Server accepts key`), but the key has a
-passphrase, the agent is empty and neither Claude nor `!` can type it. Fix:
-Raquel runs `ssh-add --apple-use-keychain ~/.ssh/id_rsa` in her own terminal,
-after which `! git push origin main` works. `gh` is not installed. Do not
-touch the keys or the ssh config yourself.
+Since 2026-10-30 Claude can `git push` from this Mac itself, as long as
+`~/.ssh/id_rsa` is loaded in the ssh agent. The key has a passphrase, so after
+a Mac restart the agent is empty and push fails with
+`Permission denied (publickey)` (GitHub does accept the key: `ssh -vT` shows
+`Server accepts key`); neither Claude nor `!` can type the passphrase. Then
+ask Raquel to run `ssh-add --apple-use-keychain ~/.ssh/id_rsa` in her own
+Terminal and retry. Before October 2026 the error was
+`Host key verification failed`. `gh` is not installed. Do not touch the keys
+or the ssh config yourself. Push only when she asks.
 
 On 2026-10-04 she said "ya está desplegado" while the push had silently not
 happened, so production still served the old theme. **Why:** the server's

@@ -7,7 +7,7 @@
 - [Local vhost smoke test](local-vhost-smoke-test.md) — how to curl the .test vhost past maintenance mode, and why not to POST the form
 - [Grav 2 migration](grav2-migration-test.md) — local+prod on Grav 2.2.4 since 2026-10-02; env-folder config writes, Admin Next quirks, leftovers
 - [Entorno Docker local](local-docker-env.md) — Colima+Traefik en este Mac; topvoicetgn.test con nginx+PHP 8.3-FPM; comandos de arranque
-- [Git push and deploy check](git-push-and-deploy-check.md) — Claude can't push (key passphrase, empty ssh agent); Raquel runs `! git push`; check `git status -sb` before verifying a deploy
+- [Git push and deploy check](git-push-and-deploy-check.md) — Claude pushes if the ssh key is loaded, else Raquel runs ssh-add; check `git status -sb` before verifying a deploy
 - [Test prod config locally](test-prod-config-locally.md) — Host header trick against the Docker nginx; delete the security-private.php it creates; nonce breaks ETag
 - [Light page palette](light-page-palette.md) — the white /actuacions scheme (colours, bottom leopard fade) Raquel dropped for the dark one but wants kept for future inner pages
 - [Server kernel updates](server-kernel-updates.md) — prod installs kernels but never reboots; CVE-2026-98432 nft/MPTCP mitigation pending Ubuntu fix

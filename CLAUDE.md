@@ -52,8 +52,9 @@ máquina, `git pull` para traer lo que haya aprendido la otra.
 ## Producción
 
 - Servidor `ubuntu-blackpony`, raíz web `/home/topvoicetgn/www` (es un clon
-  de git, el remoto es GitHub `squeezedesign/topvoice`). nginx + PHP-FPM 8.3.
-  Logs de nginx en `/home/topvoicetgn/logs/`.
+  de git, el remoto es GitHub `squeezedesign/topvoice`). nginx + PHP-FPM 8.5
+  (antes 8.3; los entornos locales siguen en 8.3). Logs de nginx en
+  `/home/topvoicetgn/logs/`.
 - Raquel entra por SSH como **root**, pero PHP corre como **www-data**. Nunca
   ejecutes `php bin/...` como root ahí: usa `sudo -u www-data php bin/...`.
   Tras un `git pull` como root, devuelve la propiedad:

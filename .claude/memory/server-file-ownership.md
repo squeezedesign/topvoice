@@ -6,7 +6,7 @@ metadata:
 ---
 
 On the production box (`root@ubuntu-blackpony`, `/home/topvoicetgn/www`),
-nginx and PHP-FPM 8.3 run their workers as **www-data**, but Raquel works over
+nginx and PHP-FPM 8.5 run their workers as **www-data**, but Raquel works over
 SSH as **root**. Every file root creates in that tree is later unwritable and
 undeletable by the site itself, and the failures are confusing rather than
 obvious.

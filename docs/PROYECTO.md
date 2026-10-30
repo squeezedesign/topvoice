@@ -126,7 +126,8 @@ configuración y cuentas:
 ### Producción
 
 - Servidor `ubuntu-blackpony`, carpeta `/home/topvoicetgn/www` (clon del
-  repositorio). nginx + PHP-FPM 8.3. Logs de nginx en `/home/topvoicetgn/logs/`.
+  repositorio). nginx + PHP-FPM 8.5 (antes 8.3; los entornos locales siguen
+  en 8.3). Logs de nginx en `/home/topvoicetgn/logs/`.
 - Se entra por SSH como root, pero la web corre como **www-data**: los
   comandos de Grav van siempre con `sudo -u www-data`.
 - Grav lee primero la configuración de

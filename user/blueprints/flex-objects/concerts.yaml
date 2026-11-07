@@ -25,8 +25,13 @@ config:
           title: SITE.CONCERTS.FIELD_ACTIVE
         # Admin Next formats a date column (dd/mm/yyyy in a ca/es browser)
         # only when it is not the edit link, which shows the raw value.
+        # The type is set here because the API only looks up top-level form
+        # fields, and date lives inside the date_fields conditional block.
         date:
           title: SITE.CONCERTS.FIELD_DATE
+          field:
+            type: date
+            label: SITE.CONCERTS.FIELD_DATE
         hour:
           title: SITE.CONCERTS.FIELD_HOUR
         # The list template renders headers from field.label (not title), so we

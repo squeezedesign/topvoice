@@ -3,7 +3,7 @@
 - [Contact form anti-spam](contact-form-antispam.md) — honeypot + Cap captcha, live in production
 - [Email sending fails silently](email-sending-fails-silently.md) — Gmail app-password trap; turn the plugin's debug OFF, 5.2.1 logs failures on its own
 - [Concerts stale cache](concerts-stale-cache.md) — past concerts stuck on the home page: never_cache_twig on the server, then a 7-day browser max-age
-- [Untracked dirs in topvoice-grav](topvoice-untracked-dirs.md) — user/pages and user/config are gitignored by design; content changes ship by SFTP, not by commit
+- [Untracked dirs in topvoice-grav](topvoice-untracked-dirs.md) — user/pages and user/config are gitignored by design; prefer admin edits to SFTP (prod content differs), save each language
 - [Local vhost smoke test](local-vhost-smoke-test.md) — how to curl the .test vhost past maintenance mode, and why not to POST the form
 - [Grav 2 migration](grav2-migration-test.md) — local+prod on Grav 2.2.4 since 2026-10-02; env-folder config writes, Admin Next quirks, leftovers
 - [Entorno Docker local](local-docker-env.md) — Colima+Traefik en este Mac; topvoicetgn.test con nginx+PHP 8.3-FPM; comandos de arranque

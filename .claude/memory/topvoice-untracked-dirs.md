@@ -19,3 +19,17 @@ locally but will never reach production through a commit — say so explicitly
 and name what has to be replicated from admin. Only the theme
 (`user/themes/topvoice/`) and the custom `topvoice-hooks` plugin travel via
 git. This bit [[contact-form-antispam]], whose form fields are page-side.
+
+**Prefer the admin over SFTP for small page changes.** Local content is not a
+copy of production: local `/actuacions` has sample performances while
+production has the real ones, and page texts may differ too. Uploading a
+local `.md` would overwrite production's texts. For a header tweak (e.g. the
+`noindex` toggle «Amagar dels cercadors», or a format card's link) tell
+Raquel which admin field to change rather than which file to upload. Flex
+data (`user/data/flex-objects/`) is separate from the page `.md`, so page
+files never carry the performances themselves.
+
+**Page settings are per language.** Each language is its own `.md`, so an
+admin change has to be saved in catalan *and* in spanish. On 2026-11-11 the
+`noindex` was removed in `/es/actuacions` but not yet in `/actuacions`. After
+such a change, curl both URLs in production, not just one.

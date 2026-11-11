@@ -1,37 +1,43 @@
 ---
 name: server-file-ownership
-description: Production runs PHP as www-data while Raquel works as root — anything root leaves behind breaks the admin later
+description: Raquel now deploys over SSH as topvoicetgn — no chown, clearcache without sudo; root-owned files were the old trap
 metadata:
   type: project
 ---
 
-On the production box (`root@ubuntu-blackpony`, `/home/topvoicetgn/www`),
-nginx and PHP-FPM 8.5 run their workers as **www-data**, but Raquel works over
-SSH as **root**. Every file root creates in that tree is later unwritable and
-undeletable by the site itself, and the failures are confusing rather than
-obvious.
-
-**Confirmed instances:**
-
-- `user/plugins/shortcode-core` was `root:root 755` while `user/plugins` was
-  `www-data:www-data 775`. Updating from the admin failed with
-  `rmdir(...): Directory not empty` — GPM deleted what it could, could not
-  touch the rest, and the final `rmdir` failed. (Do not uninstall this plugin:
-  `login/blueprints.yaml:23` depends on `shortcode-core >= 6.0.0`.)
-- `logs/email.log` ended up root-owned after running
-  `php bin/plugin email test-email` as root. With the email plugin's `debug`
-  on, the site then delivered mail and died writing the log line — see
-  [[email-sending-fails-silently]].
-- The `touch(): Utime failed: Permission denied` entries in `grav.log` from
-  June, raised by `Cache::clearCache()` from the admin, are the same cause.
-
-**The rule:** never run `php bin/...` as root in that tree — use
-`sudo -u www-data php bin/...`. And after deploying, hand ownership back:
+**Current way (since November 2026):** Raquel logs into production
+(`ubuntu-blackpony`, `/home/topvoicetgn/www`) over SSH as **`topvoicetgn`**,
+not as root. From that user she runs `git pull` and
+`php bin/grav clearcache` directly: no `chown` afterwards and no
+`sudo -u www-data`. Deploy, one command per line:
 
 ```
-cd /home/topvoicetgn/www && git pull && chown -R www-data:www-data user/
+cd /home/topvoicetgn/www
+git pull
+php bin/grav clearcache
 ```
 
-To find what is still wrong:
-`stat -c '%U:%G  %n' user/plugins/*/ | grep -v '^www-data'` and the same over
+**Why:** the site's PHP must be able to write everything in that tree. When
+she worked as root, every file root created was later unwritable by the site,
+so each deploy needed `chown -R www-data:www-data` and every `bin/` command
+`sudo -u www-data`. She told Claude on 2026-11-11 that this is no longer
+needed; the exact server setup that makes `topvoicetgn` write correctly was
+not recorded.
+
+**How to apply:** give her the three commands above; do not add `chown` or
+`sudo -u www-data` any more. If she ever works as root again, the old rule
+applies: never `php bin/...` as root, and hand ownership back afterwards.
+
+**What root-owned files broke before** (useful if an old one is still there):
+
+- `user/plugins/shortcode-core` was `root:root`: updating it from the admin
+  failed with `rmdir(...): Directory not empty`. (Do not uninstall this
+  plugin: `login` depends on `shortcode-core >= 6.0.0`.)
+- `logs/email.log` owned by root after running `php bin/plugin email
+  test-email` as root; with the email plugin's `debug` on, the site delivered
+  mail and died writing the log line — see [[email-sending-fails-silently]].
+- `touch(): Utime failed: Permission denied` in `grav.log` from
+  `Cache::clearCache()`.
+
+To find leftovers: `stat -c '%U:%G  %n' user/plugins/*/` and the same over
 `{cache,logs,backup,tmp,images,assets}`.

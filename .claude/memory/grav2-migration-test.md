@@ -36,5 +36,5 @@ Left over as of 2026-10-02: migrate-grav plugin still installed locally;
 backups in /Volumes/X10Pro/Sites (topvoice-grav-pre-grav2-2026-10-02.tgz,
 topvoice-grav-idea-backup) and /root/topvoice-pre-grav2-*.tgz plus
 backup/migration-backup-*.zip on prod, to delete after a few quiet days.
-Prod admin branding and account roles were set by Raquel on 2026-10-02. Prod commands run as www-data, see
+Prod admin branding and account roles were set by Raquel on 2026-10-02. For how to run prod commands, see
 [[server-file-ownership]].

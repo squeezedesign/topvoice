@@ -57,15 +57,15 @@ máquina, `git pull` para traer lo que haya aprendido la otra.
   de git, el remoto es GitHub `squeezedesign/topvoice`). nginx + PHP-FPM 8.5
   (antes 8.3; los entornos locales siguen en 8.3). Logs de nginx en
   `/home/topvoicetgn/logs/`.
-- Raquel entra por SSH como **root**, pero PHP corre como **www-data**. Nunca
-  ejecutes `php bin/...` como root ahí: usa `sudo -u www-data php bin/...`.
-  Tras un `git pull` como root, devuelve la propiedad:
-  `chown -R www-data:www-data /home/topvoicetgn/www`.
+- Raquel entra por SSH como **`topvoicetgn`** (antes como root). Con ese
+  usuario no hace falta `chown` tras el `git pull` ni `sudo -u www-data` para
+  `php bin/...`. Si alguna vez vuelve a trabajar como root, nunca lances
+  `php bin/...` como root ahí: deja ficheros que la web no puede escribir.
 - Tú no tienes acceso SSH: dale los comandos a Raquel, **uno por línea y
   cortos** (las órdenes largas con `\` o tuberías se rompen al pegarlas).
   Comprueba el resultado desde fuera con `curl`.
-- Despliegue habitual: `cd /home/topvoicetgn/www && git pull && chown -R
-  www-data:www-data . && sudo -u www-data php bin/grav clearcache`.
+- Despliegue habitual, una orden por línea: `cd /home/topvoicetgn/www`,
+  `git pull` y `php bin/grav clearcache`.
 - Cuando Raquel diga que algo está desplegado, mira antes `git status -sb`:
   si pone `ahead N`, el push no salió y el `git pull` del servidor no trajo
   nada. Después compruébalo desde fuera con `curl`.

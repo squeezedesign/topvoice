@@ -128,17 +128,19 @@ configuración y cuentas:
 - Servidor `ubuntu-blackpony`, carpeta `/home/topvoicetgn/www` (clon del
   repositorio). nginx + PHP-FPM 8.5 (antes 8.3; los entornos locales siguen
   en 8.3). Logs de nginx en `/home/topvoicetgn/logs/`.
-- Se entra por SSH como root, pero la web corre como **www-data**: los
-  comandos de Grav van siempre con `sudo -u www-data`.
+- Se entra por SSH con el usuario **`topvoicetgn`**, no como root: así los
+  ficheros quedan con la propiedad correcta y no hace falta `chown` ni
+  `sudo -u www-data`. Como root, los ficheros creados no los podría escribir
+  la web.
 - Grav lee primero la configuración de
   `user/env/www.topvoicetgn.com/config/` y después la de `user/config/`. Lo que
   se guarda desde el admin de producción va a la primera.
 
 **Desplegar cambios del tema o de los plugins propios:**
 ```
-cd /home/topvoicetgn/www && git pull
-chown -R www-data:www-data /home/topvoicetgn/www
-sudo -u www-data php bin/grav clearcache
+cd /home/topvoicetgn/www
+git pull
+php bin/grav clearcache
 ```
 
 **Si `git pull` da conflicto** con `user/env/www.topvoicetgn.com/config/system.yaml`,

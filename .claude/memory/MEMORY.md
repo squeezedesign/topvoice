@@ -1,4 +1,4 @@
-- [Server file ownership](server-file-ownership.md) — prod runs PHP as www-data, Raquel works as root; never run bin/ scripts as root there
+- [Server file ownership](server-file-ownership.md) — Raquel deploys as topvoicetgn: git pull + clearcache, no chown or sudo; root was the old trap
 - [Production env config](prod-env-config.md) — prod settings live in user/env/<host>/config/ and override user/config/; the CLI may resolve differently
 - [Contact form anti-spam](contact-form-antispam.md) — honeypot + Cap captcha, live in production
 - [Email sending fails silently](email-sending-fails-silently.md) — Gmail app-password trap; turn the plugin's debug OFF, 5.2.1 logs failures on its own

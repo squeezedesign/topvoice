@@ -1,5 +1,24 @@
 {% set h = page.header %}
 
+{# Links to /actuacions: only when the page is on this server (it ships by
+   SFTP) and only for the formats that have past performances, so a card never
+   leads to an empty filter. Same rule as the page: active and dated before
+   today. #}
+{% set arch_formats = [] %}
+{% set arch_url = grav.pages.find('/actuacions') ? base_url ~ '/actuacions' : '' %}
+{% if arch_url %}
+  {% set flex = grav['flex_objects'] %}
+  {% set arch_dir = flex ? flex.getDirectory('actuacions') : null %}
+  {% if arch_dir %}
+    {% set today = "now"|date("Y-m-d") %}
+    {% for c in arch_dir.getCollection() %}
+      {% if (c.active is null or c.active) and c.date and c.date|date('Y-m-d') < today and c.format and c.format not in arch_formats %}
+        {% set arch_formats = arch_formats|merge([c.format]) %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endif %}
+
 <section id="oferim">
   <div class="inner">
     <p class="section-tag">{{ h.section_tag }}</p>
@@ -19,6 +38,9 @@
         <div class="oferim-card">
           <p class="oferim-card-label">{{ format.label }}</p>
           <p>{{ format.desc }}</p>
+          {% if format.format and format.format in arch_formats %}
+          <a class="oferim-card-link" href="{{ arch_url }}?format={{ format.format|url_encode }}">{{ 'SITE.ARCHIVE.FORMAT_LINK'|t }} <span aria-hidden="true">→</span></a>
+          {% endif %}
         </div>
         {% endfor %}
         {% endif %}
@@ -44,6 +66,9 @@
             <li>{{ item.label }}</li>
             {% endfor %}
           </ul>
+          {% if arch_formats %}
+          <a class="btn btn-outline oferim-arch-btn" href="{{ arch_url }}">{{ 'SITE.ARCHIVE.ALL_LINK'|t }}</a>
+          {% endif %}
         </div>
         {% endif %}
       </div>

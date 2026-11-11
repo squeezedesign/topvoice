@@ -181,8 +181,8 @@ páginas, configuración y cuentas, y desde una no se ve la otra.
 - SEO: `partials/alternates` saca `canonical`, `hreflang`, `og:url` y
   `og:locale`; `partials/social` el resto de Open Graph, con la imagen
   `images/og-image.jpg` del tema (1200×630). `sitemap.xml` es estático y solo
-  lista las dos portadas, porque las páginas legales son `noindex`: si se crea
-  una página pública nueva, añádela ahí.
+  lista las portadas y `/actuacions`, porque las páginas legales son
+  `noindex`: si se crea una página pública nueva, añádela ahí.
 - **Galería de la home** (`_05.gallery`): el orden es `media_order` (botón
   «Reordena» de la lista de fotos y después Desa). Grav lo guarda en el `.md`
   de cada idioma; `topvoice-hooks` lo copia a los demás idiomas al guardar
@@ -210,9 +210,19 @@ páginas, configuración y cuentas, y desde una no se ve la otra.
 
 Página de conciertos pasados: filtro por formato y, por actuación, fecha,
 lugar, marco, descripción y galería (vídeos de YouTube primero, después
-fotos, en el visor de la home; en móvil la galería es un slider). Aún sin
-enlazar: la página lleva `visible: false` y `noindex: true` y no está en
-`sitemap.xml`. Al publicarla, quita el `noindex` y añádela al sitemap.
+fotos, en el visor de la home; en móvil la galería es un slider). Es pública
+e indexable (está en `sitemap.xml`), pero lleva `visible: false` para no salir
+en el menú. Tiene un enlace «Tornar a l'inici» arriba.
+
+- **Enlaces desde la home** (solo si la página existe en ese servidor):
+  - Cada tarjeta de formato de «Què oferim» enlaza a `/actuacions?format=<f>`
+    si tiene elegido el formato (campo `.format` de la lista `formats`, por
+    idioma) y hay actuaciones pasadas de ese formato. `actuacions.js` aplica el
+    filtro de `?format=` al cargar y lo actualiza al pulsar un filtro.
+  - Botón «Totes les actuacions» bajo la lista «On hem actuat».
+  - Enlace «Actuacions anteriors» bajo la agenda de la sección del vídeo
+    (`archive_link` del parcial `concerts`); sale aunque no haya conciertos
+    futuros, pero no en el hero.
 
 - **Datos:** directorio Flex propio `actuacions`
   (`user/blueprints/flex-objects/actuacions.yaml`), con su entrada en el menú

@@ -47,6 +47,16 @@ form:
                   type: textarea
                   label: Descripció
                   rows: 2
+                .format:
+                  type: select
+                  label: Enllaç a les actuacions
+                  help: "Enllaça la targeta a /actuacions filtrada per aquest format. Només surt si hi ha actuacions passades d'aquest format."
+                  default: ''
+                  options:
+                    '': 'Sense enllaç'
+                    essencial: 'Format Essencial'
+                    banda: 'Format Banda'
+                    cor: 'Format Coristes'
             header.repertori_title:
               type: text
               label: Títol del repertori

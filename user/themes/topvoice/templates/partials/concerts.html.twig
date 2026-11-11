@@ -1,6 +1,8 @@
 {# Upcoming concerts block                                          #}
 {# Variables:                                                        #}
 {#   limit (int, optional) — max items to show; omit to show all    #}
+{#   archive_link (bool, optional) — link to /actuacions below,     #}
+{#     shown even when there are no upcoming concerts               #}
 
 {% set flex = grav['flex_objects'] %}
 {% set dir  = flex ? flex.getDirectory('concerts') : null %}
@@ -78,5 +80,12 @@
     </div>
   </div>
   {% endfor %}
+</div>
+{% endif %}
+
+{# Shown even without upcoming concerts: the past ones are still there #}
+{% if archive_link|default(false) and grav.pages.find('/actuacions') %}
+<div class="events-archive{{ items|length == 0 ? ' events-archive--alone' }}">
+  <a class="events-archive-link" href="{{ base_url }}/actuacions">{{ 'SITE.ARCHIVE.PAST_LINK'|t }} <span aria-hidden="true">→</span></a>
 </div>
 {% endif %}

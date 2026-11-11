@@ -569,6 +569,30 @@ p.hero-sub {
     margin-bottom: 0;
 }
 
+.events-archive {
+    margin-top: 1.25rem;
+}
+
+/* Without upcoming concerts it sits alone under the YouTube button */
+.events-archive--alone {
+    text-align: center;
+}
+
+.events-archive-link {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.events-archive-link:hover {
+    color: var(--cyan);
+}
+
 /* Scroll-down indicator — self-contained loop */
 .hero-scroll {
     position: absolute;
@@ -1117,6 +1141,35 @@ section {
     font-size: 0.9rem;
     line-height: 1.65;
     color: var(--muted);
+}
+
+.oferim-card-link {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.oferim-card-link span {
+    display: inline-block;
+    transition: transform 0.2s;
+}
+
+.oferim-card-link:hover {
+    color: var(--text);
+}
+
+.oferim-card-link:hover span {
+    transform: translateX(3px);
+}
+
+.oferim-arch-btn {
+    margin-top: 1.75rem;
 }
 
 .oferim-block {
@@ -2282,6 +2335,22 @@ body.page-actuacions .nav-logo-circle {
 .arch-empty {
     color: var(--arch-muted);
     padding: 2rem 0;
+}
+
+.arch-back {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--arch-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.arch-back:hover {
+    color: var(--primary);
 }
 
 .arch footer {

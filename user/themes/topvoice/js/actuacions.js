@@ -8,19 +8,33 @@
     // Format filter
     const pills = Array.from(document.querySelectorAll('.arch-pill'));
     const empty = document.querySelector('.arch-empty');
+    function applyFilter(pill) {
+        const format = pill.dataset.filter;
+        pills.forEach(p => p.setAttribute('aria-pressed', String(p === pill)));
+        let shown = 0;
+        items.forEach(item => {
+            const match = !format || item.dataset.format === format;
+            item.hidden = !match;
+            if (match) shown++;
+        });
+        if (empty) empty.hidden = shown > 0;
+    }
     pills.forEach(pill => {
         pill.addEventListener('click', () => {
-            const format = pill.dataset.filter;
-            pills.forEach(p => p.setAttribute('aria-pressed', String(p === pill)));
-            let shown = 0;
-            items.forEach(item => {
-                const match = !format || item.dataset.format === format;
-                item.hidden = !match;
-                if (match) shown++;
-            });
-            if (empty) empty.hidden = shown > 0;
+            applyFilter(pill);
+            // Keep the filter in the URL so it can be shared or reloaded
+            const url = new URL(location.href);
+            if (pill.dataset.filter) url.searchParams.set('format', pill.dataset.filter);
+            else url.searchParams.delete('format');
+            history.replaceState(null, '', url);
         });
     });
+
+    // Pre-filter from ?format= (links from the home page's format cards).
+    // An unknown format, or one without pills, shows everything.
+    const wanted = new URLSearchParams(location.search).get('format');
+    const initial = wanted && pills.find(p => p.dataset.filter === wanted);
+    if (initial) applyFilter(initial);
 
     // Mobile slider dots. The CSS turns each gallery into a scroll-snapping
     // row below 768px and only shows the dots there; they mark the slide in

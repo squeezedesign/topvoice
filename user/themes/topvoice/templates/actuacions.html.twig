@@ -47,6 +47,8 @@
 
 <section id="actuacions" class="arch">
   <div class="inner">
+    {# Back to the home page: the menu alone is not enough #}
+    <a class="arch-back" href="{{ base_url ?: '/' }}"><span aria-hidden="true">←</span> {{ 'SITE.LEGAL.BACK'|t }}</a>
     <p class="section-tag">{{ page.header.section_tag ?: 'SITE.ARCHIVE.TAG'|t }}</p>
     <h1 class="section-title">{{ (page.header.section_title ?: page.title)|nl2br }}</h1>
     <div class="divider"></div>

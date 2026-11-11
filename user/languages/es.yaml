@@ -65,6 +65,9 @@ SITE:
       BANDA: "Formato Banda"
       COR: "Formato Coristas"
   ARCHIVE:
+    FORMAT_LINK: "Ver actuaciones"
+    ALL_LINK: "Todas las actuaciones"
+    PAST_LINK: "Actuaciones anteriores"
     TAG: "Actuaciones"
     FILTER_LABEL: "Filtra por formato"
     FILTER_ALL: "Todas"
